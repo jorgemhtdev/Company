@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e37e461c8f824afa887600f7d68e8642" Name="Diagram1">
+        <EntityTypeShape EntityType="GestionEmpresasModel.AccionComercial" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Contacto" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Direccion" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Email" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Empresa" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.EstadoDeAccion" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Sector" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Telefono" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.TipoDeAccion" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEmpresasModel.Usuario" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_AccionComercial_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_AccionComercial_EstadoDeAccion" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_AccionComercial_TipoDeAccion" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_AccionComercial_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_Contacto_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.FK_Empresa_Sector" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.DireccionContacto" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.DireccionEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.EmailContacto" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.EmailEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.TelefonoContacto" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEmpresasModel.TelefonoEmpresa" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
