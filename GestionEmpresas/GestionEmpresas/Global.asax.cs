@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Web.UI;
 
 namespace GestionEmpresas
 {
@@ -11,6 +12,12 @@ namespace GestionEmpresas
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            string JQueryVer = "1.7.1";
+            ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition
+            {
+                Path = "~/Scripts/jquery-" + JQueryVer + ".min.js",
+                DebugPath = "~/Scripts/jquery-" + JQueryVer + ".js",
+            });
         }
     }
 }
