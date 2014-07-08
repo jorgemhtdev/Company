@@ -67,6 +67,22 @@ namespace ServicioGestion
         /// Fin estado de accion
 
         
+        // Usuario
+        [OperationContract]
+        bool addUsuario(UsuarioData usuario);
+
+        [OperationContract]
+        bool deleteUsuario(int idUsuario);
+
+        [OperationContract]
+        bool editUsuario(int idUsuario, UsuarioData user);
+
+        [OperationContract]
+        List<UsuarioData> getAllUsuarios();
+
+        [OperationContract]
+        UsuarioData getUsuario(int idUsuario);
+        //Fin Usuario
     }
 
     
@@ -131,6 +147,23 @@ namespace ServicioGestion
 
     //fin estado de accion
 
+    //Usuario
+    [DataContract]
+    public class UsuarioData
+    {
+        [DataMember]
+        public int idUsuario;
+
+        [DataMember]
+        public string login;
+
+        [DataMember]
+        public string nombre;
+
+        [DataMember]
+        public string password;
+    }
+    //Fin Usuario
 
 
 
