@@ -265,7 +265,163 @@ namespace ServicioGestion
         /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
         public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
         {
-            
+            try
+            {
+                Empresa emp = new Empresa();
+                emp.cif = cif;
+                emp.nombreComercial = nombreComercial;
+                emp.razonSocial = razon;
+                emp.web = web;
+                emp.idSector = sector;
+
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    db.Empresa.Add(emp);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO AÑADIR EMAIL"));
+            }
+        }
+
+        /// <summary>
+        /// Método que devuelve todos los registros de la tabla Empresa.
+        /// </summary>
+        /// <returns>Devuelve una lista de Empresas</returns>
+        public List<EmpresaData> getAllEmpresa()
+        {
+            List<EmpresaData> datos = new List<EmpresaData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from empresa in db.Empresa
+                                  select empresa;
+
+                    foreach (Empresa em in resulta)
+                    {
+                        EmpresaData emData = new EmpresaData()
+                        {
+                            cif = em.cif,
+                            nombreComercial = em.nombreComercial,
+                            razonSocial=em.razonSocial,
+                            web=em.web,
+                            sector=(int)em.idSector
+                        };
+                        datos.Add(emData);
+
+                    }
+                    return datos;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+        /// <summary>
+        /// Método que busca una empresa según un cif
+        /// </summary>
+        /// <param name="cif">Cif a buscar de la empresa</param>
+        /// <returns>Devuelve un objeto empresa. O null si no encuentra nada.</returns>
+        public EmpresaData getEmpresaCif(string cif)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from empresa in db.Empresa
+                                  where empresa.cif == cif
+                                  select empresa;
+
+                    foreach (Empresa em in resulta)
+                    {
+                        EmpresaData empData = new EmpresaData()
+                        {
+                            EmpresaID = em.idEmpresa,
+                            cif = em.cif,
+                            nombreComercial = em.nombreComercial,
+                            razonSocial=em.razonSocial,
+                            web=em.web,
+                            sector = (int)em.idSector
+                        };
+
+                        return empData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+
+
+        /// <summary>
+        /// Método que devuelve una empresa según un id determinado
+        /// </summary>
+        /// <param name="id">Identificador</param>
+        /// <returns>Devuelve un objeto empresa</returns>
+        public EmpresaData getEmpresaId(int id)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from empresa in db.Empresa
+                                  where empresa.idEmpresa == id
+                                  select empresa;
+
+                    foreach (Empresa em in resulta)
+                    {
+                        EmpresaData empData = new EmpresaData()
+                        {
+                            EmpresaID=em.idEmpresa,
+                            cif = em.cif,
+                            nombreComercial = em.nombreComercial,
+                            razonSocial = em.razonSocial,
+                            web = em.web,
+                            sector = (int)em.idSector
+                        };
+
+                        return empData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
         }
     }
 }
