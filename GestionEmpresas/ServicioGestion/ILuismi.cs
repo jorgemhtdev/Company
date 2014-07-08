@@ -55,7 +55,18 @@ namespace ServicioGestion
         //Método que obtiene una empresa por un identificador
         [OperationContract]
         EmpresaData getEmpresaId(int id);
-        
+
+        //Método que obtiene una empresa por un identificador
+        [OperationContract]
+        List<EmpresaData> getEmpresaSector(int idSector);
+
+        //Método que elimina de la tabla Email un registro
+        [OperationContract]
+        bool deleteEmpresa(int idEmpresa);
+
+        //Método que edita un registro de la tabla Empresa 
+        [OperationContract]
+        bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
 
     }
 
