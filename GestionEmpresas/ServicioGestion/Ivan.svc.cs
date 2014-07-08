@@ -125,14 +125,18 @@ namespace ServicioGestion
         }
 
         /// <summary>
-        /// Permite insertar un teléfono que no exista en la base de datos.
+        /// Permite insertar un teléfono que no exista en la base de datos. Como el teléfono está relacionado obligatoriamente con una empresa o un contacto uno de los dos parámetros será null.
         /// </summary>
         /// <param name="t">Teléfono a insertar.</param>
+        /// <param name="empData">Empresa a la que pertenece el teléfono a insertar.</param>
+        /// <param name="conData">Contacto al que pertenece el teléfono a insertar.</param>
         /// <returns>True si se ha insertado.</returns>
-        public bool AddTelefono(TelefonoData t)
+        public bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
         {
             if (t == null) return false;
-
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
@@ -140,8 +144,23 @@ namespace ServicioGestion
                     Telefono telefono = new Telefono()
                     {
                         idTelefono = t.idTelefono,
-                        numero = t.numero
+                        numero = t.numero,
                     };
+
+                    if (empData.EmpresaID != 0)
+                    {
+                        var datos = from empresas in bd.Empresa
+                                    where empresas.idEmpresa == empData.EmpresaID
+                                    select empresas;
+                        telefono.Empresa.Add(datos.First());
+                    }
+                    else
+                    {
+                        var datos = from contactos in bd.Contacto
+                                    where contactos.idContacto == conData.idContacto
+                                    select contactos;
+                        telefono.Contacto.Add(datos.First());
+                    }
 
                     bd.Telefono.Add(telefono);
                     bd.SaveChanges();
