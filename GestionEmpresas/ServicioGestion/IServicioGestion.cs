@@ -83,6 +83,22 @@ namespace ServicioGestion
         [OperationContract]
         UsuarioData getUsuario(int idUsuario);
         //Fin Usuario
+
+        /// Contacto
+
+        [OperationContract]
+        List<ContactoData> GetContacto();
+
+        [OperationContract]
+        bool DeleteContacto(ContactoData contacto, int id);
+
+        [OperationContract]
+        bool AddContacto(ContactoData contacto);
+
+        [OperationContract]
+        bool EditContacto(ContactoData contacto, int id);
+
+        /// Fin contacto    
     }
 
     
@@ -165,6 +181,20 @@ namespace ServicioGestion
     }
     //Fin Usuario
 
+    /// Contacto
+    [DataContract]
+    public class ContactoData
+    {
+        [DataMember]
+        public int idContacto;
+        [DataMember]
+        public string nif;
+        [DataMember]
+        public string nombre;
+        [DataMember]
+        public int idEmpresa;
+    }
+    /// Fin contacto
 
 
 }
