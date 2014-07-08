@@ -180,13 +180,13 @@ namespace ServicioGestion
         }
 
         /// <summary>
-        /// Permite editar un teléfono existente en la base de datos
+        /// Permite editar un teléfono que exista en la base de datos. Como el teléfono está relacionado obligatoriamente con una empresa o un contacto uno de los dos parámetros será null.
         /// </summary>
         /// <param name="t">El teléfono a editar.</param>
         /// <returns>True si se ha editado.</returns>
         public bool EditTelefono(TelefonoData t)
         {
-            if(t == null) return false;
+            if (t == null) return false;
 
             try
             {
@@ -198,6 +198,7 @@ namespace ServicioGestion
 
                     Telefono telefono = data.First();
                     telefono.numero = t.numero;
+
                     bd.SaveChanges();
                     return true;
                 }
