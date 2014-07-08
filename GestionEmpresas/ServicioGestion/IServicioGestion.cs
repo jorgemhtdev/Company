@@ -53,19 +53,24 @@ namespace ServicioGestion
         /// Fin Direccion
 
         /// Sector
-
+        
+        [OperationContract]
         List<SectorData> GetSector();
 
         /// Fin sector
         
         /// Estado de accion
-        List<SectorData> GetSector();
+        
+        [OperationContract]
+        List<EstadoAccion> GetEstadoAccion();
+
         /// Fin estado de accion
         
     }
 
     
     //EMAIL
+
     [DataContract]
     public class EmailData
     {
@@ -124,4 +129,7 @@ namespace ServicioGestion
     }
 
     //fin estado de accion
+
+
+
 }
