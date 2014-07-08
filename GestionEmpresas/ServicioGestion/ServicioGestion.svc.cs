@@ -711,5 +711,159 @@ namespace ServicioGestion
         /***************************************************************
          *                     Fin Usuario
          ***************************************************************/
+
+        /***************************************************************
+        ************************ Contacto ******************************
+        ****************************************************************/
+
+        /// <summary>
+        /// Metodo que me devuelve una lista de contactos
+        /// </summary>
+        /// <returns></returns>
+        public List<ContactoData> GetContacto()
+        {
+            List<ContactoData> lst = new List<ContactoData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from contacto in db.Contacto
+                                   select new ContactoData()
+                                   {
+                                       idContacto = contacto.idContacto,
+                                       idEmpresa = (int)contacto.idEmpresa,
+                                       nif = contacto.nif,
+                                       nombre = contacto.nombre,
+                                   };
+                    lst = consulta.ToList();
+
+                    if (lst.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return lst;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("Error en acceso a datos. " + ex.Message);
+            }
+        }// Fin del GetContacto
+
+        /// <summary>
+        /// Metodo que elimina un contacto a partir de un objeto contacto de tipo ContactoData y de un id
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteContacto(ContactoData contacto, int id)
+        {
+            List<ContactoData> empresaBorrar = new List<ContactoData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resultado = from contact in db.Contacto
+                                    where (contact.idContacto == id)
+                                    select contact;
+
+                    foreach (var contact in resultado) // Un foreach que elimina la fila completa
+                    {
+                        db.Contacto.Remove(contact); // Borra el objeto
+                    }
+                    db.SaveChanges(); // Se guarda los campios realizados
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("No se puede acceder a la BD de datos." + ex.Message);
+            }
+        }// Fin del DeleteCon
+
+        /// <summary>
+        /// Metodo que añade un nuevo contacto a la base de datos a partir de un objeto contacto de tipo ContactoData
+        /// </summary>
+        /// <param name="contacto"></param>
+        /// <returns></returns>
+        public bool AddContacto(ContactoData contacto)
+        {
+            try
+            {
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    Contacto nueva = new Contacto();
+
+                    nueva.idContacto = contacto.idContacto;
+                    nueva.nif = contacto.nif;
+                    nueva.nombre = contacto.nombre;
+                    nueva.idEmpresa = contacto.idEmpresa;
+
+                    bd.Contacto.Add(nueva);
+                    bd.SaveChanges();
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }// Fin del AddContacto
+
+        /// <summary>
+        /// Metodo que a partir de un objeto e id me edita un contacto
+        /// </summary>
+        /// <param name="contacto"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool EditContacto(ContactoData contacto, int id)
+        {
+            try
+            {
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var consulta = from contact in bd.Contacto
+                                   where contact.idContacto == id
+                                   select contact;
+
+                    Contacto nueva = consulta.First();
+
+                    nueva.idContacto = contacto.idContacto;
+                    nueva.idEmpresa = contacto.idEmpresa;
+                    nueva.nif = contacto.nif;
+                    nueva.nombre = contacto.nombre;
+
+                    bd.SaveChanges();
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }// Fin del EditContacto
+
+        /***************************************************************
+        ******************** Fin Contacto ******************************
+        ****************************************************************/
+    
     }
 }
