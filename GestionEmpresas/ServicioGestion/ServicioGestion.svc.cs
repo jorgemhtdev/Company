@@ -274,19 +274,20 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="street"></param>
         /// <returns></returns>
-        public bool AddDireccion(DireccionData street)
+        bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
+
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     Direccion nueva = new Direccion();
 
-                    nueva.idDireccion = street.idDireccion;
-                    nueva.domicilio = street.domicilio;
-                    nueva.poblacion = street.poblacion;
-                    nueva.provincia = street.provincia;
-                    nueva.codPostal = street.codPostal;
+                    nueva.idDireccion = t.idDireccion;
+                    nueva.domicilio = t.domicilio;
+                    nueva.poblacion = t.poblacion;
+                    nueva.provincia = t.provincia;
+                    nueva.codPostal = t.codPostal;
 
                     bd.Direccion.Add(nueva);
                     bd.SaveChanges();
