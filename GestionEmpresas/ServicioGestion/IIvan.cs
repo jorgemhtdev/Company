@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using ServicioGestion.Model;
 
 namespace ServicioGestion
 {
@@ -12,6 +13,25 @@ namespace ServicioGestion
     public interface IIvan
     {
         [OperationContract]
-        void DoWork();
+        TelefonoData GetNumeroTelefono(string telefono);
+        [OperationContract]
+        TelefonoData GetIdTelefono(int idTelefono);
+        [OperationContract]
+        List<TelefonoData> GetTelefonos();
+        [OperationContract]
+        bool AddTelefono(TelefonoData t);
+        [OperationContract]
+        bool EditTelefono(TelefonoData t);
+        [OperationContract]
+        bool DeleteTelefono(int idTelefono);
+    }
+
+    [DataContract]
+    public class TelefonoData
+    {
+        [DataMember]
+        public int idTelefono;
+        [DataMember]
+        public string numero;
     }
 }
