@@ -7,6 +7,7 @@ using System.Text;
 
 namespace ServicioGestion
 {
+    /*
     [ServiceContract]
     public interface IJorge
     {
@@ -33,5 +34,5 @@ namespace ServicioGestion
         public string codPostal;
         [DataMember]
         public string provincia;
-    }
+    }*/
 }

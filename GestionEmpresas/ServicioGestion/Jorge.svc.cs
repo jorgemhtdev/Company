@@ -8,7 +8,7 @@ using System.ServiceModel;
 using System.Text;
 
 namespace ServicioGestion
-{
+{/*
     public class Jorge : IJorge
     {
         /// <summary>
@@ -156,6 +156,6 @@ namespace ServicioGestion
                 throw new FaultException("Error en acceso a datos. " + ex.Message);
             }
         }
-
-    }// Fin de la clase
+    
+    }// Fin de la clase*/
 }// Fin del servicio
