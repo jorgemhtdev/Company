@@ -65,6 +65,7 @@ namespace ServicioGestion
         List<EstadoAccion> GetEstadoAccion();
 
         /// Fin estado de accion
+
         
     }
 
@@ -129,6 +130,7 @@ namespace ServicioGestion
     }
 
     //fin estado de accion
+
 
 
 
