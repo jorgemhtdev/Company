@@ -41,9 +41,15 @@ namespace ServicioGestion
                 }
                 return true;
             }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
             catch (Exception ex)
             {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO AÑADIR EMAIL"));
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
             }
         }
 
@@ -249,7 +255,7 @@ namespace ServicioGestion
             }
             catch (SqlException ex)
             {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+                FaultException fault = new FaultException("Error SQL" + ex.Message, new FaultCode("SQL"));
 
                 throw fault;
             }

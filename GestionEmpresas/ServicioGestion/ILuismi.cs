@@ -12,7 +12,7 @@ namespace ServicioGestion
     [ServiceContract]
     public interface ILuismi
     {
-
+        ////////////////////EMAIL
         /*
         //Método que añade un email
         [OperationContract]
@@ -38,6 +38,13 @@ namespace ServicioGestion
         [OperationContract]
         bool editEmail(int idEmail, string correo);
          * */
+        ////////////////////FIN EMAIL
+
+        //Método que añade una empresa
+        [OperationContract]
+        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+
+
     }
 
     /*
@@ -51,4 +58,23 @@ namespace ServicioGestion
        
     }
      * */
+
+    /// <summary>
+    /// Objeto Empresa
+    /// </summary>
+    public class EmpresaData
+    {
+        [DataMember]
+        public int EmpresaID;
+        [DataMember]
+        public string cif;
+        [DataMember]
+        public string nombreComercial;
+        [DataMember]
+        public string razonSocial;
+        [DataMember]
+        public string web;
+        [DataMember]
+        public int sector;
+    }
 }
