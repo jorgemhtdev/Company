@@ -38,32 +38,6 @@ namespace ServicioGestion
         [OperationContract]
         bool DeleteTelefono(int idTelefono);
 
-        /******************************************* TELEFONO CONTACTO *****************************************/
-
-        /*//Método que busca un teléfono por su número
-        [OperationContract]
-        TelefonoContacto GetNumeroTelefono(string telefono);
-
-        //Método que busca un teléfono por su id
-        [OperationContract]
-        TelefonoData GetIdTelefono(int idTelefono);
-
-        //Método que obtiene un listado de teléfonos existentes
-        [OperationContract]
-        List<TelefonoData> GetAllTelefonos();
-
-        //Método que inserta un teléfono nuevo
-        [OperationContract]
-        bool AddTelefono(TelefonoData t);
-
-        //Método que edita un teléfono existente
-        [OperationContract]
-        bool EditTelefono(TelefonoData t);
-
-        //Método que elimina un teléfono existente
-        [OperationContract]
-        bool DeleteTipoAccion(int idTelefono);
-
         /******************************************* TIPO DE ACCIÓN ********************************************/
 
         //Método que busca un tipo de acción por su id
