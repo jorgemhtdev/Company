@@ -633,7 +633,7 @@ namespace ServicioGestion
             }
         }
         /// <summary>
-        /// Método que obtiene todos los emails contenidos en la tabla Email
+        /// Método que obtiene todos los usuarios contenidos en la tabla Usuario
         /// </summary>
         /// <returns>Devuelve una lista de objetos Usuario</returns>
         public List<UsuarioData> getAllUsuarios()
