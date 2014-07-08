@@ -57,6 +57,11 @@ namespace ServicioGestion
         List<SectorData> GetSector();
 
         /// Fin sector
+        
+        /// Estado de accion
+        List<SectorData> GetSector();
+        /// Fin estado de accion
+        
     }
 
     
@@ -105,4 +110,18 @@ namespace ServicioGestion
     }
 
     //fin Sector
+
+
+    /// Estado de accion
+
+    [DataContract]
+    public class EstadoAccion
+    {
+        [DataMember]
+        public int idEstadoAccion;
+        [DataMember]
+        public string descripcion;
+    }
+
+    //fin estado de accion
 }
