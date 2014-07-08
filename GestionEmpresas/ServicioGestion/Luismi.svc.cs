@@ -253,6 +253,19 @@ namespace ServicioGestion
             }
         }
         */
-       
+
+        /// <summary>
+        /// Método que añade un nuevo registro en la tabla Empresa
+        /// </summary>
+        /// <param name="cif">Cif de la empresa a insertar</param>
+        /// <param name="nombreComercial">Nombre Comercial de la empresa a insertar</param>
+        /// <param name="razon">Razón Social de la empresa a insertar</param>
+        /// <param name="web">Página Web de la empresa a insertar</param>
+        /// <param name="sector">Identificador de sector de la empresa a insertar</param>
+        /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
+        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
+        {
+            
+        }
     }
 }
