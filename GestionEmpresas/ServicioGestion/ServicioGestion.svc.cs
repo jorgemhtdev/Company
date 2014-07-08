@@ -424,7 +424,7 @@ namespace ServicioGestion
         ***************************************************************/
 
         /***************************************************************
-        ****************************  Sector ************************
+        ***************************** Sector ***************************
         ***************************************************************/
 
         /// <summary>
@@ -464,6 +464,50 @@ namespace ServicioGestion
 
         /***************************************************************
         **************************** Fin Sector ************************
-        ***************************************************************/
+        ****************************************************************/
+
+
+        /***************************************************************
+        ******************  Estado de accion ***************************
+        ****************************************************************/
+
+        /// <summary>
+        /// Metodo que me devuelve todos los sectores de la BD
+        /// </summary>
+        /// <returns></returns>
+        public List<EstadoAccion> GetEstadoAccion()
+        {
+            List<EstadoAccion> lst = new List<EstadoAccion>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from estadoAccion in db.EstadoDeAccion
+                                   select new EstadoAccion()
+                                   {
+                                       idEstadoAccion = estadoAccion.idEstadoAccion,
+                                       descripcion = estadoAccion.descripcion,
+                                   };
+                    lst = consulta.ToList();
+
+                    if (lst.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return lst;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("Error en acceso a datos. " + ex.Message);
+            }
+        }// Fin del GetSector
+
+        /***************************************************************
+        ******************  Estado de accion ***************************
+        ****************************************************************/
     }
 }
