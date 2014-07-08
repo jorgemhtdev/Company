@@ -254,6 +254,18 @@ namespace ServicioGestion
         }
         */
 
+        /***************************************************************
+        ****Métodos tabla Empresa. 
+         *AddEmpresa -- Añadir empresa, 
+         *getAllEmpresa -- Devuelve todos los registros
+         *getEmpresaCif -- Devuelve un registro concreto de la tabla Empresa segun un cif
+         *getEmpresaId -- Devuelve un registro concreto de la tabla Empresa segun su identificador
+         *getEmpresaSector -- Devuelve un registro concreto de la tabla Empresa segun el sector al que pertenezca
+         *deleteEmpresa -- Elimina un registro de la tabla según su identificador
+         *editEmpresa -- Modificacion de un registro concreto de una empresa
+        ***************************************************************/
+
+
         /// <summary>
         /// Método que añade un nuevo registro en la tabla Empresa
         /// </summary>
@@ -305,6 +317,7 @@ namespace ServicioGestion
                     {
                         EmpresaData emData = new EmpresaData()
                         {
+                            EmpresaID = em.idEmpresa,
                             cif = em.cif,
                             nombreComercial = em.nombreComercial,
                             razonSocial=em.razonSocial,
@@ -423,5 +436,138 @@ namespace ServicioGestion
                 throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
             }
         }
+
+        /// <summary>
+        /// Método que consulta empresa por Sector
+        /// </summary>
+        /// <param name="idSector">Identificador del sector para buscar</param>
+        /// <returns></returns>
+        public List<EmpresaData> getEmpresaSector(int idSector)
+        {
+            List<EmpresaData> datos = new List<EmpresaData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from empresa in db.Empresa
+                                  where empresa.idSector==idSector
+                                  select empresa;
+
+                    foreach (Empresa em in resulta)
+                    {
+                        EmpresaData emData = new EmpresaData()
+                        {
+                            cif = em.cif,
+                            nombreComercial = em.nombreComercial,
+                            razonSocial = em.razonSocial,
+                            web = em.web,
+                            sector = (int)em.idSector
+                        };
+                        datos.Add(emData);
+   
+                    }
+                    return datos;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+        /// <summary>
+        /// Método que elimina un registro empresa de la tabla Empresa
+        /// </summary>
+        /// <param name="idEmpresa"></param>
+        /// <returns></returns>
+        public bool deleteEmpresa(int idEmpresa)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consult = from emp in db.Empresa
+                                  where emp.idEmpresa == idEmpresa
+                                  select emp;
+
+                    Empresa email = consult.First();
+
+                    db.Empresa.Remove(email);
+                    db.SaveChanges();
+                   
+                  
+                }
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+        /// <summary>
+        /// Método que edita una empresa 
+        /// </summary>
+        /// <param name="idEmpresa">Identificador de la empresa a modificar</param>
+        /// <param name="cif">Cif de la empresa modificada</param>
+        /// <param name="nombreComercial">Nombre Comercial de la nueva empresa</param>
+        /// <param name="razon">Razón Social de la nueva empresa</param>
+        /// <param name="web">Web de la empresa a modificar</param>
+        /// <param name="idSector">Sector de la empresa a modificar</param>
+        /// <returns>Devuelve true si se ha modificado correctamente.</returns>
+        public bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int idSector)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consult = from em in db.Empresa
+                                  where em.idEmpresa == idEmpresa
+                                  select em;
+
+
+                    Empresa empMod = consult.First();
+
+                    empMod.idEmpresa = idEmpresa;
+                    empMod.cif = cif;
+                    empMod.nombreComercial = nombreComercial;
+                    empMod.razonSocial = razon;
+                    empMod.web = web;
+                    empMod.idSector = idSector;
+
+                    db.SaveChanges();
+
+                    return true;
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+        /***************************************************************
+        *******************************FIN EMPRESA**********************
+        ***************************************************************/
     }
 }
