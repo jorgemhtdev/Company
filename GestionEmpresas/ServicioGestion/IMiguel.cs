@@ -7,11 +7,38 @@ using System.Text;
 
 namespace ServicioGestion
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IMiguel" in both code and config file together.
     [ServiceContract]
     public interface IMiguel
     {
+       /* [OperationContract]
+        bool addUsuario(UsuarioData usuario);
+
         [OperationContract]
-        void DoWork();
+        bool deleteUsuario(int idUsuario);
+
+        [OperationContract]
+        bool editUsuario(int idUsuario, UsuarioData user);
+
+        [OperationContract]
+        List<UsuarioData> getAllUsuarios();
+
+        [OperationContract]
+        UsuarioData getUsuario(int idUsuario);*/
     }
+
+   /* [DataContract]
+    public class UsuarioData
+    {
+        [DataMember]
+        public int idUsuario;
+
+        [DataMember]
+        public string login;
+
+        [DataMember]
+        public string nombre;
+
+        [DataMember]
+        public string password; 
+    }*/
 }
