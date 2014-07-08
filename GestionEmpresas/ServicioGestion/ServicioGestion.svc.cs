@@ -22,13 +22,19 @@ namespace ServicioGestion
          *deleteEmail -- Elimina un registro de la tabla según su identificador
          *editEmail -- Modificacion de un registro concreto
         ***************************************************************/ 
-        /// <summary>
-        /// Método que añade un email a la base de datos
-        /// </summary>
-        /// <param name="correo"> Correo electrónico a añadir en la base de datos</param>
-        /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
-        public bool addEmail(string correo)
+       /// <summary>
+        /// /// Permite insertar un email que no exista en la base de datos. Como el Email está relacionado obligatoriamente con una empresa o un contacto uno de los dos parámetros será null.
+       /// </summary>
+       /// <param name="correo"></param>
+       /// <param name="empData"></param>
+       /// <param name="conData"></param>
+       /// <returns></returns>
+        public bool addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
+            if (correo == ""||correo==null) return false;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+
             try
             {
                 Email p = new Email();
@@ -36,10 +42,26 @@ namespace ServicioGestion
 
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
+                    if (empData.EmpresaID != 0)
+                    {
+                        var datos = from empresas in db.Empresa
+                                    where empresas.idEmpresa == empData.EmpresaID
+                                    select empresas;
+                        p.Empresa.Add(datos.First());
+                    }
+                    else
+                    {
+                        var datos = from contactos in db.Contacto
+                                    where contactos.idContacto == conData.idContacto
+                                    select contactos;
+                        p.Contacto.Add(datos.First());
+                    }
+
                     db.Email.Add(p);
                     db.SaveChanges();
                 }
                 return true;
+               
             }
             catch (SqlException ex)
             {
