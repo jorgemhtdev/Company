@@ -44,6 +44,18 @@ namespace ServicioGestion
         [OperationContract]
         bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
 
+        //Método que obtiene todos los registros de la tabla empresa
+        [OperationContract]
+        List<EmpresaData> getAllEmpresa();
+
+        //Método que obtiene una empresa por cif
+        [OperationContract]
+        EmpresaData getEmpresaCif(string cif);
+
+        //Método que obtiene una empresa por un identificador
+        [OperationContract]
+        EmpresaData getEmpresaId(int id);
+        
 
     }
 
