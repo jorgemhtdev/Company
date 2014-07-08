@@ -226,7 +226,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="id">Identificador del email a editar po modificar.</param>
         /// <param name="correo">Correo a modificar.</param>
-        /// <returns></returns>
+        /// <returns>Devuelve true si se ha editado correctamente el registro, False si no.</returns>
         public bool editEmail(int id, string correo)
         {
             try
