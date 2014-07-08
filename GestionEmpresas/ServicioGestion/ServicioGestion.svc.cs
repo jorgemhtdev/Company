@@ -196,16 +196,16 @@ namespace ServicioGestion
                                   where correo.idEmail == idEmail
                                   select correo;
 
-                    if (consult.ToList().Count != 0)
-                    {
-                        Email email = consult.First();
+                    //si el objeto es nulo
+                    if (idEmail == null) return false;
 
-                        db.Email.Remove(email);
-                        db.SaveChanges();
-                        return true;
-                    }
+                    Email email = consult.First();
+
+                    db.Email.Remove(email);
+                    db.SaveChanges();
+  
                 }
-                return false;
+                return true;
             }
             catch (SqlException ex)
             {
@@ -237,18 +237,14 @@ namespace ServicioGestion
                                   where co.idEmail == id
                                   select co;
 
-                    if (consult.ToList().Count != 0)
-                    {
+               
                         Email mailMod = consult.First();
 
                         mailMod.correo = correo;
                         db.SaveChanges();
+                   
                         return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                   
 
                 }
 
