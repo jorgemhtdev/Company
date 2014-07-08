@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ivan.svc" />
-    <Content Include="Jorge.svc" />
     <Content Include="Luismi.svc" />
     <Content Include="Miguel.svc" />
     <Content Include="ServicioGestion.svc" />
@@ -77,15 +76,11 @@
   <ItemGroup>
     <Compile Include="FaulException.cs" />
     <Compile Include="IIvan.cs" />
-    <Compile Include="IJorge.cs" />
     <Compile Include="ILuismi.cs" />
     <Compile Include="IMiguel.cs" />
     <Compile Include="IServicioGestion.cs" />
     <Compile Include="Ivan.svc.cs">
       <DependentUpon>Ivan.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Jorge.svc.cs">
-      <DependentUpon>Jorge.svc</DependentUpon>
     </Compile>
     <Compile Include="Luismi.svc.cs">
       <DependentUpon>Luismi.svc</DependentUpon>
