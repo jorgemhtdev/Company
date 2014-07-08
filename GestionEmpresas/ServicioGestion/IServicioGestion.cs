@@ -40,9 +40,9 @@ namespace ServicioGestion
         //FIN EMAIL
 
         /// Direccion
-       
+
         [OperationContract]
-        bool AddDireccion(DireccionData street);
+        bool AddDireccion(DireccionData street, EmpresaData empData, ContactoData conData);
         [OperationContract]
         bool DeleteDireccion(DireccionData street, int id);
         [OperationContract]

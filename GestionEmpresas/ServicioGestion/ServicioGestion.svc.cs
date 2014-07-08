@@ -298,6 +298,9 @@ namespace ServicioGestion
         /// <returns></returns>
         bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
+            if (t == null) return false;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
 
             try
             {
@@ -310,6 +313,21 @@ namespace ServicioGestion
                     nueva.poblacion = t.poblacion;
                     nueva.provincia = t.provincia;
                     nueva.codPostal = t.codPostal;
+
+                    if (empData.EmpresaID != 0)
+                    {
+                        var datos = from empresas in bd.Empresa
+                                    where empresas.idEmpresa == empData.EmpresaID
+                                    select empresas;
+                        nueva.Empresa.Add(datos.First());
+                    }
+                    else
+                    {
+                        var datos = from contactos in bd.Contacto
+                                    where contactos.idContacto == conData.idContacto
+                                    select contactos;
+                        nueva.Contacto.Add(datos.First());
+                    }
 
                     bd.Direccion.Add(nueva);
                     bd.SaveChanges();
