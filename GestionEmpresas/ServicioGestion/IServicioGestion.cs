@@ -51,6 +51,12 @@ namespace ServicioGestion
         List<DireccionData> GetDireccion();
 
         /// Fin Direccion
+
+        /// Sector
+
+        List<SectorData> GetSector();
+
+        /// Fin sector
     }
 
     
@@ -84,5 +90,19 @@ namespace ServicioGestion
         public string provincia;
     }
         
-    //FIN Direccion
+    //fin Direccion
+
+    /// Sector
+
+    [DataContract]
+    public class SectorData
+    {
+        [DataMember]
+        public int idSector;
+        [DataMember]
+        public string descripcion;
+
+    }
+
+    //fin Sector
 }

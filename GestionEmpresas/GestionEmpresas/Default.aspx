@@ -5,7 +5,10 @@
      <h1>Almerimatik</h1>
      iniciar sesion
     
-    <asp:Login ID="Login1" runat="server"></asp:Login>
+    <asp:Login ID="Login1" runat="server">
+
+
+    </asp:Login>
 
 
     <h2>OLVIDÉ MI CONTRASEÑA</h2>

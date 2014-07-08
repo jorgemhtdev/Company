@@ -422,5 +422,48 @@ namespace ServicioGestion
         /***************************************************************
         **************************** Fin Direccion ************************
         ***************************************************************/
+
+        /***************************************************************
+        ****************************  Sector ************************
+        ***************************************************************/
+
+        /// <summary>
+        /// Metodo que me devuelve todos los sectores de la BD
+        /// </summary>
+        /// <returns></returns>
+        public List<SectorData> GetSector()
+        {
+            List<SectorData> lst = new List<SectorData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from sector in db.Sector
+                                   select new SectorData()
+                                   {
+                                       idSector = sector.idSector,
+                                       descripcion = sector.descripcion,
+                                   };
+                    lst = consulta.ToList();
+
+                    if (lst.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return lst;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException("Error en acceso a datos. " + ex.Message);
+            }
+        }// Fin del GetSector
+
+        /***************************************************************
+        **************************** Fin Sector ************************
+        ***************************************************************/
     }
 }
