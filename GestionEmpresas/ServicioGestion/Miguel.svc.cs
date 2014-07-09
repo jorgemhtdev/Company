@@ -420,5 +420,101 @@ namespace ServicioGestion
                 throw fault;
             }
         }
+        /********************************************************************************
+         *                        getAccionesComercialesUsuarios
+         *******************************************************************************/
+        public List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario)
+        {
+            List<AccionComercialData> list = new List<AccionComercialData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from usuario in db.Usuario
+                                   where usuario.idUsuario == idUsuario
+                                   select usuario;
+                                  
+                    Usuario user = consulta.First();
+                    for (int i = 0; i < user.AccionComercial.Count;i++ )
+                    {
+                        AccionComercialData nuevaAccion = new AccionComercialData();
+                        nuevaAccion.idAccion = user.AccionComercial.ElementAt(i).idAccion;
+                        nuevaAccion.descripcion = user.AccionComercial.ElementAt(i).descripcion;
+                        nuevaAccion.comentarios = user.AccionComercial.ElementAt(i).comentarios;
+                        nuevaAccion.fechaHora = user.AccionComercial.ElementAt(i).fechaHora;
+                        nuevaAccion.idUsuario = (Int32)user.AccionComercial.ElementAt(i).idUsuario;
+                        nuevaAccion.idTipoAccion = (Int32)user.AccionComercial.ElementAt(i).idTipoAccion;
+                        nuevaAccion.idEstadoAccion = (Int32)user.AccionComercial.ElementAt(i).idEstadoAccion;
+                        nuevaAccion.idEmpresa = (Int32)user.AccionComercial.ElementAt(i).idEmpresa;
+
+                        list.Add(nuevaAccion);
+                    }
+                    return list;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+        /********************************************************************************
+         *                       Fin getAccionesComercialesUsuarios
+         *******************************************************************************/
+        /********************************************************************************
+         *                        getAccionesComercialesEmpresa
+         *******************************************************************************/
+        public List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa)
+        {
+            List<AccionComercialData> list = new List<AccionComercialData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from empresa in db.Empresa
+                                   where empresa.idEmpresa == idEmpresa
+                                   select empresa;
+
+                    Empresa emp = consulta.First();
+                    for (int i = 0; i < emp.AccionComercial.Count; i++)
+                    {
+                        AccionComercialData nuevaAccion = new AccionComercialData();
+                        nuevaAccion.idAccion = emp.AccionComercial.ElementAt(i).idAccion;
+                        nuevaAccion.descripcion = emp.AccionComercial.ElementAt(i).descripcion;
+                        nuevaAccion.comentarios = emp.AccionComercial.ElementAt(i).comentarios;
+                        nuevaAccion.fechaHora = emp.AccionComercial.ElementAt(i).fechaHora;
+                        nuevaAccion.idUsuario = (Int32)emp.AccionComercial.ElementAt(i).idUsuario;
+                        nuevaAccion.idTipoAccion = (Int32)emp.AccionComercial.ElementAt(i).idTipoAccion;
+                        nuevaAccion.idEstadoAccion = (Int32)emp.AccionComercial.ElementAt(i).idEstadoAccion;
+                        nuevaAccion.idEmpresa = (Int32)emp.AccionComercial.ElementAt(i).idEmpresa;
+
+                        list.Add(nuevaAccion);
+                    }
+                    return list;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+        /********************************************************************************
+         *                        Fin getAccionesComercialesEmpresa
+         *******************************************************************************/
     }
 }
