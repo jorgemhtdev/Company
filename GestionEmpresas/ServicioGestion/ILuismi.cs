@@ -78,9 +78,15 @@ namespace ServicioGestion
         [OperationContract]
         List<EmailData> getMailEmpresa(int idEmpresa);
 
+        ///////////////////FIN EMAIL-EMPRESA/////////////////////////////////
+
+        ///////////////////EMAIL-CONTACTO/////////////////////////////////
+
         //Método que obtiene los emails de cada empresa
         [OperationContract]
         List<EmailData> getMailContacto(int idContacto);
+
+        ///////////////////FIN EMAIL-CONTACTO/////////////////////////////////
 
     }
 
