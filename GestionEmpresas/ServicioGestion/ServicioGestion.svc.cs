@@ -31,7 +31,7 @@ namespace ServicioGestion
        /// <returns></returns>
         public bool addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
-            if (correo == ""||correo==null) return false;
+            if (correo == "" || correo == null || empData == null || conData == null) return false;
             if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
             if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
 
@@ -298,7 +298,7 @@ namespace ServicioGestion
         /// <returns></returns>
         public bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null) return false;
+            if (t == null || empData == null || conData == null) return false;
             if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
             if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
 
