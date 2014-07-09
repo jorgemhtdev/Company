@@ -471,6 +471,49 @@ namespace ServicioGestion
             }
         }
 
+        /// <summary>
+        /// Devuelve el listado de contactos perteneciente a una empresa concreta
+        /// </summary>
+        /// <param name="idContacto">El id de la empresa cuyos contactos queremos obtener</param>
+        /// <returns>El listado de contactos de una empresa</returns>
+        public List<ContactoData> GetContactosEmpresa(int idEmpresa)
+        {
+            try
+            {
+                List<ContactoData> contactos = new List<ContactoData>();
+
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var data = from empresas in bd.Empresa
+                               where empresas.idEmpresa == idEmpresa
+                               select empresas;
+
+                    foreach (Contacto c in data.First().Contacto)
+                    {
+                        contactos.Add(new ContactoData()
+                        {
+                            idContacto = c.idContacto,
+                            nif = c.nif,
+                            nombre = c.nombre,
+                            idEmpresa = (Int32)c.idEmpresa
+                        });
+                    }
+
+                    return contactos;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+
         /******************************************* CONTACTO *****************************************/
 
         /// <summary>
@@ -513,5 +556,6 @@ namespace ServicioGestion
                 throw fault;
             }
         }
+
     }
 }
