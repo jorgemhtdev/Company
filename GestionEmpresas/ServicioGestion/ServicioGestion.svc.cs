@@ -908,32 +908,41 @@ namespace ServicioGestion
 
         /******************* METODOS MAS COOL *******************/
         /// <summary>
-        /// Metodo que a partir de un idEmpres obtengo todas las direcciones de esa empresa
+        /// 
         /// </summary>
         /// <param name="idEmpresa"></param>
         /// <returns></returns>
         public List<DireccionData> getDirecionesEmpresa(int idEmpresa)
         {
-          try
+            try
             {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                List<DireccionData> street = new List<DireccionData>();
+
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
-                    var consulta = from street in db.Direccion
-                                   where street.idDireccion == idEmpresa
-                                   select new DireccionData()
-                                   {
-                                       idDireccion = street.idDireccion,
-                                       domicilio = street.domicilio,
-                                       poblacion = street.poblacion,
-                                       provincia = street.provincia,
-                                       codPostal = street.codPostal
-                                   };
-                    return consulta.ToList();
+                    var data = from empresas in bd.Empresa
+                               where empresas.idEmpresa == idEmpresa
+                               select empresas;
+
+                    foreach (Direccion calle in data.First().Direccion)
+                    {
+                        street.Add(new DireccionData()
+                        {
+                            idDireccion = calle.idDireccion,
+                            domicilio = calle.domicilio,
+                            poblacion = calle.poblacion,
+                            provincia = calle.provincia,
+                            codPostal = calle.codPostal
+
+                        });
+                    }
+
+                    return street;
                 }
             }
             catch (SqlException ex)
             {
-                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,  new FaultCode("SQL"));
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
                 throw fault;
             }
             catch (Exception ex)
@@ -948,22 +957,32 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="Contacto"></param>
         /// <returns></returns>
-        public List<ContactoData> getDirecionesContacto(int Contacto)
+        public List<DireccionData> getDirecionesContacto(int idContacto)
         {
             try
             {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                List<DireccionData> street = new List<DireccionData>();
+
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
-                    var consulta = from cnt in db.Contacto
-                                   where cnt.idContacto == Contacto
-                                   select new ContactoData()
-                                   {
-                                       idContacto = cnt.idContacto,
-                                       idEmpresa = (int)cnt.idEmpresa,
-                                       nif = cnt.nif,
-                                       nombre = cnt.nombre,
-                                   };
-                    return consulta.ToList();
+                    var data = from contacto in bd.Contacto
+                               where contacto.idContacto == idContacto
+                               select contacto;
+
+                    foreach (Direccion calle in data.First().Direccion)
+                    {
+                        street.Add(new DireccionData()
+                        {
+                            idDireccion = calle.idDireccion,
+                            domicilio = calle.domicilio,
+                            poblacion = calle.poblacion,
+                            provincia = calle.provincia,
+                            codPostal = calle.codPostal
+
+                        });
+                    }
+
+                    return street;
                 }
             }
             catch (SqlException ex)
