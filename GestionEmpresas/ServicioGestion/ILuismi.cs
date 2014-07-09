@@ -38,8 +38,9 @@ namespace ServicioGestion
         [OperationContract]
         bool editEmail(int idEmail, string correo);
          * */
-        ////////////////////FIN EMAIL
+        ////////////////////FIN EMAIL//////////////////////////////////
 
+        ////////////////////EMPRESA///////////////////////////////////
         //Método que añade una empresa
         [OperationContract]
         bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
@@ -68,6 +69,7 @@ namespace ServicioGestion
         [OperationContract]
         bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
 
+        ////////////////////FIN EMPRESA///////////////////////////////////
     }
 
     /*
