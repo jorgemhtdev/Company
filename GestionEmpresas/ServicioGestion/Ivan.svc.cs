@@ -247,10 +247,6 @@ namespace ServicioGestion
             }
         }
 
-        /******************************************* TELEFONO CONTACTO *****************************************/
-
-
-
         /******************************************* TIPOS DE ACCION *****************************************/
 
         /// <summary>
@@ -418,6 +414,92 @@ namespace ServicioGestion
                     t.descripcion = tipoAccion.descripcion;
                     bd.SaveChanges();
                     return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+
+        /******************************************* EMPRESA *****************************************/
+
+        /// <summary>
+        /// Devuelve el listado de teléfonos perteneciente a una empresa concreta
+        /// </summary>
+        /// <param name="idContacto">El id de la empresa cuyos teléfonos queremos obtener</param>
+        /// <returns>El listado de teléfonos de una empresa</returns>
+        public List<TelefonoData> GetTelefonosEmpresa(int idEmpresa)
+        {
+            try
+            {
+                List<TelefonoData> telefonos = new List<TelefonoData>();
+
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var data = from empresas in bd.Empresa
+                               where empresas.idEmpresa == idEmpresa
+                               select empresas;
+
+                    foreach (Telefono t in data.First().Telefono)
+                    {
+                        telefonos.Add(new TelefonoData()
+                        {
+                            idTelefono = t.idTelefono,
+                            numero = t.numero
+                        });
+                    }
+
+                    return telefonos;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+
+        /******************************************* CONTACTO *****************************************/
+
+        /// <summary>
+        /// Devuelve el listado de teléfonos perteneciente a un contacto concreto
+        /// </summary>
+        /// <param name="idEmpresa">El id del contacto cuyos teléfonos queremos obtener</param>
+        /// <returns>El listado de teléfonos de un contacto</returns>
+        public List<TelefonoData> GetTelefonosContacto(int idContacto)
+        {
+            try
+            {
+                List<TelefonoData> telefonos = new List<TelefonoData>();
+
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var data = from contactos in bd.Contacto
+                               where contactos.idContacto == idContacto
+                               select contactos;
+
+                    foreach (Telefono t in data.First().Telefono)
+                    {
+                        telefonos.Add(new TelefonoData()
+                        {
+                            idTelefono = t.idTelefono,
+                            numero = t.numero
+                        });
+                    }
+
+                    return telefonos;
                 }
             }
             catch (SqlException ex)
