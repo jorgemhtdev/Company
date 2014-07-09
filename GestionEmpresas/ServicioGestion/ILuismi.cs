@@ -70,6 +70,18 @@ namespace ServicioGestion
         bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
 
         ////////////////////FIN EMPRESA///////////////////////////////////
+
+
+        ///////////////////EMAIL-EMPRESA/////////////////////////////////
+        
+        //Método que obtiene los emails de cada empresa
+        [OperationContract]
+        List<EmailData> getMailEmpresa(int idEmpresa);
+
+        //Método que obtiene los emails de cada empresa
+        [OperationContract]
+        List<EmailData> getMailContacto(int idContacto);
+
     }
 
     /*

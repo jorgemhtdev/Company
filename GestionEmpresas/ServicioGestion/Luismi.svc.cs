@@ -569,5 +569,112 @@ namespace ServicioGestion
         /***************************************************************
         *******************************FIN EMPRESA**********************
         ***************************************************************/
+
+        /***************************************************************
+        ******************************* EMAIL-EMPRESA********************
+        ***************************************************************/
+
+        /// <summary>
+        /// Método que devuelve todos los emails de una empresa en concreto.
+        /// </summary>
+        /// <param name="idEmpresa">Identificador de la empresa de la que queremos listar sus emails</param>
+        /// <returns>Devuelve una lista de emails de una empresa en concreto.</returns>
+        public List<EmailData> getMailEmpresa(int idEmpresa)
+        {
+            List<EmailData> list=new List<EmailData>();
+            EmailData email;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from empresa in db.Empresa
+                                  where empresa.idEmpresa == idEmpresa
+                                  select empresa;
+
+
+                    Empresa empresaResult=resulta.First();
+
+                    List<Email> emailResult = empresaResult.Email.ToList();
+
+                    foreach (Email em in emailResult )
+                    {
+                        email=new EmailData();
+                        email.EmailID=em.idEmail;
+                        email.Correo=em.correo;
+                        list.Add(email);
+                    }
+
+                    return list;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+        /***************************************************************
+        *******************************FIN EMAIL-EMPRESA**********************
+        ***************************************************************/
+
+        /***************************************************************
+       ******************************* EMAIL-CONTACTO********************
+       ***************************************************************/
+        public List<EmailData> getMailContacto(int idContacto)
+        {
+            List<EmailData> list = new List<EmailData>();
+            EmailData mail;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from cont in db.Contacto
+                                  where cont.idContacto == idContacto
+                                  select cont;
+
+
+                    Contacto contResult = resulta.First();
+
+                    List<Email> contactosResult = contResult.Email.ToList();
+
+                    foreach (Email em in contactosResult)
+                    {
+                        mail = new EmailData();
+
+                        mail.EmailID = em.idEmail;
+                        mail.Correo = em.correo;
+                        list.Add(mail);
+                    }
+
+                    return list;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+
+
+        /***************************************************************
+       *******************************FIN EMAIL-CONTACTO********************
+       ***************************************************************/
+
+
+       
     }
 }
