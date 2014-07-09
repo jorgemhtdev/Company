@@ -64,6 +64,8 @@ namespace ServicioGestion
 
         [OperationContract]
         List<TelefonoData> GetTelefonosEmpresa(int idEmpresa);
+        [OperationContract]
+        List<ContactoData> GetContactosEmpresa(int idEmpresa);
 
         /******************************************* CONTACTO ********************************************/
 
