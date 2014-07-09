@@ -99,6 +99,16 @@ namespace ServicioGestion
         bool EditContacto(ContactoData contacto, int id);
 
         /// Fin contacto    
+        
+        /******************* METODOS MAS COOL *******************/
+
+        List<DireccionData> getDirecionesEmpresa(int idEmpresa);
+        List<ContactoData> getDirecionesContacto(int Contacto);
+        
+
+        /******************* FIN METODOS MAS COOL *******************/
+
+
     }
 
     
@@ -195,6 +205,5 @@ namespace ServicioGestion
         public int idEmpresa;
     }
     /// Fin contacto
-
-
+    
 }

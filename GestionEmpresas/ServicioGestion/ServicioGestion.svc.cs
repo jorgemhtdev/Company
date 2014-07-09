@@ -906,5 +906,78 @@ namespace ServicioGestion
         ******************** Fin Contacto ******************************
         ****************************************************************/
 
+        /******************* METODOS MAS COOL *******************/
+        /// <summary>
+        /// Metodo que a partir de un idEmpres obtengo todas las direcciones de esa empresa
+        /// </summary>
+        /// <param name="idEmpresa"></param>
+        /// <returns></returns>
+        public List<DireccionData> getDirecionesEmpresa(int idEmpresa)
+        {
+          try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from street in db.Direccion
+                                   where street.idDireccion == idEmpresa
+                                   select new DireccionData()
+                                   {
+                                       idDireccion = street.idDireccion,
+                                       domicilio = street.domicilio,
+                                       poblacion = street.poblacion,
+                                       provincia = street.provincia,
+                                       codPostal = street.codPostal
+                                   };
+                    return consulta.ToList();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,  new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }// Fin del getDirecionesEmpresa
+
+        /// <summary>
+        /// Metodo que a partir de un idContacto me muestra todas las direciones de un contacto
+        /// </summary>
+        /// <param name="Contacto"></param>
+        /// <returns></returns>
+        public List<ContactoData> getDirecionesContacto(int Contacto)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from cnt in db.Contacto
+                                   where cnt.idContacto == Contacto
+                                   select new ContactoData()
+                                   {
+                                       idContacto = cnt.idContacto,
+                                       idEmpresa = (int)cnt.idEmpresa,
+                                       nif = cnt.nif,
+                                       nombre = cnt.nombre,
+                                   };
+                    return consulta.ToList();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+        /***************** FIN METODOS MAS COOL *****************/
+
     }
 }
