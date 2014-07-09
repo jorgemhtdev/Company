@@ -594,9 +594,7 @@ namespace ServicioGestion
 
                     Empresa empresaResult=resulta.First();
 
-                    List<Email> emailResult = empresaResult.Email.ToList();
-
-                    foreach (Email em in emailResult )
+                    foreach (Email em in empresaResult.Email)
                     {
                         email=new EmailData();
                         email.EmailID=em.idEmail;
@@ -642,9 +640,7 @@ namespace ServicioGestion
 
                     Contacto contResult = resulta.First();
 
-                    List<Email> contactosResult = contResult.Email.ToList();
-
-                    foreach (Email em in contactosResult)
+                    foreach (Email em in contResult.Email)
                     {
                         mail = new EmailData();
 
