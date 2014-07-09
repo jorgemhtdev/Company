@@ -3,13 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <h1>Almerimatik</h1>
-     iniciar sesion
+     <h2> Iniciar sesion </h2>
     
     <asp:Login ID="Login1" runat="server">
-
-
     </asp:Login>
 
-
-    <h2>OLVIDÉ MI CONTRASEÑA</h2>
+    <asp:Button ID="Button1" runat="server" Text="Inciar sesión" />
+    <h4>OLVIDÉ MI CONTRASEÑA</h4>
 </asp:Content>
