@@ -59,6 +59,16 @@ namespace ServicioGestion
         //Método que elimina un tipo de acción existente
         [OperationContract]
         bool DeleteTipoAccion(int idTipoAccion);
+
+        /******************************************* EMPRESA ********************************************/
+
+        [OperationContract]
+        List<TelefonoData> GetTelefonosEmpresa(int idEmpresa);
+
+        /******************************************* CONTACTO ********************************************/
+
+        [OperationContract]
+        List<TelefonoData> GetTelefonosContacto(int idContacto);
     }
 
     [DataContract]
