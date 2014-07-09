@@ -15,7 +15,7 @@ namespace ServicioGestion
        
         //Método que añade un email
         [OperationContract]
-        bool addEmail(string correo);
+        bool addEmail(string correo, EmpresaData empData, ContactoData conData);
 
         //Método que obtiene todos los emails
         [OperationContract]
@@ -40,9 +40,9 @@ namespace ServicioGestion
         //FIN EMAIL
 
         /// Direccion
-       
+
         [OperationContract]
-        bool AddDireccion(DireccionData street);
+        bool AddDireccion(DireccionData street, EmpresaData empData, ContactoData conData);
         [OperationContract]
         bool DeleteDireccion(DireccionData street, int id);
         [OperationContract]
@@ -99,6 +99,16 @@ namespace ServicioGestion
         bool EditContacto(ContactoData contacto, int id);
 
         /// Fin contacto    
+        
+        /******************* METODOS MAS COOL *******************/
+
+        List<DireccionData> getDirecionesEmpresa(int idEmpresa);
+        List<ContactoData> getDirecionesContacto(int Contacto);
+        
+
+        /******************* FIN METODOS MAS COOL *******************/
+
+
     }
 
     
@@ -195,6 +205,5 @@ namespace ServicioGestion
         public int idEmpresa;
     }
     /// Fin contacto
-
-
+    
 }

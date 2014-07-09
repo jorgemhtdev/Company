@@ -22,13 +22,19 @@ namespace ServicioGestion
          *deleteEmail -- Elimina un registro de la tabla según su identificador
          *editEmail -- Modificacion de un registro concreto
         ***************************************************************/ 
-        /// <summary>
-        /// Método que añade un email a la base de datos
-        /// </summary>
-        /// <param name="correo"> Correo electrónico a añadir en la base de datos</param>
-        /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
-        public bool addEmail(string correo)
+       /// <summary>
+        /// /// Permite insertar un email que no exista en la base de datos. Como el Email está relacionado obligatoriamente con una empresa o un contacto uno de los dos parámetros será null.
+       /// </summary>
+       /// <param name="correo"></param>
+       /// <param name="empData"></param>
+       /// <param name="conData"></param>
+       /// <returns></returns>
+        public bool addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
+            if (correo == ""||correo==null) return false;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+
             try
             {
                 Email p = new Email();
@@ -36,10 +42,26 @@ namespace ServicioGestion
 
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
+                    if (empData.EmpresaID != 0)
+                    {
+                        var datos = from empresas in db.Empresa
+                                    where empresas.idEmpresa == empData.EmpresaID
+                                    select empresas;
+                        p.Empresa.Add(datos.First());
+                    }
+                    else
+                    {
+                        var datos = from contactos in db.Contacto
+                                    where contactos.idContacto == conData.idContacto
+                                    select contactos;
+                        p.Contacto.Add(datos.First());
+                    }
+
                     db.Email.Add(p);
                     db.SaveChanges();
                 }
                 return true;
+               
             }
             catch (SqlException ex)
             {
@@ -268,25 +290,44 @@ namespace ServicioGestion
         /***************************************************************
         ****************************  Direccion ************************
         ***************************************************************/
-
+       
         /// <summary>
         /// Metodo que añade un objeto street de tipo DireccionData a la bd
         /// </summary>
         /// <param name="street"></param>
         /// <returns></returns>
-        public bool AddDireccion(DireccionData street)
+        public bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
+            if (t == null) return false;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     Direccion nueva = new Direccion();
 
-                    nueva.idDireccion = street.idDireccion;
-                    nueva.domicilio = street.domicilio;
-                    nueva.poblacion = street.poblacion;
-                    nueva.provincia = street.provincia;
-                    nueva.codPostal = street.codPostal;
+                    nueva.idDireccion = t.idDireccion;
+                    nueva.domicilio = t.domicilio;
+                    nueva.poblacion = t.poblacion;
+                    nueva.provincia = t.provincia;
+                    nueva.codPostal = t.codPostal;
+
+                    if (empData.EmpresaID != 0)
+                    {
+                        var datos = from empresas in bd.Empresa
+                                    where empresas.idEmpresa == empData.EmpresaID
+                                    select empresas;
+                        nueva.Empresa.Add(datos.First());
+                    }
+                    else
+                    {
+                        var datos = from contactos in bd.Contacto
+                                    where contactos.idContacto == conData.idContacto
+                                    select contactos;
+                        nueva.Contacto.Add(datos.First());
+                    }
 
                     bd.Direccion.Add(nueva);
                     bd.SaveChanges();
@@ -864,6 +905,79 @@ namespace ServicioGestion
         /***************************************************************
         ******************** Fin Contacto ******************************
         ****************************************************************/
-    
+
+        /******************* METODOS MAS COOL *******************/
+        /// <summary>
+        /// Metodo que a partir de un idEmpres obtengo todas las direcciones de esa empresa
+        /// </summary>
+        /// <param name="idEmpresa"></param>
+        /// <returns></returns>
+        public List<DireccionData> getDirecionesEmpresa(int idEmpresa)
+        {
+          try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from street in db.Direccion
+                                   where street.idDireccion == idEmpresa
+                                   select new DireccionData()
+                                   {
+                                       idDireccion = street.idDireccion,
+                                       domicilio = street.domicilio,
+                                       poblacion = street.poblacion,
+                                       provincia = street.provincia,
+                                       codPostal = street.codPostal
+                                   };
+                    return consulta.ToList();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,  new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }// Fin del getDirecionesEmpresa
+
+        /// <summary>
+        /// Metodo que a partir de un idContacto me muestra todas las direciones de un contacto
+        /// </summary>
+        /// <param name="Contacto"></param>
+        /// <returns></returns>
+        public List<ContactoData> getDirecionesContacto(int Contacto)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from cnt in db.Contacto
+                                   where cnt.idContacto == Contacto
+                                   select new ContactoData()
+                                   {
+                                       idContacto = cnt.idContacto,
+                                       idEmpresa = (int)cnt.idEmpresa,
+                                       nif = cnt.nif,
+                                       nombre = cnt.nombre,
+                                   };
+                    return consulta.ToList();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+        /***************** FIN METODOS MAS COOL *****************/
+
     }
 }
