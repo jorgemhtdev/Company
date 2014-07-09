@@ -39,6 +39,12 @@ namespace ServicioGestion
 
         [OperationContract]
         AccionComercialData getAccionComercial(int idAccion);
+
+        [OperationContract]
+        List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario);
+
+        [OperationContract]
+        List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa);
     }
 
    /* [DataContract]
