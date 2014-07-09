@@ -483,6 +483,7 @@ namespace ServicioGestion
                                    select empresa;
 
                     Empresa emp = consulta.First();
+
                     for (int i = 0; i < emp.AccionComercial.Count; i++)
                     {
                         AccionComercialData nuevaAccion = new AccionComercialData();
