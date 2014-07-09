@@ -290,13 +290,13 @@ namespace ServicioGestion
         /***************************************************************
         ****************************  Direccion ************************
         ***************************************************************/
-
+       
         /// <summary>
         /// Metodo que añade un objeto street de tipo DireccionData a la bd
         /// </summary>
         /// <param name="street"></param>
         /// <returns></returns>
-        bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
+        public bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
             if (t == null) return false;
             if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
@@ -905,6 +905,6 @@ namespace ServicioGestion
         /***************************************************************
         ******************** Fin Contacto ******************************
         ****************************************************************/
-    
+
     }
 }
