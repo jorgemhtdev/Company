@@ -101,11 +101,10 @@ namespace ServicioGestion
         /// Fin contacto    
         
         /******************* METODOS MAS COOL *******************/
-
+        [OperationContract]
         List<DireccionData> getDirecionesEmpresa(int idEmpresa);
-        List<ContactoData> getDirecionesContacto(int Contacto);
-        
-
+        [OperationContract]
+        List<DireccionData> getDirecionesContacto(int idContacto);
         /******************* FIN METODOS MAS COOL *******************/
 
 
