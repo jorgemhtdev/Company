@@ -57,6 +57,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Privada\gestionEmpresas.aspx" />
+    <Content Include="Privada\gestionUsuarios.aspx" />
+    <Content Include="Privada\Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -80,6 +83,22 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Privada\addAccionComercial.aspx" />
+    <Content Include="Privada\addContacto.aspx" />
+    <Content Include="Privada\addDireccion.aspx" />
+    <Content Include="Privada\addEmail.aspx" />
+    <Content Include="Privada\addEmpresa.aspx" />
+    <Content Include="Privada\addSector.aspx" />
+    <Content Include="Privada\addTelefono.aspx" />
+    <Content Include="Privada\addUsuario.aspx" />
+    <Content Include="Privada\editAccionComercial.aspx" />
+    <Content Include="Privada\editContacto.aspx" />
+    <Content Include="Privada\editDireccion.aspx" />
+    <Content Include="Privada\editEmail.aspx" />
+    <Content Include="Privada\editEmpresa.aspx" />
+    <Content Include="Privada\editSector.aspx" />
+    <Content Include="Privada\editTelefono.aspx" />
+    <Content Include="Privada\editUsuario.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -99,6 +118,138 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Privada\addAccionComercial.aspx.cs">
+      <DependentUpon>addAccionComercial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addAccionComercial.aspx.designer.cs">
+      <DependentUpon>addAccionComercial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addContacto.aspx.cs">
+      <DependentUpon>addContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addContacto.aspx.designer.cs">
+      <DependentUpon>addContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addDireccion.aspx.cs">
+      <DependentUpon>addDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addDireccion.aspx.designer.cs">
+      <DependentUpon>addDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addEmail.aspx.cs">
+      <DependentUpon>addEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addEmail.aspx.designer.cs">
+      <DependentUpon>addEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addEmpresa.aspx.cs">
+      <DependentUpon>addEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addEmpresa.aspx.designer.cs">
+      <DependentUpon>addEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addSector.aspx.cs">
+      <DependentUpon>addSector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addSector.aspx.designer.cs">
+      <DependentUpon>addSector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addTelefono.aspx.cs">
+      <DependentUpon>addTelefono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addTelefono.aspx.designer.cs">
+      <DependentUpon>addTelefono.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\addUsuario.aspx.cs">
+      <DependentUpon>addUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\addUsuario.aspx.designer.cs">
+      <DependentUpon>addUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editAccionComercial.aspx.cs">
+      <DependentUpon>editAccionComercial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editAccionComercial.aspx.designer.cs">
+      <DependentUpon>editAccionComercial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editContacto.aspx.cs">
+      <DependentUpon>editContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editContacto.aspx.designer.cs">
+      <DependentUpon>editContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editDireccion.aspx.cs">
+      <DependentUpon>editDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editDireccion.aspx.designer.cs">
+      <DependentUpon>editDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editEmail.aspx.cs">
+      <DependentUpon>editEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editEmail.aspx.designer.cs">
+      <DependentUpon>editEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editEmpresa.aspx.cs">
+      <DependentUpon>editEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editEmpresa.aspx.designer.cs">
+      <DependentUpon>editEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editSector.aspx.cs">
+      <DependentUpon>editSector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editSector.aspx.designer.cs">
+      <DependentUpon>editSector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editTelefono.aspx.cs">
+      <DependentUpon>editTelefono.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editTelefono.aspx.designer.cs">
+      <DependentUpon>editTelefono.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\editUsuario.aspx.cs">
+      <DependentUpon>editUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\editUsuario.aspx.designer.cs">
+      <DependentUpon>editUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\gestionEmpresas.aspx.cs">
+      <DependentUpon>gestionEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\gestionEmpresas.aspx.designer.cs">
+      <DependentUpon>gestionEmpresas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\gestionUsuarios.aspx.cs">
+      <DependentUpon>gestionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\gestionUsuarios.aspx.designer.cs">
+      <DependentUpon>gestionUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -111,7 +262,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Privada\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
