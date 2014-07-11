@@ -103,7 +103,13 @@ namespace ServicioGestion
      * */
 
     /// <summary>
-    /// Objeto Empresa
+    /// Objeto empresa.
+    /// EmpresaID= Identificador único que está asociado a una empresa
+    /// cif= C.I.F. de una empresa
+    /// nombreComercial= Nombre comercial de una empresa.
+    /// razonSocial= Razón social de una empresa.
+    /// web= Página web de una empresa.
+    /// sector= Identificador del sector al que pertenece una empresa.
     /// </summary>
     public class EmpresaData
     {

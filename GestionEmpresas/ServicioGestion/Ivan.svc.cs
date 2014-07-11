@@ -133,7 +133,7 @@ namespace ServicioGestion
         /// <returns>True si se ha insertado.</returns>
         public bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null) return false;
+            if (t == null || empData == null || conData == null) return false;
             if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
             if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
             

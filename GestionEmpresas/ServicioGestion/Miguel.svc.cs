@@ -423,6 +423,11 @@ namespace ServicioGestion
         /********************************************************************************
          *                        getAccionesComercialesUsuarios
          *******************************************************************************/
+        /// <summary>
+        /// Devuelve el listado de Acciones comerciales perteneciente a un usuario concreto
+        /// </summary>
+        /// <param name="idUsuario">El id del usuario cuyas Acciones comerciales queremos obtener</param>
+        /// <returns>El listado de acciones comerciales de un usuario</returns>
         public List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario)
         {
             List<AccionComercialData> list = new List<AccionComercialData>();
@@ -471,6 +476,11 @@ namespace ServicioGestion
         /********************************************************************************
          *                        getAccionesComercialesEmpresa
          *******************************************************************************/
+        /// <summary>
+        /// Devuelve el listado de Acciones comerciales perteneciente a una empresa concreta
+        /// </summary>
+        /// <param name="idEmpresa">El id de la empresa cuyas Acciones comerciales queremos obtener</param>
+        /// <returns>El listado de acciones comerciales de una empresa</returns>
         public List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa)
         {
             List<AccionComercialData> list = new List<AccionComercialData>();
