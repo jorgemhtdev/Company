@@ -1,13 +1,72 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="GestionEmpresas.Default" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <h1>Almerimatik</h1>
-     <h2> Iniciar sesion </h2>
-    
-    <asp:Login ID="Login1" runat="server">
-    </asp:Login>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="GestionEmpresas.Default" %>
 
-    <asp:Button ID="Button1" runat="server" Text="Inciar sesión" />
-    <h4>OLVIDÉ MI CONTRASEÑA</h4>
-</asp:Content>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Inicio Sesion</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            <a href="#"><span class="text-warning">Anónimo</span></a>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <a href="~/Privado/default.aspx" runat="server"> <span class="text-muted"><asp:LoginName ID="LoginName1" runat="server" /></span></a>
+                        </LoggedInTemplate>
+                     </asp:LoginView>
+                </li>
+                <li>
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                </li>
+            </ul>
+        </nav>        
+        <div class="col-md-8 col-md-offset-2">
+            <asp:Login ID="Login1" runat="server" FailureText="Usuario o contraseña incorrecto. Inténtelo de nuevo." 
+                RenderOuterTable="False" UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="El usuario electrónico es obligatorio." OnAuthenticate="Entrar">
+                <LayoutTemplate>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Inicio de Sesión</div>
+                            <div class="panel-body">
+                                <p class="validation-sumary-errors">
+                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                </p> 
+                                <div class="form-group">
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">Usuario</asp:Label>
+                                    <div class="col-md-10">
+                                        <asp:TextBox CssClass="form-control" ID="UserName" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="UserNameRequired" runat="server" ControlToValidate="UserName"
+                                             ErrorMessage="El usuario electrónico es obligatorio." ToolTip="El correo electrónico es obligatorio." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label CssClass="col-md-2 control-label" ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
+                                        <div class="col-md-10">
+                                            <asp:TextBox CssClass="form-control" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator CssClass="text-danger" ID="PasswordRequired" runat="server" ControlToValidate="Password" 
+                                                ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                         </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                          <asp:CheckBox ID="RememberMe" runat="server" /> Recuerdeme                              
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="form-group">
+                                    <asp:Button CssClass="btn btn-primary col-md-offset-5" ID="LoginButton" runat="server" CommandName="Login" Text="Inicio de sesión" ValidationGroup="Login1" />
+                                </div>        
+                            </div>
+                    </div>
+                </LayoutTemplate>
+            </asp:Login>
+        </div>
+    </form>
+</body>
+</html>
