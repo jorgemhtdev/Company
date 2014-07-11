@@ -15,11 +15,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            <a href="#"><span class="text-warning">Anónimo</span></a>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <a href="~/Privado/default.aspx" runat="server"> <span class="text-muted"><asp:LoginName ID="LoginName1" runat="server" /></span></a>
+                        </LoggedInTemplate>
+                     </asp:LoginView>
+                </li>
+                <li>
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                </li>
+            </ul>
+        </nav>
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
+    <footer>Prueba</footer>
     </form>
 </body>
 </html>
