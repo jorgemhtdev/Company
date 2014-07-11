@@ -25,26 +25,26 @@ namespace ServicioGestion
         [OperationContract]
         UsuarioData getUsuario(int idUsuario);*/
 
-        [OperationContract]
-        bool addAccionComercial(AccionComercialData accion);
+        //[OperationContract]
+        //bool addAccionComercial(AccionComercialData accion);
 
-        [OperationContract]
-        bool deleteAccionComercial(int idAccion);
+        //[OperationContract]
+        //bool deleteAccionComercial(int idAccion);
 
-        [OperationContract]
-        bool editAccionComercial(int idAccion, AccionComercialData accion);
+        //[OperationContract]
+        //bool editAccionComercial(int idAccion, AccionComercialData accion);
 
-        [OperationContract]
-        List<AccionComercialData> getAllAccionesComerciales();
+        //[OperationContract]
+        //List<AccionComercialData> getAllAccionesComerciales();
 
-        [OperationContract]
-        AccionComercialData getAccionComercial(int idAccion);
+        //[OperationContract]
+        //AccionComercialData getAccionComercial(int idAccion);
 
-        [OperationContract]
-        List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario);
+        //[OperationContract]
+        //List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario);
 
-        [OperationContract]
-        List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa);
+        //[OperationContract]
+        //List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa);
     }
 
    /* [DataContract]
@@ -62,31 +62,31 @@ namespace ServicioGestion
         [DataMember]
         public string password; 
     }*/
-    [DataContract]
-    public class AccionComercialData
-    {
-        [DataMember]
-        public int idAccion;
+    //[DataContract]
+    //public class AccionComercialData
+    //{
+    //    [DataMember]
+    //    public int idAccion;
 
-        [DataMember]
-        public string descripcion;
+    //    [DataMember]
+    //    public string descripcion;
 
-        [DataMember]
-        public string comentarios;
+    //    [DataMember]
+    //    public string comentarios;
 
-        [DataMember]
-        public DateTime fechaHora;
+    //    [DataMember]
+    //    public DateTime fechaHora;
 
-        [DataMember]
-        public int idUsuario;
+    //    [DataMember]
+    //    public int idUsuario;
 
-        [DataMember]
-        public int idTipoAccion;
+    //    [DataMember]
+    //    public int idTipoAccion;
 
-        [DataMember]
-        public int idEstadoAccion;
+    //    [DataMember]
+    //    public int idEstadoAccion;
 
-        [DataMember]
-        public int idEmpresa;
-    }
+    //    [DataMember]
+    //    public int idEmpresa;
+    //}
 }

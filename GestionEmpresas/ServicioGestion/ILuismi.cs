@@ -42,49 +42,49 @@ namespace ServicioGestion
 
         ////////////////////EMPRESA///////////////////////////////////
         //Método que añade una empresa
-        [OperationContract]
-        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+        //[OperationContract]
+        //bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
 
-        //Método que obtiene todos los registros de la tabla empresa
-        [OperationContract]
-        List<EmpresaData> getAllEmpresa();
+        ////Método que obtiene todos los registros de la tabla empresa
+        //[OperationContract]
+        //List<EmpresaData> getAllEmpresa();
 
-        //Método que obtiene una empresa por cif
-        [OperationContract]
-        EmpresaData getEmpresaCif(string cif);
+        ////Método que obtiene una empresa por cif
+        //[OperationContract]
+        //EmpresaData getEmpresaCif(string cif);
 
-        //Método que obtiene una empresa por un identificador
-        [OperationContract]
-        EmpresaData getEmpresaId(int id);
+        ////Método que obtiene una empresa por un identificador
+        //[OperationContract]
+        //EmpresaData getEmpresaId(int id);
 
-        //Método que obtiene una empresa por un identificador
-        [OperationContract]
-        List<EmpresaData> getEmpresaSector(int idSector);
+        ////Método que obtiene una empresa por un identificador
+        //[OperationContract]
+        //List<EmpresaData> getEmpresaSector(int idSector);
 
-        //Método que elimina de la tabla Email un registro
-        [OperationContract]
-        bool deleteEmpresa(int idEmpresa);
+        ////Método que elimina de la tabla Email un registro
+        //[OperationContract]
+        //bool deleteEmpresa(int idEmpresa);
 
-        //Método que edita un registro de la tabla Empresa 
-        [OperationContract]
-        bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
+        ////Método que edita un registro de la tabla Empresa 
+        //[OperationContract]
+        //bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
 
-        ////////////////////FIN EMPRESA///////////////////////////////////
+        //////////////////////FIN EMPRESA///////////////////////////////////
 
 
-        ///////////////////EMAIL-EMPRESA/////////////////////////////////
+        /////////////////////EMAIL-EMPRESA/////////////////////////////////
         
-        //Método que obtiene los emails de cada empresa
-        [OperationContract]
-        List<EmailData> getMailEmpresa(int idEmpresa);
+        ////Método que obtiene los emails de cada empresa
+        //[OperationContract]
+        //List<EmailData> getMailEmpresa(int idEmpresa);
 
-        ///////////////////FIN EMAIL-EMPRESA/////////////////////////////////
+        /////////////////////FIN EMAIL-EMPRESA/////////////////////////////////
 
-        ///////////////////EMAIL-CONTACTO/////////////////////////////////
+        /////////////////////EMAIL-CONTACTO/////////////////////////////////
 
-        //Método que obtiene los emails de cada empresa
-        [OperationContract]
-        List<EmailData> getMailContacto(int idContacto);
+        ////Método que obtiene los emails de cada empresa
+        //[OperationContract]
+        //List<EmailData> getMailContacto(int idContacto);
 
         ///////////////////FIN EMAIL-CONTACTO/////////////////////////////////
 
@@ -110,20 +110,20 @@ namespace ServicioGestion
     /// razonSocial= Razón social de una empresa.
     /// web= Página web de una empresa.
     /// sector= Identificador del sector al que pertenece una empresa.
-    /// </summary>
-    public class EmpresaData
-    {
-        [DataMember]
-        public int EmpresaID;
-        [DataMember]
-        public string cif;
-        [DataMember]
-        public string nombreComercial;
-        [DataMember]
-        public string razonSocial;
-        [DataMember]
-        public string web;
-        [DataMember]
-        public int sector;
-    }
+    ///// </summary>
+    //public class EmpresaData
+    //{
+    //    [DataMember]
+    //    public int EmpresaID;
+    //    [DataMember]
+    //    public string cif;
+    //    [DataMember]
+    //    public string nombreComercial;
+    //    [DataMember]
+    //    public string razonSocial;
+    //    [DataMember]
+    //    public string web;
+    //    [DataMember]
+    //    public int sector;
+    //}
 }

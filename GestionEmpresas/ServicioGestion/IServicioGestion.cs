@@ -11,7 +11,9 @@ namespace ServicioGestion
     [ServiceContract]
     public interface IServicioGestion
     {
-        //EMAIL
+        /***********************************************************************/
+        /********************LUIS MIGUEL MORALES*********************************/
+        /***********************************************************************/
        
         //Método que añade un email
         [OperationContract]
@@ -37,8 +39,61 @@ namespace ServicioGestion
         [OperationContract]
         bool editEmail(int idEmail, string correo);
 
-        //FIN EMAIL
+        ////////////////////EMPRESA///////////////////////////////////
+        //Método que añade una empresa
+        [OperationContract]
+        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
 
+        //Método que obtiene todos los registros de la tabla empresa
+        [OperationContract]
+        List<EmpresaData> getAllEmpresa();
+
+        //Método que obtiene una empresa por cif
+        [OperationContract]
+        EmpresaData getEmpresaCif(string cif);
+
+        //Método que obtiene una empresa por un identificador
+        [OperationContract]
+        EmpresaData getEmpresaId(int id);
+
+        //Método que obtiene una empresa por un identificador
+        [OperationContract]
+        List<EmpresaData> getEmpresaSector(int idSector);
+
+        //Método que elimina de la tabla Email un registro
+        [OperationContract]
+        bool deleteEmpresa(int idEmpresa);
+
+        //Método que edita un registro de la tabla Empresa 
+        [OperationContract]
+        bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
+
+        ////////////////////FIN EMPRESA///////////////////////////////////
+
+
+        ///////////////////EMAIL-EMPRESA/////////////////////////////////
+
+        //Método que obtiene los emails de cada empresa
+        [OperationContract]
+        List<EmailData> getMailEmpresa(int idEmpresa);
+
+        ///////////////////FIN EMAIL-EMPRESA/////////////////////////////////
+
+        ///////////////////EMAIL-CONTACTO/////////////////////////////////
+
+        //Método que obtiene los emails de cada empresa
+        [OperationContract]
+        List<EmailData> getMailContacto(int idContacto);
+
+        ///////////////////FIN EMAIL-CONTACTO/////////////////////////////////
+
+        /***********************************************************************/
+        /********************FIN LUIS MIGUEL MORALES****************************/
+        /***********************************************************************/
+
+        /***********************************************************************/
+        /********************JORGE *********************************************/
+        /***********************************************************************/
         /// Direccion
 
         [OperationContract]
@@ -58,15 +113,120 @@ namespace ServicioGestion
         List<SectorData> GetSector();
 
         /// Fin sector
-        
+
+        /*******************************ESTADO ACCION***************************/
+
         /// Estado de accion
-        
+
         [OperationContract]
         List<EstadoAccion> GetEstadoAccion();
 
-        /// Fin estado de accion
+        [OperationContract]
+        List<EstadoAccion> GetAllEstadoAccion();
 
+        /// Fin estado de accion
+        /// 
+        /// Contacto
+
+        [OperationContract]
+        List<ContactoData> GetContacto();
+
+        [OperationContract]
+        bool DeleteContacto(ContactoData contacto, int id);
+
+        [OperationContract]
+        bool AddContacto(ContactoData contacto);
+
+        [OperationContract]
+        bool EditContacto(ContactoData contacto, int id);
+   
         
+        /******************* METODOS MAS COOL *******************/
+        [OperationContract]
+        List<DireccionData> getDirecionesEmpresa(int idEmpresa);
+        [OperationContract]
+        List<DireccionData> getDirecionesContacto(int idContacto);
+        /******************* FIN METODOS MAS COOL *******************/
+
+        /***********************************************************************/
+        /******************** FIN JORGE ****************************************/
+        /***********************************************************************/
+
+        /***********************************************************************/
+        /******************** IVÁN *********************************************/
+        /***********************************************************************/
+
+        /************************* TELEFONOS ***********************************/
+
+        //Método que busca un teléfono por su número
+        [OperationContract]
+        TelefonoData GetNumeroTelefono(string telefono);
+
+        //Método que busca un teléfono por su id
+        [OperationContract]
+        TelefonoData GetIdTelefono(int idTelefono);
+
+        //Método que obtiene un listado de teléfonos existentes
+        [OperationContract]
+        List<TelefonoData> GetAllTelefonos();
+
+        //Método que inserta un teléfono nuevo
+        [OperationContract]
+        bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
+
+        //Método que edita un teléfono existente
+        [OperationContract]
+        bool EditTelefono(TelefonoData t);
+
+        //Método que elimina un teléfono existente
+        [OperationContract]
+        bool DeleteTelefono(int idTelefono);
+
+        /********************** TIPO DE ACCIÓN **********************************/
+
+        //Método que busca un tipo de acción por su id
+        [OperationContract]
+        TipoDeAccionData GetIdTipoAccion(int idTipoAccion);
+
+        //Método que obtiene un listado de los tipos de acciones existentes
+        [OperationContract]
+        List<TipoDeAccionData> GetAllTipoAccion();
+
+        //Método que inserta un nuevo tipo de acción
+        //[OperationContract]
+        //bool AddTipoAccion(TipoDeAccionData tipoAccion);
+
+        ////Método que edita un tipo de acción existente
+        //[OperationContract]
+        //bool EditTipoAccion(TipoDeAccionData tipoAccion);
+
+        ////Método que elimina un tipo de acción existente
+        //[OperationContract]
+        //bool DeleteTipoAccion(int idTipoAccion);
+
+        /************************ TELEFONO EMPRESA *****************************/
+
+        [OperationContract]
+        List<TelefonoData> GetTelefonosEmpresa(int idEmpresa);
+        [OperationContract]
+        List<ContactoData> GetContactosEmpresa(int idEmpresa);
+
+        /****************************TELEFONO  CONTACTO **************************/
+
+        [OperationContract]
+        List<TelefonoData> GetTelefonosContacto(int idContacto);
+
+
+       
+
+        /***********************************************************************/
+        /********************FIN IVÁN ******************************************/
+        /***********************************************************************/
+
+
+        /***********************************************************************/
+        /******************** MIGUEL********************************************/
+        /***********************************************************************/
         // Usuario
         [OperationContract]
         bool addUsuario(UsuarioData usuario);
@@ -84,33 +244,38 @@ namespace ServicioGestion
         UsuarioData getUsuario(int idUsuario);
         //Fin Usuario
 
-        /// Contacto
+        [OperationContract]
+        bool addAccionComercial(AccionComercialData accion);
 
         [OperationContract]
-        List<ContactoData> GetContacto();
+        bool deleteAccionComercial(int idAccion);
 
         [OperationContract]
-        bool DeleteContacto(ContactoData contacto, int id);
+        bool editAccionComercial(int idAccion, AccionComercialData accion);
 
         [OperationContract]
-        bool AddContacto(ContactoData contacto);
+        List<AccionComercialData> getAllAccionesComerciales();
 
         [OperationContract]
-        bool EditContacto(ContactoData contacto, int id);
+        AccionComercialData getAccionComercial(int idAccion);
 
-        /// Fin contacto    
-        
-        /******************* METODOS MAS COOL *******************/
         [OperationContract]
-        List<DireccionData> getDirecionesEmpresa(int idEmpresa);
+        List<AccionComercialData> getAccionesComercialesUsuarios(int idUsuario);
+
         [OperationContract]
-        List<DireccionData> getDirecionesContacto(int idContacto);
-        /******************* FIN METODOS MAS COOL *******************/
+        List<AccionComercialData> getAccionesComercialesEmpresa(int idEmpresa);
 
-
+        /***********************************************************************/
+        /********************FIN MIGUEL ****************************************/
+        /***********************************************************************/
     }
 
-    
+    /**********CLASES  DATA***/
+
+    /***********************************************************************/
+    /********************LUIS MIGUEL****************************************/
+    /***********************************************************************/
+
     //EMAIL
 
     [DataContract]
@@ -124,6 +289,39 @@ namespace ServicioGestion
     }
 
     //FIN EMAIL
+
+    /// <summary>
+    /// Objeto empresa.
+    /// EmpresaID= Identificador único que está asociado a una empresa
+    /// cif= C.I.F. de una empresa
+    /// nombreComercial= Nombre comercial de una empresa.
+    /// razonSocial= Razón social de una empresa.
+    /// web= Página web de una empresa.
+    /// sector= Identificador del sector al que pertenece una empresa.
+    /// </summary>
+    public class EmpresaData
+    {
+        [DataMember]
+        public int EmpresaID;
+        [DataMember]
+        public string cif;
+        [DataMember]
+        public string nombreComercial;
+        [DataMember]
+        public string razonSocial;
+        [DataMember]
+        public string web;
+        [DataMember]
+        public int sector;
+    }
+
+    /***********************************************************************/
+    /********************FIN LUIS MIGUEL************************************/
+    /***********************************************************************/
+
+    /***********************************************************************/
+    /**************************JORGE****************************************/
+    /***********************************************************************/
 
     /// Direccion
  
@@ -204,5 +402,78 @@ namespace ServicioGestion
         public int idEmpresa;
     }
     /// Fin contacto
-    
+
+    /***********************************************************************/
+    /**************************FIn JORGE************************************/
+    /***********************************************************************/
+
+    /***********************************************************************/
+    /***********************IVÁN *******************************************/
+    /***********************************************************************/
+
+    //Telefono
+    [DataContract]
+    public class TelefonoData
+    {
+        [DataMember]
+        public int idTelefono;
+        [DataMember]
+        public string numero;
+    }
+
+    //Fin Telefono
+
+    //Tipo Acción
+
+    [DataContract]
+    public class TipoDeAccionData
+    {
+        [DataMember]
+        public int idTipoAccion;
+        [DataMember]
+        public string descripcion;
+    }
+
+    //fin Tipo Acción
+
+    /***********************************************************************/
+    /********************FIN IVÁN ******************************************/
+    /***********************************************************************/
+
+
+    /***********************************************************************/
+    /******************** MIGUEL********************************************/
+    /***********************************************************************/
+    [DataContract]
+    public class AccionComercialData
+    {
+        [DataMember]
+        public int idAccion;
+
+        [DataMember]
+        public string descripcion;
+
+        [DataMember]
+        public string comentarios;
+
+        [DataMember]
+        public DateTime fechaHora;
+
+        [DataMember]
+        public int idUsuario;
+
+        [DataMember]
+        public int idTipoAccion;
+
+        [DataMember]
+        public int idEstadoAccion;
+
+        [DataMember]
+        public int idEmpresa;
+    }
+
+
+    /***********************************************************************/
+    /********************FIN MIGUEL ****************************************/
+    /***********************************************************************/
 }

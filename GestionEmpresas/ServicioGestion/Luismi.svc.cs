@@ -266,409 +266,409 @@ namespace ServicioGestion
         ***************************************************************/
 
 
-        /// <summary>
-        /// Método que añade un nuevo registro en la tabla Empresa
-        /// </summary>
-        /// <param name="cif">Cif de la empresa a insertar</param>
-        /// <param name="nombreComercial">Nombre Comercial de la empresa a insertar</param>
-        /// <param name="razon">Razón Social de la empresa a insertar</param>
-        /// <param name="web">Página Web de la empresa a insertar</param>
-        /// <param name="sector">Identificador de sector de la empresa a insertar</param>
-        /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
-        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
-        {
-            try
-            {
-                Empresa emp = new Empresa();
-                emp.cif = cif;
-                emp.nombreComercial = nombreComercial;
-                emp.razonSocial = razon;
-                emp.web = web;
-                emp.idSector = sector;
+       // /// <summary>
+       // /// Método que añade un nuevo registro en la tabla Empresa
+       // /// </summary>
+       // /// <param name="cif">Cif de la empresa a insertar</param>
+       // /// <param name="nombreComercial">Nombre Comercial de la empresa a insertar</param>
+       // /// <param name="razon">Razón Social de la empresa a insertar</param>
+       // /// <param name="web">Página Web de la empresa a insertar</param>
+       // /// <param name="sector">Identificador de sector de la empresa a insertar</param>
+       // /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
+       // public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
+       // {
+       //     try
+       //     {
+       //         Empresa emp = new Empresa();
+       //         emp.cif = cif;
+       //         emp.nombreComercial = nombreComercial;
+       //         emp.razonSocial = razon;
+       //         emp.web = web;
+       //         emp.idSector = sector;
 
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    db.Empresa.Add(emp);
-                    db.SaveChanges();
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO AÑADIR EMAIL"));
-            }
-        }
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             db.Empresa.Add(emp);
+       //             db.SaveChanges();
+       //         }
+       //         return true;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO AÑADIR EMAIL"));
+       //     }
+       // }
 
-        /// <summary>
-        /// Método que devuelve todos los registros de la tabla Empresa.
-        /// </summary>
-        /// <returns>Devuelve una lista de Empresas</returns>
-        public List<EmpresaData> getAllEmpresa()
-        {
-            List<EmpresaData> datos = new List<EmpresaData>();
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from empresa in db.Empresa
-                                  select empresa;
+       // /// <summary>
+       // /// Método que devuelve todos los registros de la tabla Empresa.
+       // /// </summary>
+       // /// <returns>Devuelve una lista de Empresas</returns>
+       // public List<EmpresaData> getAllEmpresa()
+       // {
+       //     List<EmpresaData> datos = new List<EmpresaData>();
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from empresa in db.Empresa
+       //                           select empresa;
 
-                    foreach (Empresa em in resulta)
-                    {
-                        EmpresaData emData = new EmpresaData()
-                        {
-                            EmpresaID = em.idEmpresa,
-                            cif = em.cif,
-                            nombreComercial = em.nombreComercial,
-                            razonSocial=em.razonSocial,
-                            web=em.web,
-                            sector=(int)em.idSector
-                        };
-                        datos.Add(emData);
+       //             foreach (Empresa em in resulta)
+       //             {
+       //                 EmpresaData emData = new EmpresaData()
+       //                 {
+       //                     EmpresaID = em.idEmpresa,
+       //                     cif = em.cif,
+       //                     nombreComercial = em.nombreComercial,
+       //                     razonSocial=em.razonSocial,
+       //                     web=em.web,
+       //                     sector=(int)em.idSector
+       //                 };
+       //                 datos.Add(emData);
 
-                    }
-                    return datos;
-                }
+       //             }
+       //             return datos;
+       //         }
 
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
-        /// <summary>
-        /// Método que busca una empresa según un cif
-        /// </summary>
-        /// <param name="cif">Cif a buscar de la empresa</param>
-        /// <returns>Devuelve un objeto empresa. O null si no encuentra nada.</returns>
-        public EmpresaData getEmpresaCif(string cif)
-        {
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from empresa in db.Empresa
-                                  where empresa.cif == cif
-                                  select empresa;
+       // /// <summary>
+       // /// Método que busca una empresa según un cif
+       // /// </summary>
+       // /// <param name="cif">Cif a buscar de la empresa</param>
+       // /// <returns>Devuelve un objeto empresa. O null si no encuentra nada.</returns>
+       // public EmpresaData getEmpresaCif(string cif)
+       // {
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from empresa in db.Empresa
+       //                           where empresa.cif == cif
+       //                           select empresa;
 
-                    foreach (Empresa em in resulta)
-                    {
-                        EmpresaData empData = new EmpresaData()
-                        {
-                            EmpresaID = em.idEmpresa,
-                            cif = em.cif,
-                            nombreComercial = em.nombreComercial,
-                            razonSocial=em.razonSocial,
-                            web=em.web,
-                            sector = (int)em.idSector
-                        };
+       //             foreach (Empresa em in resulta)
+       //             {
+       //                 EmpresaData empData = new EmpresaData()
+       //                 {
+       //                     EmpresaID = em.idEmpresa,
+       //                     cif = em.cif,
+       //                     nombreComercial = em.nombreComercial,
+       //                     razonSocial=em.razonSocial,
+       //                     web=em.web,
+       //                     sector = (int)em.idSector
+       //                 };
 
-                        return empData;
-                    }
+       //                 return empData;
+       //             }
 
-                    return null;
-                }
+       //             return null;
+       //         }
 
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
 
 
-        /// <summary>
-        /// Método que devuelve una empresa según un id determinado
-        /// </summary>
-        /// <param name="id">Identificador</param>
-        /// <returns>Devuelve un objeto empresa</returns>
-        public EmpresaData getEmpresaId(int id)
-        {
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from empresa in db.Empresa
-                                  where empresa.idEmpresa == id
-                                  select empresa;
+       // /// <summary>
+       // /// Método que devuelve una empresa según un id determinado
+       // /// </summary>
+       // /// <param name="id">Identificador</param>
+       // /// <returns>Devuelve un objeto empresa</returns>
+       // public EmpresaData getEmpresaId(int id)
+       // {
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from empresa in db.Empresa
+       //                           where empresa.idEmpresa == id
+       //                           select empresa;
 
-                    foreach (Empresa em in resulta)
-                    {
-                        EmpresaData empData = new EmpresaData()
-                        {
-                            EmpresaID=em.idEmpresa,
-                            cif = em.cif,
-                            nombreComercial = em.nombreComercial,
-                            razonSocial = em.razonSocial,
-                            web = em.web,
-                            sector = (int)em.idSector
-                        };
+       //             foreach (Empresa em in resulta)
+       //             {
+       //                 EmpresaData empData = new EmpresaData()
+       //                 {
+       //                     EmpresaID=em.idEmpresa,
+       //                     cif = em.cif,
+       //                     nombreComercial = em.nombreComercial,
+       //                     razonSocial = em.razonSocial,
+       //                     web = em.web,
+       //                     sector = (int)em.idSector
+       //                 };
 
-                        return empData;
-                    }
+       //                 return empData;
+       //             }
 
-                    return null;
-                }
+       //             return null;
+       //         }
 
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
-        /// <summary>
-        /// Método que consulta empresa por Sector
-        /// </summary>
-        /// <param name="idSector">Identificador del sector para buscar</param>
-        /// <returns></returns>
-        public List<EmpresaData> getEmpresaSector(int idSector)
-        {
-            List<EmpresaData> datos = new List<EmpresaData>();
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from empresa in db.Empresa
-                                  where empresa.idSector==idSector
-                                  select empresa;
+       // /// <summary>
+       // /// Método que consulta empresa por Sector
+       // /// </summary>
+       // /// <param name="idSector">Identificador del sector para buscar</param>
+       // /// <returns></returns>
+       // public List<EmpresaData> getEmpresaSector(int idSector)
+       // {
+       //     List<EmpresaData> datos = new List<EmpresaData>();
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from empresa in db.Empresa
+       //                           where empresa.idSector==idSector
+       //                           select empresa;
 
-                    foreach (Empresa em in resulta)
-                    {
-                        EmpresaData emData = new EmpresaData()
-                        {
-                            cif = em.cif,
-                            nombreComercial = em.nombreComercial,
-                            razonSocial = em.razonSocial,
-                            web = em.web,
-                            sector = (int)em.idSector
-                        };
-                        datos.Add(emData);
+       //             foreach (Empresa em in resulta)
+       //             {
+       //                 EmpresaData emData = new EmpresaData()
+       //                 {
+       //                     cif = em.cif,
+       //                     nombreComercial = em.nombreComercial,
+       //                     razonSocial = em.razonSocial,
+       //                     web = em.web,
+       //                     sector = (int)em.idSector
+       //                 };
+       //                 datos.Add(emData);
    
-                    }
-                    return datos;
-                }
+       //             }
+       //             return datos;
+       //         }
 
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
-        /// <summary>
-        /// Método que elimina un registro empresa de la tabla Empresa
-        /// </summary>
-        /// <param name="idEmpresa"></param>
-        /// <returns></returns>
-        public bool deleteEmpresa(int idEmpresa)
-        {
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var consult = from emp in db.Empresa
-                                  where emp.idEmpresa == idEmpresa
-                                  select emp;
+       // /// <summary>
+       // /// Método que elimina un registro empresa de la tabla Empresa
+       // /// </summary>
+       // /// <param name="idEmpresa"></param>
+       // /// <returns></returns>
+       // public bool deleteEmpresa(int idEmpresa)
+       // {
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var consult = from emp in db.Empresa
+       //                           where emp.idEmpresa == idEmpresa
+       //                           select emp;
 
-                    Empresa email = consult.First();
+       //             Empresa email = consult.First();
 
-                    db.Empresa.Remove(email);
-                    db.SaveChanges();
+       //             db.Empresa.Remove(email);
+       //             db.SaveChanges();
                    
                   
-                }
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //         }
+       //         return true;
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
-        /// <summary>
-        /// Método que edita una empresa 
-        /// </summary>
-        /// <param name="idEmpresa">Identificador de la empresa a modificar</param>
-        /// <param name="cif">Cif de la empresa modificada</param>
-        /// <param name="nombreComercial">Nombre Comercial de la nueva empresa</param>
-        /// <param name="razon">Razón Social de la nueva empresa</param>
-        /// <param name="web">Web de la empresa a modificar</param>
-        /// <param name="idSector">Sector de la empresa a modificar</param>
-        /// <returns>Devuelve true si se ha modificado correctamente.</returns>
-        public bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int idSector)
-        {
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var consult = from em in db.Empresa
-                                  where em.idEmpresa == idEmpresa
-                                  select em;
-
-
-                    Empresa empMod = consult.First();
-
-                    empMod.idEmpresa = idEmpresa;
-                    empMod.cif = cif;
-                    empMod.nombreComercial = nombreComercial;
-                    empMod.razonSocial = razon;
-                    empMod.web = web;
-                    empMod.idSector = idSector;
-
-                    db.SaveChanges();
-
-                    return true;
-
-                }
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
-
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
-
-        /***************************************************************
-        *******************************FIN EMPRESA**********************
-        ***************************************************************/
-
-        /***************************************************************
-        ******************************* EMAIL-EMPRESA********************
-        ***************************************************************/
-
-        /// <summary>
-        /// Método que devuelve todos los emails de una empresa en concreto.
-        /// </summary>
-        /// <param name="idEmpresa">Identificador de la empresa de la que queremos listar sus emails</param>
-        /// <returns>Devuelve una lista de emails de una empresa en concreto.</returns>
-        public List<EmailData> getMailEmpresa(int idEmpresa)
-        {
-            List<EmailData> list=new List<EmailData>();
-            EmailData email;
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from empresa in db.Empresa
-                                  where empresa.idEmpresa == idEmpresa
-                                  select empresa;
+       // /// <summary>
+       // /// Método que edita una empresa 
+       // /// </summary>
+       // /// <param name="idEmpresa">Identificador de la empresa a modificar</param>
+       // /// <param name="cif">Cif de la empresa modificada</param>
+       // /// <param name="nombreComercial">Nombre Comercial de la nueva empresa</param>
+       // /// <param name="razon">Razón Social de la nueva empresa</param>
+       // /// <param name="web">Web de la empresa a modificar</param>
+       // /// <param name="idSector">Sector de la empresa a modificar</param>
+       // /// <returns>Devuelve true si se ha modificado correctamente.</returns>
+       // public bool editEmpresa(int idEmpresa, string cif, string nombreComercial, string razon, string web, int idSector)
+       // {
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var consult = from em in db.Empresa
+       //                           where em.idEmpresa == idEmpresa
+       //                           select em;
 
 
-                    Empresa empresaResult=resulta.First();
+       //             Empresa empMod = consult.First();
 
-                    foreach (Email em in empresaResult.Email)
-                    {
-                        email=new EmailData();
-                        email.EmailID=em.idEmail;
-                        email.Correo=em.correo;
-                        list.Add(email);
-                    }
+       //             empMod.idEmpresa = idEmpresa;
+       //             empMod.cif = cif;
+       //             empMod.nombreComercial = nombreComercial;
+       //             empMod.razonSocial = razon;
+       //             empMod.web = web;
+       //             empMod.idSector = idSector;
 
-                    return list;
-                }
+       //             db.SaveChanges();
 
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+       //             return true;
 
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       //         }
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
 
-        /***************************************************************
-        *******************************FIN EMAIL-EMPRESA****************
-        ***************************************************************/
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
 
-        /***************************************************************
-       ******************************* EMAIL-CONTACTO********************
-       ***************************************************************/
-        public List<EmailData> getMailContacto(int idContacto)
-        {
-            List<EmailData> list = new List<EmailData>();
-            EmailData mail;
-            try
-            {
-                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
-                {
-                    var resulta = from cont in db.Contacto
-                                  where cont.idContacto == idContacto
-                                  select cont;
+       // /***************************************************************
+       // *******************************FIN EMPRESA**********************
+       // ***************************************************************/
 
+       // /***************************************************************
+       // ******************************* EMAIL-EMPRESA********************
+       // ***************************************************************/
 
-                    Contacto contResult = resulta.First();
-
-                    foreach (Email em in contResult.Email)
-                    {
-                        mail = new EmailData();
-
-                        mail.EmailID = em.idEmail;
-                        mail.Correo = em.correo;
-                        list.Add(mail);
-                    }
-
-                    return list;
-                }
-
-            }
-            catch (SqlException ex)
-            {
-                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
-
-                throw fault;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
-            }
-        }
+       // /// <summary>
+       // /// Método que devuelve todos los emails de una empresa en concreto.
+       // /// </summary>
+       // /// <param name="idEmpresa">Identificador de la empresa de la que queremos listar sus emails</param>
+       // /// <returns>Devuelve una lista de emails de una empresa en concreto.</returns>
+       // public List<EmailData> getMailEmpresa(int idEmpresa)
+       // {
+       //     List<EmailData> list=new List<EmailData>();
+       //     EmailData email;
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from empresa in db.Empresa
+       //                           where empresa.idEmpresa == idEmpresa
+       //                           select empresa;
 
 
-        /***************************************************************
-       *******************************FIN EMAIL-CONTACTO********************
-       ***************************************************************/
+       //             Empresa empresaResult=resulta.First();
+
+       //             foreach (Email em in empresaResult.Email)
+       //             {
+       //                 email=new EmailData();
+       //                 email.EmailID=em.idEmail;
+       //                 email.Correo=em.correo;
+       //                 list.Add(email);
+       //             }
+
+       //             return list;
+       //         }
+
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
+
+       // /***************************************************************
+       // *******************************FIN EMAIL-EMPRESA****************
+       // ***************************************************************/
+
+       // /***************************************************************
+       //******************************* EMAIL-CONTACTO********************
+       //***************************************************************/
+       // public List<EmailData> getMailContacto(int idContacto)
+       // {
+       //     List<EmailData> list = new List<EmailData>();
+       //     EmailData mail;
+       //     try
+       //     {
+       //         using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+       //         {
+       //             var resulta = from cont in db.Contacto
+       //                           where cont.idContacto == idContacto
+       //                           select cont;
+
+
+       //             Contacto contResult = resulta.First();
+
+       //             foreach (Email em in contResult.Email)
+       //             {
+       //                 mail = new EmailData();
+
+       //                 mail.EmailID = em.idEmail;
+       //                 mail.Correo = em.correo;
+       //                 list.Add(mail);
+       //             }
+
+       //             return list;
+       //         }
+
+       //     }
+       //     catch (SqlException ex)
+       //     {
+       //         FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+       //         throw fault;
+       //     }
+       //     catch (Exception ex)
+       //     {
+       //         throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+       //     }
+       // }
+
+
+       // /***************************************************************
+       //*******************************FIN EMAIL-CONTACTO********************
+       //***************************************************************/
 
 
        
