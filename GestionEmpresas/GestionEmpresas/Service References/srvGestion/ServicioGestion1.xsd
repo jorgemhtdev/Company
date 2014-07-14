@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServicioGestion" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServicioGestion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="EmpresaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmpresaID" type="xs:int" />
+      <xs:element minOccurs="0" name="cif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreComercial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sector" type="xs:int" />
+      <xs:element minOccurs="0" name="web" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmpresaData" nillable="true" type="tns:EmpresaData" />
+  <xs:complexType name="ContactoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idContacto" type="xs:int" />
+      <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+      <xs:element minOccurs="0" name="nif" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactoData" nillable="true" type="tns:ContactoData" />
+  <xs:complexType name="ArrayOfEmailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailData" nillable="true" type="tns:EmailData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailData" nillable="true" type="tns:ArrayOfEmailData" />
+  <xs:complexType name="EmailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailData" nillable="true" type="tns:EmailData" />
+  <xs:complexType name="ArrayOfEmpresaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpresaData" nillable="true" type="tns:EmpresaData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpresaData" nillable="true" type="tns:ArrayOfEmpresaData" />
+  <xs:complexType name="DireccionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codPostal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="domicilio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idDireccion" type="xs:int" />
+      <xs:element minOccurs="0" name="poblacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="provincia" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DireccionData" nillable="true" type="tns:DireccionData" />
+  <xs:complexType name="ArrayOfDireccionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DireccionData" nillable="true" type="tns:DireccionData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDireccionData" nillable="true" type="tns:ArrayOfDireccionData" />
+  <xs:complexType name="ArrayOfSectorData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SectorData" nillable="true" type="tns:SectorData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSectorData" nillable="true" type="tns:ArrayOfSectorData" />
+  <xs:complexType name="SectorData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idSector" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SectorData" nillable="true" type="tns:SectorData" />
+  <xs:complexType name="ArrayOfEstadoAccion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EstadoAccion" nillable="true" type="tns:EstadoAccion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEstadoAccion" nillable="true" type="tns:ArrayOfEstadoAccion" />
+  <xs:complexType name="EstadoAccion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idEstadoAccion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstadoAccion" nillable="true" type="tns:EstadoAccion" />
+  <xs:complexType name="ArrayOfContactoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactoData" nillable="true" type="tns:ContactoData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContactoData" nillable="true" type="tns:ArrayOfContactoData" />
+  <xs:complexType name="TelefonoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTelefono" type="xs:int" />
+      <xs:element minOccurs="0" name="numero" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TelefonoData" nillable="true" type="tns:TelefonoData" />
+  <xs:complexType name="ArrayOfTelefonoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TelefonoData" nillable="true" type="tns:TelefonoData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTelefonoData" nillable="true" type="tns:ArrayOfTelefonoData" />
+  <xs:complexType name="TipoDeAccionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idTipoAccion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoDeAccionData" nillable="true" type="tns:TipoDeAccionData" />
+  <xs:complexType name="ArrayOfTipoDeAccionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoDeAccionData" nillable="true" type="tns:TipoDeAccionData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipoDeAccionData" nillable="true" type="tns:ArrayOfTipoDeAccionData" />
+  <xs:complexType name="UsuarioData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UsuarioData" nillable="true" type="tns:UsuarioData" />
+  <xs:complexType name="ArrayOfUsuarioData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UsuarioData" nillable="true" type="tns:UsuarioData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUsuarioData" nillable="true" type="tns:ArrayOfUsuarioData" />
+  <xs:complexType name="AccionComercialData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comentarios" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idAccion" type="xs:int" />
+      <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+      <xs:element minOccurs="0" name="idEstadoAccion" type="xs:int" />
+      <xs:element minOccurs="0" name="idTipoAccion" type="xs:int" />
+      <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccionComercialData" nillable="true" type="tns:AccionComercialData" />
+  <xs:complexType name="ArrayOfAccionComercialData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccionComercialData" nillable="true" type="tns:AccionComercialData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccionComercialData" nillable="true" type="tns:ArrayOfAccionComercialData" />
+</xs:schema>
