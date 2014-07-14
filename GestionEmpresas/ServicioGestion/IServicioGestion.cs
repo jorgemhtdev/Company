@@ -312,7 +312,7 @@ namespace ServicioGestion
         [DataMember]
         public string web;
         [DataMember]
-        public int sector;
+        public string sector;
     }
 
     /***********************************************************************/
