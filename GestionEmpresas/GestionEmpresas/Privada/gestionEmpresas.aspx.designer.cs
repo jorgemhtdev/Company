@@ -103,30 +103,30 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.GridView gvDirecciones;
         
         /// <summary>
-        /// Button1 control.
+        /// btnAddTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnAddTelefono;
         
         /// <summary>
-        /// Button2 control.
+        /// btnAddEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnAddEmail;
         
         /// <summary>
-        /// Button3 control.
+        /// btnAddDireccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnAddDireccion;
     }
 }

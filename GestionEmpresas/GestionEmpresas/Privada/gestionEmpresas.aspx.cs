@@ -18,6 +18,7 @@ namespace GestionEmpresas.Privada
                 try
                 {
                     ServicioGestionClient proxy = new ServicioGestionClient();
+                    var sectores = proxy.GetSector();
                     var empresas = proxy.getAllEmpresa();
                     this.gvEmpresas.DataSource = empresas;
                     this.gvEmpresas.DataBind();
