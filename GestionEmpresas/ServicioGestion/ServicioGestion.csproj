@@ -76,6 +76,7 @@
     <Content Include="ServicioGestion.svc" />
     <Content Include="ServicioLogin.svc" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autentificar.cs" />
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="ServicioLogin.svc.cs">
       <DependentUpon>ServicioLogin.svc</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
