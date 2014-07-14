@@ -6,7 +6,7 @@
       <xs:element minOccurs="0" name="cif" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="nombreComercial" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="sector" type="xs:int" />
+      <xs:element minOccurs="0" name="sector" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="web" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
