@@ -2,14 +2,18 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ServicioGestion.Model;
 using ServicioGestion;
+using ServicioGestionTestSpace.ServiceReference1;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
-namespace ServicioGestionTest
+namespace ServicioGestionTestSpace.ServiceReference1
 {
     [TestClass]
     public class ServicioGestionTest
     {
 
-        /******************************* TEST ADD *******************************************/
+        ServicioGestionClient proxy = new ServicioGestionClient();
+
+        /******************************* TEST ADD *******************************************
 
         [TestMethod]
         public void AddUsuarioTest()
@@ -48,7 +52,7 @@ namespace ServicioGestionTest
         public void AddEstadoAccionTest()
         {
 
-        }*/
+        }*
 
         [TestMethod]
         public void AddEmpresaTest()
@@ -60,40 +64,43 @@ namespace ServicioGestionTest
         public void AddSectorTest()
         {
 
-        }
+        }*/
 
         [TestMethod]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\tablets\\Source\\Repos\\Company\\GestionEmpresas\\ServicioGestion", "/")]
+        [UrlToTest("http://localhost:2231/WebForm1.aspx")]
         public void AddTelefonoTest()
         {
             //addTelefono(null, null, null)
             TelefonoData telefono = null;
             EmpresaData empresa = null;
             ContactoData contacto = null;
-            Assert.IsFalse(AddTelefono(telefono, empresa, contacto));
+            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
             //addTelefono(telefono, null, null)
             telefono = new TelefonoData() { numero = "numero de prueba 1" };
-            Assert.IsFalse(AddTelefono(telefono, empresa, contacto));
+            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
             //addTelefono(null, empresa, null)
             telefono = null;
             empresa = new EmpresaData() { cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = 1, web = "web1" };
-            Assert.IsFalse(AddTelefono(telefono, empresa, contacto));
+            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
             //addTelefono(null, null, contacto)
             telefono = null;
             empresa = null;
             contacto = new ContactoData() { idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
-            Assert.IsFalse(AddTelefono(telefono, empresa, contacto));
+            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
             //addTelefono(telefono, null, contacto)
             telefono = new TelefonoData() { numero = "numero de prueba 2" };
-            Assert.IsFalse(AddTelefono(telefono, empresa, contacto));
+            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
 
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void AddEmailTest()
         {
 
@@ -111,7 +118,7 @@ namespace ServicioGestionTest
 
         }
 
-        /******************************* TEST EDIT *******************************************/
+        /******************************* TEST EDIT *******************************************
 
         [TestMethod]
         public void EditUsuarioTest()
@@ -172,7 +179,7 @@ namespace ServicioGestionTest
 
         }
 
-        /******************************* TEST DELETE *******************************************/
+        /******************************* TEST DELETE *******************************************
 
         [TestMethod]
         public void DeleteUsuarioTest()
@@ -233,7 +240,7 @@ namespace ServicioGestionTest
 
         }
 
-        /******************************* TEST GET *******************************************/
+        /******************************* TEST GET *******************************************
 
         [TestMethod]
         public void GetUsuarioTest()
@@ -294,7 +301,7 @@ namespace ServicioGestionTest
 
         }
 
-        /******************************* TEST GETALL *******************************************/
+        /******************************* TEST GETALL *******************************************
 
         [TestMethod]
         public void GetAllUsuarioTest()
@@ -353,7 +360,7 @@ namespace ServicioGestionTest
         public void GetAllContactoTest()
         {
 
-        }
+        }*/
 
     }
 }
