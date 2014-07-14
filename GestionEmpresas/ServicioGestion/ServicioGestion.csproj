@@ -140,6 +140,7 @@
     <Compile Include="Model\Usuario.cs">
       <DependentUpon>BDGestion.tt</DependentUpon>
     </Compile>
+    <Compile Include="PasswordManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicioGestion.svc.cs">
       <DependentUpon>ServicioGestion.svc</DependentUpon>
