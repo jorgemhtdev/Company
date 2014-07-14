@@ -988,7 +988,7 @@ namespace ServicioGestion
                     Usuario nuevo = new Usuario();
                     nuevo.login = usuario.login;
                     nuevo.nombre = usuario.nombre;
-                    nuevo.password = usuario.password;
+                    nuevo.password = PasswordManager.getMD5(usuario.password);
 
                     db.Usuario.Add(nuevo);
                     db.SaveChanges();
@@ -1071,7 +1071,7 @@ namespace ServicioGestion
                         u.idUsuario = user.idUsuario;
                         u.login = user.login;
                         u.nombre = user.nombre;
-                        u.password = user.password;
+                        u.password = PasswordManager.getMD5(user.password);
                         db.SaveChanges();
                         return true;
                     }
@@ -2155,9 +2155,9 @@ namespace ServicioGestion
         /// Método que obtiene todas las acciones comerciales contenidos en la tabla AccionComercial
         /// </summary>
         /// <returns>Devuelve una lista de objetos AccionComercial</returns>
-        public List<AccionComercialData> getAllAccionesComerciales()
+        public List<AccionComercialMostrarData> getAllAccionesComerciales()
         {
-            List<AccionComercialData> lst = new List<AccionComercialData>();
+            List<AccionComercialMostrarData> lst = new List<AccionComercialMostrarData>();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -2167,15 +2167,15 @@ namespace ServicioGestion
 
                     foreach (AccionComercial accion in consulta)
                     {
-                        AccionComercialData a = new AccionComercialData();
+                        AccionComercialMostrarData a = new AccionComercialMostrarData();
                         a.idAccion = accion.idAccion;
                         a.descripcion = accion.descripcion;
                         a.comentarios = accion.comentarios;
                         a.fechaHora = accion.fechaHora;
-                        a.idUsuario = (Int32)accion.idUsuario;
-                        a.idTipoAccion = (Int32)accion.idTipoAccion;
-                        a.idEstadoAccion = (Int32)accion.idEstadoAccion;
-                        a.idEmpresa = (Int32)accion.idEmpresa;
+                        a.nombreUsuario = accion.Usuario.nombre;
+                        a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                        a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                        a.nombreEmpresa = accion.Empresa.nombreComercial;
 
                         lst.Add(a);
                     }
@@ -2342,13 +2342,9 @@ namespace ServicioGestion
         /********************************************************************************
          *                        Fin getAccionesComercialesEmpresa
          *******************************************************************************/
+
+        /********************************************************************/
+        /***************************** FIN MIGUEL****************************/
+        /********************************************************************/
     }
-
-    /********************************************************************/
-    /***************************** FIN MIGUEL****************************/
-    /********************************************************************/
-
-       
-
-
 }
