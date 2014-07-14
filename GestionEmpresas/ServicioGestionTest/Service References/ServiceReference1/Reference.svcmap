@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="799e4625-ec48-4ffd-8e4c-da7566a8ea13" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2231/ServicioGestion.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioGestion.wsdl" MetadataType="Wsdl" ID="4b48b6bc-2804-4459-b258-f9c107573f9e" SourceId="1" SourceUrl="http://localhost:2231/ServicioGestion.svc?wsdl" />
+    <MetadataFile FileName="ServicioGestion.xsd" MetadataType="Schema" ID="78b29e26-616d-4db9-9485-2b47f20eb2e2" SourceId="1" SourceUrl="http://localhost:2231/ServicioGestion.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioGestion.disco" MetadataType="Disco" ID="1f323de8-6500-4364-8ec6-631bfa3701ef" SourceId="1" SourceUrl="http://localhost:2231/ServicioGestion.svc?disco" />
+    <MetadataFile FileName="ServicioGestion1.xsd" MetadataType="Schema" ID="14119397-4981-4cf7-a01b-8ccd9dcc5602" SourceId="1" SourceUrl="http://localhost:2231/ServicioGestion.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioGestion2.xsd" MetadataType="Schema" ID="f4ca620d-09ac-4f19-bb24-a23ebb1592ed" SourceId="1" SourceUrl="http://localhost:2231/ServicioGestion.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
