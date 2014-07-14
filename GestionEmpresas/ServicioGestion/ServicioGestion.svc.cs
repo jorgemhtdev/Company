@@ -988,7 +988,7 @@ namespace ServicioGestion
                     Usuario nuevo = new Usuario();
                     nuevo.login = usuario.login;
                     nuevo.nombre = usuario.nombre;
-                    nuevo.password = usuario.password;
+                    nuevo.password = PasswordManager.getMD5(usuario.password);
 
                     db.Usuario.Add(nuevo);
                     db.SaveChanges();
@@ -1071,7 +1071,7 @@ namespace ServicioGestion
                         u.idUsuario = user.idUsuario;
                         u.login = user.login;
                         u.nombre = user.nombre;
-                        u.password = user.password;
+                        u.password = PasswordManager.getMD5(user.password);
                         db.SaveChanges();
                         return true;
                     }
@@ -2342,13 +2342,9 @@ namespace ServicioGestion
         /********************************************************************************
          *                        Fin getAccionesComercialesEmpresa
          *******************************************************************************/
+
+        /********************************************************************/
+        /***************************** FIN MIGUEL****************************/
+        /********************************************************************/
     }
-
-    /********************************************************************/
-    /***************************** FIN MIGUEL****************************/
-    /********************************************************************/
-
-       
-
-
 }
