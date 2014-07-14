@@ -254,7 +254,7 @@ namespace ServicioGestion
         bool editAccionComercial(int idAccion, AccionComercialData accion);
 
         [OperationContract]
-        List<AccionComercialData> getAllAccionesComerciales();
+        List<AccionComercialMostrarData> getAllAccionesComerciales();
 
         [OperationContract]
         AccionComercialData getAccionComercial(int idAccion);
@@ -470,6 +470,35 @@ namespace ServicioGestion
 
         [DataMember]
         public int idEmpresa;
+    }
+
+
+    [DataContract]
+    public class AccionComercialMostrarData
+    {
+        [DataMember]
+        public int idAccion;
+
+        [DataMember]
+        public string descripcion;
+
+        [DataMember]
+        public string comentarios;
+
+        [DataMember]
+        public DateTime fechaHora;
+
+        [DataMember]
+        public string nombreUsuario;
+
+        [DataMember]
+        public string descripcionTipoAccion;
+
+        [DataMember]
+        public string descripcionEstadoAccion;
+
+        [DataMember]
+        public string nombreEmpresa;
     }
 
 
