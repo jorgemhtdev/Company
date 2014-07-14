@@ -347,7 +347,7 @@ namespace ServicioGestion
                             nombreComercial = em.nombreComercial,
                             razonSocial = em.razonSocial,
                             web = em.web,
-                            sector = (int)em.idSector
+                            sector = em.Sector.descripcion
                         };
                         datos.Add(emData);
 
@@ -392,7 +392,7 @@ namespace ServicioGestion
                             nombreComercial = em.nombreComercial,
                             razonSocial = em.razonSocial,
                             web = em.web,
-                            sector = (int)em.idSector
+                            sector = em.Sector.descripcion
                         };
 
                         return empData;
@@ -440,7 +440,7 @@ namespace ServicioGestion
                             nombreComercial = em.nombreComercial,
                             razonSocial = em.razonSocial,
                             web = em.web,
-                            sector = (int)em.idSector
+                            sector = em.Sector.descripcion
                         };
 
                         return empData;
@@ -486,7 +486,7 @@ namespace ServicioGestion
                             nombreComercial = em.nombreComercial,
                             razonSocial = em.razonSocial,
                             web = em.web,
-                            sector = (int)em.idSector
+                            sector = em.Sector.descripcion
                         };
                         datos.Add(emData);
 
