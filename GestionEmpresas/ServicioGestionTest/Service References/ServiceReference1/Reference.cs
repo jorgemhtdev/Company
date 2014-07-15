@@ -202,10 +202,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<ServicioGestion.TelefonoData[]> GetAllTelefonosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        bool AddTelefono(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        int AddTelefono(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> AddTelefonoAsync(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> AddTelefonoAsync(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
         bool EditTelefono(ServicioGestion.TelefonoData t);
@@ -597,11 +597,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.GetAllTelefonosAsync();
         }
         
-        public bool AddTelefono(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public int AddTelefono(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.AddTelefono(t, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddTelefonoAsync(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> AddTelefonoAsync(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.AddTelefonoAsync(t, empData, conData);
         }
         

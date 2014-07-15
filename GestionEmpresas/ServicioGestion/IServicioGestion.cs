@@ -172,7 +172,7 @@ namespace ServicioGestion
 
         //Método que inserta un teléfono nuevo
         [OperationContract]
-        bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
+        int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
 
         //Método que edita un teléfono existente
         [OperationContract]
