@@ -21,7 +21,7 @@ namespace GestionEmpresas.Privada
             }
         }
 
-        protected void addTlf(object sender, EventArgs e)
+        protected void editTlf(object sender, EventArgs e)
         {
 
             if (this.IsPostBack)
