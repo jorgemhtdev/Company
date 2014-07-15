@@ -84,7 +84,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             //addTelefono(null, empresa, null)
             telefono = null;
-            empresa = new EmpresaData() { cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = 1, web = "web1" };
+            empresa = new EmpresaData() { cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "Informatica", web = "web1" };
             Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
 
             //addTelefono(null, null, contacto)
@@ -100,12 +100,50 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
-        /*[TestMethod]
+        /// <summary>
+        /// Método que hace pruebas sobre el método de addEmail.
+        /// </summary>
+        [TestMethod]
         public void AddEmailTest()
         {
+            EmpresaData emp=new EmpresaData();
+            EmpresaData[] lista=proxy.getAllEmpresa();
+            EmailData email = new EmailData();
+            ContactoData contacto = new ContactoData();
+
+            EmailData[] listaEmpAdd = proxy.getAllEmail();
+            int numeroEmpAdd=listaEmpAdd.Length;
+            //Añado un email de ejemplo
+            email.Correo = "ejemplo@gmail.com";
+            email.EmailID=proxy.addEmail(email.Correo, lista[0], contacto);
+            //Compruebo el numero de elementos despues de insertar.
+            listaEmpAdd = proxy.getAllEmail();
+            int numeroEmpAddAfter = listaEmpAdd.Length;
+            //Se comprueba que se haya insertado y luego que se haya eliminado de la base de datos.
+            Assert.AreNotEqual(-1, email.EmailID);
+            //el numero de elementos debe haber aumentado en uno.
+            Assert.AreEqual(numeroEmpAdd + 1, numeroEmpAddAfter);
+
+
+            EmailData[] listaEmp = proxy.getAllEmail();
+            //Se obtienen el numero de elementos antes de eliminar un registro
+            int numeroEmp=listaEmp.Length;
+            Assert.IsTrue(proxy.deleteEmail(email.EmailID));
+            //Se obtiene el numero de elementos despues de eliminar un registro
+            listaEmp = proxy.getAllEmail();
+            int numeroEmpDelete=listaEmp.Length;
+            //Se comprueba que haya un elemento menos después de eliminar.
+            Assert.AreEqual(numeroEmp - 1, numeroEmpDelete);
+
+
+            //Esta prueba no añade ningún registro, ya que los dos ultimos parámetros son null.
+            email.Correo = "ejemplo2@gmail.com";
+            email.EmailID = proxy.addEmail(email.Correo,null,null);
+            Assert.AreEqual(-1, email.EmailID);
 
         }
 
+        /*
         [TestMethod]
         public void AddDireccionTest()
         {

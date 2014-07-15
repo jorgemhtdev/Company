@@ -68,6 +68,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\ServicioGestion.AccionComercialData.datasource" />
+    <None Include="Properties\DataSources\ServicioGestion.AccionComercialMostrarData.datasource" />
     <None Include="Properties\DataSources\ServicioGestion.ContactoData.datasource" />
     <None Include="Properties\DataSources\ServicioGestion.DireccionData.datasource" />
     <None Include="Properties\DataSources\ServicioGestion.EmailData.datasource" />

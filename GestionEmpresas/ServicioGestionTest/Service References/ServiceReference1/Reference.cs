@@ -16,10 +16,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
     public interface IServicioGestion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        bool addEmail(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        int addEmail(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        System.Threading.Tasks.Task<bool> addEmailAsync(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> addEmailAsync(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmail", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmailResponse")]
         ServicioGestion.EmailData[] getAllEmail();
@@ -298,10 +298,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        ServicioGestion.AccionComercialData[] getAllAccionesComerciales();
+        ServicioGestion.AccionComercialMostrarData[] getAllAccionesComerciales();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.AccionComercialData[]> getAllAccionesComercialesAsync();
+        System.Threading.Tasks.Task<ServicioGestion.AccionComercialMostrarData[]> getAllAccionesComercialesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/getAccionComercialResponse")]
         ServicioGestion.AccionComercialData getAccionComercial(int idAccion);
@@ -349,11 +349,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public bool addEmail(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public int addEmail(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.addEmail(correo, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> addEmailAsync(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> addEmailAsync(string correo, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.addEmailAsync(correo, empData, conData);
         }
         
@@ -725,11 +725,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.editAccionComercialAsync(idAccion, accion);
         }
         
-        public ServicioGestion.AccionComercialData[] getAllAccionesComerciales() {
+        public ServicioGestion.AccionComercialMostrarData[] getAllAccionesComerciales() {
             return base.Channel.getAllAccionesComerciales();
         }
         
-        public System.Threading.Tasks.Task<ServicioGestion.AccionComercialData[]> getAllAccionesComercialesAsync() {
+        public System.Threading.Tasks.Task<ServicioGestion.AccionComercialMostrarData[]> getAllAccionesComercialesAsync() {
             return base.Channel.getAllAccionesComercialesAsync();
         }
         
