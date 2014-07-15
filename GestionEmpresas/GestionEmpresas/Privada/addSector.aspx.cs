@@ -11,7 +11,33 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void addSectr(object sender, EventArgs e)
+        {
+
+            if (this.IsPostBack)
+            {
+                this.Validate();
+                if (this.IsValid)
+                {
+                    Response.Redirect(".aspx");
+                }// Fin del if
+            }// Fin del if
+        }
+
+
+        protected void Volver(object sender, EventArgs e)
+        {
+            Response.Redirect(".aspx", true);
         }
     }
 }
