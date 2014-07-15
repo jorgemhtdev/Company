@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioGestion" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2231/ServicioGestion.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2231/ServicioGestion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2231/ServicioGestion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServicioGestion" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioGestion_addEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:addEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmailId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailId" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmailId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmailCorreo_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailCorreo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmailCorreo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailCorreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:editEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:addEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaCif_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaCif" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaCif_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaCifResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaId" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaSector_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaSector" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getEmpresaSector_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmpresaSectorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:editEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getMailEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMailEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getMailEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMailEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getMailContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMailContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getMailContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMailContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetSector_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSector" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetSector_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetEstadoAccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstadoAccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetEstadoAccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstadoAccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllEstadoAccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEstadoAccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllEstadoAccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEstadoAccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getDirecionesEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDirecionesEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getDirecionesEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDirecionesEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getDirecionesContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDirecionesContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getDirecionesContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDirecionesContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNumeroTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNumeroTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNumeroTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNumeroTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetIdTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetIdTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllTelefonos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTelefonos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllTelefonos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTelefonosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_AddTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_EditTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteTelefono_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTelefono" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_DeleteTelefono_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetIdTipoAccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdTipoAccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetIdTipoAccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdTipoAccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllTipoAccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTipoAccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllTipoAccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTipoAccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetTelefonosEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelefonosEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetTelefonosEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelefonosEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetContactosEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactosEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetContactosEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContactosEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetTelefonosContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelefonosContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetTelefonosContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelefonosContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:addUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:editUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addAccionComercial_InputMessage">
+    <wsdl:part name="parameters" element="tns:addAccionComercial" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_addAccionComercial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addAccionComercialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteAccionComercial_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAccionComercial" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_deleteAccionComercial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAccionComercialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editAccionComercial_InputMessage">
+    <wsdl:part name="parameters" element="tns:editAccionComercial" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_editAccionComercial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editAccionComercialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllAccionesComerciales_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllAccionesComerciales" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllAccionesComerciales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllAccionesComercialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionComercial_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionComercial" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionComercial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionComercialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionesComercialesUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionesComercialesUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionesComercialesUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionesComercialesUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionesComercialesEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionesComercialesEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAccionesComercialesEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAccionesComercialesEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioGestion">
+    <wsdl:operation name="addEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addEmail" message="tns:IServicioGestion_addEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/addEmailResponse" message="tns:IServicioGestion_addEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllEmail" message="tns:IServicioGestion_getAllEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAllEmailResponse" message="tns:IServicioGestion_getAllEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmailId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmailId" message="tns:IServicioGestion_getEmailId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmailIdResponse" message="tns:IServicioGestion_getEmailId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmailCorreo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmailCorreo" message="tns:IServicioGestion_getEmailCorreo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmailCorreoResponse" message="tns:IServicioGestion_getEmailCorreo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/deleteEmail" message="tns:IServicioGestion_deleteEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/deleteEmailResponse" message="tns:IServicioGestion_deleteEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/editEmail" message="tns:IServicioGestion_editEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/editEmailResponse" message="tns:IServicioGestion_editEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addEmpresa" message="tns:IServicioGestion_addEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/addEmpresaResponse" message="tns:IServicioGestion_addEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllEmpresa" message="tns:IServicioGestion_getAllEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAllEmpresaResponse" message="tns:IServicioGestion_getAllEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaCif">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaCif" message="tns:IServicioGestion_getEmpresaCif_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaCifResponse" message="tns:IServicioGestion_getEmpresaCif_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaId" message="tns:IServicioGestion_getEmpresaId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaIdResponse" message="tns:IServicioGestion_getEmpresaId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaSector">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaSector" message="tns:IServicioGestion_getEmpresaSector_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmpresaSectorResponse" message="tns:IServicioGestion_getEmpresaSector_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/deleteEmpresa" message="tns:IServicioGestion_deleteEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/deleteEmpresaResponse" message="tns:IServicioGestion_deleteEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/editEmpresa" message="tns:IServicioGestion_editEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/editEmpresaResponse" message="tns:IServicioGestion_editEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMailEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getMailEmpresa" message="tns:IServicioGestion_getMailEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getMailEmpresaResponse" message="tns:IServicioGestion_getMailEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMailContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getMailContacto" message="tns:IServicioGestion_getMailContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getMailContactoResponse" message="tns:IServicioGestion_getMailContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/AddDireccion" message="tns:IServicioGestion_AddDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/AddDireccionResponse" message="tns:IServicioGestion_AddDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/DeleteDireccion" message="tns:IServicioGestion_DeleteDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/DeleteDireccionResponse" message="tns:IServicioGestion_DeleteDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/EditDireccion" message="tns:IServicioGestion_EditDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/EditDireccionResponse" message="tns:IServicioGestion_EditDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetDireccion" message="tns:IServicioGestion_GetDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetDireccionResponse" message="tns:IServicioGestion_GetDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSector">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetSector" message="tns:IServicioGestion_GetSector_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetSectorResponse" message="tns:IServicioGestion_GetSector_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstadoAccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccion" message="tns:IServicioGestion_GetEstadoAccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse" message="tns:IServicioGestion_GetEstadoAccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEstadoAccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion" message="tns:IServicioGestion_GetAllEstadoAccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse" message="tns:IServicioGestion_GetAllEstadoAccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetContacto" message="tns:IServicioGestion_GetContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetContactoResponse" message="tns:IServicioGestion_GetContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/DeleteContacto" message="tns:IServicioGestion_DeleteContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/DeleteContactoResponse" message="tns:IServicioGestion_DeleteContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/AddContacto" message="tns:IServicioGestion_AddContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/AddContactoResponse" message="tns:IServicioGestion_AddContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/EditContacto" message="tns:IServicioGestion_EditContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/EditContactoResponse" message="tns:IServicioGestion_EditContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirecionesEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getDirecionesEmpresa" message="tns:IServicioGestion_getDirecionesEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getDirecionesEmpresaResponse" message="tns:IServicioGestion_getDirecionesEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirecionesContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getDirecionesContacto" message="tns:IServicioGestion_getDirecionesContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getDirecionesContactoResponse" message="tns:IServicioGestion_getDirecionesContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumeroTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetNumeroTelefono" message="tns:IServicioGestion_GetNumeroTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetNumeroTelefonoResponse" message="tns:IServicioGestion_GetNumeroTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetIdTelefono" message="tns:IServicioGestion_GetIdTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetIdTelefonoResponse" message="tns:IServicioGestion_GetIdTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTelefonos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTelefonos" message="tns:IServicioGestion_GetAllTelefonos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTelefonosResponse" message="tns:IServicioGestion_GetAllTelefonos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/AddTelefono" message="tns:IServicioGestion_AddTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/AddTelefonoResponse" message="tns:IServicioGestion_AddTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/EditTelefono" message="tns:IServicioGestion_EditTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/EditTelefonoResponse" message="tns:IServicioGestion_EditTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTelefono">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/DeleteTelefono" message="tns:IServicioGestion_DeleteTelefono_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/DeleteTelefonoResponse" message="tns:IServicioGestion_DeleteTelefono_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdTipoAccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetIdTipoAccion" message="tns:IServicioGestion_GetIdTipoAccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetIdTipoAccionResponse" message="tns:IServicioGestion_GetIdTipoAccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTipoAccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTipoAccion" message="tns:IServicioGestion_GetAllTipoAccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTipoAccionResponse" message="tns:IServicioGestion_GetAllTipoAccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTelefonosEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa" message="tns:IServicioGestion_GetTelefonosEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresaResponse" message="tns:IServicioGestion_GetTelefonosEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactosEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetContactosEmpresa" message="tns:IServicioGestion_GetContactosEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetContactosEmpresaResponse" message="tns:IServicioGestion_GetContactosEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTelefonosContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosContacto" message="tns:IServicioGestion_GetTelefonosContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosContactoResponse" message="tns:IServicioGestion_GetTelefonosContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addUsuario" message="tns:IServicioGestion_addUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/addUsuarioResponse" message="tns:IServicioGestion_addUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/deleteUsuario" message="tns:IServicioGestion_deleteUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/deleteUsuarioResponse" message="tns:IServicioGestion_deleteUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/editUsuario" message="tns:IServicioGestion_editUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/editUsuarioResponse" message="tns:IServicioGestion_editUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllUsuarios" message="tns:IServicioGestion_getAllUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAllUsuariosResponse" message="tns:IServicioGestion_getAllUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getUsuario" message="tns:IServicioGestion_getUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getUsuarioResponse" message="tns:IServicioGestion_getUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addAccionComercial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addAccionComercial" message="tns:IServicioGestion_addAccionComercial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/addAccionComercialResponse" message="tns:IServicioGestion_addAccionComercial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccionComercial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/deleteAccionComercial" message="tns:IServicioGestion_deleteAccionComercial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/deleteAccionComercialResponse" message="tns:IServicioGestion_deleteAccionComercial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editAccionComercial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/editAccionComercial" message="tns:IServicioGestion_editAccionComercial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/editAccionComercialResponse" message="tns:IServicioGestion_editAccionComercial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAccionesComerciales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales" message="tns:IServicioGestion_getAllAccionesComerciales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse" message="tns:IServicioGestion_getAllAccionesComerciales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccionComercial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAccionComercial" message="tns:IServicioGestion_getAccionComercial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAccionComercialResponse" message="tns:IServicioGestion_getAccionComercial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccionesComercialesUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuarios" message="tns:IServicioGestion_getAccionesComercialesUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuariosResponse" message="tns:IServicioGestion_getAccionesComercialesUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccionesComercialesEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa" message="tns:IServicioGestion_getAccionesComercialesEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresaResponse" message="tns:IServicioGestion_getAccionesComercialesEmpresa_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioGestion" type="tns:IServicioGestion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addEmail">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/addEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmail">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAllEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailId">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmailId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailCorreo">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmailCorreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmail">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/deleteEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editEmail">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/editEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/addEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAllEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaCif">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmpresaCif" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaId">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmpresaId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmpresaSector">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmpresaSector" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/deleteEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/editEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMailEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getMailEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMailContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getMailContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDireccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/AddDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDireccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/DeleteDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditDireccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/EditDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSector">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetSector" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstadoAccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetEstadoAccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEstadoAccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/DeleteContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/AddContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/EditContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirecionesEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getDirecionesEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirecionesContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getDirecionesContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumeroTelefono">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetNumeroTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdTelefono">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetIdTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTelefonos">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetAllTelefonos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTelefono">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/AddTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditTelefono">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/EditTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTelefono">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/DeleteTelefono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdTipoAccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetIdTipoAccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTipoAccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetAllTipoAccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTelefonosEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactosEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetContactosEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTelefonosContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetTelefonosContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/addUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/deleteUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/editUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuarios">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAllUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAccionComercial">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/addAccionComercial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccionComercial">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/deleteAccionComercial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editAccionComercial">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/editAccionComercial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAccionesComerciales">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAllAccionesComerciales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccionComercial">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAccionComercial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccionesComercialesUsuarios">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccionesComercialesEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioGestion">
+    <wsdl:port name="BasicHttpBinding_IServicioGestion" binding="tns:BasicHttpBinding_IServicioGestion">
+      <soap:address location="http://localhost:2231/ServicioGestion.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
