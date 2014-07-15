@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GestionEmpresas.srvGestion {
+namespace ServicioGestionTest2.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -895,33 +895,190 @@ namespace GestionEmpresas.srvGestion {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccionComercialMostrarData", Namespace="http://schemas.datacontract.org/2004/07/ServicioGestion")]
+    [System.SerializableAttribute()]
+    public partial class AccionComercialMostrarData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string comentariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionEstadoAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionTipoAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime fechaHoraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreUsuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string comentarios {
+            get {
+                return this.comentariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.comentariosField, value) != true)) {
+                    this.comentariosField = value;
+                    this.RaisePropertyChanged("comentarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
+                    this.descripcionField = value;
+                    this.RaisePropertyChanged("descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcionEstadoAccion {
+            get {
+                return this.descripcionEstadoAccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionEstadoAccionField, value) != true)) {
+                    this.descripcionEstadoAccionField = value;
+                    this.RaisePropertyChanged("descripcionEstadoAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcionTipoAccion {
+            get {
+                return this.descripcionTipoAccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionTipoAccionField, value) != true)) {
+                    this.descripcionTipoAccionField = value;
+                    this.RaisePropertyChanged("descripcionTipoAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fechaHora {
+            get {
+                return this.fechaHoraField;
+            }
+            set {
+                if ((this.fechaHoraField.Equals(value) != true)) {
+                    this.fechaHoraField = value;
+                    this.RaisePropertyChanged("fechaHora");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAccion {
+            get {
+                return this.idAccionField;
+            }
+            set {
+                if ((this.idAccionField.Equals(value) != true)) {
+                    this.idAccionField = value;
+                    this.RaisePropertyChanged("idAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombreEmpresa {
+            get {
+                return this.nombreEmpresaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreEmpresaField, value) != true)) {
+                    this.nombreEmpresaField = value;
+                    this.RaisePropertyChanged("nombreEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombreUsuario {
+            get {
+                return this.nombreUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreUsuarioField, value) != true)) {
+                    this.nombreUsuarioField = value;
+                    this.RaisePropertyChanged("nombreUsuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="srvGestion.IServicioGestion")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServicioGestion")]
     public interface IServicioGestion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        bool addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        bool addEmail(string correo, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        System.Threading.Tasks.Task<bool> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<bool> addEmailAsync(string correo, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmail", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmailResponse")]
-        GestionEmpresas.srvGestion.EmailData[] getAllEmail();
+        ServicioGestionTest2.ServiceReference1.EmailData[] getAllEmail();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmail", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmailResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getAllEmailAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getAllEmailAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailId", ReplyAction="http://tempuri.org/IServicioGestion/getEmailIdResponse")]
-        GestionEmpresas.srvGestion.EmailData getEmailId(int id);
+        ServicioGestionTest2.ServiceReference1.EmailData getEmailId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailId", ReplyAction="http://tempuri.org/IServicioGestion/getEmailIdResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData> getEmailIdAsync(int id);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData> getEmailIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailCorreo", ReplyAction="http://tempuri.org/IServicioGestion/getEmailCorreoResponse")]
-        GestionEmpresas.srvGestion.EmailData getEmailCorreo(string correo);
+        ServicioGestionTest2.ServiceReference1.EmailData getEmailCorreo(string correo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailCorreo", ReplyAction="http://tempuri.org/IServicioGestion/getEmailCorreoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData> getEmailCorreoAsync(string correo);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData> getEmailCorreoAsync(string correo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteEmail", ReplyAction="http://tempuri.org/IServicioGestion/deleteEmailResponse")]
         bool deleteEmail(int idEmail);
@@ -942,28 +1099,28 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmpresaResponse")]
-        GestionEmpresas.srvGestion.EmpresaData[] getAllEmpresa();
+        ServicioGestionTest2.ServiceReference1.EmpresaData[] getAllEmpresa();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData[]> getAllEmpresaAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData[]> getAllEmpresaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaCif", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaCifResponse")]
-        GestionEmpresas.srvGestion.EmpresaData getEmpresaCif(string cif);
+        ServicioGestionTest2.ServiceReference1.EmpresaData getEmpresaCif(string cif);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaCif", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaCifResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> getEmpresaCifAsync(string cif);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData> getEmpresaCifAsync(string cif);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaId", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaIdResponse")]
-        GestionEmpresas.srvGestion.EmpresaData getEmpresaId(int id);
+        ServicioGestionTest2.ServiceReference1.EmpresaData getEmpresaId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaId", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaIdResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> getEmpresaIdAsync(int id);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData> getEmpresaIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaSector", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaSectorResponse")]
-        GestionEmpresas.srvGestion.EmpresaData[] getEmpresaSector(int idSector);
+        ServicioGestionTest2.ServiceReference1.EmpresaData[] getEmpresaSector(int idSector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmpresaSector", ReplyAction="http://tempuri.org/IServicioGestion/getEmpresaSectorResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData[]> getEmpresaSectorAsync(int idSector);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData[]> getEmpresaSectorAsync(int idSector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/deleteEmpresaResponse")]
         bool deleteEmpresa(int idEmpresa);
@@ -978,124 +1135,124 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> editEmpresaAsync(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getMailEmpresaResponse")]
-        GestionEmpresas.srvGestion.EmailData[] getMailEmpresa(int idEmpresa);
+        ServicioGestionTest2.ServiceReference1.EmailData[] getMailEmpresa(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getMailEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getMailEmpresaAsync(int idEmpresa);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getMailEmpresaAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getMailContactoResponse")]
-        GestionEmpresas.srvGestion.EmailData[] getMailContacto(int idContacto);
+        ServicioGestionTest2.ServiceReference1.EmailData[] getMailContacto(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getMailContactoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getMailContactoAsync(int idContacto);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getMailContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        bool AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        bool AddDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        System.Threading.Tasks.Task<bool> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<bool> AddDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        bool DeleteDireccion(GestionEmpresas.srvGestion.DireccionData street, int id);
+        bool DeleteDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        bool EditDireccion(GestionEmpresas.srvGestion.DireccionData street, int id);
+        bool EditDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        System.Threading.Tasks.Task<bool> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<bool> EditDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetDireccion", ReplyAction="http://tempuri.org/IServicioGestion/GetDireccionResponse")]
-        GestionEmpresas.srvGestion.DireccionData[] GetDireccion();
+        ServicioGestionTest2.ServiceReference1.DireccionData[] GetDireccion();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetDireccion", ReplyAction="http://tempuri.org/IServicioGestion/GetDireccionResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> GetDireccionAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> GetDireccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetSector", ReplyAction="http://tempuri.org/IServicioGestion/GetSectorResponse")]
-        GestionEmpresas.srvGestion.SectorData[] GetSector();
+        ServicioGestionTest2.ServiceReference1.SectorData[] GetSector();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetSector", ReplyAction="http://tempuri.org/IServicioGestion/GetSectorResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.SectorData[]> GetSectorAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.SectorData[]> GetSectorAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse")]
-        GestionEmpresas.srvGestion.EstadoAccion[] GetEstadoAccion();
+        ServicioGestionTest2.ServiceReference1.EstadoAccion[] GetEstadoAccion();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EstadoAccion[]> GetEstadoAccionAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EstadoAccion[]> GetEstadoAccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse")]
-        GestionEmpresas.srvGestion.EstadoAccion[] GetAllEstadoAccion();
+        ServicioGestionTest2.ServiceReference1.EstadoAccion[] GetAllEstadoAccion();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EstadoAccion[]> GetAllEstadoAccionAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EstadoAccion[]> GetAllEstadoAccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        GestionEmpresas.srvGestion.ContactoData[] GetContacto();
+        ServicioGestionTest2.ServiceReference1.ContactoData[] GetContacto();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> GetContactoAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.ContactoData[]> GetContactoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteContacto", ReplyAction="http://tempuri.org/IServicioGestion/DeleteContactoResponse")]
-        bool DeleteContacto(GestionEmpresas.srvGestion.ContactoData contacto, int id);
+        bool DeleteContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteContacto", ReplyAction="http://tempuri.org/IServicioGestion/DeleteContactoResponse")]
-        System.Threading.Tasks.Task<bool> DeleteContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto, int id);
+        System.Threading.Tasks.Task<bool> DeleteContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddContacto", ReplyAction="http://tempuri.org/IServicioGestion/AddContactoResponse")]
-        bool AddContacto(GestionEmpresas.srvGestion.ContactoData contacto);
+        bool AddContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddContacto", ReplyAction="http://tempuri.org/IServicioGestion/AddContactoResponse")]
-        System.Threading.Tasks.Task<bool> AddContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto);
+        System.Threading.Tasks.Task<bool> AddContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditContacto", ReplyAction="http://tempuri.org/IServicioGestion/EditContactoResponse")]
-        bool EditContacto(GestionEmpresas.srvGestion.ContactoData contacto, int id);
+        bool EditContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditContacto", ReplyAction="http://tempuri.org/IServicioGestion/EditContactoResponse")]
-        System.Threading.Tasks.Task<bool> EditContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto, int id);
+        System.Threading.Tasks.Task<bool> EditContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getDirecionesEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getDirecionesEmpresaResponse")]
-        GestionEmpresas.srvGestion.DireccionData[] getDirecionesEmpresa(int idEmpresa);
+        ServicioGestionTest2.ServiceReference1.DireccionData[] getDirecionesEmpresa(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getDirecionesEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getDirecionesEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> getDirecionesEmpresaAsync(int idEmpresa);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> getDirecionesEmpresaAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getDirecionesContacto", ReplyAction="http://tempuri.org/IServicioGestion/getDirecionesContactoResponse")]
-        GestionEmpresas.srvGestion.DireccionData[] getDirecionesContacto(int idContacto);
+        ServicioGestionTest2.ServiceReference1.DireccionData[] getDirecionesContacto(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getDirecionesContacto", ReplyAction="http://tempuri.org/IServicioGestion/getDirecionesContactoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> getDirecionesContactoAsync(int idContacto);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> getDirecionesContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNumeroTelefono", ReplyAction="http://tempuri.org/IServicioGestion/GetNumeroTelefonoResponse")]
-        GestionEmpresas.srvGestion.TelefonoData GetNumeroTelefono(string telefono);
+        ServicioGestionTest2.ServiceReference1.TelefonoData GetNumeroTelefono(string telefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNumeroTelefono", ReplyAction="http://tempuri.org/IServicioGestion/GetNumeroTelefonoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData> GetNumeroTelefonoAsync(string telefono);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData> GetNumeroTelefonoAsync(string telefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetIdTelefono", ReplyAction="http://tempuri.org/IServicioGestion/GetIdTelefonoResponse")]
-        GestionEmpresas.srvGestion.TelefonoData GetIdTelefono(int idTelefono);
+        ServicioGestionTest2.ServiceReference1.TelefonoData GetIdTelefono(int idTelefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetIdTelefono", ReplyAction="http://tempuri.org/IServicioGestion/GetIdTelefonoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData> GetIdTelefonoAsync(int idTelefono);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData> GetIdTelefonoAsync(int idTelefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllTelefonos", ReplyAction="http://tempuri.org/IServicioGestion/GetAllTelefonosResponse")]
-        GestionEmpresas.srvGestion.TelefonoData[] GetAllTelefonos();
+        ServicioGestionTest2.ServiceReference1.TelefonoData[] GetAllTelefonos();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllTelefonos", ReplyAction="http://tempuri.org/IServicioGestion/GetAllTelefonosResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetAllTelefonosAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetAllTelefonosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        bool AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        bool AddTelefono(ServicioGestionTest2.ServiceReference1.TelefonoData t, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<bool> AddTelefonoAsync(ServicioGestionTest2.ServiceReference1.TelefonoData t, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        bool EditTelefono(GestionEmpresas.srvGestion.TelefonoData t);
+        bool EditTelefono(ServicioGestionTest2.ServiceReference1.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t);
+        System.Threading.Tasks.Task<bool> EditTelefonoAsync(ServicioGestionTest2.ServiceReference1.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteTelefono", ReplyAction="http://tempuri.org/IServicioGestion/DeleteTelefonoResponse")]
         bool DeleteTelefono(int idTelefono);
@@ -1104,40 +1261,40 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> DeleteTelefonoAsync(int idTelefono);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetIdTipoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetIdTipoAccionResponse")]
-        GestionEmpresas.srvGestion.TipoDeAccionData GetIdTipoAccion(int idTipoAccion);
+        ServicioGestionTest2.ServiceReference1.TipoDeAccionData GetIdTipoAccion(int idTipoAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetIdTipoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetIdTipoAccionResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TipoDeAccionData> GetIdTipoAccionAsync(int idTipoAccion);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TipoDeAccionData> GetIdTipoAccionAsync(int idTipoAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllTipoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllTipoAccionResponse")]
-        GestionEmpresas.srvGestion.TipoDeAccionData[] GetAllTipoAccion();
+        ServicioGestionTest2.ServiceReference1.TipoDeAccionData[] GetAllTipoAccion();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllTipoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllTipoAccionResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TipoDeAccionData[]> GetAllTipoAccionAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TipoDeAccionData[]> GetAllTipoAccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosEmpresaResponse")]
-        GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosEmpresa(int idEmpresa);
+        ServicioGestionTest2.ServiceReference1.TelefonoData[] GetTelefonosEmpresa(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosEmpresaAsync(int idEmpresa);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetTelefonosEmpresaAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContactosEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetContactosEmpresaResponse")]
-        GestionEmpresas.srvGestion.ContactoData[] GetContactosEmpresa(int idEmpresa);
+        ServicioGestionTest2.ServiceReference1.ContactoData[] GetContactosEmpresa(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContactosEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetContactosEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> GetContactosEmpresaAsync(int idEmpresa);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.ContactoData[]> GetContactosEmpresaAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosContactoResponse")]
-        GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosContacto(int idContacto);
+        ServicioGestionTest2.ServiceReference1.TelefonoData[] GetTelefonosContacto(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosContactoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosContactoAsync(int idContacto);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetTelefonosContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addUsuario", ReplyAction="http://tempuri.org/IServicioGestion/addUsuarioResponse")]
-        bool addUsuario(GestionEmpresas.srvGestion.UsuarioData usuario);
+        bool addUsuario(ServicioGestionTest2.ServiceReference1.UsuarioData usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addUsuario", ReplyAction="http://tempuri.org/IServicioGestion/addUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> addUsuarioAsync(GestionEmpresas.srvGestion.UsuarioData usuario);
+        System.Threading.Tasks.Task<bool> addUsuarioAsync(ServicioGestionTest2.ServiceReference1.UsuarioData usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteUsuario", ReplyAction="http://tempuri.org/IServicioGestion/deleteUsuarioResponse")]
         bool deleteUsuario(int idUsuario);
@@ -1146,28 +1303,28 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> deleteUsuarioAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editUsuario", ReplyAction="http://tempuri.org/IServicioGestion/editUsuarioResponse")]
-        bool editUsuario(int idUsuario, GestionEmpresas.srvGestion.UsuarioData user);
+        bool editUsuario(int idUsuario, ServicioGestionTest2.ServiceReference1.UsuarioData user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editUsuario", ReplyAction="http://tempuri.org/IServicioGestion/editUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, GestionEmpresas.srvGestion.UsuarioData user);
+        System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, ServicioGestionTest2.ServiceReference1.UsuarioData user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/getAllUsuariosResponse")]
-        GestionEmpresas.srvGestion.UsuarioData[] getAllUsuarios();
+        ServicioGestionTest2.ServiceReference1.UsuarioData[] getAllUsuarios();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/getAllUsuariosResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData[]> getAllUsuariosAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.UsuarioData[]> getAllUsuariosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getUsuario", ReplyAction="http://tempuri.org/IServicioGestion/getUsuarioResponse")]
-        GestionEmpresas.srvGestion.UsuarioData getUsuario(int idUsuario);
+        ServicioGestionTest2.ServiceReference1.UsuarioData getUsuario(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getUsuario", ReplyAction="http://tempuri.org/IServicioGestion/getUsuarioResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData> getUsuarioAsync(int idUsuario);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.UsuarioData> getUsuarioAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/addAccionComercialResponse")]
-        bool addAccionComercial(GestionEmpresas.srvGestion.AccionComercialData accion);
+        bool addAccionComercial(ServicioGestionTest2.ServiceReference1.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/addAccionComercialResponse")]
-        System.Threading.Tasks.Task<bool> addAccionComercialAsync(GestionEmpresas.srvGestion.AccionComercialData accion);
+        System.Threading.Tasks.Task<bool> addAccionComercialAsync(ServicioGestionTest2.ServiceReference1.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/deleteAccionComercialResponse")]
         bool deleteAccionComercial(int idAccion);
@@ -1176,43 +1333,43 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> deleteAccionComercialAsync(int idAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        bool editAccionComercial(int idAccion, GestionEmpresas.srvGestion.AccionComercialData accion);
+        bool editAccionComercial(int idAccion, ServicioGestionTest2.ServiceReference1.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, GestionEmpresas.srvGestion.AccionComercialData accion);
+        System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, ServicioGestionTest2.ServiceReference1.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        GestionEmpresas.srvGestion.AccionComercialData[] getAllAccionesComerciales();
+        ServicioGestionTest2.ServiceReference1.AccionComercialMostrarData[] getAllAccionesComerciales();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAllAccionesComercialesAsync();
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialMostrarData[]> getAllAccionesComercialesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/getAccionComercialResponse")]
-        GestionEmpresas.srvGestion.AccionComercialData getAccionComercial(int idAccion);
+        ServicioGestionTest2.ServiceReference1.AccionComercialData getAccionComercial(int idAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/getAccionComercialResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData> getAccionComercialAsync(int idAccion);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData> getAccionComercialAsync(int idAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuariosResponse")]
-        GestionEmpresas.srvGestion.AccionComercialData[] getAccionesComercialesUsuarios(int idUsuario);
+        ServicioGestionTest2.ServiceReference1.AccionComercialData[] getAccionesComercialesUsuarios(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/getAccionesComercialesUsuariosResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAccionesComercialesUsuariosAsync(int idUsuario);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData[]> getAccionesComercialesUsuariosAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresaResponse")]
-        GestionEmpresas.srvGestion.AccionComercialData[] getAccionesComercialesEmpresa(int idEmpresa);
+        ServicioGestionTest2.ServiceReference1.AccionComercialData[] getAccionesComercialesEmpresa(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresaResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAccionesComercialesEmpresaAsync(int idEmpresa);
+        System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData[]> getAccionesComercialesEmpresaAsync(int idEmpresa);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServicioGestionChannel : GestionEmpresas.srvGestion.IServicioGestion, System.ServiceModel.IClientChannel {
+    public interface IServicioGestionChannel : ServicioGestionTest2.ServiceReference1.IServicioGestion, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicioGestionClient : System.ServiceModel.ClientBase<GestionEmpresas.srvGestion.IServicioGestion>, GestionEmpresas.srvGestion.IServicioGestion {
+    public partial class ServicioGestionClient : System.ServiceModel.ClientBase<ServicioGestionTest2.ServiceReference1.IServicioGestion>, ServicioGestionTest2.ServiceReference1.IServicioGestion {
         
         public ServicioGestionClient() {
         }
@@ -1233,35 +1390,35 @@ namespace GestionEmpresas.srvGestion {
                 base(binding, remoteAddress) {
         }
         
-        public bool addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public bool addEmail(string correo, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.addEmail(correo, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<bool> addEmailAsync(string correo, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.addEmailAsync(correo, empData, conData);
         }
         
-        public GestionEmpresas.srvGestion.EmailData[] getAllEmail() {
+        public ServicioGestionTest2.ServiceReference1.EmailData[] getAllEmail() {
             return base.Channel.getAllEmail();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getAllEmailAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getAllEmailAsync() {
             return base.Channel.getAllEmailAsync();
         }
         
-        public GestionEmpresas.srvGestion.EmailData getEmailId(int id) {
+        public ServicioGestionTest2.ServiceReference1.EmailData getEmailId(int id) {
             return base.Channel.getEmailId(id);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData> getEmailIdAsync(int id) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData> getEmailIdAsync(int id) {
             return base.Channel.getEmailIdAsync(id);
         }
         
-        public GestionEmpresas.srvGestion.EmailData getEmailCorreo(string correo) {
+        public ServicioGestionTest2.ServiceReference1.EmailData getEmailCorreo(string correo) {
             return base.Channel.getEmailCorreo(correo);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData> getEmailCorreoAsync(string correo) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData> getEmailCorreoAsync(string correo) {
             return base.Channel.getEmailCorreoAsync(correo);
         }
         
@@ -1289,35 +1446,35 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.addEmpresaAsync(cif, nombreComercial, razon, web, sector);
         }
         
-        public GestionEmpresas.srvGestion.EmpresaData[] getAllEmpresa() {
+        public ServicioGestionTest2.ServiceReference1.EmpresaData[] getAllEmpresa() {
             return base.Channel.getAllEmpresa();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData[]> getAllEmpresaAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData[]> getAllEmpresaAsync() {
             return base.Channel.getAllEmpresaAsync();
         }
         
-        public GestionEmpresas.srvGestion.EmpresaData getEmpresaCif(string cif) {
+        public ServicioGestionTest2.ServiceReference1.EmpresaData getEmpresaCif(string cif) {
             return base.Channel.getEmpresaCif(cif);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> getEmpresaCifAsync(string cif) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData> getEmpresaCifAsync(string cif) {
             return base.Channel.getEmpresaCifAsync(cif);
         }
         
-        public GestionEmpresas.srvGestion.EmpresaData getEmpresaId(int id) {
+        public ServicioGestionTest2.ServiceReference1.EmpresaData getEmpresaId(int id) {
             return base.Channel.getEmpresaId(id);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> getEmpresaIdAsync(int id) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData> getEmpresaIdAsync(int id) {
             return base.Channel.getEmpresaIdAsync(id);
         }
         
-        public GestionEmpresas.srvGestion.EmpresaData[] getEmpresaSector(int idSector) {
+        public ServicioGestionTest2.ServiceReference1.EmpresaData[] getEmpresaSector(int idSector) {
             return base.Channel.getEmpresaSector(idSector);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData[]> getEmpresaSectorAsync(int idSector) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmpresaData[]> getEmpresaSectorAsync(int idSector) {
             return base.Channel.getEmpresaSectorAsync(idSector);
         }
         
@@ -1337,163 +1494,163 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.editEmpresaAsync(idEmpresa, cif, nombreComercial, razon, web, sector);
         }
         
-        public GestionEmpresas.srvGestion.EmailData[] getMailEmpresa(int idEmpresa) {
+        public ServicioGestionTest2.ServiceReference1.EmailData[] getMailEmpresa(int idEmpresa) {
             return base.Channel.getMailEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getMailEmpresaAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getMailEmpresaAsync(int idEmpresa) {
             return base.Channel.getMailEmpresaAsync(idEmpresa);
         }
         
-        public GestionEmpresas.srvGestion.EmailData[] getMailContacto(int idContacto) {
+        public ServicioGestionTest2.ServiceReference1.EmailData[] getMailContacto(int idContacto) {
             return base.Channel.getMailContacto(idContacto);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getMailContactoAsync(int idContacto) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EmailData[]> getMailContactoAsync(int idContacto) {
             return base.Channel.getMailContactoAsync(idContacto);
         }
         
-        public bool AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public bool AddDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.AddDireccion(street, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<bool> AddDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.AddDireccionAsync(street, empData, conData);
         }
         
-        public bool DeleteDireccion(GestionEmpresas.srvGestion.DireccionData street, int id) {
+        public bool DeleteDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, int id) {
             return base.Channel.DeleteDireccion(street, id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id) {
+        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, int id) {
             return base.Channel.DeleteDireccionAsync(street, id);
         }
         
-        public bool EditDireccion(GestionEmpresas.srvGestion.DireccionData street, int id) {
+        public bool EditDireccion(ServicioGestionTest2.ServiceReference1.DireccionData street, int id) {
             return base.Channel.EditDireccion(street, id);
         }
         
-        public System.Threading.Tasks.Task<bool> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id) {
+        public System.Threading.Tasks.Task<bool> EditDireccionAsync(ServicioGestionTest2.ServiceReference1.DireccionData street, int id) {
             return base.Channel.EditDireccionAsync(street, id);
         }
         
-        public GestionEmpresas.srvGestion.DireccionData[] GetDireccion() {
+        public ServicioGestionTest2.ServiceReference1.DireccionData[] GetDireccion() {
             return base.Channel.GetDireccion();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> GetDireccionAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> GetDireccionAsync() {
             return base.Channel.GetDireccionAsync();
         }
         
-        public GestionEmpresas.srvGestion.SectorData[] GetSector() {
+        public ServicioGestionTest2.ServiceReference1.SectorData[] GetSector() {
             return base.Channel.GetSector();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.SectorData[]> GetSectorAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.SectorData[]> GetSectorAsync() {
             return base.Channel.GetSectorAsync();
         }
         
-        public GestionEmpresas.srvGestion.EstadoAccion[] GetEstadoAccion() {
+        public ServicioGestionTest2.ServiceReference1.EstadoAccion[] GetEstadoAccion() {
             return base.Channel.GetEstadoAccion();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EstadoAccion[]> GetEstadoAccionAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EstadoAccion[]> GetEstadoAccionAsync() {
             return base.Channel.GetEstadoAccionAsync();
         }
         
-        public GestionEmpresas.srvGestion.EstadoAccion[] GetAllEstadoAccion() {
+        public ServicioGestionTest2.ServiceReference1.EstadoAccion[] GetAllEstadoAccion() {
             return base.Channel.GetAllEstadoAccion();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EstadoAccion[]> GetAllEstadoAccionAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.EstadoAccion[]> GetAllEstadoAccionAsync() {
             return base.Channel.GetAllEstadoAccionAsync();
         }
         
-        public GestionEmpresas.srvGestion.ContactoData[] GetContacto() {
+        public ServicioGestionTest2.ServiceReference1.ContactoData[] GetContacto() {
             return base.Channel.GetContacto();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> GetContactoAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.ContactoData[]> GetContactoAsync() {
             return base.Channel.GetContactoAsync();
         }
         
-        public bool DeleteContacto(GestionEmpresas.srvGestion.ContactoData contacto, int id) {
+        public bool DeleteContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id) {
             return base.Channel.DeleteContacto(contacto, id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto, int id) {
+        public System.Threading.Tasks.Task<bool> DeleteContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id) {
             return base.Channel.DeleteContactoAsync(contacto, id);
         }
         
-        public bool AddContacto(GestionEmpresas.srvGestion.ContactoData contacto) {
+        public bool AddContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto) {
             return base.Channel.AddContacto(contacto);
         }
         
-        public System.Threading.Tasks.Task<bool> AddContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto) {
+        public System.Threading.Tasks.Task<bool> AddContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto) {
             return base.Channel.AddContactoAsync(contacto);
         }
         
-        public bool EditContacto(GestionEmpresas.srvGestion.ContactoData contacto, int id) {
+        public bool EditContacto(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id) {
             return base.Channel.EditContacto(contacto, id);
         }
         
-        public System.Threading.Tasks.Task<bool> EditContactoAsync(GestionEmpresas.srvGestion.ContactoData contacto, int id) {
+        public System.Threading.Tasks.Task<bool> EditContactoAsync(ServicioGestionTest2.ServiceReference1.ContactoData contacto, int id) {
             return base.Channel.EditContactoAsync(contacto, id);
         }
         
-        public GestionEmpresas.srvGestion.DireccionData[] getDirecionesEmpresa(int idEmpresa) {
+        public ServicioGestionTest2.ServiceReference1.DireccionData[] getDirecionesEmpresa(int idEmpresa) {
             return base.Channel.getDirecionesEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> getDirecionesEmpresaAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> getDirecionesEmpresaAsync(int idEmpresa) {
             return base.Channel.getDirecionesEmpresaAsync(idEmpresa);
         }
         
-        public GestionEmpresas.srvGestion.DireccionData[] getDirecionesContacto(int idContacto) {
+        public ServicioGestionTest2.ServiceReference1.DireccionData[] getDirecionesContacto(int idContacto) {
             return base.Channel.getDirecionesContacto(idContacto);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.DireccionData[]> getDirecionesContactoAsync(int idContacto) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.DireccionData[]> getDirecionesContactoAsync(int idContacto) {
             return base.Channel.getDirecionesContactoAsync(idContacto);
         }
         
-        public GestionEmpresas.srvGestion.TelefonoData GetNumeroTelefono(string telefono) {
+        public ServicioGestionTest2.ServiceReference1.TelefonoData GetNumeroTelefono(string telefono) {
             return base.Channel.GetNumeroTelefono(telefono);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData> GetNumeroTelefonoAsync(string telefono) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData> GetNumeroTelefonoAsync(string telefono) {
             return base.Channel.GetNumeroTelefonoAsync(telefono);
         }
         
-        public GestionEmpresas.srvGestion.TelefonoData GetIdTelefono(int idTelefono) {
+        public ServicioGestionTest2.ServiceReference1.TelefonoData GetIdTelefono(int idTelefono) {
             return base.Channel.GetIdTelefono(idTelefono);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData> GetIdTelefonoAsync(int idTelefono) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData> GetIdTelefonoAsync(int idTelefono) {
             return base.Channel.GetIdTelefonoAsync(idTelefono);
         }
         
-        public GestionEmpresas.srvGestion.TelefonoData[] GetAllTelefonos() {
+        public ServicioGestionTest2.ServiceReference1.TelefonoData[] GetAllTelefonos() {
             return base.Channel.GetAllTelefonos();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetAllTelefonosAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetAllTelefonosAsync() {
             return base.Channel.GetAllTelefonosAsync();
         }
         
-        public bool AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public bool AddTelefono(ServicioGestionTest2.ServiceReference1.TelefonoData t, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.AddTelefono(t, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<bool> AddTelefonoAsync(ServicioGestionTest2.ServiceReference1.TelefonoData t, ServicioGestionTest2.ServiceReference1.EmpresaData empData, ServicioGestionTest2.ServiceReference1.ContactoData conData) {
             return base.Channel.AddTelefonoAsync(t, empData, conData);
         }
         
-        public bool EditTelefono(GestionEmpresas.srvGestion.TelefonoData t) {
+        public bool EditTelefono(ServicioGestionTest2.ServiceReference1.TelefonoData t) {
             return base.Channel.EditTelefono(t);
         }
         
-        public System.Threading.Tasks.Task<bool> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t) {
+        public System.Threading.Tasks.Task<bool> EditTelefonoAsync(ServicioGestionTest2.ServiceReference1.TelefonoData t) {
             return base.Channel.EditTelefonoAsync(t);
         }
         
@@ -1505,51 +1662,51 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.DeleteTelefonoAsync(idTelefono);
         }
         
-        public GestionEmpresas.srvGestion.TipoDeAccionData GetIdTipoAccion(int idTipoAccion) {
+        public ServicioGestionTest2.ServiceReference1.TipoDeAccionData GetIdTipoAccion(int idTipoAccion) {
             return base.Channel.GetIdTipoAccion(idTipoAccion);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TipoDeAccionData> GetIdTipoAccionAsync(int idTipoAccion) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TipoDeAccionData> GetIdTipoAccionAsync(int idTipoAccion) {
             return base.Channel.GetIdTipoAccionAsync(idTipoAccion);
         }
         
-        public GestionEmpresas.srvGestion.TipoDeAccionData[] GetAllTipoAccion() {
+        public ServicioGestionTest2.ServiceReference1.TipoDeAccionData[] GetAllTipoAccion() {
             return base.Channel.GetAllTipoAccion();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TipoDeAccionData[]> GetAllTipoAccionAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TipoDeAccionData[]> GetAllTipoAccionAsync() {
             return base.Channel.GetAllTipoAccionAsync();
         }
         
-        public GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosEmpresa(int idEmpresa) {
+        public ServicioGestionTest2.ServiceReference1.TelefonoData[] GetTelefonosEmpresa(int idEmpresa) {
             return base.Channel.GetTelefonosEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosEmpresaAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetTelefonosEmpresaAsync(int idEmpresa) {
             return base.Channel.GetTelefonosEmpresaAsync(idEmpresa);
         }
         
-        public GestionEmpresas.srvGestion.ContactoData[] GetContactosEmpresa(int idEmpresa) {
+        public ServicioGestionTest2.ServiceReference1.ContactoData[] GetContactosEmpresa(int idEmpresa) {
             return base.Channel.GetContactosEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> GetContactosEmpresaAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.ContactoData[]> GetContactosEmpresaAsync(int idEmpresa) {
             return base.Channel.GetContactosEmpresaAsync(idEmpresa);
         }
         
-        public GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosContacto(int idContacto) {
+        public ServicioGestionTest2.ServiceReference1.TelefonoData[] GetTelefonosContacto(int idContacto) {
             return base.Channel.GetTelefonosContacto(idContacto);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosContactoAsync(int idContacto) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.TelefonoData[]> GetTelefonosContactoAsync(int idContacto) {
             return base.Channel.GetTelefonosContactoAsync(idContacto);
         }
         
-        public bool addUsuario(GestionEmpresas.srvGestion.UsuarioData usuario) {
+        public bool addUsuario(ServicioGestionTest2.ServiceReference1.UsuarioData usuario) {
             return base.Channel.addUsuario(usuario);
         }
         
-        public System.Threading.Tasks.Task<bool> addUsuarioAsync(GestionEmpresas.srvGestion.UsuarioData usuario) {
+        public System.Threading.Tasks.Task<bool> addUsuarioAsync(ServicioGestionTest2.ServiceReference1.UsuarioData usuario) {
             return base.Channel.addUsuarioAsync(usuario);
         }
         
@@ -1561,35 +1718,35 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.deleteUsuarioAsync(idUsuario);
         }
         
-        public bool editUsuario(int idUsuario, GestionEmpresas.srvGestion.UsuarioData user) {
+        public bool editUsuario(int idUsuario, ServicioGestionTest2.ServiceReference1.UsuarioData user) {
             return base.Channel.editUsuario(idUsuario, user);
         }
         
-        public System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, GestionEmpresas.srvGestion.UsuarioData user) {
+        public System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, ServicioGestionTest2.ServiceReference1.UsuarioData user) {
             return base.Channel.editUsuarioAsync(idUsuario, user);
         }
         
-        public GestionEmpresas.srvGestion.UsuarioData[] getAllUsuarios() {
+        public ServicioGestionTest2.ServiceReference1.UsuarioData[] getAllUsuarios() {
             return base.Channel.getAllUsuarios();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData[]> getAllUsuariosAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.UsuarioData[]> getAllUsuariosAsync() {
             return base.Channel.getAllUsuariosAsync();
         }
         
-        public GestionEmpresas.srvGestion.UsuarioData getUsuario(int idUsuario) {
+        public ServicioGestionTest2.ServiceReference1.UsuarioData getUsuario(int idUsuario) {
             return base.Channel.getUsuario(idUsuario);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData> getUsuarioAsync(int idUsuario) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.UsuarioData> getUsuarioAsync(int idUsuario) {
             return base.Channel.getUsuarioAsync(idUsuario);
         }
         
-        public bool addAccionComercial(GestionEmpresas.srvGestion.AccionComercialData accion) {
+        public bool addAccionComercial(ServicioGestionTest2.ServiceReference1.AccionComercialData accion) {
             return base.Channel.addAccionComercial(accion);
         }
         
-        public System.Threading.Tasks.Task<bool> addAccionComercialAsync(GestionEmpresas.srvGestion.AccionComercialData accion) {
+        public System.Threading.Tasks.Task<bool> addAccionComercialAsync(ServicioGestionTest2.ServiceReference1.AccionComercialData accion) {
             return base.Channel.addAccionComercialAsync(accion);
         }
         
@@ -1601,43 +1758,43 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.deleteAccionComercialAsync(idAccion);
         }
         
-        public bool editAccionComercial(int idAccion, GestionEmpresas.srvGestion.AccionComercialData accion) {
+        public bool editAccionComercial(int idAccion, ServicioGestionTest2.ServiceReference1.AccionComercialData accion) {
             return base.Channel.editAccionComercial(idAccion, accion);
         }
         
-        public System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, GestionEmpresas.srvGestion.AccionComercialData accion) {
+        public System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, ServicioGestionTest2.ServiceReference1.AccionComercialData accion) {
             return base.Channel.editAccionComercialAsync(idAccion, accion);
         }
         
-        public GestionEmpresas.srvGestion.AccionComercialData[] getAllAccionesComerciales() {
+        public ServicioGestionTest2.ServiceReference1.AccionComercialMostrarData[] getAllAccionesComerciales() {
             return base.Channel.getAllAccionesComerciales();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAllAccionesComercialesAsync() {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialMostrarData[]> getAllAccionesComercialesAsync() {
             return base.Channel.getAllAccionesComercialesAsync();
         }
         
-        public GestionEmpresas.srvGestion.AccionComercialData getAccionComercial(int idAccion) {
+        public ServicioGestionTest2.ServiceReference1.AccionComercialData getAccionComercial(int idAccion) {
             return base.Channel.getAccionComercial(idAccion);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData> getAccionComercialAsync(int idAccion) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData> getAccionComercialAsync(int idAccion) {
             return base.Channel.getAccionComercialAsync(idAccion);
         }
         
-        public GestionEmpresas.srvGestion.AccionComercialData[] getAccionesComercialesUsuarios(int idUsuario) {
+        public ServicioGestionTest2.ServiceReference1.AccionComercialData[] getAccionesComercialesUsuarios(int idUsuario) {
             return base.Channel.getAccionesComercialesUsuarios(idUsuario);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAccionesComercialesUsuariosAsync(int idUsuario) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData[]> getAccionesComercialesUsuariosAsync(int idUsuario) {
             return base.Channel.getAccionesComercialesUsuariosAsync(idUsuario);
         }
         
-        public GestionEmpresas.srvGestion.AccionComercialData[] getAccionesComercialesEmpresa(int idEmpresa) {
+        public ServicioGestionTest2.ServiceReference1.AccionComercialData[] getAccionesComercialesEmpresa(int idEmpresa) {
             return base.Channel.getAccionesComercialesEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAccionesComercialesEmpresaAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<ServicioGestionTest2.ServiceReference1.AccionComercialData[]> getAccionesComercialesEmpresaAsync(int idEmpresa) {
             return base.Channel.getAccionesComercialesEmpresaAsync(idEmpresa);
         }
     }
