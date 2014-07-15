@@ -67,36 +67,57 @@ namespace ServicioGestionTestSpace.ServiceReference1
         }*/
 
         [TestMethod]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\tablets\\Source\\Repos\\Company\\GestionEmpresas\\ServicioGestion", "/")]
-        [UrlToTest("http://localhost:2231/WebForm1.aspx")]
         public void AddTelefonoTest()
         {
+            int id;
+            int registros;
+            
             //addTelefono(null, null, null)
             TelefonoData telefono = null;
             EmpresaData empresa = null;
             ContactoData contacto = null;
-            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
+            registros = proxy.GetAllTelefonos().Length;
+            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
 
             //addTelefono(telefono, null, null)
             telefono = new TelefonoData() { numero = "numero de prueba 1" };
-            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
+            registros = proxy.GetAllTelefonos().Length;
+            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
 
             //addTelefono(null, empresa, null)
             telefono = null;
-            empresa = new EmpresaData() { cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = 1, web = "web1" };
-            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
+            empresa = new EmpresaData() { EmpresaID = 1, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
+            registros = proxy.GetAllTelefonos().Length;
+            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
 
             //addTelefono(null, null, contacto)
             telefono = null;
             empresa = null;
-            contacto = new ContactoData() { idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
-            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
+            contacto = new ContactoData() { idContacto = 2, idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
+            registros = proxy.GetAllTelefonos().Length;
+            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
 
             //addTelefono(telefono, null, contacto)
-            telefono = new TelefonoData() { numero = "numero de prueba 2" };
-            Assert.IsFalse(proxy.AddTelefono(telefono, empresa, contacto));
+            telefono = new TelefonoData() { numero = "prueba 1" };
+            registros = proxy.GetAllTelefonos().Length;
+            id = proxy.AddTelefono(telefono, empresa, contacto);
+            Assert.AreNotEqual(-1, id);
+            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+            proxy.DeleteTelefono(id);
 
+            //addTelefono(telefono, empresa, null)
+            telefono = new TelefonoData() { numero = "prueba 2" };
+            empresa = new EmpresaData() { EmpresaID = 1, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
+            contacto = null;
+            registros = proxy.GetAllTelefonos().Length;
+            id = proxy.AddTelefono(telefono, empresa, contacto);
+            Assert.AreNotEqual(-1, id);
+            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+            proxy.DeleteTelefono(id);
 
         }
 
@@ -215,13 +236,17 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void DeleteTelefonoTest()
         {
+            int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba1" }, new EmpresaData() { EmpresaID = 1 }, null);
+            int registros = proxy.GetAllTelefonos().Length;
+            Assert.IsTrue(proxy.DeleteTelefono(nuevo));
+            Assert.IsTrue(registros - 1 == proxy.GetAllTelefonos().Length);
 
         }
-
+        /*
         [TestMethod]
         public void DeleteEmailTest()
         {
@@ -337,13 +362,17 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void GetAllTelefonoTest()
         {
-
+            int registros = proxy.GetAllTelefonos().Length;
+            int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba" }, new EmpresaData() { EmpresaID = 1 }, null);
+            
+            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+            proxy.DeleteTelefono(nuevo);
         }
-
+        /*
         [TestMethod]
         public void GetAllEmailTest()
         {

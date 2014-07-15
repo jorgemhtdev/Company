@@ -1525,8 +1525,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
@@ -1547,14 +1546,15 @@ namespace ServicioGestion
         /// <param name="empData">Empresa a la que pertenece el teléfono a insertar.</param>
         /// <param name="conData">Contacto al que pertenece el teléfono a insertar.</param>
         /// <returns>True si se ha insertado.</returns>
-        public bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
+        public int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            if (t == null) return -1;
+            if (empData == null && conData == null) return -1;
+            if (empData != null && conData != null) return -1;
             
             try
             {
+                int id;
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     Telefono telefono = new Telefono()
@@ -1563,7 +1563,7 @@ namespace ServicioGestion
                         numero = t.numero,
                     };
 
-                    if (empData.EmpresaID != 0)
+                    if (empData != null)
                     {
                         var datos = from empresas in bd.Empresa
                                     where empresas.idEmpresa == empData.EmpresaID
@@ -1580,8 +1580,8 @@ namespace ServicioGestion
 
                     bd.Telefono.Add(telefono);
                     bd.SaveChanges();
+                    return telefono.idTelefono;
                 }
-                return true;
             }
             catch (SqlException ex)
             {
