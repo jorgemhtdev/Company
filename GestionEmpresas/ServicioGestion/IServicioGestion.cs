@@ -17,7 +17,7 @@ namespace ServicioGestion
        
         //Método que añade un email
         [OperationContract]
-        bool addEmail(string correo, EmpresaData empData, ContactoData conData);
+        int addEmail(string correo, EmpresaData empData, ContactoData conData);
 
         //Método que obtiene todos los emails
         [OperationContract]

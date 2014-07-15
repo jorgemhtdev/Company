@@ -13,7 +13,7 @@
   <xs:element name="addEmailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="addEmailResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="addEmailResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -669,7 +669,7 @@
   <xs:element name="getAllAccionesComercialesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllAccionesComercialesResult" nillable="true" type="q45:ArrayOfAccionComercialData" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllAccionesComercialesResult" nillable="true" type="q45:ArrayOfAccionComercialMostrarData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

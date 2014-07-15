@@ -34,11 +34,13 @@ namespace ServicioGestion
        /// <param name="empData"></param>
        /// <param name="conData"></param>
        /// <returns></returns>
-        public bool addEmail(string correo, EmpresaData empData, ContactoData conData)
+        public int addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
-            if (correo == "" || correo == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            int indice = -1;
+
+            if (correo == "" || correo == null || empData == null && conData == null) return -1;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return -1;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return -1;
 
             try
             {
@@ -53,6 +55,9 @@ namespace ServicioGestion
                                     where empresas.idEmpresa == empData.EmpresaID
                                     select empresas;
                         p.Empresa.Add(datos.First());
+
+                        
+                        
                     }
                     else
                     {
@@ -60,12 +65,18 @@ namespace ServicioGestion
                                     where contactos.idContacto == conData.idContacto
                                     select contactos;
                         p.Contacto.Add(datos.First());
+                        
+                     
                     }
 
                     db.Email.Add(p);
                     db.SaveChanges();
+
+                    indice = p.idEmail;
+
+                    return indice;
                 }
-                return true;
+                
                
             }
             catch (SqlException ex)
