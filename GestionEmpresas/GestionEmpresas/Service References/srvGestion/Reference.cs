@@ -35,7 +35,7 @@ namespace GestionEmpresas.srvGestion {
         private string razonSocialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int sectorField;
+        private string sectorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string webField;
@@ -103,12 +103,12 @@ namespace GestionEmpresas.srvGestion {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int sector {
+        public string sector {
             get {
                 return this.sectorField;
             }
             set {
-                if ((this.sectorField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.sectorField, value) != true)) {
                     this.sectorField = value;
                     this.RaisePropertyChanged("sector");
                 }
