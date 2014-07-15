@@ -21,7 +21,7 @@ namespace GestionEmpresas.Privada
             }
         }
 
-        protected void editMail(object sender, EventArgs e)
+        protected void addMail(object sender, EventArgs e)
         {
 
             if (this.IsPostBack)
