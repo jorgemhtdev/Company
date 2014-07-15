@@ -21,7 +21,7 @@ namespace GestionEmpresas.Privada
             }
         }
 
-        protected void editEmpresa(object sender, EventArgs e)
+        protected void editCompany(object sender, EventArgs e)
         {
 
             if (this.IsPostBack)
