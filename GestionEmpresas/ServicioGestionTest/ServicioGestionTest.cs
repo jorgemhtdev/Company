@@ -19,8 +19,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void AddUsuarioTest()
         {
-            UsuarioData[] usuario = proxy.getAllUsuarios();
+            UsuarioData usuario=new UsuarioData();
+            usuario.login="AddUsuario";
+            usuario.nombre="Usuario";
+            usuario.password = "111111";
 
+            UsuarioData[] usuarios = proxy.getAllUsuarios();
+
+            int idUsuario=proxy.addUsuario(usuario);
         }
 
         /*
@@ -167,7 +173,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             EmailData[] listaEmpAdd = proxy.getAllEmail();
             //Se comprueba la tabla intermedia
-            EmailData[] listaMailEmpresa =proxy.getMailEmpresa(lista[0].EmpresaID);
+            EmailData[] listaMailEmpresa =proxy.getEmailEmpresa(lista[0].EmpresaID);
 
             int numeroEmpAdd=listaEmpAdd.Length;
 
@@ -175,7 +181,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             email.Correo = "ejemplo@gmail.com";
             email.EmailID=proxy.addEmail(email.Correo, lista[0], contacto);
 
-            EmailData[] listaMailEmpresaAfter = proxy.getMailEmpresa(lista[0].EmpresaID);
+            EmailData[] listaMailEmpresaAfter = proxy.getEmailEmpresa(lista[0].EmpresaID);
             //Se comprueba que la tabla intermedia se rellena correctamente
             Assert.AreEqual(listaMailEmpresa.Length+1, listaMailEmpresaAfter.Length);
             //Compruebo el numero de elementos despues de insertar.
@@ -393,14 +399,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
            
             EmailData[] listaEmp = proxy.getAllEmail();
             //Obtengo los elementos de la tabla intermedia MailEmpresa
-            EmailData[] listaMailEmpresa = proxy.getMailEmpresa(lista[0].EmpresaID);
+            EmailData[] listaMailEmpresa = proxy.getEmailEmpresa(lista[0].EmpresaID);
             int numeroMailEmpresa=listaMailEmpresa.Length;
             //Se obtienen el numero de elementos antes de eliminar un registro
             int numeroEmp = listaEmp.Length;
             Assert.IsTrue(proxy.deleteEmail(email.EmailID));
 
             //Obtengo los elementos de la tabla intermedia MailEmpresa
-            EmailData[] listaMailEmpresaAfter = proxy.getMailEmpresa(lista[0].EmpresaID);
+            EmailData[] listaMailEmpresaAfter = proxy.getEmailEmpresa(lista[0].EmpresaID);
             int numeroMailEmpresaAfter = listaMailEmpresaAfter.Length;
 
             Assert.AreEqual(numeroMailEmpresa-1,numeroMailEmpresaAfter);
