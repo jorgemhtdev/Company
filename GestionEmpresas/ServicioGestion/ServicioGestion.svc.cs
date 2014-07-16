@@ -268,6 +268,8 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha editado correctamente el registro, False si no.</returns>
         public bool editEmail(int id, string correo)
         {
+            if (id == null) return false;
+            if (correo == null) return false;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -276,7 +278,8 @@ namespace ServicioGestion
                                   where co.idEmail == id
                                   select co;
 
-               
+
+                    if (consult.ToList().Count == 0) return false;
                         Email mailMod = consult.First();
 
                         mailMod.correo = correo;
