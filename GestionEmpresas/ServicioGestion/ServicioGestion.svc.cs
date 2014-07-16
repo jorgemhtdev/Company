@@ -2095,17 +2095,10 @@ namespace ServicioGestion
                                    where accion.idAccion == idAccion
                                    select accion;
 
-                    if (consulta.ToList().Count != 0)
-                    {
-                        AccionComercial a = consulta.First();
-                        db.AccionComercial.Remove(a);
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    AccionComercial a = consulta.First();
+                    db.AccionComercial.Remove(a);
+                    db.SaveChanges();
+                    return true;
                 }
             }
             catch (SqlException ex)
