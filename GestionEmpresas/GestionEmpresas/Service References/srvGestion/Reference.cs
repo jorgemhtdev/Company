@@ -1093,10 +1093,10 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> editEmailAsync(int idEmail, string correo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/addEmpresaResponse")]
-        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+        int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/addEmpresaResponse")]
-        System.Threading.Tasks.Task<bool> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector);
+        System.Threading.Tasks.Task<int> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmpresaResponse")]
         GestionEmpresas.srvGestion.EmpresaData[] getAllEmpresa();
@@ -1249,10 +1249,10 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<int> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        bool EditTelefono(GestionEmpresas.srvGestion.TelefonoData t);
+        int EditTelefono(GestionEmpresas.srvGestion.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t);
+        System.Threading.Tasks.Task<int> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteTelefono", ReplyAction="http://tempuri.org/IServicioGestion/DeleteTelefonoResponse")]
         bool DeleteTelefono(int idTelefono);
@@ -1438,11 +1438,11 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.editEmailAsync(idEmail, correo);
         }
         
-        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector) {
+        public int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector) {
             return base.Channel.addEmpresa(cif, nombreComercial, razon, web, sector);
         }
         
-        public System.Threading.Tasks.Task<bool> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector) {
+        public System.Threading.Tasks.Task<int> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector) {
             return base.Channel.addEmpresaAsync(cif, nombreComercial, razon, web, sector);
         }
         
@@ -1646,11 +1646,11 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.AddTelefonoAsync(t, empData, conData);
         }
         
-        public bool EditTelefono(GestionEmpresas.srvGestion.TelefonoData t) {
+        public int EditTelefono(GestionEmpresas.srvGestion.TelefonoData t) {
             return base.Channel.EditTelefono(t);
         }
         
-        public System.Threading.Tasks.Task<bool> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t) {
+        public System.Threading.Tasks.Task<int> EditTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t) {
             return base.Channel.EditTelefonoAsync(t);
         }
         

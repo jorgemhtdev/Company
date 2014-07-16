@@ -42,7 +42,7 @@ namespace ServicioGestion
         ////////////////////EMPRESA///////////////////////////////////
         //Método que añade una empresa
         [OperationContract]
-        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+        int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
 
         //Método que obtiene todos los registros de la tabla empresa
         [OperationContract]

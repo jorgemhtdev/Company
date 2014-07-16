@@ -52,10 +52,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> editEmailAsync(int idEmail, string correo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/addEmpresaResponse")]
-        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+        int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/addEmpresaResponse")]
-        System.Threading.Tasks.Task<bool> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector);
+        System.Threading.Tasks.Task<int> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmpresaResponse")]
         ServicioGestion.EmpresaData[] getAllEmpresa();
@@ -397,11 +397,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.editEmailAsync(idEmail, correo);
         }
         
-        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector) {
+        public int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector) {
             return base.Channel.addEmpresa(cif, nombreComercial, razon, web, sector);
         }
         
-        public System.Threading.Tasks.Task<bool> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector) {
+        public System.Threading.Tasks.Task<int> addEmpresaAsync(string cif, string nombreComercial, string razon, string web, int sector) {
             return base.Channel.addEmpresaAsync(cif, nombreComercial, razon, web, sector);
         }
         
