@@ -26,7 +26,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             UsuarioData[] usuarios = proxy.getAllUsuarios();
 
+            int numUsuarios=usuarios.Length;
+
             int idUsuario=proxy.addUsuario(usuario);
+
+            Assert.AreEqual(numUsuarios + 1, proxy.getAllUsuarios().Length);
+
+            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
+
         }
 
         
