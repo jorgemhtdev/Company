@@ -92,8 +92,8 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void AddSectorTest()
         {
 
-        }*/
-
+        }
+        */
         [TestMethod]
         public void AddTelefonoTest()
         {
@@ -409,7 +409,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             //Intento Eliminar un elemento con un identificador que no existe
             Assert.IsFalse(proxy.deleteEmail(435466));
-  
+
         }
 
         /*
@@ -438,19 +438,19 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
-        public void GetTipoAccionTest()
+        public void GetIdTipoAccionTest()
         {
-
+            Assert.IsTrue(proxy.GetIdTipoAccion(1).descripcion == "Venta");
+            Assert.IsTrue(proxy.GetIdTipoAccion(2).descripcion == "Compra");
         }
 
         public void GetEstadoAccionTest()
         {
-
+            Assert.IsTrue(proxy.GetEstadoAccion().Length >= 0);
         }
 
-         */
         [TestMethod]
         public void GetEmpresaTest()
         {
@@ -472,13 +472,12 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
         }
 
-        /*
         [TestMethod]
         public void GetSectorTest()
         {
-
+            Assert.IsTrue(proxy.GetSector().Length >= 0);
         }
-        */
+
         [TestMethod]
         public void GetTelefonoTest()
         {
@@ -547,19 +546,13 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void GetAllTipoAccionTest()
         {
-
+            Assert.IsTrue(proxy.GetAllTipoAccion().Length >= 0);
         }
 
-        public void GetAllEstadoAccionTest()
-        {
-
-        }
-
-         * */
         [TestMethod]
         public void GetAllEmpresaTest()
         {
@@ -578,7 +571,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
         }
 
-        /*
         [TestMethod]
         public void GetAllSectorTest()
         {
