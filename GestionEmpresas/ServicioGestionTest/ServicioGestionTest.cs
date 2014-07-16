@@ -371,13 +371,13 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void GetTipoAccionTest()
         {
 
         }
-
+        /*
         public void GetEstadoAccionTest()
         {
 
@@ -468,13 +468,13 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void GetAllTipoAccionTest()
         {
 
         }
-
+        /*
         public void GetAllEstadoAccionTest()
         {
 
