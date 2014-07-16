@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionEmpresas.srvGestion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +12,28 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+                try
+                {
+                    ServicioGestionClient proxy = new ServicioGestionClient();
 
+                    var sector = proxy.GetSector();
+
+                    this.sector.DataSource = sector;
+
+                    this.sector.DataTextField = "descripcion"; // Nombre que tiene nuestro DropDownList sector
+                    this.sector.DataValueField = "idSector"; // Valor que tiene nuestro DropDownList sector
+                
+                    this.sector.DataBind();
+
+                }catch{
+                    // this.lblError.Text = err.Message;
+                    // this.alert.Visible = true; 
+
+                    // O en sector del drownlist meter no hay datos disponibles y quitar los botones
+                }
             }
             else
             {
@@ -23,16 +43,19 @@ namespace GestionEmpresas.Privada
 
         protected void addEmpr(object sender, EventArgs e)
         {
+            ServicioGestionClient proxy = new ServicioGestionClient();
 
-            if (this.IsPostBack)
+            try
             {
-                this.Validate();
-                if (this.IsValid)
-                {
-                    Response.Redirect(".aspx");
-                }// Fin del if
-            }// Fin del if
-        }
+
+            }
+            catch (Exception err)
+            {
+                // this.lblError.Text = err.Message;
+                // this.alert.Visible = true;    
+            }
+            
+        }// Fin addEmpr
 
 
         protected void Volver(object sender, EventArgs e)
