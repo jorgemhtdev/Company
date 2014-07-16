@@ -23,11 +23,15 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
-        /*
+        
         [TestMethod]
         public void AddAccionComercialTest()
         {
 
+            AccionComercialData accion = new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime() };
+            int nueva = proxy.addAccionComercial(accion);
+            Assert.IsTrue(accion.descripcion == proxy.getAccionComercial(nueva).descripcion);
+            proxy.deleteAccionComercial(nueva);
         }
 
         /*[TestMethod]
@@ -225,13 +229,13 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void EditAccionComercialTest()
         {
 
         }
-
+        /*
         [TestMethod]
         public void EditTipoAccionTest()
         {

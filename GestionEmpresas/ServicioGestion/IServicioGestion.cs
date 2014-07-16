@@ -248,7 +248,7 @@ namespace ServicioGestion
         bool deleteAccionComercial(int idAccion);
 
         [OperationContract]
-        int editAccionComercial(int idAccion, AccionComercialData accion);
+        int editAccionComercial(AccionComercialData accion);
 
         [OperationContract]
         List<AccionComercialMostrarData> getAllAccionesComerciales();

@@ -93,17 +93,17 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/editEmpresaResponse")]
         System.Threading.Tasks.Task<bool> editEmpresaAsync(int idEmpresa, string cif, string nombreComercial, string razon, string web, int sector);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getMailEmpresaResponse")]
-        ServicioGestion.EmailData[] getMailEmpresa(int idEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getEmailEmpresaResponse")]
+        ServicioGestion.EmailData[] getEmailEmpresa(int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getMailEmpresaResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getMailEmpresaAsync(int idEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getEmailEmpresaResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getEmailEmpresaAsync(int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getMailContactoResponse")]
-        ServicioGestion.EmailData[] getMailContacto(int idContacto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getEmailContactoResponse")]
+        ServicioGestion.EmailData[] getEmailContacto(int idContacto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getMailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getMailContactoResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getMailContactoAsync(int idContacto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getEmailContacto", ReplyAction="http://tempuri.org/IServicioGestion/getEmailContactoResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getEmailContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
         bool AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
@@ -118,10 +118,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> DeleteDireccionAsync(ServicioGestion.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        bool EditDireccion(ServicioGestion.DireccionData street, int id);
+        int EditDireccion(ServicioGestion.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        System.Threading.Tasks.Task<bool> EditDireccionAsync(ServicioGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetDireccion", ReplyAction="http://tempuri.org/IServicioGestion/GetDireccionResponse")]
         ServicioGestion.DireccionData[] GetDireccion();
@@ -141,12 +141,6 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse")]
         System.Threading.Tasks.Task<ServicioGestion.EstadoAccion[]> GetEstadoAccionAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse")]
-        ServicioGestion.EstadoAccion[] GetAllEstadoAccion();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.EstadoAccion[]> GetAllEstadoAccionAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
         ServicioGestion.ContactoData[] GetContacto();
         
@@ -160,16 +154,16 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> DeleteContactoAsync(ServicioGestion.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddContacto", ReplyAction="http://tempuri.org/IServicioGestion/AddContactoResponse")]
-        bool AddContacto(ServicioGestion.ContactoData contacto);
+        int AddContacto(ServicioGestion.ContactoData contacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddContacto", ReplyAction="http://tempuri.org/IServicioGestion/AddContactoResponse")]
-        System.Threading.Tasks.Task<bool> AddContactoAsync(ServicioGestion.ContactoData contacto);
+        System.Threading.Tasks.Task<int> AddContactoAsync(ServicioGestion.ContactoData contacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditContacto", ReplyAction="http://tempuri.org/IServicioGestion/EditContactoResponse")]
-        bool EditContacto(ServicioGestion.ContactoData contacto, int id);
+        int EditContacto(ServicioGestion.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditContacto", ReplyAction="http://tempuri.org/IServicioGestion/EditContactoResponse")]
-        System.Threading.Tasks.Task<bool> EditContactoAsync(ServicioGestion.ContactoData contacto, int id);
+        System.Threading.Tasks.Task<int> EditContactoAsync(ServicioGestion.ContactoData contacto, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getDirecionesEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/getDirecionesEmpresaResponse")]
         ServicioGestion.DireccionData[] getDirecionesEmpresa(int idEmpresa);
@@ -250,10 +244,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<ServicioGestion.TelefonoData[]> GetTelefonosContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addUsuario", ReplyAction="http://tempuri.org/IServicioGestion/addUsuarioResponse")]
-        bool addUsuario(ServicioGestion.UsuarioData usuario);
+        int addUsuario(ServicioGestion.UsuarioData usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addUsuario", ReplyAction="http://tempuri.org/IServicioGestion/addUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> addUsuarioAsync(ServicioGestion.UsuarioData usuario);
+        System.Threading.Tasks.Task<int> addUsuarioAsync(ServicioGestion.UsuarioData usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteUsuario", ReplyAction="http://tempuri.org/IServicioGestion/deleteUsuarioResponse")]
         bool deleteUsuario(int idUsuario);
@@ -262,10 +256,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> deleteUsuarioAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editUsuario", ReplyAction="http://tempuri.org/IServicioGestion/editUsuarioResponse")]
-        bool editUsuario(int idUsuario, ServicioGestion.UsuarioData user);
+        int editUsuario(int idUsuario, ServicioGestion.UsuarioData user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editUsuario", ReplyAction="http://tempuri.org/IServicioGestion/editUsuarioResponse")]
-        System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, ServicioGestion.UsuarioData user);
+        System.Threading.Tasks.Task<int> editUsuarioAsync(int idUsuario, ServicioGestion.UsuarioData user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/getAllUsuariosResponse")]
         ServicioGestion.UsuarioData[] getAllUsuarios();
@@ -280,10 +274,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<ServicioGestion.UsuarioData> getUsuarioAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/addAccionComercialResponse")]
-        bool addAccionComercial(ServicioGestion.AccionComercialData accion);
+        int addAccionComercial(ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/addAccionComercialResponse")]
-        System.Threading.Tasks.Task<bool> addAccionComercialAsync(ServicioGestion.AccionComercialData accion);
+        System.Threading.Tasks.Task<int> addAccionComercialAsync(ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/deleteAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/deleteAccionComercialResponse")]
         bool deleteAccionComercial(int idAccion);
@@ -292,10 +286,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> deleteAccionComercialAsync(int idAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        bool editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion);
+        int editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion);
+        System.Threading.Tasks.Task<int> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
         ServicioGestion.AccionComercialMostrarData[] getAllAccionesComerciales();
@@ -453,20 +447,20 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.editEmpresaAsync(idEmpresa, cif, nombreComercial, razon, web, sector);
         }
         
-        public ServicioGestion.EmailData[] getMailEmpresa(int idEmpresa) {
-            return base.Channel.getMailEmpresa(idEmpresa);
+        public ServicioGestion.EmailData[] getEmailEmpresa(int idEmpresa) {
+            return base.Channel.getEmailEmpresa(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getMailEmpresaAsync(int idEmpresa) {
-            return base.Channel.getMailEmpresaAsync(idEmpresa);
+        public System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getEmailEmpresaAsync(int idEmpresa) {
+            return base.Channel.getEmailEmpresaAsync(idEmpresa);
         }
         
-        public ServicioGestion.EmailData[] getMailContacto(int idContacto) {
-            return base.Channel.getMailContacto(idContacto);
+        public ServicioGestion.EmailData[] getEmailContacto(int idContacto) {
+            return base.Channel.getEmailContacto(idContacto);
         }
         
-        public System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getMailContactoAsync(int idContacto) {
-            return base.Channel.getMailContactoAsync(idContacto);
+        public System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getEmailContactoAsync(int idContacto) {
+            return base.Channel.getEmailContactoAsync(idContacto);
         }
         
         public bool AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
@@ -485,11 +479,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.DeleteDireccionAsync(street, id);
         }
         
-        public bool EditDireccion(ServicioGestion.DireccionData street, int id) {
+        public int EditDireccion(ServicioGestion.DireccionData street, int id) {
             return base.Channel.EditDireccion(street, id);
         }
         
-        public System.Threading.Tasks.Task<bool> EditDireccionAsync(ServicioGestion.DireccionData street, int id) {
+        public System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street, int id) {
             return base.Channel.EditDireccionAsync(street, id);
         }
         
@@ -517,14 +511,6 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.GetEstadoAccionAsync();
         }
         
-        public ServicioGestion.EstadoAccion[] GetAllEstadoAccion() {
-            return base.Channel.GetAllEstadoAccion();
-        }
-        
-        public System.Threading.Tasks.Task<ServicioGestion.EstadoAccion[]> GetAllEstadoAccionAsync() {
-            return base.Channel.GetAllEstadoAccionAsync();
-        }
-        
         public ServicioGestion.ContactoData[] GetContacto() {
             return base.Channel.GetContacto();
         }
@@ -541,19 +527,19 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.DeleteContactoAsync(contacto, id);
         }
         
-        public bool AddContacto(ServicioGestion.ContactoData contacto) {
+        public int AddContacto(ServicioGestion.ContactoData contacto) {
             return base.Channel.AddContacto(contacto);
         }
         
-        public System.Threading.Tasks.Task<bool> AddContactoAsync(ServicioGestion.ContactoData contacto) {
+        public System.Threading.Tasks.Task<int> AddContactoAsync(ServicioGestion.ContactoData contacto) {
             return base.Channel.AddContactoAsync(contacto);
         }
         
-        public bool EditContacto(ServicioGestion.ContactoData contacto, int id) {
+        public int EditContacto(ServicioGestion.ContactoData contacto, int id) {
             return base.Channel.EditContacto(contacto, id);
         }
         
-        public System.Threading.Tasks.Task<bool> EditContactoAsync(ServicioGestion.ContactoData contacto, int id) {
+        public System.Threading.Tasks.Task<int> EditContactoAsync(ServicioGestion.ContactoData contacto, int id) {
             return base.Channel.EditContactoAsync(contacto, id);
         }
         
@@ -661,11 +647,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.GetTelefonosContactoAsync(idContacto);
         }
         
-        public bool addUsuario(ServicioGestion.UsuarioData usuario) {
+        public int addUsuario(ServicioGestion.UsuarioData usuario) {
             return base.Channel.addUsuario(usuario);
         }
         
-        public System.Threading.Tasks.Task<bool> addUsuarioAsync(ServicioGestion.UsuarioData usuario) {
+        public System.Threading.Tasks.Task<int> addUsuarioAsync(ServicioGestion.UsuarioData usuario) {
             return base.Channel.addUsuarioAsync(usuario);
         }
         
@@ -677,11 +663,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.deleteUsuarioAsync(idUsuario);
         }
         
-        public bool editUsuario(int idUsuario, ServicioGestion.UsuarioData user) {
+        public int editUsuario(int idUsuario, ServicioGestion.UsuarioData user) {
             return base.Channel.editUsuario(idUsuario, user);
         }
         
-        public System.Threading.Tasks.Task<bool> editUsuarioAsync(int idUsuario, ServicioGestion.UsuarioData user) {
+        public System.Threading.Tasks.Task<int> editUsuarioAsync(int idUsuario, ServicioGestion.UsuarioData user) {
             return base.Channel.editUsuarioAsync(idUsuario, user);
         }
         
@@ -701,11 +687,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.getUsuarioAsync(idUsuario);
         }
         
-        public bool addAccionComercial(ServicioGestion.AccionComercialData accion) {
+        public int addAccionComercial(ServicioGestion.AccionComercialData accion) {
             return base.Channel.addAccionComercial(accion);
         }
         
-        public System.Threading.Tasks.Task<bool> addAccionComercialAsync(ServicioGestion.AccionComercialData accion) {
+        public System.Threading.Tasks.Task<int> addAccionComercialAsync(ServicioGestion.AccionComercialData accion) {
             return base.Channel.addAccionComercialAsync(accion);
         }
         
@@ -717,11 +703,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.deleteAccionComercialAsync(idAccion);
         }
         
-        public bool editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion) {
+        public int editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion) {
             return base.Channel.editAccionComercial(idAccion, accion);
         }
         
-        public System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion) {
+        public System.Threading.Tasks.Task<int> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion) {
             return base.Channel.editAccionComercialAsync(idAccion, accion);
         }
         
