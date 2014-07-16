@@ -315,8 +315,10 @@ namespace ServicioGestion
         /// <param name="web">Página Web de la empresa a insertar</param>
         /// <param name="sector">Identificador de sector de la empresa a insertar</param>
         /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
-        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
+        public int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
         {
+            int indice = -1;
+            if (cif == "" || nombreComercial == "" || razon == "" || web == "" || sector == -1) return -1;
             try
             {
                 Empresa emp = new Empresa();
@@ -325,13 +327,22 @@ namespace ServicioGestion
                 emp.razonSocial = razon;
                 emp.web = web;
                 emp.idSector = sector;
-
+                
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
+                    var consult = from sect in db.Sector
+                                  where sect.idSector == sector
+                                  select sect;
+
+                    //si no existe el sector
+                    if (consult.ToList().Count==0) return -1;
+
                     db.Empresa.Add(emp);
                     db.SaveChanges();
+                    indice = emp.idEmpresa;
                 }
-                return true;
+
+                return indice;
             }
             catch (Exception ex)
             {

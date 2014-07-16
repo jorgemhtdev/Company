@@ -52,14 +52,42 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void AddEstadoAccionTest()
         {
 
-        }*
+        }
 
+        */
         [TestMethod]
         public void AddEmpresaTest()
         {
+            EmpresaData[] empresas= proxy.getAllEmpresa();
+            int numEmpresas=empresas.Length;
+
+            //Insertamos una empresa válida, se comprueba que dicho método devuelva un indice distinto de -1 (-1 = error. No insertado)
+            int idEmpresaNueva = proxy.addEmpresa("T7565466", "EmpresaTest nueva", "EmpresaTest nueva s.a.", "http://www.testNueva.es", 1);
+            Assert.AreNotEqual(-1, idEmpresaNueva);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas + 1, proxy.getAllEmpresa().Length);
+
+            proxy.deleteEmpresa(idEmpresaNueva);
+
+            //Se comprueba el numero de empresa. De estar como al principio, ya que se ha eliminado la empresa recién insertada.
+            Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
+           
+            //Insertamos una empresa no válida. Debe devolver -1.
+            int idEmpresaNueva2 = proxy.addEmpresa("", "", "EmpresaTest nueva s.a.", "http://www.testNueva.es", 1);
+            Assert.AreEqual(-1, idEmpresaNueva2);
+
+            //Insertamos una empresa no válida. Debe devolver -1.
+            int idEmpresaNueva3 = proxy.addEmpresa("", "", "EmpresaTest nueva s.a.", "http://www.testNueva.es", 1);
+            Assert.AreEqual(-1, idEmpresaNueva3);
+
+            //Insertamos una empresa no válida. Debe devolver -1. Introducimos un sector erróneo, que no exista.
+            int idEmpresaNueva4 = proxy.addEmpresa("A43656256", "Empresa No Valida", "EmpresaTest nueva No valida s.a.", "http://www.testNueva.es", 100);
+            Assert.AreEqual(-1, idEmpresaNueva4);
 
         }
 
+        /*
         [TestMethod]
         public void AddSectorTest()
         {
@@ -211,13 +239,30 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void EditEmpresaTest()
         {
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+            int numEmpresas = empresas.Length;
 
+            //Insertamos una empresa válida, se comprueba que dicho método devuelva un indice distinto de -1 (-1 = error. No insertado)
+            int idEmpresaNueva = proxy.addEmpresa("T69696969", "Empresa Editar", "Empresa Editar s.a.", "http://www.testEditar.es", 1);
+            Assert.AreNotEqual(-1, idEmpresaNueva);
+
+            //Se edita una empresa
+            Assert.IsTrue(proxy.editEmpresa(idEmpresaNueva, "A6969696", "Empresa editada", "EmpresaEditada", "http://www.testEditar.es", 2));
+
+            //Se busca la empresa recien modificada.
+            Assert.IsNotNull(proxy.getEmpresaCif("A6969696"));
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas + 1, proxy.getAllEmpresa().Length);
+
+            proxy.deleteEmpresa(idEmpresaNueva);
         }
 
+        /*
         [TestMethod]
         public void EditSectorTest()
         {
@@ -291,13 +336,26 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void DeleteEmpresaTest()
         {
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+            int numEmpresas = empresas.Length;
 
+            //Insertamos una empresa válida, se comprueba que dicho método devuelva un indice distinto de -1 (-1 = error. No insertado)
+            int idEmpresaNueva = proxy.addEmpresa("T69696969", "Empresa Eliminar test", "Empresa EliminarTest s.a.", "http://www.testEliminar.es", 1);
+            Assert.AreNotEqual(-1, idEmpresaNueva);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas + 1, proxy.getAllEmpresa().Length);
+
+            proxy.deleteEmpresa(idEmpresaNueva);
+
+            Assert.AreEqual(numEmpresas,proxy.getAllEmpresa().Length);
         }
 
+        /*
         [TestMethod]
         public void DeleteSectorTest()
         {
@@ -351,8 +409,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             //Intento Eliminar un elemento con un identificador que no existe
             Assert.IsFalse(proxy.deleteEmail(435466));
-
-            
+  
         }
 
         /*
@@ -393,12 +450,29 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+         */
         [TestMethod]
         public void GetEmpresaTest()
         {
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+            int numEmpresas = empresas.Length;
 
+            //Insertamos una empresa válida, se comprueba que dicho método devuelva un indice distinto de -1 (-1 = error. No insertado)
+            int idEmpresaNueva = proxy.addEmpresa("T9999999", "Empresa Get", "Empresa Get s.a.", "http://www.testGet.es", 1);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas + 1, proxy.getAllEmpresa().Length);
+
+            Assert.IsNotNull(proxy.getEmpresaCif("T9999999"));
+            Assert.IsNull(proxy.getEmpresaCif("sjkgfgkf"));
+
+            proxy.deleteEmpresa(idEmpresaNueva);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
         }
 
+        /*
         [TestMethod]
         public void GetSectorTest()
         {
@@ -485,12 +559,26 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+         * */
         [TestMethod]
         public void GetAllEmpresaTest()
         {
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+            int numEmpresas = empresas.Length;
 
+            //Insertamos una empresa válida, se comprueba que dicho método devuelva un indice distinto de -1 (-1 = error. No insertado)
+            int idEmpresaNueva = proxy.addEmpresa("T9999999", "Empresa Get", "Empresa Get s.a.", "http://www.testGet.es", 1);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas + 1, proxy.getAllEmpresa().Length);
+
+            proxy.deleteEmpresa(idEmpresaNueva);
+
+            //Se comprueba el numero de empresa. Debe aumentar en uno.
+            Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
         }
 
+        /*
         [TestMethod]
         public void GetAllSectorTest()
         {
