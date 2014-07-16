@@ -10,8 +10,6 @@ using System.Text;
 
 namespace ServicioGestion
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServicioGestion" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ServicioGestion.svc or ServicioGestion.svc.cs at the Solution Explorer and start debugging.
     public class ServicioGestion : IServicioGestion
     {
         /********************************************************************/
@@ -34,11 +32,13 @@ namespace ServicioGestion
        /// <param name="empData"></param>
        /// <param name="conData"></param>
        /// <returns></returns>
-        public bool addEmail(string correo, EmpresaData empData, ContactoData conData)
+        public int addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
-            if (correo == "" || correo == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            int indice = -1;
+
+            if (correo == "" || correo == null || empData == null && conData == null) return -1;
+            if (empData.EmpresaID == 0 && conData.idContacto == 0) return -1;
+            if (empData.EmpresaID != 0 && conData.idContacto != 0) return -1;
 
             try
             {
@@ -53,6 +53,9 @@ namespace ServicioGestion
                                     where empresas.idEmpresa == empData.EmpresaID
                                     select empresas;
                         p.Empresa.Add(datos.First());
+
+                        
+                        
                     }
                     else
                     {
@@ -60,12 +63,18 @@ namespace ServicioGestion
                                     where contactos.idContacto == conData.idContacto
                                     select contactos;
                         p.Contacto.Add(datos.First());
+                        
+                     
                     }
 
                     db.Email.Add(p);
                     db.SaveChanges();
+
+                    indice = p.idEmail;
+
+                    return indice;
                 }
-                return true;
+                
                
             }
             catch (SqlException ex)
@@ -225,6 +234,7 @@ namespace ServicioGestion
 
                     //si el objeto es nulo
                     if (idEmail == null) return false;
+                    if (consult.ToList().Count == 0) return false; //si no devuelve ningun resultado.
 
                     Email email = consult.First();
 
@@ -256,6 +266,8 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha editado correctamente el registro, False si no.</returns>
         public bool editEmail(int id, string correo)
         {
+            if (id == null) return false;
+            if (correo == null) return false;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -264,7 +276,8 @@ namespace ServicioGestion
                                   where co.idEmail == id
                                   select co;
 
-               
+
+                    if (consult.ToList().Count == 0) return false;
                         Email mailMod = consult.First();
 
                         mailMod.correo = correo;
@@ -300,8 +313,10 @@ namespace ServicioGestion
         /// <param name="web">Página Web de la empresa a insertar</param>
         /// <param name="sector">Identificador de sector de la empresa a insertar</param>
         /// <returns>Devuelve True, si se ha insertado correctamente. Devuelve False si no.</returns>
-        public bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
+        public int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
         {
+            int indice = -1;
+            if (cif == "" || nombreComercial == "" || razon == "" || web == "" || sector == -1) return -1;
             try
             {
                 Empresa emp = new Empresa();
@@ -310,13 +325,22 @@ namespace ServicioGestion
                 emp.razonSocial = razon;
                 emp.web = web;
                 emp.idSector = sector;
-
+                
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
+                    var consult = from sect in db.Sector
+                                  where sect.idSector == sector
+                                  select sect;
+
+                    //si no existe el sector
+                    if (consult.ToList().Count==0) return -1;
+
                     db.Empresa.Add(emp);
                     db.SaveChanges();
+                    indice = emp.idEmpresa;
                 }
-                return true;
+
+                return indice;
             }
             catch (Exception ex)
             {
@@ -604,7 +628,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="idEmpresa">Identificador de la empresa de la que queremos listar sus emails</param>
         /// <returns>Devuelve una lista de emails de una empresa en concreto.</returns>
-        public List<EmailData> getMailEmpresa(int idEmpresa)
+        public List<EmailData> getEmailEmpresa(int idEmpresa)
         {
             List<EmailData> list = new List<EmailData>();
             EmailData email;
@@ -650,7 +674,7 @@ namespace ServicioGestion
         /***************************************************************
        ******************************* EMAIL-CONTACTO********************
        ***************************************************************/
-        public List<EmailData> getMailContacto(int idContacto)
+        public List<EmailData> getEmailContacto(int idContacto)
         {
             List<EmailData> list = new List<EmailData>();
             EmailData mail;
@@ -787,13 +811,20 @@ namespace ServicioGestion
                         db.Direccion.Remove(calle); // Borra el objeto
                     }
                     db.SaveChanges(); // Se guarda los campios realizados
-
+                    return true;
                 }
-                return true;
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("No se puede acceder a la BD de datos." + ex.Message);
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
             }
         }// Fin del metodo DeleteDireccion
 
@@ -803,7 +834,7 @@ namespace ServicioGestion
         /// <param name="street"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool EditDireccion(DireccionData street, int id)
+        public int EditDireccion(DireccionData street, int id)
         {
             try
             {
@@ -822,7 +853,7 @@ namespace ServicioGestion
                     nueva.codPostal = street.codPostal;
 
                     bd.SaveChanges();
-                    return true;
+                    return nueva.idDireccion;
                 }
             }
             catch (SqlException ex)
@@ -860,20 +891,20 @@ namespace ServicioGestion
                                        codPostal = calle.codPostal
                                    };
                     lst = consulta.ToList();
-
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("Error en acceso a datos. " + ex.Message);
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
             }
         }// Fin del GetDireccion
 
@@ -904,19 +935,20 @@ namespace ServicioGestion
                                    };
                     lst = consulta.ToList();
 
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("Error en acceso a datos. " + ex.Message);
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
             }
         }// Fin del GetSector
 
@@ -947,20 +979,20 @@ namespace ServicioGestion
                                        descripcion = estadoAccion.descripcion,
                                    };
                     lst = consulta.ToList();
-
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("Error en acceso a datos. " + ex.Message);
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
             }
         }// Fin del GetSector
 
@@ -979,7 +1011,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="usuario"> Objeto usuario a añadir en la base de datos</param>
         /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
-        public bool addUsuario(UsuarioData usuario)
+        public int addUsuario(UsuarioData usuario)
         {
             try
             {
@@ -992,7 +1024,7 @@ namespace ServicioGestion
 
                     db.Usuario.Add(nuevo);
                     db.SaveChanges();
-                    return true;
+                    return nuevo.idUsuario;
                 }
             }
             catch (SqlException ex)
@@ -1023,17 +1055,10 @@ namespace ServicioGestion
                                    where usuario.idUsuario == idUsuario
                                    select usuario;
 
-                    if (consulta.ToList().Count != 0)
-                    {
-                        Usuario u = consulta.First();
-                        db.Usuario.Remove(u);
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    Usuario u = consulta.First();
+                    db.Usuario.Remove(u);
+                    db.SaveChanges();
+                    return true;
                 }
             }
             catch (SqlException ex)
@@ -1055,7 +1080,7 @@ namespace ServicioGestion
         /// <param name="id">Identificador del usuario a editar.</param>
         /// <param name="correo">Objeto usuario que contiene los datos a modificar</param>
         /// <returns>Devuelve true si se ha modificado el registro correctamente. False si no.</returns>
-        public bool editUsuario(int idUsuario, UsuarioData user)
+        public int editUsuario(int idUsuario, UsuarioData user)
         {
             try
             {
@@ -1065,20 +1090,13 @@ namespace ServicioGestion
                                    where usuario.idUsuario == idUsuario
                                    select usuario;
 
-                    if (consulta.ToList().Count != 0)
-                    {
-                        Usuario u = consulta.First();
-                        u.idUsuario = user.idUsuario;
-                        u.login = user.login;
-                        u.nombre = user.nombre;
-                        u.password = PasswordManager.getMD5(user.password);
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    Usuario u = consulta.First();
+                    u.idUsuario = user.idUsuario;
+                    u.login = user.login;
+                    u.nombre = user.nombre;
+                    u.password = PasswordManager.getMD5(user.password);
+                    db.SaveChanges();
+                    return u.idUsuario;
                 }
             }
             catch (SqlException ex)
@@ -1199,19 +1217,20 @@ namespace ServicioGestion
                                    };
                     lst = consulta.ToList();
 
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("Error en acceso a datos. " + ex.Message);
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
             }
         }// Fin del GetContacto
 
@@ -1221,7 +1240,6 @@ namespace ServicioGestion
         /// <returns></returns>
         public bool DeleteContacto(ContactoData contacto, int id)
         {
-            List<ContactoData> empresaBorrar = new List<ContactoData>();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -1235,13 +1253,20 @@ namespace ServicioGestion
                         db.Contacto.Remove(contact); // Borra el objeto
                     }
                     db.SaveChanges(); // Se guarda los campios realizados
-
+                    return true;
                 }
-                return true;
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
             }
             catch (Exception ex)
             {
-                throw new FaultException("No se puede acceder a la BD de datos." + ex.Message);
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
             }
         }// Fin del DeleteCon
 
@@ -1250,7 +1275,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="contacto"></param>
         /// <returns></returns>
-        public bool AddContacto(ContactoData contacto)
+        public int AddContacto(ContactoData contacto)
         {
             try
             {
@@ -1265,7 +1290,7 @@ namespace ServicioGestion
 
                     bd.Contacto.Add(nueva);
                     bd.SaveChanges();
-                    return true;
+                    return nueva.idContacto;
                 }
             }
             catch (SqlException ex)
@@ -1288,7 +1313,7 @@ namespace ServicioGestion
         /// <param name="contacto"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool EditContacto(ContactoData contacto, int id)
+        public int EditContacto(ContactoData contacto, int id)
         {
             try
             {
@@ -1306,7 +1331,7 @@ namespace ServicioGestion
                     nueva.nombre = contacto.nombre;
 
                     bd.SaveChanges();
-                    return true;
+                    return nueva.idContacto;
                 }
             }
             catch (SqlException ex)
@@ -1525,8 +1550,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
@@ -1547,14 +1571,15 @@ namespace ServicioGestion
         /// <param name="empData">Empresa a la que pertenece el teléfono a insertar.</param>
         /// <param name="conData">Contacto al que pertenece el teléfono a insertar.</param>
         /// <returns>True si se ha insertado.</returns>
-        public bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
+        public int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            if (t == null) return -1;
+            if (empData == null && conData == null) return -1;
+            if (empData != null && conData != null) return -1;
             
             try
             {
+                int id;
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     Telefono telefono = new Telefono()
@@ -1563,7 +1588,7 @@ namespace ServicioGestion
                         numero = t.numero,
                     };
 
-                    if (empData.EmpresaID != 0)
+                    if (empData != null)
                     {
                         var datos = from empresas in bd.Empresa
                                     where empresas.idEmpresa == empData.EmpresaID
@@ -1580,8 +1605,8 @@ namespace ServicioGestion
 
                     bd.Telefono.Add(telefono);
                     bd.SaveChanges();
+                    return telefono.idTelefono;
                 }
-                return true;
             }
             catch (SqlException ex)
             {
@@ -1600,9 +1625,9 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="t">El teléfono a editar.</param>
         /// <returns>True si se ha editado.</returns>
-        public bool EditTelefono(TelefonoData t)
+        public int EditTelefono(TelefonoData t)
         {
-            if (t == null) return false;
+            if (t == null) return -1;
 
             try
             {
@@ -1616,7 +1641,7 @@ namespace ServicioGestion
                     telefono.numero = t.numero;
 
                     bd.SaveChanges();
-                    return true;
+                    return telefono.idTelefono;
                 }
             }
             catch (SqlException ex)
@@ -1706,8 +1731,6 @@ namespace ServicioGestion
         {
             try
             {
-                List<TipoDeAccionData> t = new List<TipoDeAccionData>();
-
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     var datos = from tipos in bd.TipoDeAccion
@@ -1717,10 +1740,8 @@ namespace ServicioGestion
                                     idTipoAccion = tipos.idTipoAccion,
                                     descripcion = tipos.descripcion
                                 };
-                    t = datos.ToList();
+                    return datos.First();
                 }
-                if (t.Count == 0) return null;
-                else return t.First();
             }
             catch (SqlException ex)
             {
@@ -1758,8 +1779,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
@@ -1774,7 +1794,7 @@ namespace ServicioGestion
         }
 
 
-        /// <summary>
+        /*/// <summary>
         /// Devuelve un listado con todos los tipos de acciones existentes.
         /// </summary>
         /// <returns>El listado de acciones existentes.</returns>
@@ -1798,8 +1818,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
@@ -1811,7 +1830,7 @@ namespace ServicioGestion
                 FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
                 throw fault;
             }
-        }
+        }*/
 
 
         ///// <summary>
@@ -2027,7 +2046,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="accion"> Objeto usuario a añadir en la base de datos</param>
         /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
-        public bool addAccionComercial(AccionComercialData accion)
+        public int addAccionComercial(AccionComercialData accion)
         {
             try
             {
@@ -2044,7 +2063,7 @@ namespace ServicioGestion
 
                     db.AccionComercial.Add(nuevo);
                     db.SaveChanges();
-                    return true;
+                    return nuevo.idAccion;
                 }
             }
             catch (SqlException ex)
@@ -2107,7 +2126,7 @@ namespace ServicioGestion
         /// <param name="idAccion">Identificador de la accion comercial a editar.</param>
         /// <param name="action">Objeto accion que contiene los datos a modificar</param>
         /// <returns>Devuelve true si se ha modificado el registro correctamente. False si no.</returns>
-        public bool editAccionComercial(int idAccion, AccionComercialData accion)
+        public int editAccionComercial(int idAccion, AccionComercialData accion)
         {
             try
             {
@@ -2117,25 +2136,18 @@ namespace ServicioGestion
                                    where action.idAccion == idAccion
                                    select action;
 
-                    if (consulta.ToList().Count != 0)
-                    {
-                        AccionComercial a = consulta.First();
+                    AccionComercial a = consulta.First();
 
-                        a.descripcion = accion.descripcion;
-                        a.comentarios = accion.comentarios;
-                        a.fechaHora = accion.fechaHora;
-                        a.idUsuario = accion.idUsuario;
-                        a.idTipoAccion = accion.idTipoAccion;
-                        a.idEstadoAccion = accion.idEstadoAccion;
-                        a.idEmpresa = accion.idEmpresa;
+                    a.descripcion = accion.descripcion;
+                    a.comentarios = accion.comentarios;
+                    a.fechaHora = accion.fechaHora;
+                    a.idUsuario = accion.idUsuario;
+                    a.idTipoAccion = accion.idTipoAccion;
+                    a.idEstadoAccion = accion.idEstadoAccion;
+                    a.idEmpresa = accion.idEmpresa;
 
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    db.SaveChanges();
+                    return a.idAccion;
                 }
             }
             catch (SqlException ex)
