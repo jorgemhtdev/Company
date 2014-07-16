@@ -85,17 +85,17 @@
   <wsdl:message name="IServicioGestion_editEmpresa_OutputMessage">
     <wsdl:part name="parameters" element="tns:editEmpresaResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_getMailEmpresa_InputMessage">
-    <wsdl:part name="parameters" element="tns:getMailEmpresa" />
+  <wsdl:message name="IServicioGestion_getEmailEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailEmpresa" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_getMailEmpresa_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getMailEmpresaResponse" />
+  <wsdl:message name="IServicioGestion_getEmailEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailEmpresaResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_getMailContacto_InputMessage">
-    <wsdl:part name="parameters" element="tns:getMailContacto" />
+  <wsdl:message name="IServicioGestion_getEmailContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailContacto" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_getMailContacto_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getMailContactoResponse" />
+  <wsdl:message name="IServicioGestion_getEmailContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailContactoResponse" />
   </wsdl:message>
   <wsdl:message name="IServicioGestion_AddDireccion_InputMessage">
     <wsdl:part name="parameters" element="tns:AddDireccion" />
@@ -132,12 +132,6 @@
   </wsdl:message>
   <wsdl:message name="IServicioGestion_GetEstadoAccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEstadoAccionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServicioGestion_GetAllEstadoAccion_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllEstadoAccion" />
-  </wsdl:message>
-  <wsdl:message name="IServicioGestion_GetAllEstadoAccion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllEstadoAccionResponse" />
   </wsdl:message>
   <wsdl:message name="IServicioGestion_GetContacto_InputMessage">
     <wsdl:part name="parameters" element="tns:GetContacto" />
@@ -366,13 +360,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/editEmpresa" message="tns:IServicioGestion_editEmpresa_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/editEmpresaResponse" message="tns:IServicioGestion_editEmpresa_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getMailEmpresa">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getMailEmpresa" message="tns:IServicioGestion_getMailEmpresa_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getMailEmpresaResponse" message="tns:IServicioGestion_getMailEmpresa_OutputMessage" />
+    <wsdl:operation name="getEmailEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmailEmpresa" message="tns:IServicioGestion_getEmailEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmailEmpresaResponse" message="tns:IServicioGestion_getEmailEmpresa_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getMailContacto">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getMailContacto" message="tns:IServicioGestion_getMailContacto_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getMailContactoResponse" message="tns:IServicioGestion_getMailContacto_OutputMessage" />
+    <wsdl:operation name="getEmailContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getEmailContacto" message="tns:IServicioGestion_getEmailContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getEmailContactoResponse" message="tns:IServicioGestion_getEmailContacto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddDireccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/AddDireccion" message="tns:IServicioGestion_AddDireccion_InputMessage" />
@@ -397,10 +391,6 @@
     <wsdl:operation name="GetEstadoAccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccion" message="tns:IServicioGestion_GetEstadoAccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse" message="tns:IServicioGestion_GetEstadoAccion_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllEstadoAccion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccion" message="tns:IServicioGestion_GetAllEstadoAccion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllEstadoAccionResponse" message="tns:IServicioGestion_GetAllEstadoAccion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetContacto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetContacto" message="tns:IServicioGestion_GetContacto_InputMessage" />
@@ -638,8 +628,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getMailEmpresa">
-      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getMailEmpresa" style="document" />
+    <wsdl:operation name="getEmailEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmailEmpresa" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -647,8 +637,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getMailContacto">
-      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getMailContacto" style="document" />
+    <wsdl:operation name="getEmailContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getEmailContacto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -703,15 +693,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetEstadoAccion">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetEstadoAccion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllEstadoAccion">
-      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetAllEstadoAccion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

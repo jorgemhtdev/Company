@@ -17,7 +17,7 @@ namespace ServicioGestion
        
         //Método que añade un email
         [OperationContract]
-        bool addEmail(string correo, EmpresaData empData, ContactoData conData);
+        int addEmail(string correo, EmpresaData empData, ContactoData conData);
 
         //Método que obtiene todos los emails
         [OperationContract]
@@ -42,7 +42,7 @@ namespace ServicioGestion
         ////////////////////EMPRESA///////////////////////////////////
         //Método que añade una empresa
         [OperationContract]
-        bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+        int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
 
         //Método que obtiene todos los registros de la tabla empresa
         [OperationContract]
@@ -75,7 +75,7 @@ namespace ServicioGestion
 
         //Método que obtiene los emails de cada empresa
         [OperationContract]
-        List<EmailData> getMailEmpresa(int idEmpresa);
+        List<EmailData> getEmailEmpresa(int idEmpresa);
 
         ///////////////////FIN EMAIL-EMPRESA/////////////////////////////////
 
@@ -83,7 +83,7 @@ namespace ServicioGestion
 
         //Método que obtiene los emails de cada empresa
         [OperationContract]
-        List<EmailData> getMailContacto(int idContacto);
+        List<EmailData> getEmailContacto(int idContacto);
 
         ///////////////////FIN EMAIL-CONTACTO/////////////////////////////////
 
@@ -101,7 +101,7 @@ namespace ServicioGestion
         [OperationContract]
         bool DeleteDireccion(DireccionData street, int id);
         [OperationContract]
-        bool EditDireccion(DireccionData street, int id);
+        int EditDireccion(DireccionData street, int id);
         [OperationContract]
         List<DireccionData> GetDireccion();
 
@@ -121,9 +121,6 @@ namespace ServicioGestion
         [OperationContract]
         List<EstadoAccion> GetEstadoAccion();
 
-        [OperationContract]
-        List<EstadoAccion> GetAllEstadoAccion();
-
         /// Fin estado de accion
         /// 
         /// Contacto
@@ -135,10 +132,10 @@ namespace ServicioGestion
         bool DeleteContacto(ContactoData contacto, int id);
 
         [OperationContract]
-        bool AddContacto(ContactoData contacto);
+        int AddContacto(ContactoData contacto);
 
         [OperationContract]
-        bool EditContacto(ContactoData contacto, int id);
+        int EditContacto(ContactoData contacto, int id);
    
         
         /******************* METODOS MAS COOL *******************/
@@ -172,11 +169,11 @@ namespace ServicioGestion
 
         //Método que inserta un teléfono nuevo
         [OperationContract]
-        bool AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
+        int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
 
         //Método que edita un teléfono existente
         [OperationContract]
-        bool EditTelefono(TelefonoData t);
+        int EditTelefono(TelefonoData t);
 
         //Método que elimina un teléfono existente
         [OperationContract]
@@ -229,13 +226,13 @@ namespace ServicioGestion
         /***********************************************************************/
         // Usuario
         [OperationContract]
-        bool addUsuario(UsuarioData usuario);
+        int addUsuario(UsuarioData usuario);
 
         [OperationContract]
         bool deleteUsuario(int idUsuario);
 
         [OperationContract]
-        bool editUsuario(int idUsuario, UsuarioData user);
+        int editUsuario(int idUsuario, UsuarioData user);
 
         [OperationContract]
         List<UsuarioData> getAllUsuarios();
@@ -245,13 +242,13 @@ namespace ServicioGestion
         //Fin Usuario
 
         [OperationContract]
-        bool addAccionComercial(AccionComercialData accion);
+        int addAccionComercial(AccionComercialData accion);
 
         [OperationContract]
         bool deleteAccionComercial(int idAccion);
 
         [OperationContract]
-        bool editAccionComercial(int idAccion, AccionComercialData accion);
+        int editAccionComercial(int idAccion, AccionComercialData accion);
 
         [OperationContract]
         List<AccionComercialMostrarData> getAllAccionesComerciales();
