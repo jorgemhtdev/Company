@@ -1770,8 +1770,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
