@@ -2048,6 +2048,7 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
         public int addAccionComercial(AccionComercialData accion)
         {
+            if (accion == null) return -1;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -2094,17 +2095,10 @@ namespace ServicioGestion
                                    where accion.idAccion == idAccion
                                    select accion;
 
-                    if (consulta.ToList().Count != 0)
-                    {
-                        AccionComercial a = consulta.First();
-                        db.AccionComercial.Remove(a);
-                        db.SaveChanges();
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    AccionComercial a = consulta.First();
+                    db.AccionComercial.Remove(a);
+                    db.SaveChanges();
+                    return true;
                 }
             }
             catch (SqlException ex)
@@ -2126,14 +2120,15 @@ namespace ServicioGestion
         /// <param name="idAccion">Identificador de la accion comercial a editar.</param>
         /// <param name="action">Objeto accion que contiene los datos a modificar</param>
         /// <returns>Devuelve true si se ha modificado el registro correctamente. False si no.</returns>
-        public int editAccionComercial(int idAccion, AccionComercialData accion)
+        public int editAccionComercial(AccionComercialData accion)
         {
+            if (accion == null) return -1;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
                     var consulta = from action in db.AccionComercial
-                                   where action.idAccion == idAccion
+                                   where action.idAccion == accion.idAccion
                                    select action;
 
                     AccionComercial a = consulta.First();
