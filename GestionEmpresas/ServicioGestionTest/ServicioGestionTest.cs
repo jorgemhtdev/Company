@@ -223,13 +223,19 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void EditTelefonoTest()
         {
+            Assert.IsTrue(proxy.EditTelefono(null) == -1);
 
+            TelefonoData tOriginal = new TelefonoData() { numero = "prueba" };
+            int nuevo = proxy.AddTelefono(tOriginal, new EmpresaData() { EmpresaID = 1 }, null);
+            Assert.IsTrue(proxy.EditTelefono(new TelefonoData() { idTelefono = nuevo, numero = "cambiado" }) != -1);
+            Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == "cambiado");
+            proxy.DeleteTelefono(nuevo);
         }
-
+        /*
         [TestMethod]
         public void EditEmailTest()
         {
@@ -388,11 +394,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void GetTelefonoTest()
         {
-
+            TelefonoData t = new TelefonoData() { numero = "prueba" };
+            int nuevo = proxy.AddTelefono(t, new EmpresaData() { EmpresaID = 1 }, null);
+            Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == t.numero);
+            proxy.DeleteTelefono(nuevo);
         }
 
          */
@@ -430,7 +439,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsNull(proxy.getEmailId(456));
 
             /***************FIN MAIL**********************************************/
-            
+
         }
 
         /*
