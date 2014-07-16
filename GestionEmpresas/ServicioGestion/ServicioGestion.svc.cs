@@ -628,7 +628,7 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="idEmpresa">Identificador de la empresa de la que queremos listar sus emails</param>
         /// <returns>Devuelve una lista de emails de una empresa en concreto.</returns>
-        public List<EmailData> getMailEmpresa(int idEmpresa)
+        public List<EmailData> getEmailEmpresa(int idEmpresa)
         {
             List<EmailData> list = new List<EmailData>();
             EmailData email;
@@ -674,7 +674,7 @@ namespace ServicioGestion
         /***************************************************************
        ******************************* EMAIL-CONTACTO********************
        ***************************************************************/
-        public List<EmailData> getMailContacto(int idContacto)
+        public List<EmailData> getEmailContacto(int idContacto)
         {
             List<EmailData> list = new List<EmailData>();
             EmailData mail;
