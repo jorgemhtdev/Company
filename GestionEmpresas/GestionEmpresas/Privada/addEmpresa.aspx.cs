@@ -47,15 +47,7 @@ namespace GestionEmpresas.Privada
 
             try
             {
-                // bool addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
-                proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text,this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
-                if (res != -1) Response.Redirect("Default.aspx");
-                else
-                {
-                    /*this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                    this.alert.Visible = true;*/
 
-                }
             }
             catch (Exception err)
             {
