@@ -128,7 +128,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void AddEmailTest()
         {
-            /***************EMPRESA*************************************************/
+            
             EmpresaData emp=new EmpresaData();
             EmpresaData[] lista=proxy.getAllEmpresa();
             EmailData email = new EmailData();
@@ -171,7 +171,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             email.Correo = "ejemplo2@gmail.com";
             email.EmailID = proxy.addEmail(email.Correo,null,null);
             Assert.AreEqual(-1, email.EmailID);
-            /***************FIN EMPRESA**********************************************/
+           
         }
 
         /*
@@ -235,13 +235,26 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == "cambiado");
             proxy.DeleteTelefono(nuevo);
         }
-        /*
+        
         [TestMethod]
         public void EditEmailTest()
         {
+            EmpresaData emp = new EmpresaData();
+            EmpresaData[] lista = proxy.getAllEmpresa();
+            EmailData email = new EmailData();
+            ContactoData contacto = new ContactoData();
+
+            //Intento editar un correo que no existe en la base de datos
+            Assert.IsFalse(proxy.editEmail(0, ""));
+
+            //Añado un nuevo email
+            int nuevoEmail = proxy.addEmail("correoNuevoEdit@gmail.com", lista[0], contacto);
+            //Intento editar el email que se acaba de insertar.
+            Assert.IsTrue(proxy.editEmail(nuevoEmail, "emailModificado@gmail.com"));
+            proxy.deleteEmail(nuevoEmail);
 
         }
-
+        /*
         [TestMethod]
         public void EditDireccionTest()
         {
@@ -313,9 +326,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             ContactoData contacto = new ContactoData();
 
 
-            /***************EMAIL*************************************************/
-
-          
             //Añado un email de ejemplo
             email.Correo = "ejemploDelete@gmail.com";
             email.EmailID = proxy.addEmail(email.Correo, lista[0], contacto);
@@ -342,7 +352,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Intento Eliminar un elemento con un identificador que no existe
             Assert.IsFalse(proxy.deleteEmail(435466));
 
-            /***************FIN EMPRESA**********************************************/
+            
         }
 
         /*
@@ -404,7 +414,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             proxy.DeleteTelefono(nuevo);
         }
 
-         */
 
         /// <summary>
         /// Método que hace distintas pruebas sobre el método que devuelve un email.
@@ -421,9 +430,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             ContactoData contacto = new ContactoData();
 
 
-            /***************EMAIL*************************************************/
-
-
             //Añado un email de ejemplo
             email.Correo = "ejemploUnMail@gmail.com";
             email.EmailID = proxy.addEmail(email.Correo, lista[0], contacto);
@@ -438,7 +444,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsNull(proxy.getEmailCorreo("noExiste@gmail.com"));
             Assert.IsNull(proxy.getEmailId(456));
 
-            /***************FIN MAIL**********************************************/
 
         }
 
@@ -501,13 +506,23 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
             proxy.DeleteTelefono(nuevo);
         }
-        /*
+        
         [TestMethod]
         public void GetAllEmailTest()
         {
+            EmpresaData emp = new EmpresaData();
+            EmpresaData[] lista = proxy.getAllEmpresa();
+            EmailData email = new EmailData();
+            ContactoData contacto = new ContactoData();
 
+
+            int registros = proxy.getAllEmail().Length;
+            int nuevoEmail = proxy.addEmail("correoNuevoAllEmail@gmail.com", lista[0], contacto);
+
+            Assert.IsTrue(registros + 1 == proxy.getAllEmail().Length);
+            proxy.deleteEmail(nuevoEmail);
         }
-
+        /*
         [TestMethod]
         public void GetAllDireccionTest()
         {
