@@ -4,15 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Editar Mail</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="container-fluid">
         <div class="row">
-             <br /><br />
+            <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Añadir contacto <span class="glyphicon glyphicon-pencil"></span></h1></div>
+                <div class="panel-heading"> <h1> Editar Mail <span class="glyphicon glyphicon-pencil"></span></h1></div>
                     <div class="panel-body">
                        <br /><br />
                        <article class="col-md-12 col-md-offset-2"> 
