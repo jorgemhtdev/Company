@@ -53,7 +53,7 @@ namespace GestionEmpresas.Privada
                     this.gvTelefonos.DataSource = telefonos;
                     this.gvTelefonos.DataBind();
 
-                    var emails = proxy.getMailEmpresa(emp.EmpresaID);
+                    var emails = proxy.getEmailEmpresa(emp.EmpresaID);
                     this.gvEmails.DataSource = emails;
                     this.gvEmails.DataBind();
 
@@ -159,7 +159,7 @@ namespace GestionEmpresas.Privada
             ServicioGestionClient proxy = new ServicioGestionClient();
             var empresas = proxy.getAllEmpresa();
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var emails = proxy.getMailEmpresa(emp.EmpresaID);
+            var emails = proxy.getEmailEmpresa(emp.EmpresaID);
             EmailData em = emails[e.RowIndex];
             proxy.deleteEmail(em.EmailID);
             Response.Redirect("~/Privada/gestionEmpresas.aspx");
@@ -170,7 +170,7 @@ namespace GestionEmpresas.Privada
             ServicioGestionClient proxy = new ServicioGestionClient();
             var empresas = proxy.getAllEmpresa();
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var emails = proxy.getMailEmpresa(emp.EmpresaID);
+            var emails = proxy.getEmailEmpresa(emp.EmpresaID);
             EmailData em = emails[e.NewEditIndex];
             Response.Redirect("~/Privada/editEmail.aspx?email=" + em.EmailID);
         }
