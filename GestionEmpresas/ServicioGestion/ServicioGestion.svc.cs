@@ -875,15 +875,7 @@ namespace ServicioGestion
                                        codPostal = calle.codPostal
                                    };
                     lst = consulta.ToList();
-
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
             }
             catch (Exception ex)
@@ -919,14 +911,7 @@ namespace ServicioGestion
                                    };
                     lst = consulta.ToList();
 
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
             }
             catch (Exception ex)
@@ -962,15 +947,7 @@ namespace ServicioGestion
                                        descripcion = estadoAccion.descripcion,
                                    };
                     lst = consulta.ToList();
-
-                    if (lst.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return lst;
-                    }
+                    return lst;
                 }
             }
             catch (Exception ex)
@@ -1721,8 +1698,6 @@ namespace ServicioGestion
         {
             try
             {
-                List<TipoDeAccionData> t = new List<TipoDeAccionData>();
-
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     var datos = from tipos in bd.TipoDeAccion
@@ -1732,10 +1707,8 @@ namespace ServicioGestion
                                     idTipoAccion = tipos.idTipoAccion,
                                     descripcion = tipos.descripcion
                                 };
-                    t = datos.ToList();
+                    return datos.First();
                 }
-                if (t.Count == 0) return null;
-                else return t.First();
             }
             catch (SqlException ex)
             {
@@ -1788,7 +1761,7 @@ namespace ServicioGestion
         }
 
 
-        /// <summary>
+        /*/// <summary>
         /// Devuelve un listado con todos los tipos de acciones existentes.
         /// </summary>
         /// <returns>El listado de acciones existentes.</returns>
@@ -1812,8 +1785,7 @@ namespace ServicioGestion
                         listado.Add(tdata);
                     }
                 }
-                if (listado.Count == 0) return null;
-                else return listado;
+                return listado;
             }
             catch (SqlException ex)
             {
@@ -1825,7 +1797,7 @@ namespace ServicioGestion
                 FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
                 throw fault;
             }
-        }
+        }*/
 
 
         ///// <summary>
