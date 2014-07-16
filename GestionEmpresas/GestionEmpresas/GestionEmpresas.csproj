@@ -92,6 +92,9 @@
     <Content Include="Service References\srvGestion\GestionEmpresas.srvGestion.UsuarioData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\srvGestion\GestionEmpresas.srvGestion.AccionComercialMostrarData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\srvGestion\ServicioGestion.wsdl" />
     <None Include="Service References\srvGestion\ServicioGestion.xsd">
       <SubType>Designer</SubType>

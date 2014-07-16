@@ -123,20 +123,30 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         /// <summary>
         /// Método que hace pruebas sobre el método de addEmail.
+        /// También se comprueban las tablas intermedias. EmailContacto e EmailEmpresa
         /// </summary>
         [TestMethod]
         public void AddEmailTest()
         {
+            /***************EMPRESA*************************************************/
             EmpresaData emp=new EmpresaData();
             EmpresaData[] lista=proxy.getAllEmpresa();
             EmailData email = new EmailData();
             ContactoData contacto = new ContactoData();
 
             EmailData[] listaEmpAdd = proxy.getAllEmail();
+            //Se comprueba la tabla intermedia
+            EmailData[] listaMailEmpresa =proxy.getMailEmpresa(lista[0].EmpresaID);
+
             int numeroEmpAdd=listaEmpAdd.Length;
+
             //Añado un email de ejemplo
             email.Correo = "ejemplo@gmail.com";
             email.EmailID=proxy.addEmail(email.Correo, lista[0], contacto);
+
+            EmailData[] listaMailEmpresaAfter = proxy.getMailEmpresa(lista[0].EmpresaID);
+            //Se comprueba que la tabla intermedia se rellena correctamente
+            Assert.AreEqual(listaMailEmpresa.Length+1, listaMailEmpresaAfter.Length);
             //Compruebo el numero de elementos despues de insertar.
             listaEmpAdd = proxy.getAllEmail();
             int numeroEmpAddAfter = listaEmpAdd.Length;
@@ -161,7 +171,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             email.Correo = "ejemplo2@gmail.com";
             email.EmailID = proxy.addEmail(email.Correo,null,null);
             Assert.AreEqual(-1, email.EmailID);
-
+            /***************FIN EMPRESA**********************************************/
         }
 
         /*
@@ -284,13 +294,52 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(registros - 1 == proxy.GetAllTelefonos().Length);
 
         }
-        /*
+        
+        /// <summary>
+        /// Método que comprueba si se elimina correctamente un email de la base de datos.
+        /// </summary>
         [TestMethod]
         public void DeleteEmailTest()
         {
+            EmpresaData emp = new EmpresaData();
+            EmpresaData[] lista = proxy.getAllEmpresa();
+            EmailData email = new EmailData();
+            ContactoData contacto = new ContactoData();
 
+
+            /***************EMAIL*************************************************/
+
+          
+            //Añado un email de ejemplo
+            email.Correo = "ejemploDelete@gmail.com";
+            email.EmailID = proxy.addEmail(email.Correo, lista[0], contacto);
+           
+            EmailData[] listaEmp = proxy.getAllEmail();
+            //Obtengo los elementos de la tabla intermedia MailEmpresa
+            EmailData[] listaMailEmpresa = proxy.getMailEmpresa(lista[0].EmpresaID);
+            int numeroMailEmpresa=listaMailEmpresa.Length;
+            //Se obtienen el numero de elementos antes de eliminar un registro
+            int numeroEmp = listaEmp.Length;
+            Assert.IsTrue(proxy.deleteEmail(email.EmailID));
+
+            //Obtengo los elementos de la tabla intermedia MailEmpresa
+            EmailData[] listaMailEmpresaAfter = proxy.getMailEmpresa(lista[0].EmpresaID);
+            int numeroMailEmpresaAfter = listaMailEmpresaAfter.Length;
+
+            Assert.AreEqual(numeroMailEmpresa-1,numeroMailEmpresaAfter);
+            //Se obtiene el numero de elementos despues de eliminar un registro
+            listaEmp = proxy.getAllEmail();
+            int numeroEmpDelete = listaEmp.Length;
+            //Se comprueba que haya un elemento menos después de eliminar.
+            Assert.AreEqual(numeroEmp - 1, numeroEmpDelete);
+
+            //Intento Eliminar un elemento con un identificador que no existe
+            Assert.IsFalse(proxy.deleteEmail(435466));
+
+            /***************FIN EMPRESA**********************************************/
         }
 
+        /*
         [TestMethod]
         public void DeleteDireccionTest()
         {
@@ -346,12 +395,45 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+         */
+
+        /// <summary>
+        /// Método que hace distintas pruebas sobre el método que devuelve un email.
+        /// Se prueban los dos métodos existentes:
+        /// - getEmailId()- Devuelve un email pasándole por parámetro su identificador.
+        /// - getEmailCorreo()- Devuelve un email pasándole por parámetro un correo electrónico.
+        /// </summary>
         [TestMethod]
         public void GetEmailTest()
         {
+            EmpresaData emp = new EmpresaData();
+            EmpresaData[] lista = proxy.getAllEmpresa();
+            EmailData email = new EmailData();
+            ContactoData contacto = new ContactoData();
 
+
+            /***************EMAIL*************************************************/
+
+
+            //Añado un email de ejemplo
+            email.Correo = "ejemploUnMail@gmail.com";
+            email.EmailID = proxy.addEmail(email.Correo, lista[0], contacto);
+
+            //Se busca un email que se acaba de insertar en la bd
+            Assert.IsNotNull(proxy.getEmailCorreo("ejemploUnMail@gmail.com"));
+            Assert.IsNotNull(proxy.getEmailId(email.EmailID));
+
+            Assert.IsTrue(proxy.deleteEmail(email.EmailID));
+
+            //Ahora busco un email que se que no existe 
+            Assert.IsNull(proxy.getEmailCorreo("noExiste@gmail.com"));
+            Assert.IsNull(proxy.getEmailId(456));
+
+            /***************FIN MAIL**********************************************/
+            
         }
 
+        /*
         [TestMethod]
         public void GetDireccionTest()
         {

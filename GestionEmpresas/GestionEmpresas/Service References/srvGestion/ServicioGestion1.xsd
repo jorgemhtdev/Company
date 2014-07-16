@@ -141,6 +141,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AccionComercialData" nillable="true" type="tns:AccionComercialData" />
+  <xs:complexType name="ArrayOfAccionComercialMostrarData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccionComercialMostrarData" nillable="true" type="tns:AccionComercialMostrarData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccionComercialMostrarData" nillable="true" type="tns:ArrayOfAccionComercialMostrarData" />
+  <xs:complexType name="AccionComercialMostrarData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comentarios" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcionEstadoAccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcionTipoAccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idAccion" type="xs:int" />
+      <xs:element minOccurs="0" name="nombreEmpresa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreUsuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccionComercialMostrarData" nillable="true" type="tns:AccionComercialMostrarData" />
   <xs:complexType name="ArrayOfAccionComercialData">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AccionComercialData" nillable="true" type="tns:AccionComercialData" />

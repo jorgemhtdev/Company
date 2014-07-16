@@ -236,6 +236,7 @@ namespace ServicioGestion
 
                     //si el objeto es nulo
                     if (idEmail == null) return false;
+                    if (consult.ToList().Count == 0) return false; //si no devuelve ningun resultado.
 
                     Email email = consult.First();
 

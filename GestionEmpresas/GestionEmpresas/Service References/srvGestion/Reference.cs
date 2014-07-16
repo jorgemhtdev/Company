@@ -895,15 +895,172 @@ namespace GestionEmpresas.srvGestion {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccionComercialMostrarData", Namespace="http://schemas.datacontract.org/2004/07/ServicioGestion")]
+    [System.SerializableAttribute()]
+    public partial class AccionComercialMostrarData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string comentariosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionEstadoAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionTipoAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime fechaHoraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreUsuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string comentarios {
+            get {
+                return this.comentariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.comentariosField, value) != true)) {
+                    this.comentariosField = value;
+                    this.RaisePropertyChanged("comentarios");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
+                    this.descripcionField = value;
+                    this.RaisePropertyChanged("descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcionEstadoAccion {
+            get {
+                return this.descripcionEstadoAccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionEstadoAccionField, value) != true)) {
+                    this.descripcionEstadoAccionField = value;
+                    this.RaisePropertyChanged("descripcionEstadoAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcionTipoAccion {
+            get {
+                return this.descripcionTipoAccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionTipoAccionField, value) != true)) {
+                    this.descripcionTipoAccionField = value;
+                    this.RaisePropertyChanged("descripcionTipoAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fechaHora {
+            get {
+                return this.fechaHoraField;
+            }
+            set {
+                if ((this.fechaHoraField.Equals(value) != true)) {
+                    this.fechaHoraField = value;
+                    this.RaisePropertyChanged("fechaHora");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAccion {
+            get {
+                return this.idAccionField;
+            }
+            set {
+                if ((this.idAccionField.Equals(value) != true)) {
+                    this.idAccionField = value;
+                    this.RaisePropertyChanged("idAccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombreEmpresa {
+            get {
+                return this.nombreEmpresaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreEmpresaField, value) != true)) {
+                    this.nombreEmpresaField = value;
+                    this.RaisePropertyChanged("nombreEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombreUsuario {
+            get {
+                return this.nombreUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreUsuarioField, value) != true)) {
+                    this.nombreUsuarioField = value;
+                    this.RaisePropertyChanged("nombreUsuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="srvGestion.IServicioGestion")]
     public interface IServicioGestion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        bool addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        int addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addEmail", ReplyAction="http://tempuri.org/IServicioGestion/addEmailResponse")]
-        System.Threading.Tasks.Task<bool> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllEmail", ReplyAction="http://tempuri.org/IServicioGestion/getAllEmailResponse")]
         GestionEmpresas.srvGestion.EmailData[] getAllEmail();
@@ -1086,10 +1243,10 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetAllTelefonosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        bool AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        int AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddTelefono", ReplyAction="http://tempuri.org/IServicioGestion/AddTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
         bool EditTelefono(GestionEmpresas.srvGestion.TelefonoData t);
@@ -1182,10 +1339,10 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<bool> editAccionComercialAsync(int idAccion, GestionEmpresas.srvGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        GestionEmpresas.srvGestion.AccionComercialData[] getAllAccionesComerciales();
+        GestionEmpresas.srvGestion.AccionComercialMostrarData[] getAllAccionesComerciales();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAllAccionesComercialesAsync();
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialMostrarData[]> getAllAccionesComercialesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/getAccionComercialResponse")]
         GestionEmpresas.srvGestion.AccionComercialData getAccionComercial(int idAccion);
@@ -1233,11 +1390,11 @@ namespace GestionEmpresas.srvGestion {
                 base(binding, remoteAddress) {
         }
         
-        public bool addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public int addEmail(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.addEmail(correo, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> addEmailAsync(string correo, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.addEmailAsync(correo, empData, conData);
         }
         
@@ -1481,11 +1638,11 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.GetAllTelefonosAsync();
         }
         
-        public bool AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public int AddTelefono(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.AddTelefono(t, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> AddTelefonoAsync(GestionEmpresas.srvGestion.TelefonoData t, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.AddTelefonoAsync(t, empData, conData);
         }
         
@@ -1609,11 +1766,11 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.editAccionComercialAsync(idAccion, accion);
         }
         
-        public GestionEmpresas.srvGestion.AccionComercialData[] getAllAccionesComerciales() {
+        public GestionEmpresas.srvGestion.AccionComercialMostrarData[] getAllAccionesComerciales() {
             return base.Channel.getAllAccionesComerciales();
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialData[]> getAllAccionesComercialesAsync() {
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialMostrarData[]> getAllAccionesComercialesAsync() {
             return base.Channel.getAllAccionesComercialesAsync();
         }
         
