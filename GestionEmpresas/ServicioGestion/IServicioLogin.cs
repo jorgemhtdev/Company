@@ -13,7 +13,6 @@ namespace ServicioGestion
     {
         [OperationContract]
         bool esUsuario(string login, string password);
-
-       
+   
     }
 }

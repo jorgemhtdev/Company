@@ -13,7 +13,7 @@
   <xs:element name="addEmailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="addEmailResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="addEmailResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -100,7 +100,7 @@
   <xs:element name="addEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="addEmpresaResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="addEmpresaResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -191,31 +191,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getMailEmpresa">
+  <xs:element name="getEmailEmpresa">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getMailEmpresaResponse">
+  <xs:element name="getEmailEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getMailEmpresaResult" nillable="true" type="q10:ArrayOfEmailData" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getEmailEmpresaResult" nillable="true" type="q10:ArrayOfEmailData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getMailContacto">
+  <xs:element name="getEmailContacto">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idContacto" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getMailContactoResponse">
+  <xs:element name="getEmailContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getMailContactoResult" nillable="true" type="q11:ArrayOfEmailData" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getEmailContactoResult" nillable="true" type="q11:ArrayOfEmailData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -261,7 +261,7 @@
   <xs:element name="EditDireccionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EditDireccionResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EditDireccionResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -301,18 +301,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllEstadoAccion">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllEstadoAccionResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetAllEstadoAccionResult" nillable="true" type="q20:ArrayOfEstadoAccion" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetContacto">
     <xs:complexType>
       <xs:sequence />
@@ -321,14 +309,14 @@
   <xs:element name="GetContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetContactoResult" nillable="true" type="q21:ArrayOfContactoData" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetContactoResult" nillable="true" type="q20:ArrayOfContactoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteContacto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q22:ContactoData" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q21:ContactoData" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -343,21 +331,21 @@
   <xs:element name="AddContacto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q23:ContactoData" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q22:ContactoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddContactoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddContactoResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EditContacto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q24:ContactoData" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="contacto" nillable="true" type="q23:ContactoData" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -365,7 +353,7 @@
   <xs:element name="EditContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EditContactoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EditContactoResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -379,7 +367,7 @@
   <xs:element name="getDirecionesEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getDirecionesEmpresaResult" nillable="true" type="q25:ArrayOfDireccionData" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getDirecionesEmpresaResult" nillable="true" type="q24:ArrayOfDireccionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -393,7 +381,7 @@
   <xs:element name="getDirecionesContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getDirecionesContactoResult" nillable="true" type="q26:ArrayOfDireccionData" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getDirecionesContactoResult" nillable="true" type="q25:ArrayOfDireccionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -407,7 +395,7 @@
   <xs:element name="GetNumeroTelefonoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetNumeroTelefonoResult" nillable="true" type="q27:TelefonoData" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetNumeroTelefonoResult" nillable="true" type="q26:TelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -421,7 +409,7 @@
   <xs:element name="GetIdTelefonoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetIdTelefonoResult" nillable="true" type="q28:TelefonoData" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetIdTelefonoResult" nillable="true" type="q27:TelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -433,37 +421,37 @@
   <xs:element name="GetAllTelefonosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetAllTelefonosResult" nillable="true" type="q29:ArrayOfTelefonoData" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetAllTelefonosResult" nillable="true" type="q28:ArrayOfTelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddTelefono">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="t" nillable="true" type="q30:TelefonoData" />
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="empData" nillable="true" type="q31:EmpresaData" />
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="conData" nillable="true" type="q32:ContactoData" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="t" nillable="true" type="q29:TelefonoData" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="empData" nillable="true" type="q30:EmpresaData" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="conData" nillable="true" type="q31:ContactoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddTelefonoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddTelefonoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AddTelefonoResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EditTelefono">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="t" nillable="true" type="q33:TelefonoData" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="t" nillable="true" type="q32:TelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EditTelefonoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EditTelefonoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EditTelefonoResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -491,7 +479,7 @@
   <xs:element name="GetIdTipoAccionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetIdTipoAccionResult" nillable="true" type="q34:TipoDeAccionData" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetIdTipoAccionResult" nillable="true" type="q33:TipoDeAccionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -503,7 +491,7 @@
   <xs:element name="GetAllTipoAccionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetAllTipoAccionResult" nillable="true" type="q35:ArrayOfTipoDeAccionData" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetAllTipoAccionResult" nillable="true" type="q34:ArrayOfTipoDeAccionData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -517,7 +505,7 @@
   <xs:element name="GetTelefonosEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetTelefonosEmpresaResult" nillable="true" type="q36:ArrayOfTelefonoData" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetTelefonosEmpresaResult" nillable="true" type="q35:ArrayOfTelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -531,7 +519,7 @@
   <xs:element name="GetContactosEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetContactosEmpresaResult" nillable="true" type="q37:ArrayOfContactoData" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetContactosEmpresaResult" nillable="true" type="q36:ArrayOfContactoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -545,21 +533,21 @@
   <xs:element name="GetTelefonosContactoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetTelefonosContactoResult" nillable="true" type="q38:ArrayOfTelefonoData" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="GetTelefonosContactoResult" nillable="true" type="q37:ArrayOfTelefonoData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="addUsuario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="usuario" nillable="true" type="q39:UsuarioData" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="usuario" nillable="true" type="q38:UsuarioData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="addUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="addUsuarioResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="addUsuarioResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -581,14 +569,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="user" nillable="true" type="q40:UsuarioData" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="user" nillable="true" type="q39:UsuarioData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="editUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="editUsuarioResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="editUsuarioResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -600,7 +588,7 @@
   <xs:element name="getAllUsuariosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllUsuariosResult" nillable="true" type="q41:ArrayOfUsuarioData" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllUsuariosResult" nillable="true" type="q40:ArrayOfUsuarioData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -614,21 +602,21 @@
   <xs:element name="getUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getUsuarioResult" nillable="true" type="q42:UsuarioData" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getUsuarioResult" nillable="true" type="q41:UsuarioData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="addAccionComercial">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="accion" nillable="true" type="q43:AccionComercialData" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="accion" nillable="true" type="q42:AccionComercialData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="addAccionComercialResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="addAccionComercialResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="addAccionComercialResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -650,14 +638,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idAccion" type="xs:int" />
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="accion" nillable="true" type="q44:AccionComercialData" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="accion" nillable="true" type="q43:AccionComercialData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="editAccionComercialResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="editAccionComercialResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="editAccionComercialResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -669,7 +657,7 @@
   <xs:element name="getAllAccionesComercialesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllAccionesComercialesResult" nillable="true" type="q45:ArrayOfAccionComercialData" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAllAccionesComercialesResult" nillable="true" type="q44:ArrayOfAccionComercialMostrarData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -683,7 +671,7 @@
   <xs:element name="getAccionComercialResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionComercialResult" nillable="true" type="q46:AccionComercialData" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionComercialResult" nillable="true" type="q45:AccionComercialData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -697,7 +685,7 @@
   <xs:element name="getAccionesComercialesUsuariosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionesComercialesUsuariosResult" nillable="true" type="q47:ArrayOfAccionComercialData" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionesComercialesUsuariosResult" nillable="true" type="q46:ArrayOfAccionComercialData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -711,7 +699,7 @@
   <xs:element name="getAccionesComercialesEmpresaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionesComercialesEmpresaResult" nillable="true" type="q48:ArrayOfAccionComercialData" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="getAccionesComercialesEmpresaResult" nillable="true" type="q47:ArrayOfAccionComercialData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
