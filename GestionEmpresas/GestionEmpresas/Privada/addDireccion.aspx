@@ -13,10 +13,9 @@
         <div class="row">
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Añadir dirección <span class="glyphicon glyphicon-pencil"></span></h1></div>
+                <div class="panel-heading"> <h1> Añadir dirección <span class="glyphicon glyphicon-plus"></span></h1></div>
                     <div class="panel-body">
                        <br /><br />
-
                        <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="dom" runat="server"><h4>Domicilio</h4></asp:Label>   
@@ -29,7 +28,6 @@
                                              ErrorMessage="Solo se admiten letras y numeros" ValidationExpression="[A-Za-z0-9 ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="domici"></asp:RegularExpressionValidator>
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="pob" runat="server"><h4>Población</h4></asp:Label>   
@@ -70,10 +68,8 @@
                         </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">
-                           
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
-                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addEmpr" OnClientClick="return confirm('¿Estas seguro?');" /> 
-                            
+                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addDirec" OnClientClick="return confirm('¿Estas seguro?');" /> 
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
