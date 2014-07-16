@@ -286,10 +286,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<bool> deleteAccionComercialAsync(int idAccion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        int editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion);
+        int editAccionComercial(ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/editAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/editAccionComercialResponse")]
-        System.Threading.Tasks.Task<int> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion);
+        System.Threading.Tasks.Task<int> editAccionComercialAsync(ServicioGestion.AccionComercialData accion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/getAllAccionesComercialesResponse")]
         ServicioGestion.AccionComercialMostrarData[] getAllAccionesComerciales();
@@ -703,12 +703,12 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.deleteAccionComercialAsync(idAccion);
         }
         
-        public int editAccionComercial(int idAccion, ServicioGestion.AccionComercialData accion) {
-            return base.Channel.editAccionComercial(idAccion, accion);
+        public int editAccionComercial(ServicioGestion.AccionComercialData accion) {
+            return base.Channel.editAccionComercial(accion);
         }
         
-        public System.Threading.Tasks.Task<int> editAccionComercialAsync(int idAccion, ServicioGestion.AccionComercialData accion) {
-            return base.Channel.editAccionComercialAsync(idAccion, accion);
+        public System.Threading.Tasks.Task<int> editAccionComercialAsync(ServicioGestion.AccionComercialData accion) {
+            return base.Channel.editAccionComercialAsync(accion);
         }
         
         public ServicioGestion.AccionComercialMostrarData[] getAllAccionesComerciales() {

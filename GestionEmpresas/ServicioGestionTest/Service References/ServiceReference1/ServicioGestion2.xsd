@@ -637,7 +637,6 @@
   <xs:element name="editAccionComercial">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idAccion" type="xs:int" />
         <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ServicioGestion" minOccurs="0" name="accion" nillable="true" type="q43:AccionComercialData" />
       </xs:sequence>
     </xs:complexType>

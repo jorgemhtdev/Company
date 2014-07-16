@@ -2129,6 +2129,7 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha modificado el registro correctamente. False si no.</returns>
         public int editAccionComercial(AccionComercialData accion)
         {
+            if (accion == null) return -1;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
