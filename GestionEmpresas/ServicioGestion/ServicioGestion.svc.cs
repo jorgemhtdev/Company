@@ -1612,9 +1612,9 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="t">El teléfono a editar.</param>
         /// <returns>True si se ha editado.</returns>
-        public bool EditTelefono(TelefonoData t)
+        public int EditTelefono(TelefonoData t)
         {
-            if (t == null) return false;
+            if (t == null) return -1;
 
             try
             {
@@ -1628,7 +1628,7 @@ namespace ServicioGestion
                     telefono.numero = t.numero;
 
                     bd.SaveChanges();
-                    return true;
+                    return telefono.idTelefono;
                 }
             }
             catch (SqlException ex)
