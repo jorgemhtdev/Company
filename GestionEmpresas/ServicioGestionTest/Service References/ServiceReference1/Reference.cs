@@ -208,10 +208,10 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<int> AddTelefonoAsync(ServicioGestion.TelefonoData t, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        bool EditTelefono(ServicioGestion.TelefonoData t);
+        int EditTelefono(ServicioGestion.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditTelefono", ReplyAction="http://tempuri.org/IServicioGestion/EditTelefonoResponse")]
-        System.Threading.Tasks.Task<bool> EditTelefonoAsync(ServicioGestion.TelefonoData t);
+        System.Threading.Tasks.Task<int> EditTelefonoAsync(ServicioGestion.TelefonoData t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteTelefono", ReplyAction="http://tempuri.org/IServicioGestion/DeleteTelefonoResponse")]
         bool DeleteTelefono(int idTelefono);
@@ -605,11 +605,11 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.AddTelefonoAsync(t, empData, conData);
         }
         
-        public bool EditTelefono(ServicioGestion.TelefonoData t) {
+        public int EditTelefono(ServicioGestion.TelefonoData t) {
             return base.Channel.EditTelefono(t);
         }
         
-        public System.Threading.Tasks.Task<bool> EditTelefonoAsync(ServicioGestion.TelefonoData t) {
+        public System.Threading.Tasks.Task<int> EditTelefonoAsync(ServicioGestion.TelefonoData t) {
             return base.Channel.EditTelefonoAsync(t);
         }
         

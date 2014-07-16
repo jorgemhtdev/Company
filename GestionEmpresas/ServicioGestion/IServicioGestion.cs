@@ -176,7 +176,7 @@ namespace ServicioGestion
 
         //Método que edita un teléfono existente
         [OperationContract]
-        bool EditTelefono(TelefonoData t);
+        int EditTelefono(TelefonoData t);
 
         //Método que elimina un teléfono existente
         [OperationContract]
