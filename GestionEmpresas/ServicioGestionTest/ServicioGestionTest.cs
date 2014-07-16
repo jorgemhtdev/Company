@@ -15,12 +15,15 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         /******************************* TEST ADD *******************************************
 
+        */
         [TestMethod]
         public void AddUsuarioTest()
         {
+            UsuarioData[] usuario = proxy.getAllUsuarios();
 
         }
 
+        /*
         [TestMethod]
         public void AddAccionComercialTest()
         {

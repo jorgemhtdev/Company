@@ -75,7 +75,7 @@ namespace ServicioGestion
 
         //Método que obtiene los emails de cada empresa
         [OperationContract]
-        List<EmailData> getMailEmpresa(int idEmpresa);
+        List<EmailData> getEmailEmpresa(int idEmpresa);
 
         ///////////////////FIN EMAIL-EMPRESA/////////////////////////////////
 
@@ -83,7 +83,7 @@ namespace ServicioGestion
 
         //Método que obtiene los emails de cada empresa
         [OperationContract]
-        List<EmailData> getMailContacto(int idContacto);
+        List<EmailData> getEmailContacto(int idContacto);
 
         ///////////////////FIN EMAIL-CONTACTO/////////////////////////////////
 
