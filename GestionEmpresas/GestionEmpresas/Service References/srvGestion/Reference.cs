@@ -1147,22 +1147,22 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmailData[]> getEmailContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        bool AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        int AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        System.Threading.Tasks.Task<bool> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        bool DeleteDireccion(GestionEmpresas.srvGestion.DireccionData street, int id);
+        bool DeleteDireccion(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        int EditDireccion(GestionEmpresas.srvGestion.DireccionData street, int id);
+        int EditDireccion(GestionEmpresas.srvGestion.DireccionData street);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        System.Threading.Tasks.Task<int> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<int> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetDireccion", ReplyAction="http://tempuri.org/IServicioGestion/GetDireccionResponse")]
         GestionEmpresas.srvGestion.DireccionData[] GetDireccion();
@@ -1510,28 +1510,28 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.getEmailContactoAsync(idContacto);
         }
         
-        public bool AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public int AddDireccion(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.AddDireccion(street, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> AddDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, GestionEmpresas.srvGestion.EmpresaData empData, GestionEmpresas.srvGestion.ContactoData conData) {
             return base.Channel.AddDireccionAsync(street, empData, conData);
         }
         
-        public bool DeleteDireccion(GestionEmpresas.srvGestion.DireccionData street, int id) {
-            return base.Channel.DeleteDireccion(street, id);
+        public bool DeleteDireccion(int id) {
+            return base.Channel.DeleteDireccion(id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id) {
-            return base.Channel.DeleteDireccionAsync(street, id);
+        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(int id) {
+            return base.Channel.DeleteDireccionAsync(id);
         }
         
-        public int EditDireccion(GestionEmpresas.srvGestion.DireccionData street, int id) {
-            return base.Channel.EditDireccion(street, id);
+        public int EditDireccion(GestionEmpresas.srvGestion.DireccionData street) {
+            return base.Channel.EditDireccion(street);
         }
         
-        public System.Threading.Tasks.Task<int> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street, int id) {
-            return base.Channel.EditDireccionAsync(street, id);
+        public System.Threading.Tasks.Task<int> EditDireccionAsync(GestionEmpresas.srvGestion.DireccionData street) {
+            return base.Channel.EditDireccionAsync(street);
         }
         
         public GestionEmpresas.srvGestion.DireccionData[] GetDireccion() {
