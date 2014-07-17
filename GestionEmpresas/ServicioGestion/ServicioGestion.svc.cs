@@ -867,6 +867,7 @@ namespace ServicioGestion
         /// <returns></returns>
         public int EditDireccion(DireccionData street)
         {
+            if (street == null) return -1;
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
