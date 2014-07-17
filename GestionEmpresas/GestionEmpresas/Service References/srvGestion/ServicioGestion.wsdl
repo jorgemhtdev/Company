@@ -133,11 +133,17 @@
   <wsdl:message name="IServicioGestion_GetEstadoAccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEstadoAccionResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_GetContacto_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetContacto" />
+  <wsdl:message name="IServicioGestion_getContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getContacto" />
   </wsdl:message>
-  <wsdl:message name="IServicioGestion_GetContacto_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetContactoResponse" />
+  <wsdl:message name="IServicioGestion_getContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getAllContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllContactoResponse" />
   </wsdl:message>
   <wsdl:message name="IServicioGestion_DeleteContacto_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteContacto" />
@@ -392,9 +398,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccion" message="tns:IServicioGestion_GetEstadoAccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse" message="tns:IServicioGestion_GetEstadoAccion_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetContacto">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetContacto" message="tns:IServicioGestion_GetContacto_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetContactoResponse" message="tns:IServicioGestion_GetContacto_OutputMessage" />
+    <wsdl:operation name="getContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getContacto" message="tns:IServicioGestion_getContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getContactoResponse" message="tns:IServicioGestion_getContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllContacto" message="tns:IServicioGestion_getAllContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAllContactoResponse" message="tns:IServicioGestion_getAllContacto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteContacto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/DeleteContacto" message="tns:IServicioGestion_DeleteContacto_InputMessage" />
@@ -700,8 +710,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetContacto">
-      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetContacto" style="document" />
+    <wsdl:operation name="getContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAllContacto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
