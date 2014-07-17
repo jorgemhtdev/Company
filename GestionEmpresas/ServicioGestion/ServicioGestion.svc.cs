@@ -737,11 +737,11 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="street"></param>
         /// <returns></returns>
-        public bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
+        public int AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            if (t == null) return -1;
+            if (empData == null && conData == null) return -1;
+            if (empData != null && conData != null) return -1;
 
             try
             {
@@ -772,7 +772,7 @@ namespace ServicioGestion
 
                     bd.Direccion.Add(nueva);
                     bd.SaveChanges();
-                    return true;
+                    return nueva.idDireccion;
                 }
             }
             catch (SqlException ex)
@@ -795,9 +795,8 @@ namespace ServicioGestion
         /// <param name="street"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteDireccion(DireccionData street, int id)
+        public bool DeleteDireccion(int id)
         {
-            List<DireccionData> direccionBorrar = new List<DireccionData>();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -834,14 +833,14 @@ namespace ServicioGestion
         /// <param name="street"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int EditDireccion(DireccionData street, int id)
+        public int EditDireccion(DireccionData street)
         {
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     var consulta = from calle in bd.Direccion
-                                   where calle.idDireccion == id
+                                   where calle.idDireccion == street.idDireccion
                                    select calle;
 
                     Direccion nueva = consulta.First();
@@ -1210,7 +1209,7 @@ namespace ServicioGestion
         /// Metodo que me devuelve una lista de contactos
         /// </summary>
         /// <returns></returns>
-        public List<ContactoData> GetContacto()
+        public List<ContactoData> getAllContacto()
         {
             List<ContactoData> lst = new List<ContactoData>();
             try
@@ -1245,6 +1244,51 @@ namespace ServicioGestion
         }// Fin del GetContacto
 
         /// <summary>
+        /// Este metodo devuelve un objeto contacto a partir de su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ContactoData getContacto(int id)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from contacto in db.Contacto
+                                  where contacto.idContacto == id
+                                  select contacto;
+
+                    if (resulta.ToList().Count == 0) return null;
+                    foreach (Contacto em in resulta)
+                    {
+                        ContactoData cntData = new ContactoData()
+                        {
+                            idEmpresa = Convert.ToInt32 (em.idEmpresa),
+                            idContacto = em.idContacto,
+                            nif = em.nif,
+                            nombre = em.nombre
+                        };
+
+                        return cntData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode(""));
+            }
+        }
+
+        /// <summary>
         /// Metodo que elimina un contacto a partir de un objeto contacto de tipo ContactoData y de un id
         /// </summary>
         /// <returns></returns>
@@ -1257,6 +1301,8 @@ namespace ServicioGestion
                     var resultado = from contact in db.Contacto
                                     where (contact.idContacto == id)
                                     select contact;
+
+                    if (resultado.ToList().Count == 0) return false;
 
                     foreach (var contact in resultado) // Un foreach que elimina la fila completa
                     {
@@ -1287,6 +1333,9 @@ namespace ServicioGestion
         /// <returns></returns>
         public int AddContacto(ContactoData contacto)
         {
+            if (contacto == null) return -1;
+            if (contacto.nif == "" || contacto.nombre == "") return -1;
+            
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
