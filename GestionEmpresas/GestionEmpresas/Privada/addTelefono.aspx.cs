@@ -40,7 +40,6 @@ namespace GestionEmpresas.Privada
                 int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
                 int res = -1;
 
-
                 if (cEmp != 0)
                 {
                     // Obtengo el objeto empresa
@@ -64,13 +63,13 @@ namespace GestionEmpresas.Privada
                 if (cCon != 0)
                 {
                     // Obtengo el objeto contacto
-                    var objContacto = proxy.getContactoId(cCon);
+                    //var objContacto = proxy.getContactoId(cCon);
                     
                     // Me creo un objeto telefono
                     TelefonoData t = new TelefonoData() { numero = this.telepone.Text };
                     
                     // Añado el telefono al objeto contacto int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
-                    res = proxy.AddTelefono(this.telepone.Text, null, objContacto);
+                    //res = proxy.AddTelefono(this.telepone.Text, null, objContacto);
                     
                     // Si el distinto a -1 me lleva a l siguiente url, todo esta ok
                     if (res != -1) Response.Redirect("gestionContacto.aspx");

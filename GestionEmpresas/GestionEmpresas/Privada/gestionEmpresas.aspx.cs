@@ -87,19 +87,19 @@ namespace GestionEmpresas.Privada
         protected void btnAddTelefono_Click(object sender, EventArgs e)
         {
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            Response.Redirect("~/Privada/addTelefono.aspx?Empresa=" + emp.EmpresaID +"?Contacto=" + 0);
+            Response.Redirect("~/Privada/addTelefono.aspx?Empresa=" + emp.EmpresaID +"&Contacto=" + 0);
         }
 
         protected void btnAddEmail_Click(object sender, EventArgs e)
         {
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            Response.Redirect("~/Privada/addEmail.aspx?Empresa=" + emp.EmpresaID + "?Contacto=" + 0);
+            Response.Redirect("~/Privada/addEmail.aspx?Empresa=" + emp.EmpresaID + "&Contacto=" + 0);
         }
 
         protected void btnAddDireccion_Click(object sender, EventArgs e)
         {
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            Response.Redirect("~/Privada/addDireccion.aspx?Empresa=" + emp.EmpresaID + "?Contacto=" + 0);
+            Response.Redirect("~/Privada/addDireccion.aspx?Empresa=" + emp.EmpresaID + "&Contacto=" + 0);
         }
 
         protected void gvEmpresas_RowCommand(object sender, GridViewCommandEventArgs e)
