@@ -114,6 +114,7 @@ namespace GestionEmpresas.Privada
         {
             EmpresaData emp = empresas[e.RowIndex];
             proxy.deleteEmpresa(emp.EmpresaID);
+            empresas = proxy.getAllEmpresa();
             Response.Redirect("~/Privada/gestionEmpresas.aspx");
         }
 
