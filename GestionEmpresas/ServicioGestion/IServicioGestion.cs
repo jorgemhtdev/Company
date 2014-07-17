@@ -129,7 +129,10 @@ namespace ServicioGestion
         /// Contacto
 
         [OperationContract]
-        List<ContactoData> GetContacto();
+        ContactoData getContacto(int id);
+
+        [OperationContract]
+        List<ContactoData> getAllContacto();
 
         [OperationContract]
         bool DeleteContacto(ContactoData contacto, int id);
