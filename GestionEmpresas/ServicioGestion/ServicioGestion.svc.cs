@@ -1210,7 +1210,7 @@ namespace ServicioGestion
         /// Metodo que me devuelve una lista de contactos
         /// </summary>
         /// <returns></returns>
-        public List<ContactoData> GetContacto()
+        public List<ContactoData> getAllContacto()
         {
             List<ContactoData> lst = new List<ContactoData>();
             try
@@ -1243,6 +1243,50 @@ namespace ServicioGestion
                 throw fault;
             }
         }// Fin del GetContacto
+
+        /// <summary>
+        /// Este metodo devuelve un objeto contacto a partir de su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ContactoData getContacto(int id)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from contacto in db.Contacto
+                                  where contacto.idContacto == id
+                                  select contacto;
+
+                    foreach (Contacto em in resulta)
+                    {
+                        ContactoData cntData = new ContactoData()
+                        {
+                            idEmpresa = Convert.ToInt32 (em.idEmpresa),
+                            idContacto = em.idContacto,
+                            nif = em.nif,
+                            nombre = em.nombre
+                        };
+
+                        return cntData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode(""));
+            }
+        }
 
         /// <summary>
         /// Metodo que elimina un contacto a partir de un objeto contacto de tipo ContactoData y de un id
