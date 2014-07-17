@@ -546,9 +546,49 @@ namespace ServicioGestion
                                   where emp.idEmpresa == idEmpresa
                                   select emp;
 
-                    Empresa email = consult.First();
+                    Empresa empe = consult.First();
+                    
+                    //eliminamos los telefonos, emails y direcciones asociados a la empresa
+                    foreach (Telefono t in empe.Telefono)
+                    {
+                        db.Telefono.Remove(t);
+                    }
+                    foreach (Email e in empe.Email)
+                    {
+                        db.Email.Remove(e);
+                    }
+                    foreach (Direccion d in empe.Direccion)
+                    {
+                        db.Direccion.Remove(d);
+                    }
 
-                    db.Empresa.Remove(email);
+                    // eliminamos los contactos asociados a la empresa y sus respectivos telefonos, emails y direcciones
+                    foreach (Contacto cont in empe.Contacto)
+                    {
+                        foreach (Telefono t in cont.Telefono)
+                        {
+                            db.Telefono.Remove(t);
+                        }
+                        foreach (Email e in cont.Email)
+                        {
+                            db.Email.Remove(e);
+                        }
+                        foreach (Direccion d in cont.Direccion)
+                        {
+                            db.Direccion.Remove(d);
+                        }
+                        db.Contacto.Remove(cont);
+                    }
+                    
+                    // eliminamos las acciones comerciales asociadas a la empresa
+                    foreach (AccionComercial ac in empe.AccionComercial)
+                    {
+                        db.AccionComercial.Remove(ac);
+                    }
+                    
+                    // eliminamos la empresa
+                    db.Empresa.Remove(empe);
+
                     db.SaveChanges();
 
 
@@ -1057,9 +1097,12 @@ namespace ServicioGestion
                                    where usuario.idUsuario == idUsuario
                                    select usuario;
 
-                    if (consulta.ToList().Count == 0) return false;
-
                     Usuario u = consulta.First();
+
+                    foreach (AccionComercial ac in u.AccionComercial)
+                    {
+                        db.AccionComercial.Remove(ac);
+                    }
                     db.Usuario.Remove(u);
                     db.SaveChanges();
                     return true;
@@ -1259,6 +1302,7 @@ namespace ServicioGestion
                                   where contacto.idContacto == id
                                   select contacto;
 
+                    if (resulta.ToList().Count == 0) return null;
                     foreach (Contacto em in resulta)
                     {
                         ContactoData cntData = new ContactoData()
@@ -1302,10 +1346,22 @@ namespace ServicioGestion
                                     where (contact.idContacto == id)
                                     select contact;
 
-                    foreach (var contact in resultado) // Un foreach que elimina la fila completa
+                    // eliminamos los telefonos, emails y direcciones asociados al contacto
+                    foreach (Telefono t in resultado.First().Telefono)
                     {
-                        db.Contacto.Remove(contact); // Borra el objeto
+                        db.Telefono.Remove(t);
                     }
+                    foreach (Email e in resultado.First().Email)
+                    {
+                        db.Email.Remove(e);
+                    }
+                    foreach (Direccion d in resultado.First().Direccion)
+                    {
+                        db.Direccion.Remove(d);
+                    }
+
+                    db.Contacto.Remove(resultado.First()); // Borra el objeto
+                    
                     db.SaveChanges(); // Se guarda los campios realizados
                     return true;
                 }
