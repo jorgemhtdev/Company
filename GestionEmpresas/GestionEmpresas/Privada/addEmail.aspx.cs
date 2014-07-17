@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionEmpresas.srvGestion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,14 +25,6 @@ namespace GestionEmpresas.Privada
         protected void addMail(object sender, EventArgs e)
         {
 
-            if (this.IsPostBack)
-            {
-                this.Validate();
-                if (this.IsValid)
-                {
-                    Response.Redirect(".aspx");
-                }// Fin del if
-            }// Fin del if
         }
 
 
