@@ -273,7 +273,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
                 contacto.idEmpresa = empresas[1].EmpresaID;
                 contacto.nif = "43545342K";
                 contacto.nombre = "Pepito piscinas";
-        }
+            }
 
             int idContacto=proxy.AddContacto(contacto);
             Assert.AreNotEqual(0,idContacto);
@@ -640,10 +640,35 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        */
         [TestMethod]
         public void DeleteContactoTest()
         {
+            //Primero se inserta un contacto válido y se elimina
+            ContactoData contacto = new ContactoData();
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+
+            int numContactos = proxy.getAllContacto().Length;
+
+            if (empresas.Length > 0)
+            {
+                contacto.idEmpresa = empresas[1].EmpresaID;
+                contacto.nif = "43545342K";
+                contacto.nombre = "Pepito piscinas";
+            }
+
+            int idContacto = proxy.AddContacto(contacto);
+            Assert.AreNotEqual(0, idContacto);
+
+            Assert.AreEqual(numContactos + 1, proxy.getAllContacto().Length);
+
+            proxy.DeleteContacto(contacto, idContacto);
+
+            Assert.AreEqual(numContactos, proxy.getAllContacto().Length);
+
+            //Se intenta eliminar un contacto que no existe.
+
+            Assert.IsFalse(proxy.DeleteContacto(contacto, 45454));
 
         }
 
@@ -770,10 +795,21 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+        */
         [TestMethod]
         public void GetContactoTest()
         {
+            ContactoData[] contactos =proxy.getAllContacto();
+            if(contactos.Length>0)
+            {
+                Assert.IsNotNull(contactos[1]);
+            }
 
+            ContactoData contacto= proxy.getContacto(contactos[1].idContacto);
+
+            Assert.AreEqual(contacto.idEmpresa, contactos[1].idEmpresa);
+            Assert.AreEqual(contacto.nif, contactos[1].nif);
+            Assert.AreEqual(contacto.nombre, contactos[1].nombre);
         }
 
         /******************************* TEST GETALL *******************************************
@@ -884,11 +920,34 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+        */
         [TestMethod]
         public void GetAllContactoTest()
         {
+            
+            //Primero se inserta un contacto válido
+            ContactoData contacto = new ContactoData();
+            EmpresaData[] empresas = proxy.getAllEmpresa();
 
-        }*/
+            int numContactos = proxy.getAllContacto().Length;
+
+            if (empresas.Length > 0)
+            {
+                contacto.idEmpresa = empresas[1].EmpresaID;
+                contacto.nif = "43545342K";
+                contacto.nombre = "Pepito piscinas";
+            }
+
+            int idContacto = proxy.AddContacto(contacto);
+            Assert.AreNotEqual(0, idContacto);
+
+            Assert.AreEqual(numContactos + 1, proxy.getAllContacto().Length);
+
+            proxy.DeleteContacto(contacto, idContacto);
+
+            //Busco un elemento que no existe
+            Assert.IsNull(proxy.getContacto(345435));
+        }
 
     }
 }

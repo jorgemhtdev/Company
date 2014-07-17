@@ -1259,6 +1259,7 @@ namespace ServicioGestion
                                   where contacto.idContacto == id
                                   select contacto;
 
+                    if (resulta.ToList().Count == 0) return null;
                     foreach (Contacto em in resulta)
                     {
                         ContactoData cntData = new ContactoData()
@@ -1301,6 +1302,8 @@ namespace ServicioGestion
                     var resultado = from contact in db.Contacto
                                     where (contact.idContacto == id)
                                     select contact;
+
+                    if (resultado.ToList().Count == 0) return false;
 
                     foreach (var contact in resultado) // Un foreach que elimina la fila completa
                     {
