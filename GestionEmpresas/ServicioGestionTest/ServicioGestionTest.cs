@@ -266,7 +266,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             ContactoData contacto = new ContactoData();
             EmpresaData[] empresas = proxy.getAllEmpresa();
 
-            int numContactos = proxy.GetContacto().Length;
+            int numContactos = proxy.getAllContacto().Length;
 
             if(empresas.Length>0)
             {
@@ -278,18 +278,18 @@ namespace ServicioGestionTestSpace.ServiceReference1
             int idContacto=proxy.AddContacto(contacto);
             Assert.AreNotEqual(0,idContacto);
 
-            Assert.AreEqual(numContactos+1,proxy.GetContacto().Length);
+            Assert.AreEqual(numContactos + 1, proxy.getAllContacto().Length);
 
             proxy.DeleteContacto(contacto, idContacto);
 
-            Assert.AreEqual(numContactos, proxy.GetContacto().Length);
+            Assert.AreEqual(numContactos, proxy.getAllContacto().Length);
 
 
             //se inserta un contacto vacío
             ContactoData contacto2 = new ContactoData();
             EmpresaData[] empresas2 = proxy.getAllEmpresa();
 
-            int numContactos2 = proxy.GetContacto().Length;
+            int numContactos2 = proxy.getAllContacto().Length;
 
             if (empresas2.Length > 0)
             {
@@ -301,7 +301,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             int idContacto2 = proxy.AddContacto(contacto2);
             Assert.AreEqual(-1, idContacto2);
 
-            Assert.AreEqual(numContactos2, proxy.GetContacto().Length);
+            Assert.AreEqual(numContactos2, proxy.getAllContacto().Length);
 
             //Añadir contacto nulo
             int idContacto3 = proxy.AddContacto(null);
@@ -483,7 +483,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             ContactoData contacto = new ContactoData();
             EmpresaData[] empresas = proxy.getAllEmpresa();
 
-            int numContactos = proxy.GetContacto().Length;
+            int numContactos = proxy.getAllContacto().Length;
 
             if (empresas.Length > 0)
             {
@@ -507,7 +507,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             proxy.DeleteContacto(contacto, idContacto);
 
-            Assert.AreEqual(numContactos, proxy.GetContacto().Length);
+            Assert.AreEqual(numContactos, proxy.getAllContacto().Length);
 
 
         }
