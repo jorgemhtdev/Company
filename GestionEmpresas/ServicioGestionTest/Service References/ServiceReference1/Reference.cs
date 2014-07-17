@@ -141,11 +141,17 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse")]
         System.Threading.Tasks.Task<ServicioGestion.EstadoAccion[]> GetEstadoAccionAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        ServicioGestion.ContactoData[] GetContacto();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
+        ServicioGestion.ContactoData getContacto(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> GetContactoAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.ContactoData> getContactoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
+        ServicioGestion.ContactoData[] getAllContacto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> getAllContactoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteContacto", ReplyAction="http://tempuri.org/IServicioGestion/DeleteContactoResponse")]
         bool DeleteContacto(ServicioGestion.ContactoData contacto, int id);
@@ -511,12 +517,20 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.GetEstadoAccionAsync();
         }
         
-        public ServicioGestion.ContactoData[] GetContacto() {
-            return base.Channel.GetContacto();
+        public ServicioGestion.ContactoData getContacto(int id) {
+            return base.Channel.getContacto(id);
         }
         
-        public System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> GetContactoAsync() {
-            return base.Channel.GetContactoAsync();
+        public System.Threading.Tasks.Task<ServicioGestion.ContactoData> getContactoAsync(int id) {
+            return base.Channel.getContactoAsync(id);
+        }
+        
+        public ServicioGestion.ContactoData[] getAllContacto() {
+            return base.Channel.getAllContacto();
+        }
+        
+        public System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> getAllContactoAsync() {
+            return base.Channel.getAllContactoAsync();
         }
         
         public bool DeleteContacto(ServicioGestion.ContactoData contacto, int id) {
