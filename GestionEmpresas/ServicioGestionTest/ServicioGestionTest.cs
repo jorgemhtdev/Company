@@ -63,6 +63,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Se añade un usuario
             int idUsuario4 = proxy.addUsuario(usuario3);
 
+            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
 
         }
 
@@ -71,7 +72,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void AddAccionComercialTest()
         {
 
-            AccionComercialData accion = new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime() };
+            AccionComercialData accion = new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) };
             int nueva = proxy.addAccionComercial(accion);
             Assert.IsTrue(accion.descripcion == proxy.getAccionComercial(nueva).descripcion);
             proxy.deleteAccionComercial(nueva);
@@ -344,7 +345,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
             Assert.IsTrue(proxy.addAccionComercial(null) == -1);
 
-            AccionComercialData accion1 = new AccionComercialData() { descripcion = "prueba1", fechaHora = new DateTime() };
+            AccionComercialData accion1 = new AccionComercialData() { descripcion = "prueba1", fechaHora = new DateTime(2000, 12, 02) };
             int nueva = proxy.addAccionComercial(accion1);
             accion1.idAccion = nueva;
             accion1.descripcion = "cambioprueba1";
@@ -467,7 +468,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void DeleteAccionComercialTest()
         {
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime() });
+            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000,12,02) });
             int registros = proxy.getAllAccionesComerciales().Length;
             Assert.IsTrue(proxy.deleteAccionComercial(nueva));
             Assert.IsTrue(proxy.getAllAccionesComerciales().Length == registros - 1);
@@ -585,7 +586,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             if(usuarios.Length>1)
             {
                 usuario = usuarios[1];
-            }
+        }
 
             UsuarioData usuarioGet= proxy.getUsuario(usuarios[1].idUsuario);
             
@@ -602,11 +603,11 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void GetAccionComercialTest()
         {
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime() });
+            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) });
             Assert.IsTrue(proxy.getAccionComercial(nueva).descripcion == "prueba");
             proxy.deleteAccionComercial(nueva);
         }
-
+        
         [TestMethod]
         public void GetIdTipoAccionTest()
         {
@@ -723,18 +724,28 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.AreEqual(numUsuarios + 1, proxy.getAllUsuarios().Length);
             Assert.IsTrue(proxy.deleteUsuario(idUsuario));
 
-            
+
         }
         
         [TestMethod]
         public void GetAllAccionesComercialTest()
         {
             int registros = proxy.getAllAccionesComerciales().Length;
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime() });
+            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) });
             Assert.IsTrue(proxy.getAllAccionesComerciales().Length == registros + 1);
             proxy.deleteAccionComercial(nueva);
         }
+        /*
+        public void GetAccionesComercialesUsuarioTest()
+        {
 
+        }
+        
+        public void GetAccionesComercialesEmpresaTest()
+        {
+
+        }
+        */
         [TestMethod]
         public void GetAllTipoAccionTest()
         {
