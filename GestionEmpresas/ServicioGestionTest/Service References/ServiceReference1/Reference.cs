@@ -106,22 +106,22 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         System.Threading.Tasks.Task<ServicioGestion.EmailData[]> getEmailContactoAsync(int idContacto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        bool AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        int AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/AddDireccion", ReplyAction="http://tempuri.org/IServicioGestion/AddDireccionResponse")]
-        System.Threading.Tasks.Task<bool> AddDireccionAsync(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
+        System.Threading.Tasks.Task<int> AddDireccionAsync(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        bool DeleteDireccion(ServicioGestion.DireccionData street, int id);
+        bool DeleteDireccion(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteDireccion", ReplyAction="http://tempuri.org/IServicioGestion/DeleteDireccionResponse")]
-        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(ServicioGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<bool> DeleteDireccionAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        int EditDireccion(ServicioGestion.DireccionData street, int id);
+        int EditDireccion(ServicioGestion.DireccionData street);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/EditDireccion", ReplyAction="http://tempuri.org/IServicioGestion/EditDireccionResponse")]
-        System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street, int id);
+        System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetDireccion", ReplyAction="http://tempuri.org/IServicioGestion/GetDireccionResponse")]
         ServicioGestion.DireccionData[] GetDireccion();
@@ -141,11 +141,17 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetEstadoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetEstadoAccionResponse")]
         System.Threading.Tasks.Task<ServicioGestion.EstadoAccion[]> GetEstadoAccionAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        ServicioGestion.ContactoData[] GetContacto();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
+        ServicioGestion.ContactoData getContacto(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetContactoResponse")]
-        System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> GetContactoAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.ContactoData> getContactoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
+        ServicioGestion.ContactoData[] getAllContacto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
+        System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> getAllContactoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/DeleteContacto", ReplyAction="http://tempuri.org/IServicioGestion/DeleteContactoResponse")]
         bool DeleteContacto(ServicioGestion.ContactoData contacto, int id);
@@ -463,28 +469,28 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.getEmailContactoAsync(idContacto);
         }
         
-        public bool AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public int AddDireccion(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.AddDireccion(street, empData, conData);
         }
         
-        public System.Threading.Tasks.Task<bool> AddDireccionAsync(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
+        public System.Threading.Tasks.Task<int> AddDireccionAsync(ServicioGestion.DireccionData street, ServicioGestion.EmpresaData empData, ServicioGestion.ContactoData conData) {
             return base.Channel.AddDireccionAsync(street, empData, conData);
         }
         
-        public bool DeleteDireccion(ServicioGestion.DireccionData street, int id) {
-            return base.Channel.DeleteDireccion(street, id);
+        public bool DeleteDireccion(int id) {
+            return base.Channel.DeleteDireccion(id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(ServicioGestion.DireccionData street, int id) {
-            return base.Channel.DeleteDireccionAsync(street, id);
+        public System.Threading.Tasks.Task<bool> DeleteDireccionAsync(int id) {
+            return base.Channel.DeleteDireccionAsync(id);
         }
         
-        public int EditDireccion(ServicioGestion.DireccionData street, int id) {
-            return base.Channel.EditDireccion(street, id);
+        public int EditDireccion(ServicioGestion.DireccionData street) {
+            return base.Channel.EditDireccion(street);
         }
         
-        public System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street, int id) {
-            return base.Channel.EditDireccionAsync(street, id);
+        public System.Threading.Tasks.Task<int> EditDireccionAsync(ServicioGestion.DireccionData street) {
+            return base.Channel.EditDireccionAsync(street);
         }
         
         public ServicioGestion.DireccionData[] GetDireccion() {
@@ -511,12 +517,20 @@ namespace ServicioGestionTestSpace.ServiceReference1 {
             return base.Channel.GetEstadoAccionAsync();
         }
         
-        public ServicioGestion.ContactoData[] GetContacto() {
-            return base.Channel.GetContacto();
+        public ServicioGestion.ContactoData getContacto(int id) {
+            return base.Channel.getContacto(id);
         }
         
-        public System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> GetContactoAsync() {
-            return base.Channel.GetContactoAsync();
+        public System.Threading.Tasks.Task<ServicioGestion.ContactoData> getContactoAsync(int id) {
+            return base.Channel.getContactoAsync(id);
+        }
+        
+        public ServicioGestion.ContactoData[] getAllContacto() {
+            return base.Channel.getAllContacto();
+        }
+        
+        public System.Threading.Tasks.Task<ServicioGestion.ContactoData[]> getAllContactoAsync() {
+            return base.Channel.getAllContactoAsync();
         }
         
         public bool DeleteContacto(ServicioGestion.ContactoData contacto, int id) {
