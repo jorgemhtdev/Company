@@ -16,21 +16,52 @@ namespace ServicioGestionTestSpace.ServiceReference1
         /******************************* TEST ADD *******************************************
 
         */
+
+        /// <summary>
+        /// Método de prueba de añadir Usuario
+        /// </summary>
         [TestMethod]
         public void AddUsuarioTest()
         {
+
+            //Se añade un usuario correcto a la base de datos
             UsuarioData usuario=new UsuarioData();
             usuario.login="AddUsuario";
             usuario.nombre="Usuario";
             usuario.password = "111111";
 
+            //Obtengo todos los usuarios de la base de datos
             UsuarioData[] usuarios = proxy.getAllUsuarios();
-
+            //Se obtiene el numero de usuarios 
             int numUsuarios=usuarios.Length;
-
+            //Se añade un usuario
             int idUsuario=proxy.addUsuario(usuario);
 
             Assert.AreEqual(numUsuarios + 1, proxy.getAllUsuarios().Length);
+            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
+
+            //Se añade un usuario erróneo.
+            //Se añade un usuario
+            int idUsuario2 = proxy.addUsuario(null);
+            Assert.AreEqual(-1, idUsuario2);
+
+            //Se añade un usuario incorrecto a la base de datos
+            UsuarioData usuario2 = new UsuarioData();
+            usuario2.login = "";
+            usuario2.nombre = "Usuario";
+            usuario2.password = "111111";
+
+            //Se añade un usuario
+            int idUsuario3 = proxy.addUsuario(usuario2);
+
+            //Se añade un usuario incorrecto a la base de datos
+            UsuarioData usuario3 = new UsuarioData();
+            usuario3.login = "Prueba";
+            usuario3.nombre = "Usuario";
+            usuario3.password = "";
+
+            //Se añade un usuario
+            int idUsuario4 = proxy.addUsuario(usuario3);
 
             Assert.IsTrue(proxy.deleteUsuario(idUsuario));
 
@@ -236,13 +267,79 @@ namespace ServicioGestionTestSpace.ServiceReference1
         }
 
         /******************************* TEST EDIT *******************************************
-
+        */
         [TestMethod]
         public void EditUsuarioTest()
         {
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuario = new UsuarioData();
+            usuario.login = "EditUsuario";
+            usuario.nombre = "Usuario";
+            usuario.password = "111111";
 
+            //Obtengo todos los usuarios de la base de datos
+            UsuarioData[] usuarios = proxy.getAllUsuarios();
+            //Se obtiene el numero de usuarios 
+            int numUsuarios = usuarios.Length;
+            //Se añade un usuario
+            int idUsuario = proxy.addUsuario(usuario);
+
+             //Se añade un usuario correcto a la base de datos
+            UsuarioData usuarioEdit = new UsuarioData();
+            usuarioEdit.login = "Editado User";
+            usuarioEdit.nombre = "Editado";
+            usuarioEdit.password = "111111";
+
+
+            Assert.AreNotEqual(-1,proxy.editUsuario(idUsuario,usuarioEdit));
+
+            proxy.deleteUsuario(idUsuario);
+
+            /************************************************/
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuario2 = new UsuarioData();
+            usuario2.login = "EditUsuario2";
+            usuario2.nombre = "Usuario2";
+            usuario2.password = "111111";
+
+          
+            //Se añade un usuario
+            int idUsuario2 = proxy.addUsuario(usuario2);
+
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuarioEdit2 = new UsuarioData();
+            usuarioEdit2.login = "";
+            usuarioEdit2.nombre = "Editado2";
+            usuarioEdit2.password = "111111";
+
+            //Tiene que tener un login relleno. Si no--ERROR
+            Assert.AreEqual(-1, proxy.editUsuario(idUsuario2, usuarioEdit2));
+
+            proxy.deleteUsuario(idUsuario2);
+
+            /************************************************/
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuario3 = new UsuarioData();
+            usuario3.login = "EditUsuario3";
+            usuario3.nombre = "Usuario2";
+            usuario3.password = "1111111";
+
+
+            //Se añade un usuario
+            int idUsuario3 = proxy.addUsuario(usuario2);
+
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuarioEdit3 = new UsuarioData();
+            usuarioEdit3.login = "loginEdit";
+            usuarioEdit3.nombre = "Editado3";
+            usuarioEdit3.password = "";
+
+            //Tiene que tener un login relleno. Si no--ERROR
+            Assert.AreEqual(-1, proxy.editUsuario(idUsuario3, usuarioEdit3));
+
+            proxy.deleteUsuario(idUsuario3);
         }
-        */
+        
         [TestMethod]
         public void EditAccionComercialTest()
         {
@@ -342,13 +439,32 @@ namespace ServicioGestionTestSpace.ServiceReference1
         }
 
         /******************************* TEST DELETE *******************************************
-
+        */
         [TestMethod]
         public void DeleteUsuarioTest()
         {
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuario = new UsuarioData();
+            usuario.login = "Delete Usuario";
+            usuario.nombre = "Usuario";
+            usuario.password = "22222222";
 
+            //Obtengo todos los usuarios de la base de datos
+            UsuarioData[] usuarios = proxy.getAllUsuarios();
+            //Se obtiene el numero de usuarios 
+            int numUsuarios = usuarios.Length;
+            //Se añade un usuario
+            int idUsuario = proxy.addUsuario(usuario);
+
+            Assert.AreEqual(numUsuarios + 1, proxy.getAllUsuarios().Length);
+            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
+
+            Assert.AreEqual(numUsuarios, proxy.getAllUsuarios().Length);
+
+            //Se intenta eliminar un usuario con un indice que no existe
+            Assert.IsFalse(proxy.deleteUsuario(43545));
         }
-        */
+
         [TestMethod]
         public void DeleteAccionComercialTest()
         {
@@ -458,13 +574,32 @@ namespace ServicioGestionTestSpace.ServiceReference1
         }
 
         /******************************* TEST GET *******************************************
-
+        */
         [TestMethod]
         public void GetUsuarioTest()
         {
 
+
+            //Obtengo un usuario que sé que existe en la base de datos.
+            UsuarioData usuario = new UsuarioData();
+            UsuarioData[] usuarios = proxy.getAllUsuarios();
+            if(usuarios.Length>1)
+            {
+                usuario = usuarios[1];
         }
-        */
+
+            UsuarioData usuarioGet= proxy.getUsuario(usuarios[1].idUsuario);
+            
+            Assert.AreEqual(usuarioGet.login,usuario.login);
+            Assert.AreEqual(usuarioGet.nombre, usuario.nombre);
+            Assert.AreEqual(usuarioGet.password, usuario.password);
+
+            //Se devuelve un usuario con id que no existe en la base de datos.
+            UsuarioData user=proxy.getUsuario(34245);
+
+            Assert.AreEqual(0, user.idUsuario);
+        }
+
         [TestMethod]
         public void GetAccionComercialTest()
         {
@@ -568,13 +703,30 @@ namespace ServicioGestionTestSpace.ServiceReference1
         }
 
         /******************************* TEST GETALL *******************************************
+        */
 
         [TestMethod]
-        public void GetAllUsuarioTest()
+        public void GetAllUsuariosTest()
         {
+            //Se añade un usuario correcto a la base de datos
+            UsuarioData usuario = new UsuarioData();
+            usuario.login = "GetAllUsuario";
+            usuario.nombre = "Usuario";
+            usuario.password = "111111";
+
+            //Obtengo todos los usuarios de la base de datos
+            UsuarioData[] usuarios = proxy.getAllUsuarios();
+            //Se obtiene el numero de usuarios 
+            int numUsuarios = usuarios.Length;
+            //Se añade un usuario
+            int idUsuario = proxy.addUsuario(usuario);
+
+            Assert.AreEqual(numUsuarios + 1, proxy.getAllUsuarios().Length);
+            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
+
 
         }
-        */
+        
         [TestMethod]
         public void GetAllAccionesComercialTest()
         {
@@ -588,7 +740,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
-
+        
         public void GetAccionesComercialesEmpresaTest()
         {
 
@@ -618,12 +770,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.AreEqual(numEmpresas, proxy.getAllEmpresa().Length);
         }
 
+        /*
         [TestMethod]
         public void GetAllSectorTest()
         {
 
         }
         
+        */
         [TestMethod]
         public void GetAllTelefonoTest()
         {

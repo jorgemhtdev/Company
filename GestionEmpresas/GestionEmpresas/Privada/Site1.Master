@@ -7,14 +7,13 @@
     <title></title>
     <script src="../Scripts/jquery-1.9.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
-
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="head" runat="server"> </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+        <!-- Menu -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -32,12 +31,17 @@
                 </li>
             </ul>
         </nav>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <!-- Fin Menu -->
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>
-    </div>
-    <footer>Prueba</footer>
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- Footer -->
+        <footer class="col-md-6 col-md-offset-2"> 
+            © 2009 - 2014 ALMERIMATIK RESERVADOS TODOS LOS DERECHOS (¿Logo?)
+        </footer>
+        <!-- Fin Footer -->
     </form>
 </body>
 </html>
