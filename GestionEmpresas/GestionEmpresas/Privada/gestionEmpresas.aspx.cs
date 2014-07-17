@@ -11,6 +11,10 @@ namespace GestionEmpresas.Privada
 {
     public partial class gestionEmpresas : System.Web.UI.Page
     {
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -173,6 +177,26 @@ namespace GestionEmpresas.Privada
             var emails = proxy.getEmailEmpresa(emp.EmpresaID);
             EmailData em = emails[e.NewEditIndex];
             Response.Redirect("~/Privada/editEmail.aspx?email=" + em.EmailID);
+        }
+        protected void gvDirecciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            var empresas = proxy.getAllEmpresa();
+            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
+            var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
+            DireccionData dir = direcciones[e.RowIndex];
+            proxy.DeleteDireccion(dir, dir.idDireccion);
+            Response.Redirect("~/Privada/gestionEmpresas.aspx");
+        }
+
+        protected void gvDirecciones_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            var empresas = proxy.getAllEmpresa();
+            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
+            var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
+            DireccionData dir = direcciones[e.NewEditIndex];
+            Response.Redirect("~/Privada/editEmail.aspx?direccion=" + dir.idDireccion);
         }
     }
 }

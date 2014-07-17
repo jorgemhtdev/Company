@@ -81,7 +81,7 @@
                         </asp:GridView>
                     </div>
                     <div class="col-md-5">
-                        <asp:GridView ID="gvDirecciones" runat="server" CssClass="table table-hover" GridLines="None" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True">
+                        <asp:GridView ID="gvDirecciones" runat="server" CssClass="table table-hover" GridLines="None" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" OnRowDeleting="gvDirecciones_RowDeleting" OnRowEditing="gvDirecciones_RowEditing">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:BoundField DataField="domicilio" HeaderText="Domicilio" />
