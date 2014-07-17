@@ -63,7 +63,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Se añade un usuario
             int idUsuario4 = proxy.addUsuario(usuario3);
 
-
         }
 
         
@@ -259,9 +258,54 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         }
 
+         */
         [TestMethod]
         public void AddContactoTest()
         {
+            //Primero se inserta un contacto válido
+            ContactoData contacto = new ContactoData();
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+
+            int numContactos = proxy.GetContacto().Length;
+
+            if(empresas.Length>0)
+            {
+                contacto.idEmpresa = empresas[1].EmpresaID;
+                contacto.nif = "43545342K";
+                contacto.nombre = "Pepito piscinas";
+            }
+
+            int idContacto=proxy.AddContacto(contacto);
+            Assert.AreNotEqual(0,idContacto);
+
+            Assert.AreEqual(numContactos+1,proxy.GetContacto().Length);
+
+            proxy.DeleteContacto(contacto, idContacto);
+
+            Assert.AreEqual(numContactos, proxy.GetContacto().Length);
+
+
+            //se inserta un contacto vacío
+            ContactoData contacto2 = new ContactoData();
+            EmpresaData[] empresas2 = proxy.getAllEmpresa();
+
+            int numContactos2 = proxy.GetContacto().Length;
+
+            if (empresas2.Length > 0)
+            {
+                contacto2.idEmpresa = empresas2[1].EmpresaID;
+                contacto2.nif = "";
+                contacto2.nombre = "";
+            }
+
+            int idContacto2 = proxy.AddContacto(contacto2);
+            Assert.AreEqual(-1, idContacto2);
+
+            Assert.AreEqual(numContactos2, proxy.GetContacto().Length);
+
+            //Añadir contacto nulo
+            int idContacto3 = proxy.AddContacto(null);
+            Assert.AreEqual(-1, idContacto3);
 
         }
 
@@ -430,10 +474,41 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
         }
+        */
 
         [TestMethod]
         public void EditContactoTest()
         {
+            //Primero se inserta un contacto válido
+            ContactoData contacto = new ContactoData();
+            EmpresaData[] empresas = proxy.getAllEmpresa();
+
+            int numContactos = proxy.GetContacto().Length;
+
+            if (empresas.Length > 0)
+            {
+                contacto.idEmpresa = empresas[1].EmpresaID;
+                contacto.nif = "43545342K";
+                contacto.nombre = "Juanito";
+            }
+
+            int idContacto = proxy.AddContacto(contacto);
+          
+            ContactoData contactoEdit = new ContactoData();
+            contactoEdit.idContacto = idContacto;
+            contactoEdit.idEmpresa = empresas[1].EmpresaID;
+            contactoEdit.nif = "6666666K";
+            contactoEdit.nombre = "Editado";
+
+
+            int idContactoEdit=proxy.EditContacto(contactoEdit, idContacto);
+
+            Assert.AreEqual(idContactoEdit, idContacto);
+
+            proxy.DeleteContacto(contacto, idContacto);
+
+            Assert.AreEqual(numContactos, proxy.GetContacto().Length);
+
 
         }
 

@@ -1287,6 +1287,9 @@ namespace ServicioGestion
         /// <returns></returns>
         public int AddContacto(ContactoData contacto)
         {
+            if (contacto == null) return -1;
+            if (contacto.nif == "" || contacto.nombre == "") return -1;
+            
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
