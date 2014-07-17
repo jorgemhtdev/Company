@@ -13,9 +13,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
         ServicioGestionClient proxy = new ServicioGestionClient();
 
-        /******************************* TEST ADD *******************************************
-
-        */
+        /******************************* TEST ADD ********************************************/
 
         /// <summary>
         /// Método de prueba de añadir Usuario
@@ -64,14 +62,11 @@ namespace ServicioGestionTestSpace.ServiceReference1
             int idUsuario4 = proxy.addUsuario(usuario3);
 
             Assert.IsTrue(proxy.deleteUsuario(idUsuario));
-
         }
-
         
         [TestMethod]
         public void AddAccionComercialTest()
         {
-
             AccionComercialData accion = new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) };
             int nueva = proxy.addAccionComercial(accion);
             Assert.IsTrue(accion.descripcion == proxy.getAccionComercial(nueva).descripcion);
@@ -135,7 +130,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Insertamos una empresa no válida. Debe devolver -1. Introducimos un sector erróneo, que no exista.
             int idEmpresaNueva4 = proxy.addEmpresa("A43656256", "Empresa No Valida", "EmpresaTest nueva No valida s.a.", "http://www.testNueva.es", 100);
             Assert.AreEqual(-1, idEmpresaNueva4);
-
         }
 
         /*
@@ -197,7 +191,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.AreNotEqual(-1, id);
             Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
             proxy.DeleteTelefono(id);
-
         }
 
         /// <summary>
@@ -253,13 +246,61 @@ namespace ServicioGestionTestSpace.ServiceReference1
            
         }
 
-        /*
+        
         [TestMethod]
         public void AddDireccionTest()
         {
+            int id;
+            int registros;
 
+            //addDireccion(null, null, null)
+            DireccionData direccion = null;
+            EmpresaData empresa = null;
+            ContactoData contacto = null;
+            registros = proxy.GetDireccion().Length;
+            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+
+            //addDireccion(Direccion, null, null)
+            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
+            registros = proxy.GetDireccion().Length;
+            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+
+            //addDireccion(null, empresa, null)
+            direccion = null;
+            empresa = new EmpresaData() { EmpresaID = 1, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
+            registros = proxy.GetDireccion().Length;
+            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+
+            //addDireccion(null, null, contacto)
+            direccion = null;
+            empresa = null;
+            contacto = new ContactoData() { idContacto = 2, idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
+            registros = proxy.GetDireccion().Length;
+            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+
+            //addDireccion(Direccion, null, contacto)
+            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
+            registros = proxy.GetDireccion().Length;
+            id = proxy.AddDireccion(direccion, empresa, contacto);
+            Assert.AreNotEqual(-1, id);
+            Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+            proxy.DeleteDireccion(id);
+
+            //addDireccion(Direccion, empresa, null)
+            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
+            empresa = new EmpresaData() { EmpresaID = 1, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
+            contacto = null;
+            registros = proxy.GetDireccion().Length;
+            id = proxy.AddDireccion(direccion, empresa, contacto);
+            Assert.AreNotEqual(-1, id);
+            Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+            proxy.DeleteDireccion(id);
         }
-
+/*
         [TestMethod]
         public void AddContactoTest()
         {
