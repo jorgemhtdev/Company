@@ -1013,6 +1013,8 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha añadido el registro correctamente. False si no.</returns>
         public int addUsuario(UsuarioData usuario)
         {
+            if (usuario == null) return -1;
+            if (usuario.login == "" || usuario.password == "") return -1;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -1055,6 +1057,8 @@ namespace ServicioGestion
                                    where usuario.idUsuario == idUsuario
                                    select usuario;
 
+                    if (consulta.ToList().Count == 0) return false;
+
                     Usuario u = consulta.First();
                     db.Usuario.Remove(u);
                     db.SaveChanges();
@@ -1082,6 +1086,9 @@ namespace ServicioGestion
         /// <returns>Devuelve true si se ha modificado el registro correctamente. False si no.</returns>
         public int editUsuario(int idUsuario, UsuarioData user)
         {
+            if (user == null) return -1;
+            if (idUsuario < 0) return -1;
+            if (user.login == "" || user.password == "") return -1;
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -1091,7 +1098,7 @@ namespace ServicioGestion
                                    select usuario;
 
                     Usuario u = consulta.First();
-                    u.idUsuario = user.idUsuario;
+                    u.idUsuario = idUsuario;
                     u.login = user.login;
                     u.nombre = user.nombre;
                     u.password = PasswordManager.getMD5(user.password);
@@ -1159,6 +1166,7 @@ namespace ServicioGestion
         /// <returns>Devuelve un objeto UsuarioData.</returns>
         public UsuarioData getUsuario(int idUsuario)
         {
+            UsuarioData user = new UsuarioData();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -1172,6 +1180,8 @@ namespace ServicioGestion
                                        nombre = usuario.nombre,
                                        password = usuario.password
                                    };
+
+                    if (consulta.ToList().Count== 0) return user;
                     return consulta.First();
                 }
             }
