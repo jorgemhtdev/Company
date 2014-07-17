@@ -737,11 +737,11 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="street"></param>
         /// <returns></returns>
-        public bool AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
+        public int AddDireccion(DireccionData t, EmpresaData empData, ContactoData conData)
         {
-            if (t == null || empData == null || conData == null) return false;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return false;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return false;
+            if (t == null) return -1;
+            if (empData == null && conData == null) return -1;
+            if (empData != null && conData != null) return -1;
 
             try
             {
@@ -772,7 +772,7 @@ namespace ServicioGestion
 
                     bd.Direccion.Add(nueva);
                     bd.SaveChanges();
-                    return true;
+                    return nueva.idDireccion;
                 }
             }
             catch (SqlException ex)
@@ -795,9 +795,8 @@ namespace ServicioGestion
         /// <param name="street"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteDireccion(DireccionData street, int id)
+        public bool DeleteDireccion(int id)
         {
-            List<DireccionData> direccionBorrar = new List<DireccionData>();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -834,14 +833,14 @@ namespace ServicioGestion
         /// <param name="street"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int EditDireccion(DireccionData street, int id)
+        public int EditDireccion(DireccionData street)
         {
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     var consulta = from calle in bd.Direccion
-                                   where calle.idDireccion == id
+                                   where calle.idDireccion == street.idDireccion
                                    select calle;
 
                     Direccion nueva = consulta.First();

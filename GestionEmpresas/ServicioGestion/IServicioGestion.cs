@@ -100,11 +100,11 @@ namespace ServicioGestion
         /// Direccion
 
         [OperationContract]
-        bool AddDireccion(DireccionData street, EmpresaData empData, ContactoData conData);
+        int AddDireccion(DireccionData street, EmpresaData empData, ContactoData conData);
         [OperationContract]
-        bool DeleteDireccion(DireccionData street, int id);
+        bool DeleteDireccion(int id);
         [OperationContract]
-        int EditDireccion(DireccionData street, int id);
+        int EditDireccion(DireccionData street);
         [OperationContract]
         List<DireccionData> GetDireccion();
 
