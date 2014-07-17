@@ -162,7 +162,7 @@ namespace GestionEmpresas.Privada
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
             var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
             DireccionData dir = direcciones[e.RowIndex];
-            proxy.DeleteDireccion(dir, dir.idDireccion);
+            proxy.DeleteDireccion(dir.idDireccion);
             Response.Redirect("~/Privada/gestionEmpresas.aspx");
         }
 
