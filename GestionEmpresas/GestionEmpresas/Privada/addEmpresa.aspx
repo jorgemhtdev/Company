@@ -52,7 +52,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el campo CIF" ControlToValidate="CIF" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                         ErrorMessage="Solo se admiten los siguientes formatos" ValidationExpression="[ABCDEFGHKLMNPQS]{1}[0-9]{8}" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="CIF"></asp:RegularExpressionValidator>      
+                                         ErrorMessage="Solo se admite el siguiente formato --> (ABCDEFGHKLMNPQS)8numeros" ValidationExpression="[ABCDEFGHKLMNPQS]{1}[0-9]{8}" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="CIF"></asp:RegularExpressionValidator>      
                             </section>
                         </article>
 
@@ -65,7 +65,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                          ErrorMessage="Debes rellenar el campo de pagina web" ControlToValidate="paginaWeb" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                                         ErrorMessage="Solo se admite el siguiente formato" ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>      
+                                         ErrorMessage="Solo se admite el siguiente formato --> http(s)://laweb.com " ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>      
                             </section>
                         </article>
 

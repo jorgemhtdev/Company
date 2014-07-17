@@ -19,14 +19,14 @@ namespace GestionEmpresas.Privada
                 {
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
-                    var sector = proxy.GetSector();
+                    var sector = proxy.GetSector(); // Almaceno en sector la lista de los sectores de la BD
 
-                    this.sector.DataSource = sector;
+                    this.sector.DataSource = sector; // La fuente del DropDownList va a ser la lista de los sectores almacenadas en sector
 
                     this.sector.DataTextField = "descripcion"; // Nombre que tiene nuestro DropDownList sector
                     this.sector.DataValueField = "idSector"; // Valor que tiene nuestro DropDownList sector
-                
-                    this.sector.DataBind();
+
+                    this.sector.DataBind(); // Carga los valores en el DropDownList
 
                 }catch{
                     // this.lblError.Text = err.Message;
@@ -47,6 +47,15 @@ namespace GestionEmpresas.Privada
 
             try
             {
+                // int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+                int res = proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text, this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
+
+                if (res != -1) Response.Redirect("gestionEmpresas.aspx");
+                else
+            {
+                //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                //this.alert.Visible = true;
+            }
 
             }
             catch (Exception err)
@@ -54,13 +63,12 @@ namespace GestionEmpresas.Privada
                 // this.lblError.Text = err.Message;
                 // this.alert.Visible = true;    
             }
-            
         }// Fin addEmpr
 
 
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect(".aspx", true);
+            Response.Redirect("gestionEmpresas.aspx", true);
         }
     }
 }
