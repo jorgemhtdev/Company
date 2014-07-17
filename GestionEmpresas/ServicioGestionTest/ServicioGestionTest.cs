@@ -688,7 +688,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(proxy.DeleteDireccion(nuevo));
             Assert.IsTrue(registros - 1 == proxy.GetDireccion().Length);
         }
-        */
+        
         [TestMethod]
         public void DeleteContactoTest()
         {
