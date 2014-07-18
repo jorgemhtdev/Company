@@ -13,10 +13,13 @@
         <div class="row">
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Añadir contacto <span class="glyphicon glyphicon-plus"></span></h1></div>
+                    <div class="panel-heading"> 
+                          <h1> Añadir contacto  </h1>
+                          - <asp:Label ID="labelContacto" runat="server" Text=""></asp:Label> - 
+                    </div> 
                     <div class="panel-body">
                        <br /><br />
-                       <article class="col-md-12 col-md-offset-2"> 
+                       <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="nm" runat="server">Nombre</asp:Label>   
                             </section>                       
@@ -29,7 +32,7 @@
                             </section>
                         </article>
                         <!-- NECESITA UN METODO QUE VALIDE CORRECTAMENTE EL DNI -->
-                        <article class="col-md-12 col-md-offset-2"> 
+                        <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="nnif" runat="server">NIF</asp:Label>   
                             </section>                       

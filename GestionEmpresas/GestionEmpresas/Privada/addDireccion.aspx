@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addDireccion.aspx.cs" Inherits="GestionEmpresas.Privada.addDireccion" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Añadir direccion</title>
@@ -13,12 +11,15 @@
         <div class="row">
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Añadir dirección <span class="glyphicon glyphicon-plus"></span></h1></div>
+                <div class="panel-heading"> 
+                    <h1> Añadir dirección </h1>
+                    - <asp:Label ID="labeldireccion" runat="server" Text=""></asp:Label> -
+                </div>
                     <div class="panel-body">
                        <br /><br />
                        <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="dom" runat="server"><h4>Domicilio</h4></asp:Label>   
+                                <asp:Label ID="dom" runat="server">Domicilio</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
                                      <asp:TextBox id="domici" runat="server" CssClass="form-control"></asp:TextBox>
@@ -30,7 +31,7 @@
                         </article>
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="pob" runat="server"><h4>Población</h4></asp:Label>   
+                                <asp:Label ID="pob" runat="server">Población</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
                                 <asp:TextBox ID="poblac" runat="server" CssClass="form-control"></asp:TextBox>
@@ -43,7 +44,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="copo" runat="server"><h4>Codigo postal</h4></asp:Label>                        
+                                <asp:Label ID="copo" runat="server">Codigo postal</asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="cp" runat="server" CssClass="form-control"></asp:TextBox>
@@ -56,7 +57,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="pro" runat="server" ><h4>Provincia</h4></asp:Label>                        
+                                <asp:Label ID="pro" runat="server" >Provincia</asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="provin" runat="server"  CssClass="form-control"></asp:TextBox>
