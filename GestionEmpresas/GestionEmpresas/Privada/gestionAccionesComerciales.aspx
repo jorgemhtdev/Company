@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <asp:GridView ID="gvAcciones" runat="server" CssClass="table table-hover" GridLines="None" OnSelectedIndexChanged="gvAcciones_SelectedIndexChanged" EmptyDataText="No hay contactos en la BD" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" OnRowDeleting="gvAcciones_RowDeleting" OnRowEditing="gvAcciones_RowEditing">
+                        <asp:GridView ID="gvAcciones" runat="server" CssClass="table table-hover" GridLines="None" OnSelectedIndexChanged="gvAcciones_SelectedIndexChanged" EmptyDataText="No hay acciones en la BD" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" OnRowDeleting="gvAcciones_RowDeleting" OnRowEditing="gvAcciones_RowEditing">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:BoundField DataField="nombreUsuario" HeaderText="Usuario" />
