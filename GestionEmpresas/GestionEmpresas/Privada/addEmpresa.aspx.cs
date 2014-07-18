@@ -68,7 +68,23 @@ namespace GestionEmpresas.Privada
 
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect("gestionEmpresas.aspx", true);
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            if (cEmp <= 0 && cCon <= 0)
+            {
+                Response.Redirect(".aspx", true);
+            }
+
+            if (cEmp != 0)
+            {
+                Response.Redirect("gestionContacto.aspx", true);
+            }
+
+            if (cCon != 0)
+            {
+                Response.Redirect("gestionContacto.aspx", true);
+            }   
         }
     }
 }

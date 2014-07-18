@@ -37,8 +37,6 @@ namespace ServicioGestion
             int indice = -1;
 
             if (correo == "" || correo == null || empData == null && conData == null) return -1;
-            if (empData.EmpresaID == 0 && conData.idContacto == 0) return -1;
-            if (empData.EmpresaID != 0 && conData.idContacto != 0) return -1;
 
             try
             {
@@ -53,9 +51,6 @@ namespace ServicioGestion
                                     where empresas.idEmpresa == empData.EmpresaID
                                     select empresas;
                         p.Empresa.Add(datos.First());
-
-                        
-                        
                     }
                     else
                     {
@@ -63,8 +58,6 @@ namespace ServicioGestion
                                     where contactos.idContacto == conData.idContacto
                                     select contactos;
                         p.Contacto.Add(datos.First());
-                        
-                     
                     }
 
                     db.Email.Add(p);
@@ -74,8 +67,7 @@ namespace ServicioGestion
 
                     return indice;
                 }
-                
-               
+
             }
             catch (SqlException ex)
             {
@@ -875,6 +867,7 @@ namespace ServicioGestion
         /// <returns></returns>
         public int EditDireccion(DireccionData street)
         {
+            if (street == null) return -1;
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
