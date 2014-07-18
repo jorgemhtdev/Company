@@ -12,13 +12,24 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+            ServicioGestionClient proxy = new ServicioGestionClient();
 
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            if (cEmp != 0)
+            {
+                var objEmpresa = proxy.getEmpresaId(cEmp);
+                this.labeltelefono.Text = objEmpresa.nombreComercial;
             }
+
             else
             {
-
+                if (cEmp != 0)
+                {
+                    var objEmpresa = proxy.getEmpresaId(cEmp);
+                    this.labeltelefono.Text = objEmpresa.nombreComercial;
+                }
             }
         }
         
@@ -30,7 +41,6 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void addTlf(object sender, EventArgs e)
         {
-
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             try
@@ -63,13 +73,13 @@ namespace GestionEmpresas.Privada
                 if (cCon != 0)
                 {
                     // Obtengo el objeto contacto
-                    //var objContacto = proxy.getContactoId(cCon);
+                    var objContacto = proxy.getContacto(cCon);
                     
                     // Me creo un objeto telefono
                     TelefonoData t = new TelefonoData() { numero = this.telepone.Text };
                     
                     // Añado el telefono al objeto contacto int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
-                    //res = proxy.AddTelefono(this.telepone.Text, null, objContacto);
+                    res = proxy.AddTelefono(t, null, objContacto);
                     
                     // Si el distinto a -1 me lleva a l siguiente url, todo esta ok
                     if (res != -1) Response.Redirect("gestionContacto.aspx");
@@ -86,12 +96,30 @@ namespace GestionEmpresas.Privada
                 // this.lblError.Text = err.Message;
                 // this.alert.Visible = true;    
             }
-        }
+        } // Fin del addTlf
 
 
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect(".aspx", true);
-        }
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            this.telepone.Text = "123456789";
+
+            if (cEmp <= 0 && cCon <= 0)
+            {
+                Response.Redirect(".aspx", true);
+            }
+
+            if (cEmp != 0)
+            {
+                Response.Redirect("gestionContacto.aspx", true);
+            }
+
+            if (cCon != 0)
+            {
+                Response.Redirect("gestionContacto.aspx", true);
+            }
+        }// Fin del protected void Volver(object sender, EventArgs e)
     }
 }
