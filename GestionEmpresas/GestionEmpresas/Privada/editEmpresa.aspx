@@ -19,7 +19,7 @@
 
                        <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="nombre" runat="server">Nombre</asp:Label>   
+                                <asp:Label ID="nombre" runat="server"><h4>Nombre</h4></asp:Label>   
                             </section>                       
                             <section class="col-md-4">
                                      <asp:TextBox id="nombreEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
@@ -32,7 +32,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="RasonSocial" runat="server">Razon Social</asp:Label>   
+                                <asp:Label ID="RasonSocial" runat="server"><h4>Razon Social</h4></asp:Label>   
                             </section>                       
                             <section class="col-md-4">
                                 <asp:TextBox ID="RazonSocial" runat="server" CssClass="form-control"></asp:TextBox>
@@ -45,7 +45,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="zif" runat="server">CIF</asp:Label>                        
+                                <asp:Label ID="zif" runat="server"><h4>CIF</h4></asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="CIF" runat="server" CssClass="form-control"></asp:TextBox>
@@ -58,7 +58,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="url" runat="server" >Pagina web</asp:Label>                        
+                                <asp:Label ID="url" runat="server" ><h4>Pagina web</h4></asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="paginaWeb" runat="server"  CssClass="form-control"></asp:TextBox>
@@ -71,7 +71,7 @@
 
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
-                                <asp:Label ID="zector" runat="server">Sector</asp:Label>                        
+                                <asp:Label ID="zector" runat="server"><h4>Sector</h4></asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:DropDownList ID="sector" runat="server" CssClass="form-control"></asp:DropDownList>

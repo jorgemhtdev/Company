@@ -59,7 +59,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Privada\Default.aspx" />
     <Content Include="Privada\gestionAccionesComerciales.aspx" />
     <Content Include="Privada\gestionContacto.aspx" />
     <Content Include="Privada\gestionEmpresas.aspx" />
@@ -227,13 +226,6 @@
     </Compile>
     <Compile Include="Privada\addUsuario.aspx.designer.cs">
       <DependentUpon>addUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Privada\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Privada\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Privada\editAccionComercial.aspx.cs">
       <DependentUpon>editAccionComercial.aspx</DependentUpon>
