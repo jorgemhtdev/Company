@@ -12,72 +12,75 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!this.IsPostBack)
             {
-                ServicioGestionClient proxy = new ServicioGestionClient();
+                try
+                {
+                    ServicioGestionClient proxy = new ServicioGestionClient();
 
-                /*************************************************** USUARIOS ***************************************************/
+                    /*************************************************** USUARIOS ***************************************************/
 
-                var user = proxy.getAllUsuarios(); 
+                    var user = proxy.getAllUsuarios(); 
 
-                this.listaUser.DataSource = user; 
+                    this.listaUser.DataSource = user; 
 
-                this.listaUser.DataTextField = "login";
-                this.listaUser.DataValueField = "idUsuario";
+                    this.listaUser.DataTextField = "login";
+                    this.listaUser.DataValueField = "idUsuario";
 
-                this.listaUser.DataBind();
+                    this.listaUser.DataBind();
 
-                /*************************************************** USUARIOS ***************************************************/
+                    /*************************************************** USUARIOS ***************************************************/
 
-                /************************************************* TIPO ACCION *************************************************/
+                    /************************************************* TIPO ACCION *************************************************/
 
-                var tipoaccion = proxy.GetAllTipoAccion();
+                    var tipoaccion = proxy.GetAllTipoAccion();
 
-                this.listaAccion.DataSource = tipoaccion;
+                    this.listaAccion.DataSource = tipoaccion;
 
-                this.listaAccion.DataTextField = "descripcion";
-                this.listaAccion.DataValueField = "idTipoAccion";
+                    this.listaAccion.DataTextField = "descripcion";
+                    this.listaAccion.DataValueField = "idTipoAccion";
 
-                this.listaAccion.DataBind();
+                    this.listaAccion.DataBind();
 
-                /************************************************* TIPO ACCION *************************************************/
+                    /************************************************* TIPO ACCION *************************************************/
 
-                /********************************************* ESTADO DE ACCION ************************************************/
+                    /********************************************* ESTADO DE ACCION ************************************************/
 
-                var estadoAccion = proxy.GetEstadoAccion();
+                    var estadoAccion = proxy.GetEstadoAccion();
 
-                this.listaEstadoAccion.DataSource = estadoAccion;
+                    this.listaEstadoAccion.DataSource = estadoAccion;
 
-                this.listaEstadoAccion.DataTextField = "descripcion";
-                this.listaEstadoAccion.DataValueField = "idEstadoAccion";
+                    this.listaEstadoAccion.DataTextField = "descripcion";
+                    this.listaEstadoAccion.DataValueField = "idEstadoAccion";
 
-                this.listaEstadoAccion.DataBind();
+                    this.listaEstadoAccion.DataBind();
 
-                /********************************************* ESTADO DE ACCION ************************************************/
+                    /********************************************* ESTADO DE ACCION ************************************************/
 
-                /*************************************************** EMPRESA ***************************************************/
+                    /*************************************************** EMPRESA ***************************************************/
 
-                var empresa = proxy.getAllEmpresa();
+                    var empresa = proxy.getAllEmpresa();
 
-                this.listaEmpresa.DataSource = empresa;
-                this.listaEmpresa.DataSource = empresa;
+                    this.listaEmpresa.DataSource = empresa;
+                    this.listaEmpresa.DataSource = empresa;
 
-                this.listaEmpresa.DataTextField = "nombreComercial";
-                this.listaEmpresa.DataValueField = "EmpresaID";
+                    this.listaEmpresa.DataTextField = "nombreComercial";
+                    this.listaEmpresa.DataValueField = "EmpresaID";
 
-                this.listaEmpresa.DataBind();
+                    this.listaEmpresa.DataBind();
 
-                //this.listaEmpresa.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
+                    //this.listaEmpresa.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
 
-                /*************************************************** EMPRESA ***************************************************/
+                    /*************************************************** EMPRESA ***************************************************/
 
-            }
-            catch
-            {
-                // this.lblError.Text = err.Message;
-                // this.alert.Visible = true; 
+                }
+                catch
+                {
+                    // this.lblError.Text = err.Message;
+                    // this.alert.Visible = true; 
 
-                // O en sector del drownlist meter no hay datos disponibles y quitar los botones
+                    // O en sector del drownlist meter no hay datos disponibles y quitar los botones
+                }
             }
         }// Fin del Page_Load
 
@@ -119,8 +122,8 @@ namespace GestionEmpresas.Privada
 
                     Response.Redirect("gestionAccionesComerciales.aspx", true);
 
-                }// Fin del if
-            }// Fin del if
+                } // Fin del if (this.IsValid)
+            }// Fin del if (this.IsPostBack)
         } // Fin del evento addAC
 
         /// <summary>
