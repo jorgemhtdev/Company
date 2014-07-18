@@ -31,6 +31,7 @@ namespace GestionEmpresas.Privada
                 ServicioGestionClient proxy = new ServicioGestionClient();
 
                 /** Objeto Usuario **/
+
                 UsuarioData objetoUsuario = new UsuarioData();
 
                 objetoUsuario.login = this.login.Text;
