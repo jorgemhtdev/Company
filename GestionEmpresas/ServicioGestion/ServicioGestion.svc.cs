@@ -2459,5 +2459,1041 @@ namespace ServicioGestion
         /********************************************************************/
         /***************************** FIN MIGUEL****************************/
         /********************************************************************/
+
+        /*********************************Filtros ******************************************/
+        
+        /************************Filtros Empresa ****************************************/
+
+        public List<EmpresaData> filtrosEmpresa(string cif, string sector, string provincia, string nombre)
+        {
+            List<EmpresaData> datos = new List<EmpresaData>();
+            List<DireccionData> datosDirec = new List<DireccionData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    //nombre
+                    if (nombre != null && cif==null && sector ==null && provincia==null)
+                    {
+                        var resulta = from empresa in db.Empresa
+                                      where empresa.nombreComercial.Contains(nombre)
+                                      select empresa;
+
+                        foreach (Empresa em in resulta)
+                        {
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+
+                        }
+                        
+                    }
+
+
+                    //cif
+                    if (nombre == null && cif != null && sector == null && provincia == null)
+                    {
+                        var resulta = from empresa in db.Empresa
+                                      where empresa.cif == cif
+                                      select empresa;
+
+                        foreach (Empresa em in resulta)
+                        {
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+
+                        }
+                        
+                    }
+                    //Nombre y cif 
+                    if (nombre != null && cif != null && sector == null && provincia == null)
+                    {
+                        var resulta = from empresa in db.Empresa
+                                      where empresa.cif == cif && empresa.nombreComercial.Contains(nombre)
+                                      select empresa;
+
+                        foreach (Empresa em in resulta)
+                        {
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+
+                        }
+                        
+                    }
+
+                    //Provincia
+                    if (nombre == null && cif == null && sector == null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach(Direccion dir in em.Direccion)
+                            {
+                                    
+                                     if (provincia == dir.provincia)
+                                     {
+                                         datos.Add(emData);
+                                     }
+                            }
+                                
+                           
+                          
+
+                        }
+                        return datos;
+                    }
+
+                    //Provincia y nombre
+                    if (nombre != null && cif == null && sector == null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.nombreComercial.Contains(nombre)
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+
+
+
+
+                        }
+                        return datos;
+                    }
+
+                    //Nombre, cif y provincia
+                    if (nombre != null && cif != null && sector == null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.cif == cif && emp.nombreComercial.Contains(nombre)
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //Sector
+                    if (nombre == null && cif == null && sector != null && provincia == null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.Sector.descripcion==sector
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+                        }
+                        return datos;
+                    }
+
+                    //Sector y nombre
+                    if (nombre != null && cif == null && sector != null && provincia == null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.Sector.descripcion == sector && emp.nombreComercial.Contains(nombre)
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+                        }
+                        return datos;
+                    }
+
+
+                    
+                    //Nombre, sector, cif y provincia
+                    if (nombre != null && cif != null && sector != null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.cif == cif && emp.nombreComercial.Contains(nombre)&&emp.Sector.descripcion==sector
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //Nombre, sector, provincia
+                    if (nombre != null && cif== null && sector != null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where  emp.nombreComercial.Contains(nombre) && emp.Sector.descripcion == sector
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //sector, provincia
+                    if (nombre == null && cif == null && sector != null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where  emp.Sector.descripcion == sector
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //cif, provincia
+                    if (nombre == null && cif != null && sector == null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.cif==cif
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //cif, provincia, sector
+                    if (nombre == null && cif != null && sector == null && provincia != null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.cif == cif && emp.Sector.descripcion==sector
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            foreach (Direccion dir in em.Direccion)
+                            {
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
+                            }
+                        }
+                        return datos;
+                    }
+
+                    //Sector y cif
+                    if (nombre == null && cif != null && sector != null && provincia == null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.Sector.descripcion == sector && emp.cif==cif
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+                        }
+                        return datos;
+                    }
+
+
+                    //Sector, cif y nombre
+                    if (nombre != null && cif != null && sector != null && provincia == null)
+                    {
+                        var resulta = from emp in db.Empresa
+                                      where emp.Sector.descripcion == sector && emp.cif == cif && emp.nombreComercial.Contains(nombre)
+                                      select emp;
+
+                        foreach (Empresa em in resulta)
+                        {
+
+                            EmpresaData emData = new EmpresaData()
+                            {
+                                EmpresaID = em.idEmpresa,
+                                cif = em.cif,
+                                nombreComercial = em.nombreComercial,
+                                razonSocial = em.razonSocial,
+                                web = em.web,
+                                sector = em.Sector.descripcion
+                            };
+                            datos.Add(emData);
+                        }
+                        return datos;
+                    }
+
+                    return datos;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("ERROR SERVICIO LISTADO DE EMAILS"));
+            }
+        }
+        /************************FIN Empresa ****************************************/
+
+
+        /************************Contactos***********************************/
+
+        public List<ContactoData> filtrosContacto(string nif, string nombre)
+        {
+            List<ContactoData> datos = new List<ContactoData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    //nif
+                    if (nif!=null&&nombre==null)
+                    {
+                        var resulta = from contacto in db.Contacto
+                                      where contacto.nif == nif
+                                      select contacto;
+
+                        foreach (Contacto em in resulta)
+                        {
+                            ContactoData cntData = new ContactoData()
+                            {
+                                idEmpresa = Convert.ToInt32(em.idEmpresa),
+                                idContacto = em.idContacto,
+                                nif = em.nif,
+                                nombre = em.nombre
+                            };
+
+                            datos.Add(cntData);
+                        }
+                        return datos;
+                    }
+                    
+                    //email
+                    if (nif == null && nombre != null)
+                    {
+                        var resulta = from contacto in db.Contacto
+                                      where contacto.nombre.Contains(nombre)
+                                      select contacto;
+
+                        foreach (Contacto em in resulta)
+                        {
+                            ContactoData cntData = new ContactoData()
+                            {
+                                idEmpresa = Convert.ToInt32(em.idEmpresa),
+                                idContacto = em.idContacto,
+                                nif = em.nif,
+                                nombre = em.nombre
+                            };
+
+                            datos.Add(cntData);
+                        }
+                        return datos;
+                    }
+
+                    //email y nombre
+                    if (nif != null && nombre != null)
+                    {
+                        var resulta = from contacto in db.Contacto
+                                      where contacto.nombre.Contains(nombre) && contacto.nif == nif
+                                      select contacto;
+
+                        foreach (Contacto em in resulta)
+                        {
+                            ContactoData cntData = new ContactoData()
+                            {
+                                idEmpresa = Convert.ToInt32(em.idEmpresa),
+                                idContacto = em.idContacto,
+                                nif = em.nif,
+                                nombre = em.nombre
+                            };
+
+                            datos.Add(cntData);
+                        }
+                        return datos;
+                    }
+
+                    return datos;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode(""));
+            }
+        }
+
+        /***********************FIN Contactos**********************************/
+
+
+        /***********************Usuario**********************************/
+
+        public List<UsuarioData> filtrosUsuario(string login, string nombre)
+        {
+            List<UsuarioData> datos = new List<UsuarioData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    //Nombre
+                    if (login == null && nombre != null)
+                    {
+                        var consulta = from usuario in db.Usuario
+                                       where usuario.nombre.Contains(nombre)
+                                       select usuario;
+
+                        foreach (Usuario user in consulta)
+                        {
+                            UsuarioData u = new UsuarioData();
+                            u.idUsuario = user.idUsuario;
+                            u.login = user.login;
+                            u.nombre = user.nombre;
+                            u.password = user.password;
+
+                            datos.Add(u);
+                        }
+                        return datos;
+                    }
+
+
+                    //login
+                    if (login != null && nombre == null)
+                    {
+                        var consulta = from usuario in db.Usuario
+                                       where usuario.login==login
+                                       select usuario;
+
+                        foreach (Usuario user in consulta)
+                        {
+                            UsuarioData u = new UsuarioData();
+                            u.idUsuario = user.idUsuario;
+                            u.login = user.login;
+                            u.nombre = user.nombre;
+                            u.password = user.password;
+
+                            datos.Add(u);
+                        }
+                        return datos;
+                    }
+
+                    //Nombre y login
+                    if (login != null && nombre != null)
+                    {
+                        var consulta = from usuario in db.Usuario
+                                       where usuario.nombre.Contains(nombre) && usuario.login==login
+                                       select usuario;
+
+                        foreach (Usuario user in consulta)
+                        {
+                            UsuarioData u = new UsuarioData();
+                            u.idUsuario = user.idUsuario;
+                            u.login = user.login;
+                            u.nombre = user.nombre;
+                            u.password = user.password;
+
+                            datos.Add(u);
+                        }
+                        return datos;
+                    }
+                }
+                return datos;
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+
+        /***********************FIN Usuario**********************************/
+
+        /***************************ACCIONES************************************/
+        public List<AccionComercialMostrarData> filtrosAccionComercial(string tipoAccion, string estadoAccion, string nombreEmpresa, string loginUser)
+        {
+            List<AccionComercialMostrarData> datos = new List<AccionComercialMostrarData>();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+
+                    //TipoAccion (Descripcion)
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa == null &&loginUser==null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.TipoDeAccion.descripcion==tipoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //estado accion (Descripcion)
+                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa == null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.EstadoDeAccion.descripcion == estadoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+
+                    //Estado accion (Descripcion)
+                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa == null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.EstadoDeAccion.descripcion == estadoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //Empresa (nombreComercial)
+                    if (tipoAccion == null && estadoAccion == null && nombreEmpresa != null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Empresa.nombreComercial.Contains(nombreEmpresa)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //Empresa y tipo de accion (descripcion)
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa != null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.TipoDeAccion.descripcion == tipoAccion && action.Empresa.nombreComercial.Contains(nombreEmpresa)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //Estado accion (Descripcion) y empresa (nombre)
+                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa != null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.EstadoDeAccion.descripcion == estadoAccion&&action.Empresa.nombreComercial.Contains(nombreEmpresa)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //Estado accion (Descripcion), empresa (nombre) y tipoAccion(descripcion)
+                    if (tipoAccion != null && estadoAccion != null && nombreEmpresa != null && loginUser == null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.Empresa.nombreComercial.Contains(nombreEmpresa)&&action.TipoDeAccion.descripcion==tipoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login
+                    if (tipoAccion == null && estadoAccion == null && nombreEmpresa == null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Usuario.login.Contains(loginUser)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y tipo accion (descripcion)
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa == null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.TipoDeAccion.descripcion==tipoAccion&&action.Usuario.login.Contains(loginUser)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y estado  accion (descripcion)
+                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa == null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.Usuario.login.Contains(loginUser)
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y tipo accion (descripcion), estado accion (descripcion)
+                    if (tipoAccion != null && estadoAccion != null && nombreEmpresa == null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.TipoDeAccion.descripcion == tipoAccion && action.Usuario.login.Contains(loginUser)&&action.EstadoDeAccion.descripcion==estadoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y empresa
+                    if (tipoAccion == null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Usuario.login.Contains(loginUser)&&action.Empresa.nombreComercial==nombreEmpresa
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y empresa y tipoaccion
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa&&action.TipoDeAccion.descripcion==tipoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y empresa y estado accion (descripcion)
+                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa != null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.EstadoDeAccion.descripcion == estadoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    //login y empresa y tipoaccion y estado accion
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
+                    {
+                        var consulta = from action in db.AccionComercial
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.TipoDeAccion.descripcion == tipoAccion&&action.EstadoDeAccion.descripcion==estadoAccion
+                                       select action;
+
+                        foreach (AccionComercial accion in consulta)
+                        {
+                            AccionComercialMostrarData a = new AccionComercialMostrarData();
+                            a.idAccion = accion.idAccion;
+                            a.descripcion = accion.descripcion;
+                            a.comentarios = accion.comentarios;
+                            a.fechaHora = accion.fechaHora;
+                            a.nombreUsuario = accion.Usuario.nombre;
+                            a.descripcionTipoAccion = accion.TipoDeAccion.descripcion;
+                            a.descripcionEstadoAccion = accion.EstadoDeAccion.descripcion;
+                            a.nombreEmpresa = accion.Empresa.nombreComercial;
+
+                            datos.Add(a);
+                        }
+                        return datos;
+                    }
+
+                    return datos;
+                }
+                   
+           }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+
+        }
+
+        /***************************FIN ACCIONES**********************************/
+
+        /**********************************Fin filtros**************************************/
+
+
+
+
+       
     }
 }
