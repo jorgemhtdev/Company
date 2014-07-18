@@ -787,7 +787,7 @@ namespace ServicioGestion
                     nueva.provincia = t.provincia;
                     nueva.codPostal = t.codPostal;
 
-                    if (empData.EmpresaID != 0)
+                    if (empData != null)
                     {
                         var datos = from empresas in bd.Empresa
                                     where empresas.idEmpresa == empData.EmpresaID
@@ -1337,6 +1337,7 @@ namespace ServicioGestion
                     var resultado = from contact in db.Contacto
                                     where (contact.idContacto == id)
                                     select contact;
+                    
 
                     // eliminamos los telefonos, emails y direcciones asociados al contacto
                     foreach (Telefono t in resultado.First().Telefono)

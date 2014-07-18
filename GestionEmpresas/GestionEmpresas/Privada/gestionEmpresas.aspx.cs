@@ -107,7 +107,7 @@ namespace GestionEmpresas.Privada
             if (e.CommandName == "contactos")
             {
                 EmpresaData emp = empresas[Convert.ToInt32(e.CommandArgument)];
-                Response.Redirect("~/Privada/gestionContactos.aspx?id=" + emp.EmpresaID);
+                Response.Redirect("~/Privada/gestionContacto.aspx?id=" + emp.EmpresaID);
             }
         }
         protected void gvEmpresas_RowDeleting(object sender, GridViewDeleteEventArgs e)

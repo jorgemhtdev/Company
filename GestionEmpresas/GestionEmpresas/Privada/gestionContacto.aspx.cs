@@ -103,63 +103,63 @@ namespace GestionEmpresas.Privada
         {
             ContactoData cont = contactos[e.RowIndex];
             proxy.DeleteContacto(cont, cont.idContacto);
-            Response.Redirect("~/Privada/gestionEmpresas.aspx");
+            Response.Redirect("~/Privada/gestionContacto.aspx?id="+idEmpresa);
         }
 
-        /*protected void gvContactos_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void gvContactos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            EmpresaData emp = empresas[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmpresa.aspx?id=" + emp.EmpresaID);
+            ContactoData cont = contactos[e.NewEditIndex];
+            Response.Redirect("~/Privada/editEmpresa.aspx?id=" + cont.idContacto);
         }
 
         protected void gvTelefonos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var telefonos = proxy.GetTelefonosEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var telefonos = proxy.GetTelefonosContacto(cont.idContacto);
             TelefonoData tel = telefonos[e.RowIndex];
             proxy.DeleteTelefono(tel.idTelefono);
-            Response.Redirect("~/Privada/gestionEmpresas.aspx");
+            Response.Redirect("~/Privada/gestionContacto.aspx?id=" + idEmpresa);
         }
 
         protected void gvTelefonos_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var telefonos = proxy.GetTelefonosEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var telefonos = proxy.GetTelefonosContacto(cont.idContacto);
             TelefonoData tel = telefonos[e.NewEditIndex];
             Response.Redirect("~/Privada/editTelefono.aspx?id=" + tel.idTelefono);
         }
 
         protected void gvEmails_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var emails = proxy.getEmailEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var emails = proxy.getEmailContacto(cont.idContacto);
             EmailData em = emails[e.RowIndex];
             proxy.deleteEmail(em.EmailID);
-            Response.Redirect("~/Privada/gestionEmpresas.aspx");
+            Response.Redirect("~/Privada/gestionContacto.aspx?id=" + idEmpresa);
         }
 
         protected void gvEmails_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var emails = proxy.getEmailEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var emails = proxy.getEmailContacto(cont.idContacto);
             EmailData em = emails[e.NewEditIndex];
             Response.Redirect("~/Privada/editEmail.aspx?id=" + em.EmailID);
         }
         protected void gvDirecciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var direcciones = proxy.getDirecionesContacto(cont.idContacto);
             DireccionData dir = direcciones[e.RowIndex];
-            proxy.DeleteDireccion(dir, dir.idDireccion);
-            Response.Redirect("~/Privada/gestionEmpresas.aspx");
+            proxy.DeleteDireccion(dir.idDireccion);
+            Response.Redirect("~/Privada/gestionContacto.aspx?id=" + idEmpresa);
         }
 
         protected void gvDirecciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
-            var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
+            ContactoData cont = contactos[gvContactos.SelectedIndex];
+            var direcciones = proxy.getDirecionesContacto(cont.idContacto);
             DireccionData dir = direcciones[e.NewEditIndex];
             Response.Redirect("~/Privada/editEmail.aspx?id=" + dir.idDireccion);
-        }*/
+        }
     }
 }
