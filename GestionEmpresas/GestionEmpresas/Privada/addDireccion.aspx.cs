@@ -105,8 +105,8 @@ namespace GestionEmpresas.Privada
                     }
 
                     /***************************************************************************************************************************/
-                }// Fin del if
-            }// Fin del if
+                    } // Fin del if (this.IsValid)
+                }// Fin del if (this.IsPostBack)
         }// Fin del addDirec
 
         /// <summary>

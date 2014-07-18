@@ -63,8 +63,8 @@ namespace GestionEmpresas.Privada
                     int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
                     Response.Redirect("gestionContacto.aspx?id="+idEmpresa);
 
-                }// Fin del if
-            }// Fin del if
+                } // Fin del if (this.IsValid)
+            }// Fin del if (this.IsPostBack)
         }// Fin del addContac
 
         /// <summary>
