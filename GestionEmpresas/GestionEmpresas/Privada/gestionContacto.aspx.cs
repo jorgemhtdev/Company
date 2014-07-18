@@ -78,7 +78,7 @@ namespace GestionEmpresas.Privada
 
         protected void bAniadirContacto_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Privada/addContacto.aspx?Empresa="+ idEmpresa);
+            Response.Redirect("~/Privada/addContacto.aspx?id="+ idEmpresa);
         }
 
         protected void btnAddTelefono_Click(object sender, EventArgs e)
