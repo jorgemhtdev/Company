@@ -15,6 +15,7 @@ namespace GestionEmpresas.Privada
         public static EmpresaData[] empresas = proxy.getAllEmpresa();
         protected void Page_Load(object sender, EventArgs e)
         {
+            empresas = proxy.getAllEmpresa();
             if (!this.IsPostBack)
             {
                 try

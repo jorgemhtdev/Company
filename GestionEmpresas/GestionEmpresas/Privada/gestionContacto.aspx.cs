@@ -16,6 +16,7 @@ namespace GestionEmpresas.Privada
         public static ContactoData[] contactos = proxy.GetContactosEmpresa(idEmpresa);
         protected void Page_Load(object sender, EventArgs e)
         {
+            contactos = proxy.GetContactosEmpresa(idEmpresa);
             if (!this.IsPostBack)
             {
                 try
