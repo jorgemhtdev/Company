@@ -12,10 +12,7 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
-            {
-                try
+            try
                 {
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
@@ -34,11 +31,6 @@ namespace GestionEmpresas.Privada
 
                     // O en sector del drownlist meter no hay datos disponibles y quitar los botones
                 }
-            }
-            else
-            {
-
-            }
         }
 
         protected void addEmpr(object sender, EventArgs e)
