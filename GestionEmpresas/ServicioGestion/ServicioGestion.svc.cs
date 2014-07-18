@@ -787,7 +787,7 @@ namespace ServicioGestion
                     nueva.provincia = t.provincia;
                     nueva.codPostal = t.codPostal;
 
-                    if (empData.EmpresaID != 0)
+                    if (empData != null)
                     {
                         var datos = from empresas in bd.Empresa
                                     where empresas.idEmpresa == empData.EmpresaID
