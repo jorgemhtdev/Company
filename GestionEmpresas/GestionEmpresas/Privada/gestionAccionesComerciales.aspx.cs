@@ -15,6 +15,7 @@ namespace GestionEmpresas.Privada
         public static AccionComercialMostrarData[] acciones = proxy.getAllAccionesComerciales();
         protected void Page_Load(object sender, EventArgs e)
         {
+            acciones = proxy.getAllAccionesComerciales();
             if (!this.IsPostBack)
             {
                 try
