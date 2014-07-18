@@ -14,7 +14,7 @@ namespace GestionEmpresas.Privada
         {
 
         }
-        
+
         /// <summary>
         /// Evento del boton que me añade un usuario a la BD
         /// </summary>
@@ -44,8 +44,8 @@ namespace GestionEmpresas.Privada
 
                 Response.Redirect("gestionUsuarios.aspx");
 
-                } // Fin del if (this.IsValid)
-            }// Fin del if (this.IsPostBack)
+                }// Fin del if
+            }// Fin del if
         }// Fin del addUser
 
         /// <summary>
