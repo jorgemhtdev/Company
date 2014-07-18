@@ -68,7 +68,23 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void AddAccionComercialTest()
         {
-            AccionComercialData accion = new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) };
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+
+            if (listE.Length == 0 || listU.Length == 0 || listTA.Length == 0 || listEA.Length == 0) return;
+
+            AccionComercialData accion = new AccionComercialData()
+            {
+                descripcion = "prueba",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = listE[0].EmpresaID,
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            };
             int nueva = proxy.addAccionComercial(accion);
             Assert.IsTrue(accion.descripcion == proxy.getAccionComercial(nueva).descripcion);
             proxy.deleteAccionComercial(nueva);
@@ -145,7 +161,9 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
             int id;
             int registros;
-            
+            ContactoData[] listC = proxy.getAllContacto();
+            EmpresaData[] listE = proxy.getAllEmpresa();
+
             //addTelefono(null, null, null)
             TelefonoData telefono = null;
             EmpresaData empresa = null;
@@ -162,36 +180,40 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             //addTelefono(null, empresa, null)
             telefono = null;
-            empresa = new EmpresaData() { EmpresaID = 2, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
-            registros = proxy.GetAllTelefonos().Length;
-            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
+            if (listE.Length > 0)
+            {
+                empresa = listE[0];
+                registros = proxy.GetAllTelefonos().Length;
+                Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+                Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
+
+                //addTelefono(telefono, empresa, null)
+                telefono = new TelefonoData() { numero = "prueba 1" };
+                registros = proxy.GetAllTelefonos().Length;
+                id = proxy.AddTelefono(telefono, empresa, contacto);
+                Assert.AreNotEqual(-1, id);
+                Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+                proxy.DeleteTelefono(id);
+            } 
 
             //addTelefono(null, null, contacto)
             telefono = null;
             empresa = null;
-            contacto = new ContactoData() { idContacto = 2, idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
-            registros = proxy.GetAllTelefonos().Length;
-            Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
+            if (listC.Length > 0)
+            {
+                contacto = listC[0];
+                registros = proxy.GetAllTelefonos().Length;
+                Assert.AreEqual(-1, proxy.AddTelefono(telefono, empresa, contacto));
+                Assert.IsTrue(registros == proxy.GetAllTelefonos().Length);
 
-            //addTelefono(telefono, null, contacto)
-            telefono = new TelefonoData() { numero = "prueba 1" };
-            registros = proxy.GetAllTelefonos().Length;
-            id = proxy.AddTelefono(telefono, empresa, contacto);
-            Assert.AreNotEqual(-1, id);
-            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
-            proxy.DeleteTelefono(id);
-
-            //addTelefono(telefono, empresa, null)
-            telefono = new TelefonoData() { numero = "prueba 2" };
-            empresa = new EmpresaData() { EmpresaID = 2, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
-            contacto = null;
-            registros = proxy.GetAllTelefonos().Length;
-            id = proxy.AddTelefono(telefono, empresa, contacto);
-            Assert.AreNotEqual(-1, id);
-            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
-            proxy.DeleteTelefono(id);
+                //addTelefono(telefono, null, contacto)
+                telefono = new TelefonoData() { numero = "prueba 2" };
+                registros = proxy.GetAllTelefonos().Length;
+                id = proxy.AddTelefono(telefono, empresa, contacto);
+                Assert.AreNotEqual(-1, id);
+                Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+                proxy.DeleteTelefono(id);
+            } 
         }
 
         /// <summary>
@@ -253,6 +275,8 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
             int id;
             int registros;
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            ContactoData[] listC = proxy.getAllContacto();
 
             //addDireccion(null, null, null)
             DireccionData direccion = null;
@@ -263,43 +287,49 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(registros == proxy.GetDireccion().Length);
 
             //addDireccion(Direccion, null, null)
-            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
+            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
             registros = proxy.GetDireccion().Length;
             Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
             Assert.IsTrue(registros == proxy.GetDireccion().Length);
 
             //addDireccion(null, empresa, null)
             direccion = null;
-            empresa = new EmpresaData() { EmpresaID = 2, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
-            registros = proxy.GetDireccion().Length;
-            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+            if (listE.Length > 0)
+            {
+                empresa = listE[0];
+                registros = proxy.GetDireccion().Length;
+                Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+                Assert.IsTrue(registros == proxy.GetDireccion().Length);
+
+                //addDireccion(Direccion, empresa, null)
+                direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
+                empresa = listE[0];
+                contacto = null;
+                registros = proxy.GetDireccion().Length;
+                id = proxy.AddDireccion(direccion, empresa, contacto);
+                Assert.AreNotEqual(-1, id);
+                Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+                proxy.DeleteDireccion(id);
+            }
 
             //addDireccion(null, null, contacto)
             direccion = null;
             empresa = null;
-            contacto = new ContactoData() { idContacto = 2, idEmpresa = 1, nif = "nif1", nombre = "nombre1" };
-            registros = proxy.GetDireccion().Length;
-            Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+            if (listC.Length > 0)
+            {
+                contacto = listC[0];
+                registros = proxy.GetDireccion().Length;
+                Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
+                Assert.IsTrue(registros == proxy.GetDireccion().Length);
 
-            //addDireccion(Direccion, null, contacto)
-            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
-            registros = proxy.GetDireccion().Length;
-            id = proxy.AddDireccion(direccion, empresa, contacto);
-            Assert.AreNotEqual(-1, id);
-            Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
-            proxy.DeleteDireccion(id);
-
-            //addDireccion(Direccion, empresa, null)
-            direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
-            empresa = new EmpresaData() { EmpresaID = 2, cif = "cif1", nombreComercial = "nombre1", razonSocial = "razon1", sector = "sector1", web = "web1" };
-            contacto = null;
-            registros = proxy.GetDireccion().Length;
-            id = proxy.AddDireccion(direccion, empresa, contacto);
-            Assert.AreNotEqual(-1, id);
-            Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
-            proxy.DeleteDireccion(id);
+                //addDireccion(Direccion, null, contacto)
+                direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
+                registros = proxy.GetDireccion().Length;
+                id = proxy.AddDireccion(direccion, empresa, contacto);
+                Assert.AreNotEqual(-1, id);
+                Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+                proxy.DeleteDireccion(id);
+            }
         }
 
         [TestMethod]
@@ -429,9 +459,26 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void EditAccionComercialTest()
         {
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+
+            if (listE.Length == 0 || listU.Length == 0 || listTA.Length == 0 || listEA.Length == 0) return;
+
             Assert.IsTrue(proxy.addAccionComercial(null) == -1);
 
-            AccionComercialData accion1 = new AccionComercialData() { descripcion = "prueba1", fechaHora = new DateTime(2000, 12, 02) };
+            AccionComercialData accion1 = new AccionComercialData()
+            {
+                descripcion = "prueba",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = listE[0].EmpresaID,
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            };
+
             int nueva = proxy.addAccionComercial(accion1);
             accion1.idAccion = nueva;
             accion1.descripcion = "cambioprueba1";
@@ -487,10 +534,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
             Assert.IsTrue(proxy.EditTelefono(null) == -1);
 
             TelefonoData tOriginal = new TelefonoData() { numero = "prueba" };
-            int nuevo = proxy.AddTelefono(tOriginal, new EmpresaData() { EmpresaID = 2 }, null);
-            Assert.IsTrue(proxy.EditTelefono(new TelefonoData() { idTelefono = nuevo, numero = "cambiado" }) != -1);
-            Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == "cambiado");
-            proxy.DeleteTelefono(nuevo);
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if(listE.Length > 0)
+            {
+                int nuevo = proxy.AddTelefono(tOriginal, listE[0], null);
+                Assert.IsTrue(proxy.EditTelefono(new TelefonoData() { idTelefono = nuevo, numero = "cambiado" }) != -1);
+                Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == "cambiado");
+                proxy.DeleteTelefono(nuevo);
+            }
         }
         
         [TestMethod]
@@ -516,11 +567,15 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void EditDireccionTest()
         {
             Assert.IsTrue(proxy.EditDireccion(null) == -1);
-            DireccionData tOriginal = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
-            int original = proxy.AddDireccion(tOriginal, new EmpresaData() { EmpresaID = 2 }, null);
-            DireccionData dir = new DireccionData() { idDireccion = original, domicilio = "cambiado", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
-            Assert.IsTrue(proxy.EditDireccion(dir) != -1);
-            proxy.DeleteTelefono(original);
+            DireccionData tOriginal = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if (listE.Length > 0)
+            {
+                int original = proxy.AddDireccion(tOriginal, listE[0], null);
+                DireccionData dir = new DireccionData() { idDireccion = original, domicilio = "cambiado", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
+                Assert.IsTrue(proxy.EditDireccion(dir) != -1);
+                proxy.DeleteDireccion(original);
+            }
         }
 
         [TestMethod]
@@ -585,7 +640,23 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void DeleteAccionComercialTest()
         {
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000,12,02) });
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+
+            if (listE.Length == 0 || listU.Length == 0 || listTA.Length == 0 || listEA.Length == 0) return;
+
+            int nueva = proxy.addAccionComercial(new AccionComercialData()
+            {
+                descripcion = "prueba",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = listE[0].EmpresaID,
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            });
             int registros = proxy.getAllAccionesComerciales().Length;
             Assert.IsTrue(proxy.deleteAccionComercial(nueva));
             Assert.IsTrue(proxy.getAllAccionesComerciales().Length == registros - 1);
@@ -630,10 +701,15 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void DeleteTelefonoTest()
         {
-            int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba1" }, new EmpresaData() { EmpresaID = 2 }, null);
-            int registros = proxy.GetAllTelefonos().Length;
-            Assert.IsTrue(proxy.DeleteTelefono(nuevo));
-            Assert.IsTrue(registros - 1 == proxy.GetAllTelefonos().Length);
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if(listE.Length > 0)
+            {
+                int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba1" }, listE[0], null);
+                int registros = proxy.GetAllTelefonos().Length;
+                Assert.IsTrue(proxy.DeleteTelefono(nuevo));
+                Assert.IsTrue(registros - 1 == proxy.GetAllTelefonos().Length);
+            }
+            
 
         }
         
@@ -681,7 +757,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void DeleteDireccionTest()
         {
 
-            int nuevo = proxy.AddDireccion(new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" }, new EmpresaData() { EmpresaID = 2 }, null);
+            int nuevo = proxy.AddDireccion(new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" }, new EmpresaData() { EmpresaID = 2 }, null);
             int registros = proxy.GetDireccion().Length;
             Assert.IsTrue(proxy.DeleteDireccion(nuevo));
             Assert.IsTrue(registros - 1 == proxy.GetDireccion().Length);
@@ -745,7 +821,24 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void GetAccionComercialTest()
         {
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) });
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+
+            if (listE.Length == 0 || listU.Length == 0 || listTA.Length == 0 || listEA.Length == 0) return;
+
+            AccionComercialData accion = new AccionComercialData()
+            {
+                descripcion = "prueba",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = listE[0].EmpresaID,
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            };
+            int nueva = proxy.addAccionComercial(accion);
             Assert.IsTrue(proxy.getAccionComercial(nueva).descripcion == "prueba");
             proxy.deleteAccionComercial(nueva);
         }
@@ -786,16 +879,21 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void GetSectorTest()
         {
-            Assert.IsTrue(proxy.GetSector().Length >= 0);
+            Assert.IsTrue(proxy.GetSector().Length > 0);
         }
 
         [TestMethod]
         public void GetTelefonoTest()
         {
             TelefonoData t = new TelefonoData() { numero = "prueba" };
-            int nuevo = proxy.AddTelefono(t, new EmpresaData() { EmpresaID = 2 }, null);
-            Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == t.numero);
-            proxy.DeleteTelefono(nuevo);
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if (listE.Length > 0)
+            {
+                int nuevo = proxy.AddTelefono(t, listE[0], null);
+                Assert.IsTrue(proxy.GetIdTelefono(nuevo).numero == t.numero);
+                proxy.DeleteTelefono(nuevo);
+            }
+            
         }
 
 
@@ -835,11 +933,15 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void GetDireccionTest()
         {
-            DireccionData t = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "codPrueba", provincia = "provprueba" };
-            int nuevo = proxy.AddDireccion(t, new EmpresaData() { EmpresaID = 2 }, null);
-            int registros = proxy.GetDireccion().Length;
-            proxy.DeleteDireccion(nuevo);
-            Assert.IsTrue(proxy.GetDireccion().Length == registros - 1);
+            DireccionData t = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if (listE.Length > 0)
+            {
+                int nuevo = proxy.AddDireccion(t, listE[0], null);
+                int registros = proxy.GetDireccion().Length;
+                proxy.DeleteDireccion(nuevo);
+                Assert.IsTrue(proxy.GetDireccion().Length == registros - 1);
+            }
         }
 /*
         [TestMethod]
@@ -886,26 +988,100 @@ namespace ServicioGestionTestSpace.ServiceReference1
         [TestMethod]
         public void GetAllAccionesComercialTest()
         {
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+
+            if(listE.Length == 0 || listU.Length == 0 || listTA.Length == 0 || listEA.Length == 0) return;
+            
             int registros = proxy.getAllAccionesComerciales().Length;
-            int nueva = proxy.addAccionComercial(new AccionComercialData() { descripcion = "prueba", fechaHora = new DateTime(2000, 12, 02) });
+            int nueva = proxy.addAccionComercial(new AccionComercialData() { 
+                descripcion = "prueba",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02), 
+                idEmpresa = listE[0].EmpresaID, 
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            });
             Assert.IsTrue(proxy.getAllAccionesComerciales().Length == registros + 1);
             proxy.deleteAccionComercial(nueva);
         }
-        /*
+        [TestMethod]
         public void GetAccionesComercialesUsuarioTest()
         {
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            AccionComercialData[] listAC;
 
+            if (listE.Length == 0 || listEA.Length == 0 || listTA.Length == 0) return;
+
+            UsuarioData uNuevo = new UsuarioData() { login = "ivan", nombre = "ivan", password = "ivan" };
+            int idUser = proxy.addUsuario(uNuevo);
+            
+            AccionComercialData nueva = new AccionComercialData()
+            {
+                descripcion = "prueba1",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = listE[0].EmpresaID,
+                idUsuario = idUser,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            };
+            int idNueva1 = proxy.addAccionComercial(nueva);
+
+            nueva.descripcion = "prueba2";
+            int idNueva2 = proxy.addAccionComercial(nueva);
+
+            listAC = proxy.getAccionesComercialesUsuarios(idUser);
+            Assert.IsTrue(listAC.Length == 2);
+            proxy.deleteAccionComercial(idNueva1);
+            proxy.deleteAccionComercial(idNueva2);
+            proxy.deleteUsuario(idUser);
         }
-        
+
+        [TestMethod]
         public void GetAccionesComercialesEmpresaTest()
         {
+            SectorData[] listS = proxy.GetSector();
+            UsuarioData[] listU = proxy.getAllUsuarios();
+            EstadoAccion[] listEA = proxy.GetEstadoAccion();
+            TipoDeAccionData[] listTA = proxy.GetAllTipoAccion();
+            AccionComercialData[] listAC;
 
+            if (listS.Length == 0 || listU.Length == 0 || listEA.Length == 0 || listTA.Length == 0) return;
+            
+            int idEmpresa = proxy.addEmpresa("prueba", "prueba", "prueba", "prueba", listS[0].idSector);
+            
+            AccionComercialData nueva = new AccionComercialData()
+            {
+                descripcion = "prueba1",
+                comentarios = "esto es una prueba",
+                fechaHora = new DateTime(2000, 12, 02),
+                idEmpresa = idEmpresa,
+                idUsuario = listU[0].idUsuario,
+                idEstadoAccion = listEA[0].idEstadoAccion,
+                idTipoAccion = listTA[0].idTipoAccion
+            };
+            int idNueva1 = proxy.addAccionComercial(nueva);
+
+            nueva.descripcion = "prueba2";
+            int idNueva2 = proxy.addAccionComercial(nueva);
+
+            listAC = proxy.getAccionesComercialesEmpresa(idEmpresa);
+            Assert.IsTrue(listAC.Length == 2);
+            proxy.deleteAccionComercial(idNueva1);
+            proxy.deleteAccionComercial(idNueva2);
+            proxy.deleteEmpresa(idEmpresa);
         }
-        */
+
         [TestMethod]
         public void GetAllTipoAccionTest()
         {
-            Assert.IsTrue(proxy.GetAllTipoAccion().Length >= 0);
+            Assert.IsTrue(proxy.GetAllTipoAccion().Length > 0);
         }
 
         [TestMethod]
@@ -938,10 +1114,14 @@ namespace ServicioGestionTestSpace.ServiceReference1
         public void GetAllTelefonoTest()
         {
             int registros = proxy.GetAllTelefonos().Length;
-            int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba" }, new EmpresaData() { EmpresaID = 2 }, null);
-
-            Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
-            proxy.DeleteTelefono(nuevo);
+            EmpresaData[] listE = proxy.getAllEmpresa();
+            if(listE.Length > 0)
+            {
+                int nuevo = proxy.AddTelefono(new TelefonoData() { numero = "prueba" }, listE[0], null);
+                Assert.IsTrue(registros + 1 == proxy.GetAllTelefonos().Length);
+                proxy.DeleteTelefono(nuevo);
+            }
+            
         }
         
         [TestMethod]
