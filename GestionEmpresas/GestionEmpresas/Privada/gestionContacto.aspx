@@ -23,13 +23,8 @@
                         <asp:GridView ID="gvContactos" runat="server" CssClass="table table-hover" GridLines="None" OnSelectedIndexChanged="gvContactos_SelectedIndexChanged" EmptyDataText="No hay contactos en la BD" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" OnRowDeleting="gvContactos_RowDeleting" OnRowEditing="gvContactos_RowEditing">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
-                                <asp:BoundField DataField="nombreComercial" HeaderText="Nombre" />
-                                <asp:BoundField DataField="cif" HeaderText="CIF" />
-                                <asp:BoundField DataField="sector" HeaderText="Sector" />
-                                <asp:BoundField DataField="razonSocial" HeaderText="Razon Social" />
-                                <asp:BoundField DataField="web" HeaderText="Web" />
-                                <asp:ButtonField CommandName="contactos" Text="Contactos">
-                                </asp:ButtonField>
+                                <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                                <asp:BoundField DataField="nif" HeaderText="NIF" />
                                 <asp:CommandField EditText="Editar" ShowCancelButton="False" ShowEditButton="True">
                                 </asp:CommandField>
                                 <asp:CommandField DeleteText="Borrar" ShowDeleteButton="True">
