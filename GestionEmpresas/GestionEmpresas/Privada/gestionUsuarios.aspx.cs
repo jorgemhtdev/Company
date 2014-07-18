@@ -15,6 +15,7 @@ namespace GestionEmpresas.Privada
         public static UsuarioData[] usuarios = proxy.getAllUsuarios();
         protected void Page_Load(object sender, EventArgs e)
         {
+            usuarios = proxy.getAllUsuarios();
             if (!this.IsPostBack)
             {
                 try

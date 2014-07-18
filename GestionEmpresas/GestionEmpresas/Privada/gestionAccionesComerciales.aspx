@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-md-2 col-md-offset-8">
-                <asp:Button ID="bAniadirAccion" CssClass="btn btn-primary pull-right" runat="server" Text="Add Accion" OnClick="bAniadirContacto_Click" />
+                <asp:Button ID="bAniadirAccion" CssClass="btn btn-primary pull-right" runat="server" Text="Añadir Accion" OnClick="bAniadirContacto_Click" />
             </div>
             <div class="col-md-12">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
