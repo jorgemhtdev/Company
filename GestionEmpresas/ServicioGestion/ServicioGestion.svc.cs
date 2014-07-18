@@ -1344,6 +1344,7 @@ namespace ServicioGestion
                     var resultado = from contact in db.Contacto
                                     where (contact.idContacto == id)
                                     select contact;
+                    
 
                     // eliminamos los telefonos, emails y direcciones asociados al contacto
                     foreach (Telefono t in resultado.First().Telefono)

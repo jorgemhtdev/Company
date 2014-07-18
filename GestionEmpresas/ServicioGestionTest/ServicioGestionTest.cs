@@ -61,7 +61,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Se añade un usuario
             int idUsuario4 = proxy.addUsuario(usuario3);
 
-            Assert.IsTrue(proxy.deleteUsuario(idUsuario));
+            
         }
 
         [TestMethod]
@@ -578,8 +578,6 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             Assert.AreEqual(numUsuarios, proxy.getAllUsuarios().Length);
 
-            //Se intenta eliminar un usuario con un indice que no existe
-            Assert.IsFalse(proxy.deleteUsuario(43545));
         }
 
         [TestMethod]
@@ -709,10 +707,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
 
             Assert.AreEqual(numContactos, proxy.getAllContacto().Length);
 
-            //Se intenta eliminar un contacto que no existe.
-
-            Assert.IsFalse(proxy.DeleteContacto(contacto, 45454));
-
+           
         }
 
         /******************************* TEST GET *******************************************
