@@ -17,6 +17,9 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //El label visible a false
+            this.lblError.Visible = false;
+
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             // Obtemos el idEmpresa e idContacto que tenemos en la url
@@ -72,20 +75,45 @@ namespace GestionEmpresas.Privada
                         {
                             // Obtengo el objeto empresa
                             var objEmpresa = proxy.getEmpresaId(cEmp);
-                            res = proxy.AddTelefono(t, objEmpresa, null);
+                            
+                            //Se comprueba el telefono. Que sea único
+                            TelefonoData telefono=proxy.GetNumeroTelefono(t.numero);
+                            if(telefono==null)
+                            {
+                                res = proxy.AddTelefono(t, objEmpresa, null);
+                                Response.Redirect("gestionEmpresas.aspx");
+                            }
+                            else
+                            {
+                                this.lblError.Visible = true;
+                                this.lblError.Text = "El número de teléfono ya existe en la base de datos.";
+                            }
+                           
                         }
 
                         if (cCon != 0)
                         {
                             // Obtengo el objeto contacto
                             var objContacto = proxy.getContacto(cCon);
-                            res = proxy.AddTelefono(t, null, objContacto);
+                            Response.Redirect("gestionContacto.aspx");
+
+                            //Se comprueba el telefono. Que sea único
+                            TelefonoData telefono = proxy.GetNumeroTelefono(t.numero);
+                            if (telefono == null)
+                            {
+                                res = proxy.AddTelefono(t, null, objContacto);
+                            }
+                            else
+                            {
+                                this.lblError.Visible = true;
+                                this.lblError.Text = "El número de teléfono ya existe en la base de datos.";
+                            }
                         }
 
                         /***************************************************************************************************************************/
 
                         // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
-                        if (res != -1)
+                     /*   if (res != -1)
                         {
                             if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
                             if (cCon != 0) Response.Redirect("gestionContacto.aspx");
@@ -93,15 +121,17 @@ namespace GestionEmpresas.Privada
                         // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
                         else
                         {
-                            //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                            this.lblError.Visible = true;
+                            this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
                             //this.alert.Visible = true;
-                        }
+                        }*/
 
                         /***************************************************************************************************************************/
                     }
                     catch (Exception err)
                     {
-                        // this.lblError.Text = err.Message;
+                         this.lblError.Visible = true;
+                         this.lblError.Text = err.Message;
                         // this.alert.Visible = true;    
                     }
                 } // Fin del if (this.IsValid)
