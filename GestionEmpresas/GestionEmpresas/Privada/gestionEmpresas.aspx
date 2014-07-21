@@ -7,10 +7,13 @@
             <div class="col-md-2">
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCif" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtSector" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtProvincia" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:Button ID="bBusqueda" runat="server" Text="Busqueda avanzada" />
+                        <asp:Button ID="bBusqueda" runat="server" Text="Buscar" />
                     </div>
                 </div>
             </div>
