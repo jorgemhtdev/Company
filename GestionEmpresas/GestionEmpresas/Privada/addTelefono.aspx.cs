@@ -86,7 +86,7 @@ namespace GestionEmpresas.Privada
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "El número de teléfono ya existe en la base de datos.";
+                                this.lblError.Text = "No se puede añadir este registro. El número de teléfono ya existe en la base de datos.";
                             }
                            
                         }
@@ -106,7 +106,7 @@ namespace GestionEmpresas.Privada
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "El número de teléfono ya existe en la base de datos.";
+                                this.lblError.Text = "No se puede añadir este registro. El número de teléfono ya existe en la base de datos.";
                             }
                         }
 
