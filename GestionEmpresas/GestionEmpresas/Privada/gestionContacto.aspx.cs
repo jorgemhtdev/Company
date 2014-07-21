@@ -13,32 +13,11 @@ namespace GestionEmpresas.Privada
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
         public static int idEmpresa = Convert.ToInt32(HttpContext.Current.Request.QueryString["id"]);
-        public static ContactoData[] contactos = proxy.GetContactosEmpresa(idEmpresa);
+        public static ContactoData[] contactos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            contactos = proxy.GetContactosEmpresa(idEmpresa);
-            if (!this.IsPostBack)
-            {
-                try
-                {
-                    this.panel.Visible = false;
-                    this.gvContactos.DataSource = contactos;
-                    this.gvContactos.DataBind();
-                }
-                catch (FaultException ex)
-                {
-                    /*this.lbError.Text = "Servicio " + ex.Message;
-                    this.lbError.Visible = true;
-                    this.lbRegiones.Visible = false;*/
-
-                }
-                catch (Exception ex)
-                {
-                    /*this.lbError.Text = ex.Message;
-                     this.lbError.Visible = true;
-                     this.lbRegiones.Visible = false;*/
-                }
-            }
+            this.gvContactos.Visible = false;
+            this.panel.Visible = false;
         }
         protected void gvContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -46,6 +25,7 @@ namespace GestionEmpresas.Privada
             {
                 try
                 {
+                    this.gvContactos.Visible = true;
                     this.panel.Visible = true;
                     ContactoData cont = contactos[gvContactos.SelectedIndex];
 
@@ -110,7 +90,7 @@ namespace GestionEmpresas.Privada
         protected void gvContactos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             ContactoData cont = contactos[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmpresa.aspx?id=" + cont.idContacto);
+            Response.Redirect("~/Privada/editContacto.aspx?id=" + cont.idContacto);
         }
 
         protected void gvTelefonos_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -160,7 +140,24 @@ namespace GestionEmpresas.Privada
             ContactoData cont = contactos[gvContactos.SelectedIndex];
             var direcciones = proxy.getDirecionesContacto(cont.idContacto);
             DireccionData dir = direcciones[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmail.aspx?id=" + dir.idDireccion);
+            Response.Redirect("~/Privada/editDireccion.aspx?id=" + dir.idDireccion);
+        }
+
+        protected void bBusqueda_Click(object sender, EventArgs e)
+        {
+            string sNif = null, sNombre = null;
+            if (this.txtNif.Text != "")
+            {
+                sNif = this.txtNif.Text;
+            }
+            if (this.txtNombre.Text != "")
+            {
+                sNombre = this.txtNombre.Text;
+            }
+            this.gvContactos.Visible = true;
+            contactos = proxy.filtrosContacto(sNif, sNombre);
+            this.gvContactos.DataSource = contactos;
+            this.gvContactos.DataBind();
         }
     }
 }

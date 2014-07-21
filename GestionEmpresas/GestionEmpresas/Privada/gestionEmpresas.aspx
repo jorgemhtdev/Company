@@ -25,14 +25,14 @@
                 </div>
 
                 <div class="form-group col-md-2">
-                    <asp:Button ID="bBusqueda" CssClass="btn btn-primary pull-left" runat="server" Text="Buscar" OnClick="bBusqueda_Click" />
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:Button ID="bBusqueda" CssClass="btn btn-primary pull-left" runat="server" Text="Buscar" OnClick="bBusqueda_Click" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             <div class="col-md-2">
-                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <asp:Button ID="bAniadirEmpresa" CssClass="btn btn-primary pull-right" runat="server" Text="Añadir Empresa" OnClick="bAniadirEmpresa_Click" />
-                    </ContentTemplate>
-                 </asp:UpdatePanel>
+                <asp:Button ID="bAniadirEmpresa" CssClass="btn btn-primary pull-right" runat="server" Text="Añadir Empresa" OnClick="bAniadirEmpresa_Click" />
             </div>
             <div class="col-md-12">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
