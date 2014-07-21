@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav pull-right">
                 <li>
                     <asp:LoginView ID="LoginView1" runat="server">
                         <AnonymousTemplate>
