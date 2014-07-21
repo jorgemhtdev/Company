@@ -26,7 +26,9 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ErrorMessage="Debes rellenar el correo electronico" ControlToValidate="mail" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpression" runat="server" ErrorMessage="Solo se admiten un correo valido(nombreempresa@corroempresa.(extension))" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="mail"></asp:RegularExpressionValidator>
                           </section>
-                     </article>  <br /><br /><br /><br /><br />
+                     </article>  <br /><br />
+                    <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="Label"></asp:Label>
+                    <br /><br /><br />
                      <footer class="col-md-12 col-md-offset-1">
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
                             <asp:Button ID="btnEnviar" runat="server" Text="Añadir" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addMail" OnClientClick="return confirm('¿Estas seguro?');" />                             

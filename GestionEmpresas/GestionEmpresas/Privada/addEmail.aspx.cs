@@ -17,6 +17,9 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            this.lblError.Visible = false;
+
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             // Obtemos el idEmpresa e idContacto que tenemos en la url
@@ -66,7 +69,18 @@ namespace GestionEmpresas.Privada
                         {
                             // Obtengo el objeto empresa
                             var objEmpresa = proxy.getEmpresaId(cEmp);
-                            res = proxy.addEmail(this.mail.Text, objEmpresa, null);
+
+                            EmailData email = proxy.getEmailCorreo(this.mail.Text);
+                            if (email == null)
+                            {
+                                res = proxy.addEmail(this.mail.Text, objEmpresa, null);
+                                Response.Redirect("gestionEmpresas.aspx");
+                            }
+                            else
+                            {
+                                this.lblError.Visible = true;
+                                this.lblError.Text = "No se puede añadir este registro. El email ya existe en la base de datos.";
+                            }
 
                         }
 
@@ -74,13 +88,23 @@ namespace GestionEmpresas.Privada
                         {
                             // Obtengo el objeto contacto
                             var objContacto = proxy.getContacto(cCon);
-                            res = proxy.addEmail(this.mail.Text, null, objContacto);
+                             EmailData email = proxy.getEmailCorreo(this.mail.Text);
+                             if (email == null)
+                             {
+                                 res = proxy.addEmail(this.mail.Text, null, objContacto);
+                                 if (cCon != 0) Response.Redirect("gestionContacto.aspx");
+                             }
+                             else
+                             {
+                                 this.lblError.Visible = true;
+                                 this.lblError.Text = "No se puede añadir este registro. El email ya existe en la base de datos.";
+                             }
                         }
 
                         /***************************************************************************************************************************/
 
                         // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
-                        if (res != -1)
+                     /*   if (res != -1)
                         {
                             if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
                             if (cCon != 0) Response.Redirect("gestionContacto.aspx");
@@ -90,7 +114,7 @@ namespace GestionEmpresas.Privada
                         {
                             //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
                             //this.alert.Visible = true;
-                        }
+                        }*/
 
                         /***************************************************************************************************************************/
 
