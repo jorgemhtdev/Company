@@ -271,6 +271,33 @@ namespace ServicioGestion
         /***********************************************************************/
         /********************FIN MIGUEL ****************************************/
         /***********************************************************************/
+
+        /****************************FILTROS************************************/
+
+        /***************************Empresa*************************************/
+
+        [OperationContract]
+        List<EmpresaData> filtrosEmpresa(string cif,string sector, string provincia, string nombre);
+
+        /****************************Fin Empresa********************************/
+
+
+        /***************************Contactos*************************************/
+        [OperationContract]
+        List<ContactoData> filtrosContacto(string nif, string nombre);
+        /***************************Fin contactos*************************************/
+
+        /***************************Usuario*************************************/
+        [OperationContract]
+        List<UsuarioData> filtrosUsuario(string login, string nombre);
+        /***************************Fin Usuario*************************************/
+
+        /***************************acciones************************************/
+        [OperationContract]
+        List<AccionComercialMostrarData> filtrosAccionComercial(string tipoAccion, string estadoAccion, string nombreEmpresa, string loginUser);
+        /***************************fin acciones**********************************/
+
+        /**********************************************************************/
     }
 
     /**********CLASES  DATA***/
@@ -508,4 +535,5 @@ namespace ServicioGestion
     /***********************************************************************/
     /********************FIN MIGUEL ****************************************/
     /***********************************************************************/
+
 }

@@ -10,84 +10,105 @@ namespace GestionEmpresas.Privada
 {
     public partial class addEmail : System.Web.UI.Page
     {
+        /// <summary>
+        /// Usamos el Page_Load para mostrar la empresa o el contacto al que vamos añadir el email al cargar la pagina web
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             ServicioGestionClient proxy = new ServicioGestionClient();
 
+            // Obtemos el idEmpresa e idContacto que tenemos en la url
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            if (cEmp != 0 && cCon != 0) this.labelmail.Text = " - Sin informacion - ";
 
             if (cEmp != 0)
             {
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labelmail.Text = objEmpresa.nombreComercial;
             }
+
             if (cCon != 0)
             {
-                var objEmpresa = proxy.getEmpresaId(cEmp);
-                this.labelmail.Text = objEmpresa.nombreComercial;
+                var objContacto = proxy.getContacto(cCon);
+                this.labelmail.Text = objContacto.nombre;
             }
-        }
+        }// Fin del Page_Load
 
+        /// <summary>
+        /// Evento del boton que añade los input a nuestra BD. Los datos recogidos creamos un objeto Email, despues debemos de tener en cuenta si es para una empresa o 
+        /// para un contacto. Para ello utilizamos el request QueryString que nos recoge dos numeros, uno que nos dan por el formulario y otro que es un cero.
+        /// Si es cero, no realizamos ninguna operación y operamos sobre el numero !=0.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void addMail(object sender, EventArgs e)
         {
-            ServicioGestionClient proxy = new ServicioGestionClient();
-
-            try
+            if (this.IsPostBack)
             {
-                int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
-                int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
-                int res = -1;
-
-                if (cEmp != 0)
+                this.Validate();
+                if (this.IsValid)
                 {
-                    // Obtengo el objeto empresa
-                    var objEmpresa = proxy.getEmpresaId(cEmp);
-
-                    // Me creo un objeto telefono
-                    //EmailData email = new EmailData() { Correo = this.mail.Text };
-
-                    // Añado el telefono al objeto empresa  int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
-                    res = proxy.addEmail(this.mail.Text, objEmpresa, null);
-
-                    // Si es distinto a -1 me lleva a la siguiente url, todo esta ok 
-                    if (res != -1) Response.Redirect("gestionEmpresas.aspx");
-                    else
+                    try
                     {
-                        //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                        //this.alert.Visible = true;
+                        ServicioGestionClient proxy = new ServicioGestionClient();
+
+                        int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+                        int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+                        int res = -1;
+
+                        /***************************************************************************************************************************/
+
+                        if (cEmp != 0)
+                        {
+                            // Obtengo el objeto empresa
+                            var objEmpresa = proxy.getEmpresaId(cEmp);
+                            res = proxy.addEmail(this.mail.Text, objEmpresa, null);
+
+                        }
+
+                        if (cCon != 0)
+                        {
+                            // Obtengo el objeto contacto
+                            var objContacto = proxy.getContacto(cCon);
+                            res = proxy.addEmail(this.mail.Text, null, objContacto);
+                        }
+
+                        /***************************************************************************************************************************/
+
+                        // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
+                        if (res != -1)
+                        {
+                            if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
+                            if (cCon != 0) Response.Redirect("gestionContacto.aspx");
+                        }
+                        // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
+                        else
+                        {
+                            //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                            //this.alert.Visible = true;
+                        }
+
+                        /***************************************************************************************************************************/
+
                     }
-                }
-
-                if (cCon != 0)
-                {
-                    // Obtengo el objeto contacto
-                    var objContacto = proxy.getContacto(cCon);
-
-                    // Me creo un objeto telefono
-                    //EmailData email = new EmailData() { Correo = this.mail.Text };
-
-                    // Añado el telefono al objeto contacto int AddTelefono(TelefonoData t, EmpresaData empData, ContactoData conData);
-                    res = proxy.addEmail(this.mail.Text, null, objContacto);
-
-                    // Si el distinto a -1 me lleva a l siguiente url, todo esta ok
-                    if (res != -1) Response.Redirect("gestionContacto.aspx");
-                    else
+                    catch (Exception err)
                     {
-                        //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                        //this.alert.Visible = true;
+                        // this.lblError.Text = err.Message;
+                        // this.alert.Visible = true;    
                     }
-                }
+                } // Fin del if (this.IsValid)
+            }// Fin del if (this.IsPostBack)
+        }// Fin del addMail
 
-            }
-            catch (Exception err)
-            {
-                // this.lblError.Text = err.Message;
-                // this.alert.Visible = true;    
-            }
-        }// fin protected void addMail(object sender, EventArgs e)
-
-
+        /// <summary>
+        /// Evento que nos devuelve a la pagina donde volvimos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
@@ -100,13 +121,13 @@ namespace GestionEmpresas.Privada
 
             if (cEmp != 0)
             {
-                Response.Redirect("gestionContacto.aspx", true);
+                Response.Redirect("gestionEmpresas.aspx", true);
             }
 
             if (cCon != 0)
             {
                 Response.Redirect("gestionContacto.aspx", true);
             }
-        }// Fin del protected void Volver(object sender, EventArgs e)
+        }// Fin del protected void Volver
     }
 }
