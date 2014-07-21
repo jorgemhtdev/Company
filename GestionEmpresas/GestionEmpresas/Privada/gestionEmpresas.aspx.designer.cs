@@ -22,6 +22,15 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// lbCif control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCif;
+        
+        /// <summary>
         /// txtCif control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCif;
+        
+        /// <summary>
+        /// lbSector control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSector;
         
         /// <summary>
         /// txtSector control.
@@ -40,6 +58,15 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.TextBox txtSector;
         
         /// <summary>
+        /// lbProvincia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbProvincia;
+        
+        /// <summary>
         /// txtProvincia control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProvincia;
+        
+        /// <summary>
+        /// lbNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbNombre;
         
         /// <summary>
         /// txtNombre control.
