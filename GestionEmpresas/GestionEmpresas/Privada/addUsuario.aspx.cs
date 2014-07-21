@@ -38,6 +38,7 @@ namespace GestionEmpresas.Privada
                 objetoUsuario.nombre = this.nombre.Text;
                 objetoUsuario.password = this.pass.Text;
 
+                
                 /** Fin objeto Usuario **/
 
                 proxy.addUsuario(objetoUsuario);
