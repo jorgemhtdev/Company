@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Privada\almerimatik.png" />
     <Content Include="Privada\Default.aspx" />
     <Content Include="Privada\gestionAccionesComerciales.aspx" />
     <Content Include="Privada\gestionContacto.aspx" />
