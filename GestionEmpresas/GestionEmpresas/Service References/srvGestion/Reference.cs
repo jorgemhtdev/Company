@@ -1188,6 +1188,12 @@ namespace GestionEmpresas.srvGestion {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContactoNif", ReplyAction="http://tempuri.org/IServicioGestion/getContactoNifResponse")]
+        GestionEmpresas.srvGestion.ContactoData getContactoNif(string nif);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContactoNif", ReplyAction="http://tempuri.org/IServicioGestion/getContactoNifResponse")]
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoNifAsync(string nif);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
         GestionEmpresas.srvGestion.ContactoData[] getAllContacto();
         
@@ -1594,6 +1600,14 @@ namespace GestionEmpresas.srvGestion {
         
         public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoAsync(int id) {
             return base.Channel.getContactoAsync(id);
+        }
+        
+        public GestionEmpresas.srvGestion.ContactoData getContactoNif(string nif) {
+            return base.Channel.getContactoNif(nif);
+        }
+        
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoNifAsync(string nif) {
+            return base.Channel.getContactoNifAsync(nif);
         }
         
         public GestionEmpresas.srvGestion.ContactoData[] getAllContacto() {

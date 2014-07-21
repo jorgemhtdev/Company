@@ -1368,6 +1368,51 @@ namespace ServicioGestion
         }
 
         /// <summary>
+        /// Método que devuelve un contacto segun su nif.
+        /// </summary>
+        /// <param name="nif"></param>
+        /// <returns></returns>
+        public ContactoData getContactoNif(string nif)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from contacto in db.Contacto
+                                  where contacto.nif == nif
+                                  select contacto;
+
+                    if (resulta.ToList().Count == 0) return null;
+                    foreach (Contacto em in resulta)
+                    {
+                        ContactoData cntData = new ContactoData()
+                        {
+                            idEmpresa = Convert.ToInt32(em.idEmpresa),
+                            idContacto = em.idContacto,
+                            nif = em.nif,
+                            nombre = em.nombre
+                        };
+
+                        return cntData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode(""));
+            }
+        }
+
+        /// <summary>
         /// Metodo que elimina un contacto a partir de un objeto contacto de tipo ContactoData y de un id
         /// </summary>
         /// <returns></returns>
@@ -2281,6 +2326,11 @@ namespace ServicioGestion
                                    where action.idAccion == accion.idAccion
                                    select action;
 
+                    if (consulta.ToList().Count == 0)
+                    {
+                        return -1;
+                    }
+
                     AccionComercial a = consulta.First();
 
                     a.descripcion = accion.descripcion;
@@ -2962,7 +3012,7 @@ namespace ServicioGestion
 
         /************************Contactos***********************************/
 
-        public List<ContactoData> filtrosContacto(string nif, string nombre)
+        public List<ContactoData> filtrosContacto(string nif, string nombre, int idEmpresa)
         {
             List<ContactoData> datos = new List<ContactoData>();
             try
@@ -2973,7 +3023,7 @@ namespace ServicioGestion
                     if (nif!=null&&nombre==null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nif == nif
+                                      where contacto.nif == nif && contacto.Empresa.idEmpresa==idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
@@ -2995,7 +3045,7 @@ namespace ServicioGestion
                     if (nif == null && nombre != null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nombre.Contains(nombre)
+                                      where contacto.nombre.Contains(nombre) && contacto.Empresa.idEmpresa == idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
@@ -3017,7 +3067,7 @@ namespace ServicioGestion
                     if (nif != null && nombre != null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nombre.Contains(nombre) && contacto.nif == nif
+                                      where contacto.nombre.Contains(nombre) && contacto.nif == nif && contacto.Empresa.idEmpresa == idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
