@@ -1233,6 +1233,49 @@ namespace ServicioGestion
                 throw fault;
             }
         }
+
+
+        /// <summary>
+        /// Método que busca un usuario por su Login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+         UsuarioData IServicioGestion.getUsuarioLogin(string login)
+        {
+      
+            UsuarioData user = new UsuarioData() ;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from usuario in db.Usuario
+                                   where usuario.login == login
+                                   select new UsuarioData()
+                                   {
+                                       idUsuario = usuario.idUsuario,
+                                       login = usuario.login,
+                                       nombre = usuario.nombre,
+                                       password = usuario.password
+                                   };
+
+                    if (consulta.ToList().Count == 0) return user;
+                    return consulta.First();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+
+        }
         /***************************************************************
          *                     Fin Usuario
          ***************************************************************/
@@ -1300,6 +1343,51 @@ namespace ServicioGestion
                         ContactoData cntData = new ContactoData()
                         {
                             idEmpresa = Convert.ToInt32 (em.idEmpresa),
+                            idContacto = em.idContacto,
+                            nif = em.nif,
+                            nombre = em.nombre
+                        };
+
+                        return cntData;
+                    }
+
+                    return null;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("EError SQL" + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode(""));
+            }
+        }
+
+        /// <summary>
+        /// Método que devuelve un contacto segun su nif.
+        /// </summary>
+        /// <param name="nif"></param>
+        /// <returns></returns>
+        public ContactoData getContactoNif(string nif)
+        {
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var resulta = from contacto in db.Contacto
+                                  where contacto.nif == nif
+                                  select contacto;
+
+                    if (resulta.ToList().Count == 0) return null;
+                    foreach (Contacto em in resulta)
+                    {
+                        ContactoData cntData = new ContactoData()
+                        {
+                            idEmpresa = Convert.ToInt32(em.idEmpresa),
                             idContacto = em.idContacto,
                             nif = em.nif,
                             nombre = em.nombre
