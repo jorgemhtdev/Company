@@ -62,7 +62,9 @@
                                         <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="pass" ControlToCompare="rpass"  CssClass="glyphicon glyphicon-asterisk alert-danger" ErrorMessage="Las contraseñas no coinciden">  
                                         </asp:CompareValidator> 
                             </section>
-                        </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article> <br /><br /><br /><br /><br /><br /><br />
+                        <asp:Label ID="lblError" runat="server" CssClass="label label-danger " Text="Label"></asp:Label>
+                        <br /><br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-10 col-md-offset-2">             
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />

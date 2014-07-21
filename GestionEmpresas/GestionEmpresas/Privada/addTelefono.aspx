@@ -24,7 +24,9 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ErrorMessage="Debes rellenar el telefono" ControlToValidate="telepone" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                  <asp:RegularExpressionValidator ID="RegularExpression" runat="server" ErrorMessage="Solo se admiten 9 numeros" ValidationExpression="[0-9]{9}" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="telepone"></asp:RegularExpressionValidator>
                          </section>
-                     </article><br /><br /><br /><br /><br />
+                     </article><br /><br /><br />
+                    <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="label"></asp:Label>
+                    <br /><br />
                      <footer class="col-md-12 col-md-offset-1">
                          <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
                          <asp:Button ID="btnEnviar" runat="server" Text="Añadir" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addTlf" OnClientClick="return confirm('¿Estas seguro?');" /> 

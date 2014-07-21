@@ -12,7 +12,7 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.lblError.Visible = false;
         }
         
         /// <summary>
@@ -38,12 +38,25 @@ namespace GestionEmpresas.Privada
                 objetoUsuario.nombre = this.nombre.Text;
                 objetoUsuario.password = this.pass.Text;
 
-                
                 /** Fin objeto Usuario **/
 
-                proxy.addUsuario(objetoUsuario);
+                //Se comprueba que el login no este ya en la base de datos.
+                UsuarioData usuario = proxy.getUsuarioLogin(objetoUsuario.login);
 
-                Response.Redirect("gestionUsuarios.aspx");
+                //Si no está en la bd, se añade.
+                if (usuario.idUsuario == 0)
+                {
+                    proxy.addUsuario(objetoUsuario);
+
+                    Response.Redirect("gestionUsuarios.aspx");
+                }
+                else{
+                    this.lblError.Visible = true;
+                    this.lblError.Text = "El login del usuario ya existe en la base de datos. Intente agregar otro usuario con un login distinto.";
+                }
+                
+
+               
 
                 } // Fin del if (this.IsValid)
             }// Fin del if (this.IsPostBack)
