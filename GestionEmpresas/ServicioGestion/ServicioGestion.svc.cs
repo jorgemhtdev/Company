@@ -1233,6 +1233,49 @@ namespace ServicioGestion
                 throw fault;
             }
         }
+
+
+        /// <summary>
+        /// Método que busca un usuario por su Login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+         UsuarioData IServicioGestion.getUsuarioLogin(string login)
+        {
+      
+            UsuarioData user = new UsuarioData() ;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from usuario in db.Usuario
+                                   where usuario.login == login
+                                   select new UsuarioData()
+                                   {
+                                       idUsuario = usuario.idUsuario,
+                                       login = usuario.login,
+                                       nombre = usuario.nombre,
+                                       password = usuario.password
+                                   };
+
+                    if (consulta.ToList().Count == 0) return user;
+                    return consulta.First();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
+                                                            new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message,
+                                                            new FaultCode("GENERAL"));
+                throw fault;
+            }
+
+        }
         /***************************************************************
          *                     Fin Usuario
          ***************************************************************/

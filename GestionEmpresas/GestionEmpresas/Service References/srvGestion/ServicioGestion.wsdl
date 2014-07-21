@@ -271,6 +271,12 @@
   <wsdl:message name="IServicioGestion_getUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:getUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioGestion_getUsuarioLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUsuarioLogin" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getUsuarioLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUsuarioLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicioGestion_addAccionComercial_InputMessage">
     <wsdl:part name="parameters" element="tns:addAccionComercial" />
   </wsdl:message>
@@ -312,6 +318,30 @@
   </wsdl:message>
   <wsdl:message name="IServicioGestion_getAccionesComercialesEmpresa_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAccionesComercialesEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosContacto_InputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosContacto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosContacto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosAccionComercial_InputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosAccionComercial" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_filtrosAccionComercial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:filtrosAccionComercialResponse" />
   </wsdl:message>
   <wsdl:portType name="IServicioGestion">
     <wsdl:operation name="addEmail">
@@ -490,6 +520,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getUsuario" message="tns:IServicioGestion_getUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getUsuarioResponse" message="tns:IServicioGestion_getUsuario_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getUsuarioLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getUsuarioLogin" message="tns:IServicioGestion_getUsuarioLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getUsuarioLoginResponse" message="tns:IServicioGestion_getUsuarioLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="addAccionComercial">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addAccionComercial" message="tns:IServicioGestion_addAccionComercial_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/addAccionComercialResponse" message="tns:IServicioGestion_addAccionComercial_OutputMessage" />
@@ -517,6 +551,22 @@
     <wsdl:operation name="getAccionesComercialesEmpresa">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa" message="tns:IServicioGestion_getAccionesComercialesEmpresa_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresaResponse" message="tns:IServicioGestion_getAccionesComercialesEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrosEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/filtrosEmpresa" message="tns:IServicioGestion_filtrosEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/filtrosEmpresaResponse" message="tns:IServicioGestion_filtrosEmpresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrosContacto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/filtrosContacto" message="tns:IServicioGestion_filtrosContacto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/filtrosContactoResponse" message="tns:IServicioGestion_filtrosContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrosUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/filtrosUsuario" message="tns:IServicioGestion_filtrosUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/filtrosUsuarioResponse" message="tns:IServicioGestion_filtrosUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrosAccionComercial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/filtrosAccionComercial" message="tns:IServicioGestion_filtrosAccionComercial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/filtrosAccionComercialResponse" message="tns:IServicioGestion_filtrosAccionComercial_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioGestion" type="tns:IServicioGestion">
@@ -917,6 +967,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getUsuarioLogin">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getUsuarioLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addAccionComercial">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/addAccionComercial" style="document" />
       <wsdl:input>
@@ -973,6 +1032,42 @@
     </wsdl:operation>
     <wsdl:operation name="getAccionesComercialesEmpresa">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/getAccionesComercialesEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrosEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/filtrosEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrosContacto">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/filtrosContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrosUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/filtrosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrosAccionComercial">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/filtrosAccionComercial" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

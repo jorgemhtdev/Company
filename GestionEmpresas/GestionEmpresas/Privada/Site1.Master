@@ -19,14 +19,14 @@
             <ul class="nav navbar-nav pull-right">
                 <li><a href="gestionUsuarios.aspx">Gestión usuarios</a></li>
                 <li><a href="gestionEmpresas.aspx">Gestión empresa</a></li>
-                <li><a href="gestionContacto.aspx">Gestión acciones</a></li>
+                <li><a href="gestionAccionesComerciales.aspx">Gestión acciones</a></li>
                 <li>
                     <asp:LoginView ID="LoginView1" runat="server">
                         <AnonymousTemplate>
                             <a href="#"><span class="text-warning">Anónimo</span></a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a href="~/Privado/Default.aspx" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
+                            <a href="~/Default.aspx" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
                         </LoggedInTemplate>
                      </asp:LoginView>
                 </li>
