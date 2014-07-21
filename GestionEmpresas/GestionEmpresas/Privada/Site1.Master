@@ -15,14 +15,18 @@
     <form id="form1" runat="server">
         <!-- Menu -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <ul class="nav navbar-nav navbar-right">
+            <img src="almerimatik.png" />
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="gestionUsuarios.aspx">Gestión usuarios</a></li>
+                <li><a href="gestionEmpresas.aspx">Gestión empresa</a></li>
+                <li><a href="gestionContacto.aspx">Gestión acciones</a></li>
                 <li>
                     <asp:LoginView ID="LoginView1" runat="server">
                         <AnonymousTemplate>
                             <a href="#"><span class="text-warning">Anónimo</span></a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a href="~/Privado/default.aspx" runat="server"> <span class="text-muted"><asp:LoginName ID="LoginName1" runat="server" /></span></a>
+                            <a href="~/Privado/Default.aspx" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
                         </LoggedInTemplate>
                      </asp:LoginView>
                 </li>
@@ -39,7 +43,7 @@
         </div>
         <!-- Footer -->
         <footer class="col-md-6 col-md-offset-2"> 
-            © 2009 - 2014 ALMERIMATIK RESERVADOS TODOS LOS DERECHOS (¿Logo?)
+            © 2009 - 2014 ALMERIMATIK RESERVADOS TODOS LOS DERECHOS
         </footer>
         <!-- Fin Footer -->
     </form>
