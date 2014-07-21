@@ -157,7 +157,7 @@ namespace GestionEmpresas.Privada
             {
                 sNombre = this.txtNombre.Text;
             }
-            contactos = proxy.filtrosContacto(sNif, sNombre);
+            contactos = proxy.filtrosContacto(sNif, sNombre, idEmpresa);
             this.gvContactos.DataSource = contactos;
             this.gvContactos.DataBind();
         }
