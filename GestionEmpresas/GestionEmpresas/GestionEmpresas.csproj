@@ -61,6 +61,9 @@
   <ItemGroup>
     <Content Include="Privada\almerimatik.png" />
     <Content Include="Privada\Default.aspx" />
+    <Content Include="Privada\errores\401.html" />
+    <Content Include="Privada\errores\404.html" />
+    <Content Include="Privada\errores\500.html" />
     <Content Include="Privada\gestionAccionesComerciales.aspx" />
     <Content Include="Privada\gestionContacto.aspx" />
     <Content Include="Privada\gestionEmpresas.aspx" />
