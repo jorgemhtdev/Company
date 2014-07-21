@@ -12,7 +12,7 @@ namespace GestionEmpresas.Privada
     public partial class gestionEmpresas : System.Web.UI.Page
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
-        public static EmpresaData[] empresas = proxy.getAllEmpresa();
+        public static EmpresaData[] empresas;
         protected void Page_Load(object sender, EventArgs e)
         {
             empresas = proxy.getAllEmpresa();
@@ -48,8 +48,6 @@ namespace GestionEmpresas.Privada
                 try
                 {
                     this.panel.Visible = true;
-                    //ServicioGestionClient proxy = new ServicioGestionClient();
-                    //var empresas = proxy.getAllEmpresa();
                     EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
 
                     var telefonos = proxy.GetTelefonosEmpresa(emp.EmpresaID);
@@ -115,7 +113,7 @@ namespace GestionEmpresas.Privada
         {
             EmpresaData emp = empresas[e.RowIndex];
             proxy.deleteEmpresa(emp.EmpresaID);
-            empresas = proxy.getAllEmpresa();
+            //empresas = proxy.getAllEmpresa();
             Response.Redirect("~/Privada/gestionEmpresas.aspx");
         }
 
