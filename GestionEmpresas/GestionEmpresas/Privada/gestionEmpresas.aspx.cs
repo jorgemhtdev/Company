@@ -147,7 +147,7 @@ namespace GestionEmpresas.Privada
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
             var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
             DireccionData dir = direcciones[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmail.aspx?id=" + dir.idDireccion);
+            Response.Redirect("~/Privada/editDireccion.aspx?id=" + dir.idDireccion);
         }
 
         protected void bBusqueda_Click(object sender, EventArgs e)
