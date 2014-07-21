@@ -12,8 +12,7 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
                 try
                 {
@@ -28,40 +27,46 @@ namespace GestionEmpresas.Privada
 
                     this.sector.DataBind(); // Carga los valores en el DropDownList
 
-                }catch{
+                }
+                catch
+                {
                     // this.lblError.Text = err.Message;
                     // this.alert.Visible = true; 
 
                     // O en sector del drownlist meter no hay datos disponibles y quitar los botones
                 }
             }
-            else
-            {
-
-            }
         }
 
         protected void addEmpr(object sender, EventArgs e)
         {
-            ServicioGestionClient proxy = new ServicioGestionClient();
 
-            try
+            if (this.IsPostBack)
             {
-                // int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
-                int res = proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text, this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
 
-                if (res != -1) Response.Redirect("gestionEmpresas.aspx");
-                else
-            {
-                //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                //this.alert.Visible = true;
-            }
+                this.Validate();
+                if (this.IsValid)
+                {
+                    ServicioGestionClient proxy = new ServicioGestionClient();
 
-            }
-            catch (Exception err)
-            {
-                // this.lblError.Text = err.Message;
-                // this.alert.Visible = true;    
+                    try
+                    {
+                        // int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+                        int res = proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text, this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
+
+                        if (res != -1) Response.Redirect("gestionEmpresas.aspx");
+                        else
+                        {
+                            //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                            //this.alert.Visible = true;
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        // this.lblError.Text = err.Message;
+                        // this.alert.Visible = true;    
+                    } // Fin del if (this.IsValid)
+                }// Fin del if (this.IsPostBack)
             }
         }// Fin addEmpr
 
