@@ -1646,6 +1646,7 @@ namespace ServicioGestion
                 {
                     var datos = from telefonos in bd.Telefono
                                 select telefonos;
+
                     foreach(Telefono tlf in datos)
                     {
                         TelefonoData tdata = new TelefonoData()

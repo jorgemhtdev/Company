@@ -49,7 +49,7 @@ namespace ServicioGestion
 
         //Método que obtiene todos los registros de la tabla empresa
         [OperationContract]
-        List<EmpresaData> getAllEmpresa();
+        List<EmpresaData> getAllEmpresa(int pageIndex, int pageSize);
 
         //Método que obtiene una empresa por cif
         [OperationContract]
