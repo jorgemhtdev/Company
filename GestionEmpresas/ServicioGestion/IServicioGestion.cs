@@ -245,6 +245,9 @@ namespace ServicioGestion
 
         [OperationContract]
         UsuarioData getUsuario(int idUsuario);
+
+        [OperationContract]
+        UsuarioData getUsuarioLogin(string login);
         //Fin Usuario
 
         [OperationContract]

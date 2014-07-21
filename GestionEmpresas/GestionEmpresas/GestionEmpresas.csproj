@@ -61,6 +61,10 @@
   <ItemGroup>
     <Content Include="Privada\almerimatik.png" />
     <Content Include="Privada\Default.aspx" />
+    <Content Include="Privada\errores\401.aspx" />
+    <Content Include="Privada\errores\404.aspx" />
+    <Content Include="Privada\errores\500.aspx" />
+    <Content Include="Privada\errores\errorDesconocido.aspx" />
     <Content Include="Privada\gestionAccionesComerciales.aspx" />
     <Content Include="Privada\gestionContacto.aspx" />
     <Content Include="Privada\gestionEmpresas.aspx" />
@@ -291,6 +295,34 @@
     </Compile>
     <Compile Include="Privada\editUsuario.aspx.designer.cs">
       <DependentUpon>editUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\errores\401.aspx.cs">
+      <DependentUpon>401.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\errores\401.aspx.designer.cs">
+      <DependentUpon>401.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\errores\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\errores\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\errores\500.aspx.cs">
+      <DependentUpon>500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\errores\500.aspx.designer.cs">
+      <DependentUpon>500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\errores\errorDesconocido.aspx.cs">
+      <DependentUpon>errorDesconocido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\errores\errorDesconocido.aspx.designer.cs">
+      <DependentUpon>errorDesconocido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Privada\gestionAccionesComerciales.aspx.cs">
       <DependentUpon>gestionAccionesComerciales.aspx</DependentUpon>
