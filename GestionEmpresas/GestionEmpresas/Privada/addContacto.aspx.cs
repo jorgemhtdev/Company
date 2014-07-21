@@ -17,6 +17,9 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.lblError.Visible = false;
+
+
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             // Obtemos el idEmpresa e idContacto que tenemos en la url
@@ -55,13 +58,24 @@ namespace GestionEmpresas.Privada
 
                     objetoContacto.nombre = this.nomb.Text;
                     objetoContacto.nif = this.nf.Text;
+                    objetoContacto.idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
 
                     /** Fin objeto Contacto **/
 
-                    proxy.AddContacto(objetoContacto);
 
-                    int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-                    Response.Redirect("gestionContacto.aspx?id="+idEmpresa);
+                    ContactoData contacto = proxy.getContactoNif(objetoContacto.nif);
+                    if (contacto == null)
+                    {
+                        proxy.AddContacto(objetoContacto);
+
+                        int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
+                        Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+                    }
+                    else
+                    {
+                        this.lblError.Visible = true;
+                        this.lblError.Text = "No se puede insertar este contacto. El N.I.F. ya existe en la base de datos.";
+                    }
 
                 } // Fin del if (this.IsValid)
             }// Fin del if (this.IsPostBack)
