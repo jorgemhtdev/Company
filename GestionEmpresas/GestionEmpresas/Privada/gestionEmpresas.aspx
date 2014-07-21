@@ -7,9 +7,19 @@
             <div class="col-md-2">
                 <div class="form-horizontal">
                     <div class="form-group">
+                        <asp:Label ID="lbCif" runat="server" Text="Label"></asp:Label>
                         <asp:TextBox ID="txtCif" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label ID="lbSector" runat="server" Text="Label"></asp:Label>
                         <asp:TextBox ID="txtSector" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label ID="lbProvincia" runat="server" Text="Label"></asp:Label>
                         <asp:TextBox ID="txtProvincia" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label ID="lbNombre" runat="server" Text="Label"></asp:Label>
                         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group">
