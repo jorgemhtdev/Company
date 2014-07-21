@@ -82,5 +82,10 @@ namespace GestionEmpresas.Privada
             AccionComercialMostrarData accion = acciones[e.NewEditIndex];
             Response.Redirect("~/Privada/editAccionComercial.aspx?id=" + accion.idAccion);
         }
+
+        protected void bBusqueda_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
