@@ -47,54 +47,61 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void addMail(object sender, EventArgs e)
         {
-            try
+            if (this.IsPostBack)
             {
-                ServicioGestionClient proxy = new ServicioGestionClient();
-
-                int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
-                int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
-                int res = -1;
-
-                /***************************************************************************************************************************/
-
-                if (cEmp != 0)
+                this.Validate();
+                if (this.IsValid)
                 {
-                    // Obtengo el objeto empresa
-                    var objEmpresa = proxy.getEmpresaId(cEmp);
-                    res = proxy.addEmail(this.mail.Text, objEmpresa, null);
+                    try
+                    {
+                        ServicioGestionClient proxy = new ServicioGestionClient();
 
-                }
+                        int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+                        int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+                        int res = -1;
 
-                if (cCon != 0)
-                {
-                    // Obtengo el objeto contacto
-                    var objContacto = proxy.getContacto(cCon);
-                    res = proxy.addEmail(this.mail.Text, null, objContacto);
-                }
+                        /***************************************************************************************************************************/
 
-                /***************************************************************************************************************************/
+                        if (cEmp != 0)
+                        {
+                            // Obtengo el objeto empresa
+                            var objEmpresa = proxy.getEmpresaId(cEmp);
+                            res = proxy.addEmail(this.mail.Text, objEmpresa, null);
 
-                // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
-                if (res != -1)
-                {
-                    if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
-                    if (cCon != 0) Response.Redirect("gestionContacto.aspx");
-                }
-                // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
-                else
-                {
-                    //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                    //this.alert.Visible = true;
-                }
+                        }
 
-                /***************************************************************************************************************************/
+                        if (cCon != 0)
+                        {
+                            // Obtengo el objeto contacto
+                            var objContacto = proxy.getContacto(cCon);
+                            res = proxy.addEmail(this.mail.Text, null, objContacto);
+                        }
 
-            }
-            catch (Exception err)
-            {
-                // this.lblError.Text = err.Message;
-                // this.alert.Visible = true;    
-            }
+                        /***************************************************************************************************************************/
+
+                        // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
+                        if (res != -1)
+                        {
+                            if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
+                            if (cCon != 0) Response.Redirect("gestionContacto.aspx");
+                        }
+                        // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
+                        else
+                        {
+                            //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                            //this.alert.Visible = true;
+                        }
+
+                        /***************************************************************************************************************************/
+
+                    }
+                    catch (Exception err)
+                    {
+                        // this.lblError.Text = err.Message;
+                        // this.alert.Visible = true;    
+                    }
+                } // Fin del if (this.IsValid)
+            }// Fin del if (this.IsPostBack)
         }// Fin del addMail
 
         /// <summary>
