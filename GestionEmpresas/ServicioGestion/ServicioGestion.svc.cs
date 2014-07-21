@@ -2238,6 +2238,11 @@ namespace ServicioGestion
                                    where action.idAccion == accion.idAccion
                                    select action;
 
+                    if (consulta.ToList().Count == 0)
+                    {
+                        return -1;
+                    }
+
                     AccionComercial a = consulta.First();
 
                     a.descripcion = accion.descripcion;
