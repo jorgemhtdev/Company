@@ -15,31 +15,8 @@ namespace GestionEmpresas.Privada
         public static EmpresaData[] empresas;
         protected void Page_Load(object sender, EventArgs e)
         {
-            empresas = proxy.getAllEmpresa();
-            if (!this.IsPostBack)
-            {
-                try
-                {
-                    this.panel.Visible = false;
-                    //ServicioGestionClient proxy = new ServicioGestionClient();
-                    //EmpresaData[] empresas = proxy.getAllEmpresa();
-                    this.gvEmpresas.DataSource = empresas;
-                    this.gvEmpresas.DataBind();
-                }
-                catch (FaultException ex)
-                {
-                    /*this.lbError.Text = "Servicio " + ex.Message;
-                    this.lbError.Visible = true;
-                    this.lbRegiones.Visible = false;*/
-
-                }
-                catch (Exception ex)
-                {
-                    /*this.lbError.Text = ex.Message;
-                     this.lbError.Visible = true;
-                     this.lbRegiones.Visible = false;*/
-                }
-            }
+            this.gvEmpresas.Visible = false;
+            this.panel.Visible = false;
         }
         protected void gvEmpresas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -47,6 +24,7 @@ namespace GestionEmpresas.Privada
             {
                 try
                 {
+                    this.gvEmpresas.Visible = true;
                     this.panel.Visible = true;
                     EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
 
@@ -113,7 +91,6 @@ namespace GestionEmpresas.Privada
         {
             EmpresaData emp = empresas[e.RowIndex];
             proxy.deleteEmpresa(emp.EmpresaID);
-            //empresas = proxy.getAllEmpresa();
             Response.Redirect("~/Privada/gestionEmpresas.aspx");
         }
 
@@ -170,7 +147,32 @@ namespace GestionEmpresas.Privada
             EmpresaData emp = empresas[gvEmpresas.SelectedIndex];
             var direcciones = proxy.getDirecionesEmpresa(emp.EmpresaID);
             DireccionData dir = direcciones[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmail.aspx?id=" + dir.idDireccion);
+            Response.Redirect("~/Privada/editDireccion.aspx?id=" + dir.idDireccion);
+        }
+
+        protected void bBusqueda_Click(object sender, EventArgs e)
+        {
+            string sCif = null, sSector = null, sProvincia = null, sNombre = null;
+            if(this.txtCif.Text != "")
+            {
+                sCif = this.txtCif.Text;
+            }
+            if (this.txtSector.Text != "")
+            {
+                sSector = this.txtSector.Text;
+            }
+            if (this.txtProvincia.Text != "")
+            {
+                sProvincia = this.txtProvincia.Text;
+            }
+            if (this.txtNombre.Text != "")
+            {
+                sNombre = this.txtNombre.Text;
+            }
+            this.gvEmpresas.Visible = true;
+            empresas = proxy.filtrosEmpresa(sCif, sSector, sProvincia, sNombre);
+            this.gvEmpresas.DataSource = empresas;
+            this.gvEmpresas.DataBind();
         }
     }
 }

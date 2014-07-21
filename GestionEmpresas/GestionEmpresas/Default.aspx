@@ -17,7 +17,7 @@
                             <a href="#"><span class="text-warning">Anónimo</span></a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a href="~/Privado/default.aspx" runat="server"> <span class="text-muted"><asp:LoginName ID="LoginName1" runat="server" /></span></a>
+                            <a href="#" runat="server"> <span class="text-muted"><asp:LoginName ID="LoginName1" runat="server" /></span></a>
                         </LoggedInTemplate>
                      </asp:LoginView>
                 </li>

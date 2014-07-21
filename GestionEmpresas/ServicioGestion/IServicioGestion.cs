@@ -132,6 +132,9 @@ namespace ServicioGestion
         ContactoData getContacto(int id);
 
         [OperationContract]
+        ContactoData getContactoNif(string nif);
+
+        [OperationContract]
         List<ContactoData> getAllContacto();
 
         [OperationContract]
@@ -245,6 +248,9 @@ namespace ServicioGestion
 
         [OperationContract]
         UsuarioData getUsuario(int idUsuario);
+
+        [OperationContract]
+        UsuarioData getUsuarioLogin(string login);
         //Fin Usuario
 
         [OperationContract]

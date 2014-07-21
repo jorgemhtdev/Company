@@ -94,6 +94,15 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// bBusqueda control.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.Button bAniadirEmpresa;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
         /// gvEmpresas control.
@@ -130,13 +139,13 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.GridView gvEmpresas;
         
         /// <summary>
-        /// UpdatePanel2 control.
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
         /// panel control.
