@@ -1646,6 +1646,7 @@ namespace ServicioGestion
                 {
                     var datos = from telefonos in bd.Telefono
                                 select telefonos;
+
                     foreach(Telefono tlf in datos)
                     {
                         TelefonoData tdata = new TelefonoData()
@@ -2819,7 +2820,7 @@ namespace ServicioGestion
                     }
 
                     //cif, provincia, sector
-                    if (nombre == null && cif != null && sector == null && provincia != null)
+                    if (nombre == null && cif != null && sector != null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
                                       where emp.cif == cif && emp.Sector.descripcion==sector
@@ -3156,11 +3157,11 @@ namespace ServicioGestion
                     }
 
 
-                    //Estado accion (Descripcion)
-                    if (tipoAccion == null && estadoAccion != null && nombreEmpresa == null && loginUser == null)
+                    //Estado accion (Descripcion) y tipo de accion
+                    if (tipoAccion != null && estadoAccion != null && nombreEmpresa == null && loginUser == null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.EstadoDeAccion.descripcion == estadoAccion
+                                       where action.EstadoDeAccion.descripcion == estadoAccion&&action.TipoDeAccion.descripcion==tipoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3445,7 +3446,7 @@ namespace ServicioGestion
                     }
 
                     //login y empresa y tipoaccion y estado accion
-                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
+                    if (tipoAccion != null && estadoAccion != null && nombreEmpresa != null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
                                        where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.TipoDeAccion.descripcion == tipoAccion&&action.EstadoDeAccion.descripcion==estadoAccion
