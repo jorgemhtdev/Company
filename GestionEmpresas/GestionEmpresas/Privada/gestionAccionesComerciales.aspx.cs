@@ -15,8 +15,29 @@ namespace GestionEmpresas.Privada
         public static AccionComercialMostrarData[] acciones;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.gvAcciones.Visible = false;
-            this.panel.Visible = false;
+            if (!this.IsPostBack)
+            {
+                this.gvAcciones.Visible = false;
+                this.panel.Visible = false;
+
+                TipoDeAccionData[] tipos = proxy.GetAllTipoAccion();
+                EstadoAccion[] estados = proxy.GetEstadoAccion();
+
+                ListItem seleccione = new ListItem("Seleccione...", "");
+
+                this.txtTipo.DataSource = tipos;
+                this.txtTipo.DataTextField = "descripcion";
+                this.txtTipo.DataValueField = "descripcion";
+                this.txtTipo.DataBind();
+                this.txtTipo.Items.Insert(0,seleccione);
+
+                this.txtEstado.DataSource = estados;
+                this.txtEstado.DataTextField = "descripcion";
+                this.txtEstado.DataValueField = "descripcion";
+                this.txtEstado.DataBind();
+                this.txtEstado.Items.Insert(0, seleccione);
+            }
+            
         }
 
         protected void bAniadirContacto_Click(object sender, EventArgs e)
@@ -67,7 +88,7 @@ namespace GestionEmpresas.Privada
         protected void bBusqueda_Click(object sender, EventArgs e)
         {
             string sTipo = null, sEstado = null, sNombreEmpresa = null, sLoginUsuario = null;
-            if (this.txtTipo.Text != "")
+            if(this.txtTipo.Text != "")
             {
                 sTipo = this.txtTipo.Text;
             }
