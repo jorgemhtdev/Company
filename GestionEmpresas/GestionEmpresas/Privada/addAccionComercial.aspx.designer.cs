@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GestionEmpresas.Privada {
-    
-    
-    public partial class addAccionComercial {
-        
+namespace GestionEmpresas.Privada
+{
+
+
+    public partial class addAccionComercial
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// user control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label user;
-        
+
         /// <summary>
         /// listaUser control.
         /// </summary>
@@ -37,8 +39,17 @@ namespace GestionEmpresas.Privada {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaUser;
-        
+        protected global::System.Web.UI.WebControls.TextBox listaUser;
+
+        /// <summary>
+        /// CustomValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
+
         /// <summary>
         /// acción control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label acción;
-        
+
         /// <summary>
         /// listaAccion control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listaAccion;
-        
+
         /// <summary>
         /// staAcc control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label staAcc;
-        
+
         /// <summary>
         /// listaEstadoAccion control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listaEstadoAccion;
-        
+
         /// <summary>
         /// emp control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label emp;
-        
+
         /// <summary>
         /// listaEmpresa control.
         /// </summary>
@@ -91,8 +102,17 @@ namespace GestionEmpresas.Privada {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaEmpresa;
-        
+        protected global::System.Web.UI.WebControls.TextBox listaEmpresa;
+
+        /// <summary>
+        /// CustomValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
+
         /// <summary>
         /// fech control.
         /// </summary>
@@ -101,7 +121,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label fech;
-        
+
         /// <summary>
         /// fch control.
         /// </summary>
@@ -110,7 +130,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fch;
-        
+
         /// <summary>
         /// RequiredFieldValidator2 control.
         /// </summary>
@@ -119,7 +139,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
+
         /// <summary>
         /// RegularExpressionValidator2 control.
         /// </summary>
@@ -128,7 +148,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
-        
+
         /// <summary>
         /// cmtar control.
         /// </summary>
@@ -137,7 +157,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label cmtar;
-        
+
         /// <summary>
         /// TextAreaComentarios control.
         /// </summary>
@@ -146,7 +166,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreaComentarios;
-        
+
         /// <summary>
         /// dspc control.
         /// </summary>
@@ -155,7 +175,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label dspc;
-        
+
         /// <summary>
         /// TextAreaDescripcion control.
         /// </summary>
@@ -164,7 +184,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreaDescripcion;
-        
+
         /// <summary>
         /// btnVolver control.
         /// </summary>
@@ -173,7 +193,7 @@ namespace GestionEmpresas.Privada {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolver;
-        
+
         /// <summary>
         /// btnEnviar control.
         /// </summary>
