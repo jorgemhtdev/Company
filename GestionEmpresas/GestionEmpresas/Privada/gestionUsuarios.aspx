@@ -6,12 +6,12 @@
     <div class="container">
             <div class="form col-md-4">
                     <div class="form-group col-md-6">
-                        <asp:Label ID="lbLogin" runat="server" Text="Login"></asp:Label>
-                        <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbLogin" CssClass="control-label" runat="server" Text="Login"></asp:Label>
+                        <asp:TextBox ID="txtLogin" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-6">
-                        <asp:Label ID="lbNombre" runat="server" Text="Nombre"></asp:Label>
-                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbNombre" CssClass="control-label" runat="server" Text="Nombre"></asp:Label>
+                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                 </div>
                 <div class="col-md-2">
