@@ -13,10 +13,13 @@
         <div class="row">
             <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Editar Mail <span class="glyphicon glyphicon-pencil"></span></h1></div>
+                <div class="panel-heading"> 
+                    <h1> Editar Mail </h1>
+                    - <asp:Label ID="labelmail" runat="server" Text=""></asp:Label> -
+                </div>
                     <div class="panel-body">
                        <br /><br />
-                       <article class="col-md-12 col-md-offset-2"> 
+                       <article class="col-md-10 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="email" runat="server"><h4>Mail</h4></asp:Label>   
                             </section>                       
@@ -27,7 +30,7 @@
                                      <asp:RegularExpressionValidator ID="RegularExpression" runat="server"
                                              ErrorMessage="Solo se admiten un correo valido" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="mail"></asp:RegularExpressionValidator>
                             </section>
-                        </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />

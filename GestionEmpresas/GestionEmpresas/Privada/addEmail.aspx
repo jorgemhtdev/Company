@@ -22,7 +22,7 @@
                             <asp:Label ID="email" runat="server">Mail</asp:Label>   
                          </section>                       
                          <section class="col-md-4">
-                            <asp:TextBox id="mail" runat="server" CssClass="form-control">nombre@gmail.com</asp:TextBox>
+                            <asp:TextBox id="mail" runat="server" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ErrorMessage="Debes rellenar el correo electronico" ControlToValidate="mail" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpression" runat="server" ErrorMessage="Solo se admiten un correo valido(nombreempresa@corroempresa.(extension))" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="mail"></asp:RegularExpressionValidator>
                           </section>
