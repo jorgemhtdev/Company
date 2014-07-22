@@ -1409,6 +1409,30 @@ namespace GestionEmpresas.srvGestion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/filtrosAccionComercial", ReplyAction="http://tempuri.org/IServicioGestion/filtrosAccionComercialResponse")]
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialMostrarData[]> filtrosAccionComercialAsync(string tipoAccion, string estadoAccion, string nombreEmpresa, string loginUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalEmpresas", ReplyAction="http://tempuri.org/IServicioGestion/numTotalEmpresasResponse")]
+        int numTotalEmpresas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalEmpresas", ReplyAction="http://tempuri.org/IServicioGestion/numTotalEmpresasResponse")]
+        System.Threading.Tasks.Task<int> numTotalEmpresasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalContactos", ReplyAction="http://tempuri.org/IServicioGestion/numTotalContactosResponse")]
+        int numTotalContactos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalContactos", ReplyAction="http://tempuri.org/IServicioGestion/numTotalContactosResponse")]
+        System.Threading.Tasks.Task<int> numTotalContactosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/numTotalUsuariosResponse")]
+        int numTotalUsuarios();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalUsuarios", ReplyAction="http://tempuri.org/IServicioGestion/numTotalUsuariosResponse")]
+        System.Threading.Tasks.Task<int> numTotalUsuariosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/numTotalAccionesComercialesResponse")]
+        int numTotalAccionesComerciales();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/numTotalAccionesComerciales", ReplyAction="http://tempuri.org/IServicioGestion/numTotalAccionesComercialesResponse")]
+        System.Threading.Tasks.Task<int> numTotalAccionesComercialesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1908,6 +1932,38 @@ namespace GestionEmpresas.srvGestion {
         
         public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.AccionComercialMostrarData[]> filtrosAccionComercialAsync(string tipoAccion, string estadoAccion, string nombreEmpresa, string loginUser) {
             return base.Channel.filtrosAccionComercialAsync(tipoAccion, estadoAccion, nombreEmpresa, loginUser);
+        }
+        
+        public int numTotalEmpresas() {
+            return base.Channel.numTotalEmpresas();
+        }
+        
+        public System.Threading.Tasks.Task<int> numTotalEmpresasAsync() {
+            return base.Channel.numTotalEmpresasAsync();
+        }
+        
+        public int numTotalContactos() {
+            return base.Channel.numTotalContactos();
+        }
+        
+        public System.Threading.Tasks.Task<int> numTotalContactosAsync() {
+            return base.Channel.numTotalContactosAsync();
+        }
+        
+        public int numTotalUsuarios() {
+            return base.Channel.numTotalUsuarios();
+        }
+        
+        public System.Threading.Tasks.Task<int> numTotalUsuariosAsync() {
+            return base.Channel.numTotalUsuariosAsync();
+        }
+        
+        public int numTotalAccionesComerciales() {
+            return base.Channel.numTotalAccionesComerciales();
+        }
+        
+        public System.Threading.Tasks.Task<int> numTotalAccionesComercialesAsync() {
+            return base.Channel.numTotalAccionesComercialesAsync();
         }
     }
 }
