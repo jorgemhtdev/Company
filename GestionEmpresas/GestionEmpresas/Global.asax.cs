@@ -19,5 +19,9 @@ namespace GestionEmpresas
                 DebugPath = "~/Scripts/jquery-" + JQueryVer + ".js",
             });
         }
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
     }
 }
