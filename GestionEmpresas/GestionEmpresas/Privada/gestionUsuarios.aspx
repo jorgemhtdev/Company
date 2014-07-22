@@ -4,17 +4,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="container">
-            <div class="col-md-2">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
+            <div class="form col-md-4">
+                    <div class="form-group col-md-6">
+                        <asp:Label ID="lbLogin" runat="server" Text="Login"></asp:Label>
+                        <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox>
                     </div>
-                    <div class="form-group">
-                        <asp:Button ID="bBusqueda" runat="server" Text="Busqueda avanzada" />
+                    <div class="form-group col-md-6">
+                        <asp:Label ID="lbNombre" runat="server" Text="Nombre"></asp:Label>
+                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 col-md-offset-8">
+                <div class="col-md-2">
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:Button ID="bBusqueda" CssClass="btn btn-primary pull-left" runat="server" Text="Buscar" OnClick="bBusqueda_Click" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            <div class="col-md-2 col-md-offset-4">
                 <asp:Button ID="bAniadirUsuario" CssClass="btn btn-primary pull-right" runat="server" Text="Añadir Usuario" OnClick="bAniadirUsuario_Click" />
             </div>
             <div class="col-md-12">
