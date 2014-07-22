@@ -11,5 +11,41 @@ namespace GestionEmpresas.Privada {
     
     
     public partial class Default {
+        
+        /// <summary>
+        /// lblTotalEmpresa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalEmpresa;
+        
+        /// <summary>
+        /// lblTotalContactos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalContactos;
+        
+        /// <summary>
+        /// lblTotalAccionesComerciales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalAccionesComerciales;
+        
+        /// <summary>
+        /// lblTotalUsuarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalUsuarios;
     }
 }
