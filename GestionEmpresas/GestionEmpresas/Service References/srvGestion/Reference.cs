@@ -1188,6 +1188,12 @@ namespace GestionEmpresas.srvGestion {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContacto", ReplyAction="http://tempuri.org/IServicioGestion/getContactoResponse")]
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContactoNif", ReplyAction="http://tempuri.org/IServicioGestion/getContactoNifResponse")]
+        GestionEmpresas.srvGestion.ContactoData getContactoNif(string nif);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getContactoNif", ReplyAction="http://tempuri.org/IServicioGestion/getContactoNifResponse")]
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoNifAsync(string nif);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/getAllContacto", ReplyAction="http://tempuri.org/IServicioGestion/getAllContactoResponse")]
         GestionEmpresas.srvGestion.ContactoData[] getAllContacto();
         
@@ -1375,10 +1381,10 @@ namespace GestionEmpresas.srvGestion {
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData[]> filtrosEmpresaAsync(string cif, string sector, string provincia, string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/filtrosContacto", ReplyAction="http://tempuri.org/IServicioGestion/filtrosContactoResponse")]
-        GestionEmpresas.srvGestion.ContactoData[] filtrosContacto(string nif, string nombre);
+        GestionEmpresas.srvGestion.ContactoData[] filtrosContacto(string nif, string nombre, int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/filtrosContacto", ReplyAction="http://tempuri.org/IServicioGestion/filtrosContactoResponse")]
-        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> filtrosContactoAsync(string nif, string nombre);
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> filtrosContactoAsync(string nif, string nombre, int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/filtrosUsuario", ReplyAction="http://tempuri.org/IServicioGestion/filtrosUsuarioResponse")]
         GestionEmpresas.srvGestion.UsuarioData[] filtrosUsuario(string login, string nombre);
@@ -1594,6 +1600,14 @@ namespace GestionEmpresas.srvGestion {
         
         public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoAsync(int id) {
             return base.Channel.getContactoAsync(id);
+        }
+        
+        public GestionEmpresas.srvGestion.ContactoData getContactoNif(string nif) {
+            return base.Channel.getContactoNif(nif);
+        }
+        
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData> getContactoNifAsync(string nif) {
+            return base.Channel.getContactoNifAsync(nif);
         }
         
         public GestionEmpresas.srvGestion.ContactoData[] getAllContacto() {
@@ -1844,12 +1858,12 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.filtrosEmpresaAsync(cif, sector, provincia, nombre);
         }
         
-        public GestionEmpresas.srvGestion.ContactoData[] filtrosContacto(string nif, string nombre) {
-            return base.Channel.filtrosContacto(nif, nombre);
+        public GestionEmpresas.srvGestion.ContactoData[] filtrosContacto(string nif, string nombre, int idEmpresa) {
+            return base.Channel.filtrosContacto(nif, nombre, idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> filtrosContactoAsync(string nif, string nombre) {
-            return base.Channel.filtrosContactoAsync(nif, nombre);
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.ContactoData[]> filtrosContactoAsync(string nif, string nombre, int idEmpresa) {
+            return base.Channel.filtrosContactoAsync(nif, nombre, idEmpresa);
         }
         
         public GestionEmpresas.srvGestion.UsuarioData[] filtrosUsuario(string login, string nombre) {

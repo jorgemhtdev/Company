@@ -132,6 +132,9 @@ namespace ServicioGestion
         ContactoData getContacto(int id);
 
         [OperationContract]
+        ContactoData getContactoNif(string nif);
+
+        [OperationContract]
         List<ContactoData> getAllContacto();
 
         [OperationContract]
@@ -287,7 +290,7 @@ namespace ServicioGestion
 
         /***************************Contactos*************************************/
         [OperationContract]
-        List<ContactoData> filtrosContacto(string nif, string nombre);
+        List<ContactoData> filtrosContacto(string nif, string nombre, int idEmpresa);
         /***************************Fin contactos*************************************/
 
         /***************************Usuario*************************************/

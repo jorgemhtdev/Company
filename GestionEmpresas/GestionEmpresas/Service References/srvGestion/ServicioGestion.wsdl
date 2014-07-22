@@ -139,6 +139,12 @@
   <wsdl:message name="IServicioGestion_getContacto_OutputMessage">
     <wsdl:part name="parameters" element="tns:getContactoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioGestion_getContactoNif_InputMessage">
+    <wsdl:part name="parameters" element="tns:getContactoNif" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_getContactoNif_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getContactoNifResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicioGestion_getAllContacto_InputMessage">
     <wsdl:part name="parameters" element="tns:getAllContacto" />
   </wsdl:message>
@@ -431,6 +437,10 @@
     <wsdl:operation name="getContacto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getContacto" message="tns:IServicioGestion_getContacto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getContactoResponse" message="tns:IServicioGestion_getContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactoNif">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getContactoNif" message="tns:IServicioGestion_getContactoNif_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/getContactoNifResponse" message="tns:IServicioGestion_getContactoNif_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getAllContacto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/getAllContacto" message="tns:IServicioGestion_getAllContacto_InputMessage" />
@@ -762,6 +772,15 @@
     </wsdl:operation>
     <wsdl:operation name="getContacto">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/getContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactoNif">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/getContactoNif" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
