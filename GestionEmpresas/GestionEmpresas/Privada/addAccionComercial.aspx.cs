@@ -105,7 +105,7 @@ namespace GestionEmpresas.Privada
                     AccionComercialData objetoAccionComercial = new AccionComercialData();
 
                     /** Las listas despegables **/
-                    objetoAccionComercial.idUsuario = Convert.ToInt32(this.listaUser.Text);
+                    objetoAccionComercial.idUsuario = proxy.GetNombreUsuario(this.listaUser.Text).idUsuario;
                     objetoAccionComercial.idTipoAccion = Convert.ToInt32(this.listaAccion.Text);
                     objetoAccionComercial.idEstadoAccion = Convert.ToInt32(this.listaEstadoAccion.Text);
                     objetoAccionComercial.idEmpresa = proxy.GetNombreEmpresa(this.listaEmpresa.Text).EmpresaID;
