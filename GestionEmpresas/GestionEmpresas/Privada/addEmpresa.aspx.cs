@@ -12,6 +12,8 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.lblError.Visible = false;
+
             if (!this.IsPostBack)
             {
                 try
@@ -51,14 +53,25 @@ namespace GestionEmpresas.Privada
 
                     try
                     {
-                        // int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
-                        int res = proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text, this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
+                        //Se comprueba si hay una empresa ya con ese cif
+                        EmpresaData empresa = proxy.getEmpresaCif(this.CIF.Text);
 
-                        if (res != -1) Response.Redirect("gestionEmpresas.aspx");
+                        if (empresa == null)
+                        {
+                            // int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector);
+                            int res = proxy.addEmpresa(this.CIF.Text, this.nombreEmpresa.Text, this.RazonSocial.Text, this.paginaWeb.Text, Convert.ToInt32(this.sector.Text));
+
+                            if (res != -1) Response.Redirect("gestionEmpresas.aspx");
+                            else
+                            {
+                                this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                                this.lblError.Visible = true;
+                            }
+                        }
                         else
                         {
-                            //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                            //this.alert.Visible = true;
+                            this.lblError.Text = "El Cif de la empresa ya existe. No se puede insertar en la base de datos.";
+                            this.lblError.Visible = true;
                         }
                     }
                     catch (Exception err)
