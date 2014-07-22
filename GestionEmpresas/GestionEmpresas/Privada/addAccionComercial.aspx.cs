@@ -18,7 +18,7 @@ namespace GestionEmpresas.Privada
                 {
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
-                    /*************************************************** USUARIOS ***************************************************/
+                    /*************************************************** USUARIOS ***************************************************
 
                     var user = proxy.getAllUsuarios(); 
 
@@ -57,7 +57,7 @@ namespace GestionEmpresas.Privada
 
                     /********************************************* ESTADO DE ACCION ************************************************/
 
-                    /*************************************************** EMPRESA ***************************************************/
+                    /*************************************************** EMPRESA ***************************************************
 
                     var empresa = proxy.getAllEmpresa();
 
@@ -91,10 +91,12 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void addAC(object sender, EventArgs e)
         {
-            if (this.IsPostBack){
-                
+            if (this.IsPostBack)
+            {
+
                 this.Validate();
-                if (this.IsValid)  {
+                if (this.IsValid)
+                {
 
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
@@ -106,7 +108,7 @@ namespace GestionEmpresas.Privada
                     objetoAccionComercial.idUsuario = Convert.ToInt32(this.listaUser.Text);
                     objetoAccionComercial.idTipoAccion = Convert.ToInt32(this.listaAccion.Text);
                     objetoAccionComercial.idEstadoAccion = Convert.ToInt32(this.listaEstadoAccion.Text);
-                    objetoAccionComercial.idEmpresa = Convert.ToInt32(this.listaEmpresa.Text);
+                    objetoAccionComercial.idEmpresa = proxy.GetNombreEmpresa(this.listaEmpresa.Text).EmpresaID;
                     /** Las listas despegables **/
 
                     objetoAccionComercial.fechaHora = Convert.ToDateTime(this.fch.Text);
@@ -135,5 +137,23 @@ namespace GestionEmpresas.Privada
         {
             Response.Redirect("gestionAccionesComerciales.aspx", true);
         }// Fin del protected void Volver
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            if (proxy.GetNombreEmpresa(this.listaEmpresa.Text) == null)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
+        }
+
+        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            if (proxy.GetNombreUsuario(this.listaUser.Text) == null)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
+        }
     }
 }
