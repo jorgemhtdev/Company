@@ -17,10 +17,9 @@ namespace GestionEmpresas.Privada
         protected void Page_Load(object sender, EventArgs e)
         {
             this.panel.Visible = false;
-            if(!this.IsPostBack)
-            {
-                contactos = proxy.GetContactosEmpresa(idEmpresa);
-            }
+            contactos = proxy.GetContactosEmpresa(idEmpresa);
+            this.gvContactos.DataSource = contactos;
+            this.gvContactos.DataBind();
         }
         protected void gvContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -28,7 +27,6 @@ namespace GestionEmpresas.Privada
             {
                 try
                 {
-                    this.gvContactos.Visible = true;
                     this.panel.Visible = true;
                     ContactoData cont = contactos[gvContactos.SelectedIndex];
 
