@@ -22,7 +22,7 @@ namespace GestionEmpresas
         }
         protected void Session_Start(object sender, EventArgs e)
         {
-            EmpresaData[] user = (EmpresaData[])HttpContext.Current.Session["empresas"];
+            EmpresaData[] empresas = (EmpresaData[])HttpContext.Current.Session["empresas"];
         }
     }
 }
