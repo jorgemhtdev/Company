@@ -6,11 +6,11 @@
     <div class="container">
             <div class="form col-md-8">
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbTipo" runat="server" Text="Tipo"></asp:Label>
+                        <asp:Label ID="lbTipo" runat="server" Text="Tipo de acción"></asp:Label>
                         <asp:TextBox ID="txtTipo" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbEstado" runat="server" Text="Estado"></asp:Label>
+                        <asp:Label ID="lbEstado" runat="server" Text="Estado de acción"></asp:Label>
                         <asp:TextBox ID="txtEstado" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-3">
@@ -30,7 +30,7 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-            <div class="col-md-2 col-md-offset-8">
+            <div class="col-md-2">
                 <asp:Button ID="bAniadirAccion" CssClass="btn btn-primary pull-right" runat="server" Text="Añadir Accion" OnClick="bAniadirContacto_Click" />
             </div>
             <div class="col-md-12">
