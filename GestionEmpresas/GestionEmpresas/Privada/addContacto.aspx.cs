@@ -66,10 +66,18 @@ namespace GestionEmpresas.Privada
                     ContactoData contacto = proxy.getContactoNif(objetoContacto.nif);
                     if (contacto == null)
                     {
-                        proxy.AddContacto(objetoContacto);
+                        int res=proxy.AddContacto(objetoContacto);
 
-                        int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-                        Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+                        if (res != -1)
+                        {
+                            int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
+                            Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+                        }
+                        else
+                        {
+                            this.lblError.Visible = true;
+                            this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                        }
                     }
                     else
                     {
@@ -89,7 +97,7 @@ namespace GestionEmpresas.Privada
         protected void Volver(object sender, EventArgs e)
         {
             int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-            Response.Redirect("gestionContacto.aspx?id="+idEmpresa, true);
+            Response.Redirect("gestionContacto.aspx?id="+idEmpresa, false);
         }//Volver
     }
 }
