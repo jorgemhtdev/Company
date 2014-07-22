@@ -764,6 +764,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="nif" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
