@@ -12,10 +12,11 @@ namespace GestionEmpresas.Privada
     public partial class gestionContacto : System.Web.UI.Page
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
-        public static int idEmpresa = Convert.ToInt32(HttpContext.Current.Request.QueryString["id"]);
+        public static int idEmpresa;
         public static ContactoData[] contactos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            idEmpresa = Convert.ToInt32(HttpContext.Current.Request.QueryString["id"]);
             this.panel.Visible = false;
             contactos = proxy.GetContactosEmpresa(idEmpresa);
             this.gvContactos.DataSource = contactos;
