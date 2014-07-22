@@ -24,14 +24,14 @@ namespace ServicioGestion
          *getEmail -- Devuelve un registro concreto de la tabla Email
          *deleteEmail -- Elimina un registro de la tabla según su identificador
          *editEmail -- Modificacion de un registro concreto
-        ***************************************************************/ 
-       /// <summary>
+        ***************************************************************/
+        /// <summary>
         /// /// Permite insertar un email que no exista en la base de datos. Como el Email está relacionado obligatoriamente con una empresa o un contacto uno de los dos parámetros será null.
-       /// </summary>
-       /// <param name="correo"></param>
-       /// <param name="empData"></param>
-       /// <param name="conData"></param>
-       /// <returns></returns>
+        /// </summary>
+        /// <param name="correo"></param>
+        /// <param name="empData"></param>
+        /// <param name="conData"></param>
+        /// <returns></returns>
         public int addEmail(string correo, EmpresaData empData, ContactoData conData)
         {
             int indice = -1;
@@ -232,7 +232,7 @@ namespace ServicioGestion
 
                     db.Email.Remove(email);
                     db.SaveChanges();
-  
+
                 }
                 return true;
             }
@@ -270,13 +270,13 @@ namespace ServicioGestion
 
 
                     if (consult.ToList().Count == 0) return false;
-                        Email mailMod = consult.First();
+                    Email mailMod = consult.First();
 
-                        mailMod.correo = correo;
-                        db.SaveChanges();
-                   
-                        return true;
-                   
+                    mailMod.correo = correo;
+                    db.SaveChanges();
+
+                    return true;
+
 
                 }
 
@@ -317,7 +317,7 @@ namespace ServicioGestion
                 emp.razonSocial = razon;
                 emp.web = web;
                 emp.idSector = sector;
-                
+
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
                     var consult = from sect in db.Sector
@@ -325,7 +325,7 @@ namespace ServicioGestion
                                   select sect;
 
                     //si no existe el sector
-                    if (consult.ToList().Count==0) return -1;
+                    if (consult.ToList().Count == 0) return -1;
 
                     db.Empresa.Add(emp);
                     db.SaveChanges();
@@ -539,7 +539,7 @@ namespace ServicioGestion
                                   select emp;
 
                     Empresa empe = consult.First();
-                    
+
                     //eliminamos los telefonos, emails y direcciones asociados a la empresa
                     foreach (Telefono t in empe.Telefono)
                     {
@@ -571,13 +571,13 @@ namespace ServicioGestion
                         }
                         db.Contacto.Remove(cont);
                     }
-                    
+
                     // eliminamos las acciones comerciales asociadas a la empresa
                     foreach (AccionComercial ac in empe.AccionComercial)
                     {
                         db.AccionComercial.Remove(ac);
                     }
-                    
+
                     // eliminamos la empresa
                     db.Empresa.Remove(empe);
 
@@ -763,7 +763,7 @@ namespace ServicioGestion
         /***************************************************************
         ****************************  Direccion ************************
         ***************************************************************/
-       
+
         /// <summary>
         /// Metodo que añade un objeto street de tipo DireccionData a la bd
         /// </summary>
@@ -1216,7 +1216,7 @@ namespace ServicioGestion
                                        password = usuario.password
                                    };
 
-                    if (consulta.ToList().Count== 0) return user;
+                    if (consulta.ToList().Count == 0) return user;
                     return consulta.First();
                 }
             }
@@ -1240,10 +1240,10 @@ namespace ServicioGestion
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-         UsuarioData IServicioGestion.getUsuarioLogin(string login)
+        UsuarioData IServicioGestion.getUsuarioLogin(string login)
         {
-      
-            UsuarioData user = new UsuarioData() ;
+
+            UsuarioData user = new UsuarioData();
             try
             {
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
@@ -1342,7 +1342,7 @@ namespace ServicioGestion
                     {
                         ContactoData cntData = new ContactoData()
                         {
-                            idEmpresa = Convert.ToInt32 (em.idEmpresa),
+                            idEmpresa = Convert.ToInt32(em.idEmpresa),
                             idContacto = em.idContacto,
                             nif = em.nif,
                             nombre = em.nombre
@@ -1425,7 +1425,7 @@ namespace ServicioGestion
                     var resultado = from contact in db.Contacto
                                     where (contact.idContacto == id)
                                     select contact;
-                    
+
 
                     // eliminamos los telefonos, emails y direcciones asociados al contacto
                     foreach (Telefono t in resultado.First().Telefono)
@@ -1442,7 +1442,7 @@ namespace ServicioGestion
                     }
 
                     db.Contacto.Remove(resultado.First()); // Borra el objeto
-                    
+
                     db.SaveChanges(); // Se guarda los campios realizados
                     return true;
                 }
@@ -1470,7 +1470,7 @@ namespace ServicioGestion
         {
             if (contacto == null) return -1;
             if (contacto.nif == "" || contacto.nombre == "") return -1;
-            
+
             try
             {
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
@@ -1660,7 +1660,7 @@ namespace ServicioGestion
                 using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
                 {
                     var datos = from telefonos in bd.Telefono
-                                where telefonos.idTelefono== idTelefono
+                                where telefonos.idTelefono == idTelefono
                                 select new TelefonoData()
                                 {
                                     idTelefono = telefonos.idTelefono,
@@ -1735,7 +1735,7 @@ namespace ServicioGestion
                     var datos = from telefonos in bd.Telefono
                                 select telefonos;
 
-                    foreach(Telefono tlf in datos)
+                    foreach (Telefono tlf in datos)
                     {
                         TelefonoData tdata = new TelefonoData()
                         {
@@ -1771,7 +1771,7 @@ namespace ServicioGestion
             if (t == null) return -1;
             if (empData == null && conData == null) return -1;
             if (empData != null && conData != null) return -1;
-            
+
             try
             {
                 int id;
@@ -1850,7 +1850,7 @@ namespace ServicioGestion
                 throw fault;
             }
         }
-         
+
         /// <summary>
         /// Permite eliminar un teléfono de la base de datos.
         /// </summary>
@@ -1968,7 +1968,7 @@ namespace ServicioGestion
                     {
                         TipoDeAccionData tdata = new TipoDeAccionData()
                         {
-                            idTipoAccion= tipo.idTipoAccion,
+                            idTipoAccion = tipo.idTipoAccion,
                             descripcion = tipo.descripcion
                         };
                         listado.Add(tdata);
@@ -2100,6 +2100,48 @@ namespace ServicioGestion
         //}
 
         /*******************************************EMPRESA *****************************************/
+        /// <summary>
+        /// Devuelve una empresa buscada por su nombre.
+        /// </summary>
+        /// <param name="nombre">El nombre de la empresa.</param>
+        /// <returns>La empresa.</returns>
+        public EmpresaData GetNombreEmpresa(string nombre)
+        {
+            try
+            {
+                EmpresaData e;
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var data = from empresas in bd.Empresa
+                               where empresas.nombreComercial.ToLower() == nombre.ToLower()
+                               select empresas;
+
+                    if (data.Count() == 1)
+                    {
+                        return new EmpresaData()
+                        {
+                            cif = data.First().cif,
+                            EmpresaID = data.First().idEmpresa,
+                            nombreComercial = data.First().nombreComercial,
+                            razonSocial = data.First().razonSocial,
+                            sector = data.First().Sector.descripcion,
+                            web = data.First().web
+                        };
+                    }
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
 
         /// <summary>
         /// Devuelve el listado de teléfonos perteneciente a una empresa concreta
@@ -2171,6 +2213,49 @@ namespace ServicioGestion
                     }
 
                     return contactos;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
+
+        /******************************************* USUARIO *****************************************/
+
+        /// <summary>
+        /// Devuelve un usuario buscado por su nombre.
+        /// </summary>
+        /// <param name="nombre">El nombre de la empresa.</param>
+        /// <returns>La empresa.</returns>
+        public UsuarioData GetNombreUsuario(string nombre)
+        {
+            try
+            {
+                UsuarioData u;
+                using (GestionEmpresasEntities bd = new GestionEmpresasEntities())
+                {
+                    var data = from usuarios in bd.Usuario
+                               where usuarios.nombre.ToLower() == nombre.ToLower()
+                               select usuarios;
+
+                    if (data.Count() == 1)
+                    {
+                        return new UsuarioData()
+                        {
+                            idUsuario = data.First().idUsuario,
+                            login = data.First().login,
+                            nombre = data.First().nombre,
+                            password = data.First().password
+                        };
+                    }
+                    return null;
                 }
             }
             catch (SqlException ex)
@@ -2555,7 +2640,7 @@ namespace ServicioGestion
         /********************************************************************/
 
         /*********************************Filtros ******************************************/
-        
+
         /************************Filtros Empresa ****************************************/
 
         public List<EmpresaData> filtrosEmpresa(string cif, string sector, string provincia, string nombre)
@@ -2567,7 +2652,7 @@ namespace ServicioGestion
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
                     //nombre
-                    if (nombre != null && cif==null && sector ==null && provincia==null)
+                    if (nombre != null && cif == null && sector == null && provincia == null)
                     {
                         var resulta = from empresa in db.Empresa
                                       where empresa.nombreComercial.Contains(nombre)
@@ -2587,7 +2672,7 @@ namespace ServicioGestion
                             datos.Add(emData);
 
                         }
-                        
+
                     }
 
 
@@ -2612,7 +2697,7 @@ namespace ServicioGestion
                             datos.Add(emData);
 
                         }
-                        
+
                     }
                     //Nombre y cif 
                     if (nombre != null && cif != null && sector == null && provincia == null)
@@ -2635,7 +2720,7 @@ namespace ServicioGestion
                             datos.Add(emData);
 
                         }
-                        
+
                     }
 
                     //Provincia
@@ -2656,17 +2741,17 @@ namespace ServicioGestion
                                 web = em.web,
                                 sector = em.Sector.descripcion
                             };
-                            foreach(Direccion dir in em.Direccion)
+                            foreach (Direccion dir in em.Direccion)
                             {
-                                    
-                                     if (provincia == dir.provincia)
-                                     {
-                                         datos.Add(emData);
-                                     }
+
+                                if (provincia == dir.provincia)
+                                {
+                                    datos.Add(emData);
+                                }
                             }
-                                
-                           
-                          
+
+
+
 
                         }
                         return datos;
@@ -2742,7 +2827,7 @@ namespace ServicioGestion
                     if (nombre == null && cif == null && sector != null && provincia == null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where emp.Sector.descripcion==sector
+                                      where emp.Sector.descripcion == sector
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2787,12 +2872,12 @@ namespace ServicioGestion
                     }
 
 
-                    
+
                     //Nombre, sector, cif y provincia
                     if (nombre != null && cif != null && sector != null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where emp.cif == cif && emp.nombreComercial.Contains(nombre)&&emp.Sector.descripcion==sector
+                                      where emp.cif == cif && emp.nombreComercial.Contains(nombre) && emp.Sector.descripcion == sector
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2820,10 +2905,10 @@ namespace ServicioGestion
                     }
 
                     //Nombre, sector, provincia
-                    if (nombre != null && cif== null && sector != null && provincia != null)
+                    if (nombre != null && cif == null && sector != null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where  emp.nombreComercial.Contains(nombre) && emp.Sector.descripcion == sector
+                                      where emp.nombreComercial.Contains(nombre) && emp.Sector.descripcion == sector
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2854,7 +2939,7 @@ namespace ServicioGestion
                     if (nombre == null && cif == null && sector != null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where  emp.Sector.descripcion == sector
+                                      where emp.Sector.descripcion == sector
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2885,7 +2970,7 @@ namespace ServicioGestion
                     if (nombre == null && cif != null && sector == null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where emp.cif==cif
+                                      where emp.cif == cif
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2916,7 +3001,7 @@ namespace ServicioGestion
                     if (nombre == null && cif != null && sector != null && provincia != null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where emp.cif == cif && emp.Sector.descripcion==sector
+                                      where emp.cif == cif && emp.Sector.descripcion == sector
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -2947,7 +3032,7 @@ namespace ServicioGestion
                     if (nombre == null && cif != null && sector != null && provincia == null)
                     {
                         var resulta = from emp in db.Empresa
-                                      where emp.Sector.descripcion == sector && emp.cif==cif
+                                      where emp.Sector.descripcion == sector && emp.cif == cif
                                       select emp;
 
                         foreach (Empresa em in resulta)
@@ -3020,10 +3105,10 @@ namespace ServicioGestion
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
                     //nif
-                    if (nif!=null&&nombre==null)
+                    if (nif != null && nombre == null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nif == nif && contacto.Empresa.idEmpresa==idEmpresa
+                                      where contacto.nif == nif && contacto.Empresa.idEmpresa == idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
@@ -3040,7 +3125,7 @@ namespace ServicioGestion
                         }
                         return datos;
                     }
-                    
+
                     //email
                     if (nif == null && nombre != null)
                     {
@@ -3138,7 +3223,7 @@ namespace ServicioGestion
                     if (login != null && nombre == null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.login==login
+                                       where usuario.login == login
                                        select usuario;
 
                         foreach (Usuario user in consulta)
@@ -3158,7 +3243,7 @@ namespace ServicioGestion
                     if (login != null && nombre != null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.nombre.Contains(nombre) && usuario.login==login
+                                       where usuario.nombre.Contains(nombre) && usuario.login == login
                                        select usuario;
 
                         foreach (Usuario user in consulta)
@@ -3202,10 +3287,10 @@ namespace ServicioGestion
                 {
 
                     //TipoAccion (Descripcion)
-                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa == null &&loginUser==null)
+                    if (tipoAccion != null && estadoAccion == null && nombreEmpresa == null && loginUser == null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.TipoDeAccion.descripcion==tipoAccion
+                                       where action.TipoDeAccion.descripcion == tipoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3254,7 +3339,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion != null && nombreEmpresa == null && loginUser == null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.EstadoDeAccion.descripcion == estadoAccion&&action.TipoDeAccion.descripcion==tipoAccion
+                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.TipoDeAccion.descripcion == tipoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3326,7 +3411,7 @@ namespace ServicioGestion
                     if (tipoAccion == null && estadoAccion != null && nombreEmpresa != null && loginUser == null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.EstadoDeAccion.descripcion == estadoAccion&&action.Empresa.nombreComercial.Contains(nombreEmpresa)
+                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.Empresa.nombreComercial.Contains(nombreEmpresa)
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3350,7 +3435,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion != null && nombreEmpresa != null && loginUser == null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.Empresa.nombreComercial.Contains(nombreEmpresa)&&action.TipoDeAccion.descripcion==tipoAccion
+                                       where action.EstadoDeAccion.descripcion == estadoAccion && action.Empresa.nombreComercial.Contains(nombreEmpresa) && action.TipoDeAccion.descripcion == tipoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3398,7 +3483,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion == null && nombreEmpresa == null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.TipoDeAccion.descripcion==tipoAccion&&action.Usuario.login.Contains(loginUser)
+                                       where action.TipoDeAccion.descripcion == tipoAccion && action.Usuario.login.Contains(loginUser)
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3446,7 +3531,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion != null && nombreEmpresa == null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.TipoDeAccion.descripcion == tipoAccion && action.Usuario.login.Contains(loginUser)&&action.EstadoDeAccion.descripcion==estadoAccion
+                                       where action.TipoDeAccion.descripcion == tipoAccion && action.Usuario.login.Contains(loginUser) && action.EstadoDeAccion.descripcion == estadoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3470,7 +3555,7 @@ namespace ServicioGestion
                     if (tipoAccion == null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.Usuario.login.Contains(loginUser)&&action.Empresa.nombreComercial==nombreEmpresa
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3494,7 +3579,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion == null && nombreEmpresa != null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa&&action.TipoDeAccion.descripcion==tipoAccion
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.TipoDeAccion.descripcion == tipoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3542,7 +3627,7 @@ namespace ServicioGestion
                     if (tipoAccion != null && estadoAccion != null && nombreEmpresa != null && loginUser != null)
                     {
                         var consulta = from action in db.AccionComercial
-                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.TipoDeAccion.descripcion == tipoAccion&&action.EstadoDeAccion.descripcion==estadoAccion
+                                       where action.Usuario.login.Contains(loginUser) && action.Empresa.nombreComercial == nombreEmpresa && action.TipoDeAccion.descripcion == tipoAccion && action.EstadoDeAccion.descripcion == estadoAccion
                                        select action;
 
                         foreach (AccionComercial accion in consulta)
@@ -3564,8 +3649,8 @@ namespace ServicioGestion
 
                     return datos;
                 }
-                   
-           }
+
+            }
             catch (SqlException ex)
             {
                 FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
@@ -3588,6 +3673,6 @@ namespace ServicioGestion
 
 
 
-       
+
     }
 }
