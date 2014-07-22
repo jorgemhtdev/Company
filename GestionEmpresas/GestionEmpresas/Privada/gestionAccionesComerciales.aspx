@@ -6,20 +6,20 @@
     <div class="container">
             <div class="form col-md-8">
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbTipo" runat="server" Text="Tipo de acción"></asp:Label>
-                        <asp:DropDownList ID="txtTipo" runat="server"></asp:DropDownList>
+                        <asp:Label ID="lbTipo" CssClass="control-label" runat="server" Text="Tipo de acción"></asp:Label>
+                        <asp:DropDownList ID="txtTipo" CssClass="form-control" runat="server"></asp:DropDownList>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbEstado" runat="server" Text="Estado de acción"></asp:Label>
-                        <asp:DropDownList ID="txtEstado" runat="server"></asp:DropDownList>
+                        <asp:Label ID="lbEstado" CssClass="control-label" runat="server" Text="Estado de acción"></asp:Label>
+                        <asp:DropDownList ID="txtEstado" CssClass="form-control" runat="server"></asp:DropDownList>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbNombreEmpresa" runat="server" Text="Nombre Empresa"></asp:Label>
-                        <asp:TextBox ID="txtNombreEmpresa" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbNombreEmpresa" CssClass="control-label" runat="server" Text="Nombre Empresa"></asp:Label>
+                        <asp:TextBox ID="txtNombreEmpresa" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbLogin" runat="server" Text="Login Usuario"></asp:Label>
-                        <asp:TextBox ID="txtLogin" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbLogin" CssClass="control-label" runat="server" Text="Login Usuario"></asp:Label>
+                        <asp:TextBox ID="txtLogin" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                 </div>
 
