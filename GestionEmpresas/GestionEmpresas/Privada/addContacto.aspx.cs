@@ -89,7 +89,7 @@ namespace GestionEmpresas.Privada
         protected void Volver(object sender, EventArgs e)
         {
             int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-            Response.Redirect("gestionContacto.aspx?id="+idEmpresa, true);
+            Response.Redirect("gestionContacto.aspx?id="+idEmpresa, false);
         }//Volver
     }
 }

@@ -76,7 +76,9 @@
                             <section class="col-md-4">
                                 <asp:DropDownList ID="sector" runat="server" CssClass="form-control"></asp:DropDownList>
                             </section>
-                        </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="Label"></asp:Label>
+                        <br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">
                            
