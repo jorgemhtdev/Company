@@ -22,9 +22,10 @@
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="listaUser" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:CustomValidator ControlToValidate="listaUser" ID="CustomValidator2" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator2_ServerValidate"></asp:CustomValidator>
                             </section>
                         </article>
-                        <asp:CustomValidator ID="CustomValidator2" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator2_ServerValidate"></asp:CustomValidator>
+                        
                         <br /><br /><br /><br />
 
                         <article class="col-md-11 col-md-offset-2"> 
@@ -51,9 +52,10 @@
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="listaEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:CustomValidator ControlToValidate="listaEmpresa" ID="CustomValidator1" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de la empresa" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                             </section>
                         </article>
-                        <asp:CustomValidator ID="CustomValidator1" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de la empresa" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                        
                         <br /><br /><br /><br />
                         
                         <article class="col-md-11 col-md-offset-2"> 
