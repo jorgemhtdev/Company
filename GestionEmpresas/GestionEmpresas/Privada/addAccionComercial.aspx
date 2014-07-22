@@ -83,7 +83,7 @@
                         </article> <br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">
-                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
+                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
                             <asp:Button ID="btnEnviar" runat="server" Text="Enviar" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addAC" OnClientClick="return confirm('¿Estas seguro?');" /> 
                         </footer>
                         <br /><br /><br />

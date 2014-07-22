@@ -12,31 +12,12 @@ namespace GestionEmpresas.Privada
     public partial class gestionUsuarios : System.Web.UI.Page
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
-        public static UsuarioData[] usuarios = proxy.getAllUsuarios();
+        public static UsuarioData[] usuarios;
         protected void Page_Load(object sender, EventArgs e)
         {
             usuarios = proxy.getAllUsuarios();
-            if (!this.IsPostBack)
-            {
-                try
-                {
-                    this.gvUsuarios.DataSource = usuarios;
-                    this.gvUsuarios.DataBind();
-                }
-                catch (FaultException ex)
-                {
-                    /*this.lbError.Text = "Servicio " + ex.Message;
-                    this.lbError.Visible = true;
-                    this.lbRegiones.Visible = false;*/
-
-                }
-                catch (Exception ex)
-                {
-                    /*this.lbError.Text = ex.Message;
-                     this.lbError.Visible = true;
-                     this.lbRegiones.Visible = false;*/
-                }
-            }
+            this.gvUsuarios.DataSource = usuarios;
+            this.gvUsuarios.DataBind();
         }
 
         protected void gvUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
@@ -56,6 +37,22 @@ namespace GestionEmpresas.Privada
         protected void bAniadirUsuario_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Privada/addUsuario.aspx");
+        }
+
+        protected void bBusqueda_Click(object sender, EventArgs e)
+        {
+            string sLogin = null, sNombre = null;
+            if (this.txtLogin.Text != "")
+            {
+                sLogin = this.txtLogin.Text;
+            }
+            if (this.txtNombre.Text != "")
+            {
+                sNombre = this.txtNombre.Text;
+            }
+            usuarios = proxy.filtrosUsuario(sLogin, sNombre);
+            this.gvUsuarios.DataSource = usuarios;
+            this.gvUsuarios.DataBind();
         }
     }
 }

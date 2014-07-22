@@ -3012,7 +3012,7 @@ namespace ServicioGestion
 
         /************************Contactos***********************************/
 
-        public List<ContactoData> filtrosContacto(string nif, string nombre)
+        public List<ContactoData> filtrosContacto(string nif, string nombre, int idEmpresa)
         {
             List<ContactoData> datos = new List<ContactoData>();
             try
@@ -3023,7 +3023,7 @@ namespace ServicioGestion
                     if (nif!=null&&nombre==null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nif == nif
+                                      where contacto.nif == nif && contacto.Empresa.idEmpresa==idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
@@ -3045,7 +3045,7 @@ namespace ServicioGestion
                     if (nif == null && nombre != null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nombre.Contains(nombre)
+                                      where contacto.nombre.Contains(nombre) && contacto.Empresa.idEmpresa == idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)
@@ -3067,7 +3067,7 @@ namespace ServicioGestion
                     if (nif != null && nombre != null)
                     {
                         var resulta = from contacto in db.Contacto
-                                      where contacto.nombre.Contains(nombre) && contacto.nif == nif
+                                      where contacto.nombre.Contains(nombre) && contacto.nif == nif && contacto.Empresa.idEmpresa == idEmpresa
                                       select contacto;
 
                         foreach (Contacto em in resulta)

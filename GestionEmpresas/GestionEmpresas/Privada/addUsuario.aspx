@@ -67,7 +67,7 @@
                         <br /><br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-10 col-md-offset-2">             
-                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
+                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
                             <asp:Button ID="btnEnviar" runat="server" Text="Añadir" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addUser" OnClientClick="return confirm('¿Estas seguro?');" /> 
                         </footer>
                         <br /><br /><br />

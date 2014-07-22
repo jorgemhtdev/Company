@@ -81,7 +81,15 @@ namespace GestionEmpresas.Privada
                             if(telefono==null)
                             {
                                 res = proxy.AddTelefono(t, objEmpresa, null);
-                                Response.Redirect("gestionEmpresas.aspx");
+                                if (res != 1)
+                                {
+                                    Response.Redirect("gestionEmpresas.aspx");
+                                }
+                                else
+                                {
+                                    this.lblError.Visible = true;
+                                    this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                                }
                             }
                             else
                             {

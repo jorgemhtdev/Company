@@ -7,20 +7,20 @@
             
                 <div class="form col-md-8">
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbCif" runat="server" Text="Cif"></asp:Label>
-                        <asp:TextBox ID="txtCif" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbCif" CssClass="control-label" runat="server" Text="Cif"></asp:Label>
+                        <asp:TextBox ID="txtCif" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbSector" runat="server" Text="Sector"></asp:Label>
-                        <asp:TextBox ID="txtSector" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbSector" CssClass="control-label" runat="server" Text="Sector"></asp:Label>
+                        <asp:DropDownList ID="txtSector" CssClass="form-control" runat="server"></asp:DropDownList>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbProvincia" runat="server" Text="Provincia"></asp:Label>
-                        <asp:TextBox ID="txtProvincia" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbProvincia" CssClass="control-label" runat="server" Text="Provincia"></asp:Label>
+                        <asp:TextBox ID="txtProvincia" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group col-md-3">
-                        <asp:Label ID="lbNombre" runat="server" Text="Nombre"></asp:Label>
-                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                        <asp:Label ID="lbNombre" CssClass="control-label" runat="server" Text="Nombre"></asp:Label>
+                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                 </div>
 
