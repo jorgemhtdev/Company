@@ -311,6 +311,23 @@ namespace ServicioGestion
         /***************************fin acciones**********************************/
 
         /**********************************************************************/
+
+
+
+        /******************************Metodos Informacion****************************/
+        [OperationContract]
+        int numTotalEmpresas();
+
+        [OperationContract]
+        int numTotalContactos();
+
+        [OperationContract]
+        int numTotalUsuarios();
+
+        [OperationContract]
+        int numTotalAccionesComerciales();
+
+        /******************************FIN Metodos Informacion****************************/
     }
 
     /**********CLASES  DATA***/
