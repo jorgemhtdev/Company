@@ -12,31 +12,11 @@ namespace GestionEmpresas.Privada
     public partial class gestionAccionesComerciales : System.Web.UI.Page
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
-        public static AccionComercialMostrarData[] acciones = proxy.getAllAccionesComerciales();
+        public static AccionComercialMostrarData[] acciones;
         protected void Page_Load(object sender, EventArgs e)
         {
-            acciones = proxy.getAllAccionesComerciales();
-            if (!this.IsPostBack)
-            {
-                try
-                {
-                    this.gvAcciones.DataSource = acciones;
-                    this.gvAcciones.DataBind();
-                }
-                catch (FaultException ex)
-                {
-                    /*this.lbError.Text = "Servicio " + ex.Message;
-                    this.lbError.Visible = true;
-                    this.lbRegiones.Visible = false;*/
-
-                }
-                catch (Exception ex)
-                {
-                    /*this.lbError.Text = ex.Message;
-                     this.lbError.Visible = true;
-                     this.lbRegiones.Visible = false;*/
-                }
-            }
+            this.gvAcciones.Visible = false;
+            this.panel.Visible = false;
         }
 
         protected void bAniadirContacto_Click(object sender, EventArgs e)
@@ -50,6 +30,8 @@ namespace GestionEmpresas.Privada
             {
                 try
                 {
+                    this.gvAcciones.Visible = true;
+                    this.panel.Visible = true;
                     AccionComercialMostrarData accion = acciones[gvAcciones.SelectedIndex];
                     this.txtComentarios.InnerText = accion.comentarios;
                 }
@@ -73,7 +55,6 @@ namespace GestionEmpresas.Privada
         {
             AccionComercialMostrarData accion = acciones[e.RowIndex];
             proxy.deleteAccionComercial(accion.idAccion);
-            acciones = proxy.getAllAccionesComerciales();
             Response.Redirect("~/Privada/gestionAccionComercial.aspx");
         }
 
@@ -85,7 +66,28 @@ namespace GestionEmpresas.Privada
 
         protected void bBusqueda_Click(object sender, EventArgs e)
         {
-
+            string sTipo = null, sEstado = null, sNombreEmpresa = null, sLoginUsuario = null;
+            if (this.txtTipo.Text != "")
+            {
+                sTipo = this.txtTipo.Text;
+            }
+            if (this.txtEstado.Text != "")
+            {
+                sEstado = this.txtEstado.Text;
+            }
+            if (this.txtNombreEmpresa.Text != "")
+            {
+                sNombreEmpresa = this.txtNombreEmpresa.Text;
+            }
+            if (this.txtLogin.Text != "")
+            {
+                sLoginUsuario = this.txtLogin.Text;
+            }
+            this.gvAcciones.Visible = true;
+            this.panel.Visible = true;
+            acciones = proxy.filtrosAccionComercial(sTipo, sEstado, sNombreEmpresa, sLoginUsuario);
+            this.gvAcciones.DataSource = acciones;
+            this.gvAcciones.DataBind();
         }
     }
 }

@@ -46,9 +46,17 @@ namespace GestionEmpresas.Privada
                 //Si no está en la bd, se añade.
                 if (usuario.idUsuario == 0)
                 {
-                    proxy.addUsuario(objetoUsuario);
+                    int res=proxy.addUsuario(objetoUsuario);
 
-                    Response.Redirect("gestionUsuarios.aspx");
+                    if (res == -1)
+                    {
+                        Response.Redirect("gestionUsuarios.aspx");
+                    }
+                    else
+                    {
+                        this.lblError.Visible = true;
+                        this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                    }
                 }
                 else{
                     this.lblError.Visible = true;
