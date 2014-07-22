@@ -19,9 +19,11 @@
                                 <asp:Label ID="user" runat="server">Usuario</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:DropDownList ID="listaUser" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <asp:TextBox ID="listaUser" runat="server" CssClass="form-control" OnTextChanged="listaUser_TextChanged"></asp:TextBox>
                             </section>
-                        </article><br /><br /><br /><br />
+                        </article>
+                        <asp:CustomValidator ID="CustomValidator2" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator2_ServerValidate"></asp:CustomValidator>
+                        <br /><br /><br /><br />
 
                         <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
@@ -46,9 +48,11 @@
                                 <asp:Label ID="emp" runat="server">Empresa</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:DropDownList ID="listaEmpresa" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <asp:TextBox ID="listaEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
                             </section>
-                        </article><br /><br /><br /><br />
+                        </article>
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de la empresa" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                        <br /><br /><br /><br />
                         
                         <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">

@@ -1278,6 +1278,12 @@ namespace GestionEmpresas.srvGestion {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetAllTipoAccion", ReplyAction="http://tempuri.org/IServicioGestion/GetAllTipoAccionResponse")]
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TipoDeAccionData[]> GetAllTipoAccionAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNombreEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetNombreEmpresaResponse")]
+        GestionEmpresas.srvGestion.EmpresaData GetNombreEmpresa(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNombreEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetNombreEmpresaResponse")]
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> GetNombreEmpresaAsync(string nombre);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosEmpresaResponse")]
         GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosEmpresa(int idEmpresa);
         
@@ -1295,6 +1301,12 @@ namespace GestionEmpresas.srvGestion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetTelefonosContacto", ReplyAction="http://tempuri.org/IServicioGestion/GetTelefonosContactoResponse")]
         System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosContactoAsync(int idContacto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNombreUsuario", ReplyAction="http://tempuri.org/IServicioGestion/GetNombreUsuarioResponse")]
+        GestionEmpresas.srvGestion.UsuarioData GetNombreUsuario(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/GetNombreUsuario", ReplyAction="http://tempuri.org/IServicioGestion/GetNombreUsuarioResponse")]
+        System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData> GetNombreUsuarioAsync(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioGestion/addUsuario", ReplyAction="http://tempuri.org/IServicioGestion/addUsuarioResponse")]
         int addUsuario(GestionEmpresas.srvGestion.UsuarioData usuario);
@@ -1722,6 +1734,14 @@ namespace GestionEmpresas.srvGestion {
             return base.Channel.GetAllTipoAccionAsync();
         }
         
+        public GestionEmpresas.srvGestion.EmpresaData GetNombreEmpresa(string nombre) {
+            return base.Channel.GetNombreEmpresa(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.EmpresaData> GetNombreEmpresaAsync(string nombre) {
+            return base.Channel.GetNombreEmpresaAsync(nombre);
+        }
+        
         public GestionEmpresas.srvGestion.TelefonoData[] GetTelefonosEmpresa(int idEmpresa) {
             return base.Channel.GetTelefonosEmpresa(idEmpresa);
         }
@@ -1744,6 +1764,14 @@ namespace GestionEmpresas.srvGestion {
         
         public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.TelefonoData[]> GetTelefonosContactoAsync(int idContacto) {
             return base.Channel.GetTelefonosContactoAsync(idContacto);
+        }
+        
+        public GestionEmpresas.srvGestion.UsuarioData GetNombreUsuario(string nombre) {
+            return base.Channel.GetNombreUsuario(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<GestionEmpresas.srvGestion.UsuarioData> GetNombreUsuarioAsync(string nombre) {
+            return base.Channel.GetNombreUsuarioAsync(nombre);
         }
         
         public int addUsuario(GestionEmpresas.srvGestion.UsuarioData usuario) {

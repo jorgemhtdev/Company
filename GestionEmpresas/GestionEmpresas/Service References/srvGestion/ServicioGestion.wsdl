@@ -229,6 +229,12 @@
   <wsdl:message name="IServicioGestion_GetAllTipoAccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllTipoAccionResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNombreEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNombreEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNombreEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNombreEmpresaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicioGestion_GetTelefonosEmpresa_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTelefonosEmpresa" />
   </wsdl:message>
@@ -246,6 +252,12 @@
   </wsdl:message>
   <wsdl:message name="IServicioGestion_GetTelefonosContacto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTelefonosContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNombreUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNombreUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetNombreUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNombreUsuarioResponse" />
   </wsdl:message>
   <wsdl:message name="IServicioGestion_addUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:addUsuario" />
@@ -498,6 +510,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTipoAccion" message="tns:IServicioGestion_GetAllTipoAccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllTipoAccionResponse" message="tns:IServicioGestion_GetAllTipoAccion_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetNombreEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetNombreEmpresa" message="tns:IServicioGestion_GetNombreEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetNombreEmpresaResponse" message="tns:IServicioGestion_GetNombreEmpresa_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetTelefonosEmpresa">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa" message="tns:IServicioGestion_GetTelefonosEmpresa_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosEmpresaResponse" message="tns:IServicioGestion_GetTelefonosEmpresa_OutputMessage" />
@@ -509,6 +525,10 @@
     <wsdl:operation name="GetTelefonosContacto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosContacto" message="tns:IServicioGestion_GetTelefonosContacto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetTelefonosContactoResponse" message="tns:IServicioGestion_GetTelefonosContacto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNombreUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetNombreUsuario" message="tns:IServicioGestion_GetNombreUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetNombreUsuarioResponse" message="tns:IServicioGestion_GetNombreUsuario_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/addUsuario" message="tns:IServicioGestion_addUsuario_InputMessage" />
@@ -914,6 +934,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNombreEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetNombreEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTelefonosEmpresa">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetTelefonosEmpresa" style="document" />
       <wsdl:input>
@@ -934,6 +963,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTelefonosContacto">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetTelefonosContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNombreUsuario">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetNombreUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

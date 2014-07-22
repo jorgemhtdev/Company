@@ -17,7 +17,7 @@ namespace ServicioGestion
         /***********************************************************************/
         /********************LUIS MIGUEL MORALES*********************************/
         /***********************************************************************/
-       
+
         //Método que añade un email
         [OperationContract]
         int addEmail(string correo, EmpresaData empData, ContactoData conData);
@@ -111,7 +111,7 @@ namespace ServicioGestion
         /// Fin Direccion
 
         /// Sector
-        
+
         [OperationContract]
         List<SectorData> GetSector();
 
@@ -145,8 +145,8 @@ namespace ServicioGestion
 
         [OperationContract]
         int EditContacto(ContactoData contacto, int id);
-   
-        
+
+
         /******************* METODOS MAS COOL *******************/
         [OperationContract]
         List<DireccionData> getDirecionesEmpresa(int idEmpresa);
@@ -210,6 +210,10 @@ namespace ServicioGestion
         //[OperationContract]
         //bool DeleteTipoAccion(int idTipoAccion);
 
+        /******************************** EMPRESA ******************************/
+        [OperationContract]
+        EmpresaData GetNombreEmpresa(string nombre);
+
         /************************ TELEFONO EMPRESA *****************************/
 
         [OperationContract]
@@ -222,8 +226,11 @@ namespace ServicioGestion
         [OperationContract]
         List<TelefonoData> GetTelefonosContacto(int idContacto);
 
+        /**************************** USUARIO **************************/
+        [OperationContract]
+        UsuarioData GetNombreUsuario(string nombre);
 
-       
+
 
         /***********************************************************************/
         /********************FIN IVÁN ******************************************/
@@ -283,7 +290,7 @@ namespace ServicioGestion
         /***************************Empresa*************************************/
 
         [OperationContract]
-        List<EmpresaData> filtrosEmpresa(string cif,string sector, string provincia, string nombre);
+        List<EmpresaData> filtrosEmpresa(string cif, string sector, string provincia, string nombre);
 
         /****************************Fin Empresa********************************/
 
@@ -360,7 +367,7 @@ namespace ServicioGestion
     /***********************************************************************/
 
     /// Direccion
- 
+
     [DataContract]
     public class DireccionData
     {
@@ -375,7 +382,7 @@ namespace ServicioGestion
         [DataMember]
         public string provincia;
     }
-        
+
     //fin Direccion
 
     /// Sector
