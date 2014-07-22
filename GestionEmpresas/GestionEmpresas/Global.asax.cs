@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionEmpresas.srvGestion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,7 @@ namespace GestionEmpresas
         }
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            EmpresaData[] user = (EmpresaData[])HttpContext.Current.Session["empresas"];
         }
     }
 }
