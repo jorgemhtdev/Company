@@ -7,11 +7,11 @@
             <div class="form col-md-8">
                     <div class="form-group col-md-3">
                         <asp:Label ID="lbTipo" runat="server" Text="Tipo de acción"></asp:Label>
-                        <asp:TextBox ID="txtTipo" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="txtTipo" runat="server"></asp:DropDownList>
                     </div>
                     <div class="form-group col-md-3">
                         <asp:Label ID="lbEstado" runat="server" Text="Estado de acción"></asp:Label>
-                        <asp:TextBox ID="txtEstado" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="txtEstado" runat="server"></asp:DropDownList>
                     </div>
                     <div class="form-group col-md-3">
                         <asp:Label ID="lbNombreEmpresa" runat="server" Text="Nombre Empresa"></asp:Label>
