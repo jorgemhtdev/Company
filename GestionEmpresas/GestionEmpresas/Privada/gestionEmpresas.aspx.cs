@@ -24,6 +24,7 @@ namespace GestionEmpresas.Privada
                 this.txtSector.DataTextField = "descripcion";
                 this.txtSector.DataValueField = "descripcion";
                 this.txtSector.DataBind();
+                this.txtSector.Items.Insert(0, new ListItem("Seleccione...", ""));
             }
             
         }
@@ -166,9 +167,10 @@ namespace GestionEmpresas.Privada
             {
                 sCif = this.txtCif.Text;
             }
-
-            sSector = this.txtSector.Text;
-            
+            if(this.txtSector.Text != "")
+            {
+                sSector = this.txtSector.Text;
+            }
             if (this.txtProvincia.Text != "")
             {
                 sProvincia = this.txtProvincia.Text;
