@@ -37,7 +37,7 @@ namespace GestionEmpresas.Privada {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipo;
+        protected global::System.Web.UI.WebControls.DropDownList txtTipo;
         
         /// <summary>
         /// lbEstado control.
@@ -55,7 +55,7 @@ namespace GestionEmpresas.Privada {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstado;
+        protected global::System.Web.UI.WebControls.DropDownList txtEstado;
         
         /// <summary>
         /// lbNombreEmpresa control.
