@@ -20,7 +20,7 @@ namespace GestionEmpresas.Privada
                     int id = Convert.ToInt32(Request.QueryString["id"]); // Obtengo el id           
                     var AccionComercial = proxy.getAccionComercial(id); // Obtengo la accion comercial ( el objeto )
 
-                    /*************************************************** USUARIOS ***************************************************/
+                    /*************************************************** USUARIOS ***************************************************
   
                     var user = proxy.getAllUsuarios(); // Obtengo los usuarios
 
@@ -91,7 +91,7 @@ namespace GestionEmpresas.Privada
 
                     /********************************************* ESTADO DE ACCION ************************************************/
 
-                    /*************************************************** EMPRESA ***************************************************/
+                    /*************************************************** EMPRESA ***************************************************
 
                     var empresa = proxy.getAllEmpresa();
 
@@ -157,10 +157,10 @@ namespace GestionEmpresas.Privada
 
                     /** Las listas despegables **/
                     objetoAccionComercial.idAccion = Convert.ToInt32(Request.QueryString["id"]);
-                    objetoAccionComercial.idUsuario = Convert.ToInt32(this.listaUser.Text);
+                    objetoAccionComercial.idUsuario = proxy.GetNombreUsuario(this.listaUser.Text).idUsuario;
                     objetoAccionComercial.idTipoAccion = Convert.ToInt32(this.listaAccion.Text);
                     objetoAccionComercial.idEstadoAccion = Convert.ToInt32(this.listaEstadoAccion.Text);
-                    objetoAccionComercial.idEmpresa = Convert.ToInt32(this.listaEmpresa.Text);
+                    objetoAccionComercial.idEmpresa = proxy.GetNombreEmpresa(this.listaEmpresa.Text).EmpresaID;
                     /** Las listas despegables **/
 
                     objetoAccionComercial.fechaHora = Convert.ToDateTime(this.fch.Text);
@@ -190,5 +190,23 @@ namespace GestionEmpresas.Privada
         {
             Response.Redirect("gestionAccionesComerciales.aspx", true);
         }// Fin del protected void Volver
+
+        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            if (proxy.GetNombreEmpresa(this.listaEmpresa.Text) == null)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+            if (proxy.GetNombreUsuario(this.listaUser.Text) == null)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
+        }
     }
 }
