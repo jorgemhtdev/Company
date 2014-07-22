@@ -13,7 +13,7 @@
         <div class="row">
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Editar Usuario <span class="glyphicon glyphicon-plus"></span></h1></div>
+                <div class="panel-heading"> <h1> Editar Usuario </h1></div>
                     <div class="panel-body">
                        <br /><br />
                        <article class="col-md-12 col-md-offset-2"> 
@@ -51,7 +51,6 @@
                             
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="pw" runat="server">Repetir contraseña</asp:Label>                        
@@ -66,7 +65,7 @@
                         </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">             
-                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
+                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
                             <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="editUser" OnClientClick="return confirm('¿Estas seguro?');" /> 
                         </footer>
                         <br /><br /><br />

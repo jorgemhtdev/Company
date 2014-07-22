@@ -10,13 +10,14 @@
 <body>
     <form id="form1" runat="server">
     <div class="container-fluid">
-        <div class="row">
-             <br /><br />
+        <div class="row"> <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Editar $NombreEmpresa <span class="glyphicon glyphicon-pencil"></span></h1></div>
+                <div class="panel-heading"> 
+                    <h1> Editar </h1>
+                    - <asp:Label ID="labelEmpresa" runat="server" Text=""></asp:Label> -                 
+                </div>
                     <div class="panel-body">
                        <br /><br />
-
                        <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="nombre" runat="server">Nombre</asp:Label>   
@@ -29,7 +30,6 @@
                                              ErrorMessage="Solo se admiten letras y numeros" ValidationExpression="[A-Za-z0-9 ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="nombreEmpresa"></asp:RegularExpressionValidator>
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="RasonSocial" runat="server">Razon Social</asp:Label>   
@@ -42,7 +42,6 @@
                                          ErrorMessage="Solo se admiten letras y numeros" ValidationExpression="[A-Za-z0-9. ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="RazonSocial"></asp:RegularExpressionValidator>         
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="zif" runat="server">CIF</asp:Label>                        
@@ -55,7 +54,6 @@
                                          ErrorMessage="Solo se admiten los siguientes formatos" ValidationExpression="[ABCDEFGHKLMNPQS]{1}[0-9]{8}" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="CIF"></asp:RegularExpressionValidator>      
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="url" runat="server" >Pagina web</asp:Label>                        
@@ -68,7 +66,6 @@
                                          ErrorMessage="Solo se admite el siguiente formato" ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>      
                             </section>
                         </article>
-
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="zector" runat="server">Sector</asp:Label>                        
@@ -77,12 +74,9 @@
                                 <asp:DropDownList ID="sector" runat="server" CssClass="form-control"></asp:DropDownList>
                             </section>
                         </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
                         <footer class="col-md-12 col-md-offset-1">
-                           
-                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" />
+                            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
                             <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="editEmpr" OnClientClick="return confirm('¿Estas seguro?');" /> 
-                            
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
