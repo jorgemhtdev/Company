@@ -37,6 +37,16 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-offset-1 col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading text-center"><b><a href="gestionUsuarios.aspx">Acceso rápido</a></b></div>
+                <div class="panel-body text-center">
+                    <a href="addEmpresa.aspx" class="btn btn-primary btn-block" role="button">Añadir empresa</a>
+                    <a href="addAccionComercial.aspx" class="btn btn-primary btn-block" role="button">Añadir accion comercial</a>
+                    <a href="addUsuario.aspx" class="btn btn-primary btn-block" role="button">Añadir usuario</a>
+                </div>
+            </div>
+        </div>
         <hr class="col-md-12"/>
 
     </div>
