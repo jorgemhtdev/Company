@@ -3674,5 +3674,133 @@ namespace ServicioGestion
 
 
 
+
+        /// <summary>
+        /// Método que devuelve el número total de empresas en la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public int numTotalEmpresas()
+        {
+            int numTotal = 0;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from emp in db.Empresa
+                                   select emp;
+                    numTotal = consulta.ToList().Count;
+
+                    return numTotal;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }
+
+        /// <summary>
+        /// Método que devuelve el número total de contactos en la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public int numTotalContactos()
+        {
+            int numTotal = 0;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from cont in db.Contacto
+                                   select cont;
+                    numTotal = consulta.ToList().Count;
+
+                    return numTotal;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }
+
+        /// <summary>
+        /// Método que devuelve el número total de usuarios 
+        /// </summary>
+        /// <returns></returns>
+        public int numTotalUsuarios()
+        {
+            int numTotal = 0;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from user in db.Usuario
+                                   select user;
+                    numTotal = consulta.ToList().Count;
+
+                    return numTotal;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }
+
+        /// <summary>
+        /// Método que devuelve el número total de acciones comerciales
+        /// </summary>
+        /// <returns></returns>
+        public int numTotalAccionesComerciales()
+        {
+            int numTotal = 0;
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from acc in db.AccionComercial
+                                   select acc;
+                    numTotal = consulta.ToList().Count;
+
+                    return numTotal;
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("Error SQL: " + ex.Message, new FaultCode("SQL"));
+
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("Error: " + ex.Message, new FaultCode("General"));
+
+                throw fault;
+            }
+        }
     }
 }
