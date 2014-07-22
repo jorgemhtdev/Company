@@ -20,9 +20,11 @@ namespace GestionEmpresas.Privada
                     int id = Convert.ToInt32(Request.QueryString["id"]); // Obtengo el id           
                     var AccionComercial = proxy.getAccionComercial(id); // Obtengo la accion comercial ( el objeto )
 
-                    /*************************************************** USUARIOS ***************************************************
+                    /*************************************************** USUARIOS ***************************************************/
+
+                    this.listaUser.Text = proxy.getUsuario(AccionComercial.idUsuario).nombre;
   
-                    var user = proxy.getAllUsuarios(); // Obtengo los usuarios
+                    /*var user = proxy.getAllUsuarios(); // Obtengo los usuarios
 
                     int contadorUser = 0;
 
@@ -91,9 +93,11 @@ namespace GestionEmpresas.Privada
 
                     /********************************************* ESTADO DE ACCION ************************************************/
 
-                    /*************************************************** EMPRESA ***************************************************
+                    /*************************************************** EMPRESA ***************************************************/
 
-                    var empresa = proxy.getAllEmpresa();
+                    this.listaEmpresa.Text = proxy.getEmpresaId(AccionComercial.idEmpresa).nombreComercial;
+
+                    /*var empresa = proxy.getAllEmpresa();
 
                     int contadorEmpresa = 0;
 
