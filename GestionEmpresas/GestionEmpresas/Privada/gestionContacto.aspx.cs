@@ -16,8 +16,10 @@ namespace GestionEmpresas.Privada
         public static ContactoData[] contactos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.gvContactos.Visible = false;
             this.panel.Visible = false;
+            contactos = proxy.GetContactosEmpresa(idEmpresa);
+            this.gvContactos.DataSource = contactos;
+            this.gvContactos.DataBind();
         }
         protected void gvContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -25,7 +27,6 @@ namespace GestionEmpresas.Privada
             {
                 try
                 {
-                    this.gvContactos.Visible = true;
                     this.panel.Visible = true;
                     ContactoData cont = contactos[gvContactos.SelectedIndex];
 
@@ -154,8 +155,7 @@ namespace GestionEmpresas.Privada
             {
                 sNombre = this.txtNombre.Text;
             }
-            this.gvContactos.Visible = true;
-            contactos = proxy.filtrosContacto(sNif, sNombre);
+            contactos = proxy.filtrosContacto(sNif, sNombre, idEmpresa);
             this.gvContactos.DataSource = contactos;
             this.gvContactos.DataBind();
         }
