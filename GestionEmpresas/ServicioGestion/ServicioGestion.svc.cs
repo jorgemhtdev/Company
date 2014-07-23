@@ -67,7 +67,6 @@ namespace ServicioGestion
 
                     return indice;
                 }
-
             }
             catch (SqlException ex)
             {

@@ -68,8 +68,12 @@
     <Content Include="Privada\gestionAccionesComerciales.aspx" />
     <Content Include="Privada\gestionContacto.aspx" />
     <Content Include="Privada\gestionEmpresas.aspx" />
+    <Content Include="Privada\GestionPerfil.aspx" />
     <Content Include="Privada\gestionUsuarios.aspx" />
+    <Content Include="Privada\prueba.aspx" />
+    <Content Include="Privada\prueba2.aspx" />
     <Content Include="Privada\Site1.Master" />
+    <Content Include="Privada\user.jpg" />
     <Content Include="Service References\srvGestion\GestionEmpresas.srvGestion.AccionComercialData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -103,6 +107,7 @@
     <Content Include="Service References\srvGestion\GestionEmpresas.srvGestion.AccionComercialMostrarData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Privada\Prueba.Master" />
     <None Include="Service References\srvGestion\ServicioGestion.wsdl" />
     <None Include="Service References\srvGestion\ServicioGestion.xsd">
       <SubType>Designer</SubType>
@@ -345,12 +350,40 @@
     <Compile Include="Privada\gestionEmpresas.aspx.designer.cs">
       <DependentUpon>gestionEmpresas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Privada\GestionPerfil.aspx.cs">
+      <DependentUpon>GestionPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\GestionPerfil.aspx.designer.cs">
+      <DependentUpon>GestionPerfil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Privada\gestionUsuarios.aspx.cs">
       <DependentUpon>gestionUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Privada\gestionUsuarios.aspx.designer.cs">
       <DependentUpon>gestionUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\prueba.aspx.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\prueba.aspx.designer.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\Prueba.Master.cs">
+      <DependentUpon>Prueba.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\Prueba.Master.designer.cs">
+      <DependentUpon>Prueba.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Privada\prueba2.aspx.cs">
+      <DependentUpon>prueba2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privada\prueba2.aspx.designer.cs">
+      <DependentUpon>prueba2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Privada\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -368,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Select\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
