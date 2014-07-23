@@ -157,12 +157,12 @@ namespace GestionEmpresas.Privada {
         protected global::System.Web.UI.WebControls.Button btnVolver;
         
         /// <summary>
-        /// Control btnEnviar.
+        /// Control editUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnviar;
+        protected global::System.Web.UI.WebControls.Button editUser;
     }
 }
