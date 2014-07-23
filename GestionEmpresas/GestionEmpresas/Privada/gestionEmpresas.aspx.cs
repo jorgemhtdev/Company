@@ -15,16 +15,21 @@ namespace GestionEmpresas.Privada
         public static EmpresaData[] empresas;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.gvEmpresas.Visible = false;
-            this.panel.Visible = false;
             if (!this.IsPostBack)
             {
+                this.gvEmpresas.Visible = false;
+                this.panel.Visible = false;
+                gvEmpresas.DataSource = empresas;
+                gvEmpresas.DataBind();
+
                 SectorData[] sectores = proxy.GetSector();
                 this.txtSector.DataSource = sectores;
                 this.txtSector.DataTextField = "descripcion";
                 this.txtSector.DataValueField = "descripcion";
                 this.txtSector.DataBind();
                 this.txtSector.Items.Insert(0, new ListItem("Seleccione...", ""));
+
+                
             }
             
         }
