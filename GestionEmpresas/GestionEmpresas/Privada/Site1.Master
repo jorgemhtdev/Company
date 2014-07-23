@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
         <!-- Menu -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <img src="almerimatik.png" />
+            <img src="../images/almerimatik.png" />
             <ul class="nav navbar-nav pull-right">
                 <li><a href="gestionUsuarios.aspx">Gestión usuarios</a></li>
                 <li><a href="gestionEmpresas.aspx">Gestión empresa</a></li>
@@ -26,7 +26,7 @@
                             <a href="#"><span class="text-warning">Anónimo</span></a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a href="~/Default.aspx" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
+                            <a href="#" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
                         </LoggedInTemplate>
                      </asp:LoginView>
                 </li>

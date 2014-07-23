@@ -59,7 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Privada\almerimatik.png" />
+    <Content Include="images\almerimatik.png" />
     <Content Include="Privada\Default.aspx" />
     <Content Include="Privada\errores\401.aspx" />
     <Content Include="Privada\errores\404.aspx" />
