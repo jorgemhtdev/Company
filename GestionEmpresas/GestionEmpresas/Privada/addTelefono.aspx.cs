@@ -96,9 +96,10 @@ namespace GestionEmpresas.Privada
                                 this.lblError.Visible = true;
                                 this.lblError.Text = "No se puede añadir este registro. El número de teléfono ya existe en la base de datos.";
                             }
-                           
-                        }
+                        }// 
 
+
+                        /***************************************************************************************************************************/
                         if (cCon != 0)
                         {
                             // Obtengo el objeto contacto

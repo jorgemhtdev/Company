@@ -10,7 +10,7 @@
 namespace GestionEmpresas.Privada {
     
     
-    public partial class Default {
+    public partial class prueba {
         
         /// <summary>
         /// Control lblTotalEmpresa.
