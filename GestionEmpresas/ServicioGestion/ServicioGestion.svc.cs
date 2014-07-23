@@ -543,15 +543,15 @@ namespace ServicioGestion
                     //eliminamos los telefonos, emails y direcciones asociados a la empresa
                     foreach (Telefono t in empe.Telefono)
                     {
-                        db.Telefono.Remove(t);
+                        DeleteTelefono(t.idTelefono);
                     }
                     foreach (Email e in empe.Email)
                     {
-                        db.Email.Remove(e);
+                        deleteEmail(e.idEmail);
                     }
                     foreach (Direccion d in empe.Direccion)
                     {
-                        db.Direccion.Remove(d);
+                        DeleteDireccion(d.idDireccion);
                     }
 
                     // eliminamos los contactos asociados a la empresa y sus respectivos telefonos, emails y direcciones
@@ -559,23 +559,28 @@ namespace ServicioGestion
                     {
                         foreach (Telefono t in cont.Telefono)
                         {
-                            db.Telefono.Remove(t);
+                            DeleteTelefono(t.idTelefono);
                         }
                         foreach (Email e in cont.Email)
                         {
-                            db.Email.Remove(e);
+                            deleteEmail(e.idEmail);
                         }
                         foreach (Direccion d in cont.Direccion)
                         {
-                            db.Direccion.Remove(d);
+                            DeleteDireccion(d.idDireccion);
                         }
-                        db.Contacto.Remove(cont);
+                        ContactoData c = new ContactoData();
+                        c.idContacto = cont.idContacto;
+                        c.nif = cont.nif;
+                        c.nombre = cont.nombre;
+                        c.idEmpresa = (int)cont.idEmpresa;
+                        DeleteContacto(c, cont.idContacto);
                     }
 
                     // eliminamos las acciones comerciales asociadas a la empresa
                     foreach (AccionComercial ac in empe.AccionComercial)
                     {
-                        db.AccionComercial.Remove(ac);
+                        deleteAccionComercial(ac.idAccion);
                     }
 
                     // eliminamos la empresa
@@ -3221,7 +3226,7 @@ namespace ServicioGestion
                     if (login != null && nombre == null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.login == login
+                                       where usuario.login.Contains(login)
                                        select usuario;
 
                         foreach (Usuario user in consulta)
@@ -3241,7 +3246,7 @@ namespace ServicioGestion
                     if (login != null && nombre != null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.nombre.Contains(nombre) && usuario.login == login
+                                       where usuario.nombre.Contains(nombre) && usuario.login.Contains(login)
                                        select usuario;
 
                         foreach (Usuario user in consulta)
