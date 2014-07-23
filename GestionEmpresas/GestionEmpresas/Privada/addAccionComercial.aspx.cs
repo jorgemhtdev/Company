@@ -18,19 +18,6 @@ namespace GestionEmpresas.Privada
                 {
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
-                    /*************************************************** USUARIOS ***************************************************
-
-                    var user = proxy.getAllUsuarios(); 
-
-                    this.listaUser.DataSource = user; 
-
-                    this.listaUser.DataTextField = "login";
-                    this.listaUser.DataValueField = "idUsuario";
-
-                    this.listaUser.DataBind();
-
-                    /*************************************************** USUARIOS ***************************************************/
-
                     /************************************************* TIPO ACCION *************************************************/
 
                     var tipoaccion = proxy.GetAllTipoAccion();
@@ -42,7 +29,8 @@ namespace GestionEmpresas.Privada
 
                     this.listaAccion.DataBind();
 
-                    /************************************************* TIPO ACCION *************************************************/
+                    this.listaAccion.Items.Insert(0, new ListItem("Seleccione...", ""));
+
 
                     /********************************************* ESTADO DE ACCION ************************************************/
 
@@ -55,24 +43,7 @@ namespace GestionEmpresas.Privada
 
                     this.listaEstadoAccion.DataBind();
 
-                    /********************************************* ESTADO DE ACCION ************************************************/
-
-                    /*************************************************** EMPRESA ***************************************************
-
-                    var empresa = proxy.getAllEmpresa();
-
-                    this.listaEmpresa.DataSource = empresa;
-                    this.listaEmpresa.DataSource = empresa;
-
-                    this.listaEmpresa.DataTextField = "nombreComercial";
-                    this.listaEmpresa.DataValueField = "EmpresaID";
-
-                    this.listaEmpresa.DataBind();
-
-                    //this.listaEmpresa.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
-
-                    /*************************************************** EMPRESA ***************************************************/
-
+                    this.listaEstadoAccion.Items.Insert(0, new ListItem("Seleccione...", ""));
                 }
                 catch
                 {
@@ -100,16 +71,12 @@ namespace GestionEmpresas.Privada
 
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
-                    /** Objeto direccion **/
-
                     AccionComercialData objetoAccionComercial = new AccionComercialData();
 
-                    /** Las listas despegables **/
                     objetoAccionComercial.idUsuario = proxy.GetNombreUsuario(this.listaUser.Text).idUsuario;
                     objetoAccionComercial.idTipoAccion = Convert.ToInt32(this.listaAccion.Text);
                     objetoAccionComercial.idEstadoAccion = Convert.ToInt32(this.listaEstadoAccion.Text);
                     objetoAccionComercial.idEmpresa = proxy.GetNombreEmpresa(this.listaEmpresa.Text).EmpresaID;
-                    /** Las listas despegables **/
 
                     objetoAccionComercial.fechaHora = Convert.ToDateTime(this.fch.Text);
 
@@ -118,7 +85,6 @@ namespace GestionEmpresas.Privada
                     objetoAccionComercial.comentarios = this.TextAreaComentarios.Value;
                     objetoAccionComercial.descripcion = this.TextAreaDescripcion.Value;
 
-                    /** Fin objeto direccion **/
 
                     proxy.addAccionComercial(objetoAccionComercial);
 
@@ -138,19 +104,19 @@ namespace GestionEmpresas.Privada
             Response.Redirect("gestionAccionesComerciales.aspx", true);
         }// Fin del protected void Volver
 
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void CustomValidator3_ServerValidate(object source, ServerValidateEventArgs args)
         {
             ServicioGestionClient proxy = new ServicioGestionClient();
-            if (proxy.GetNombreEmpresa(this.listaEmpresa.Text) == null)
+            if (proxy.GetNombreUsuario(this.listaUser.Text) == null)
                 args.IsValid = false;
             else
                 args.IsValid = true;
         }
 
-        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void CustomValidator4_ServerValidate(object source, ServerValidateEventArgs args)
         {
             ServicioGestionClient proxy = new ServicioGestionClient();
-            if (proxy.GetNombreUsuario(this.listaUser.Text) == null)
+            if (proxy.GetNombreEmpresa(this.listaEmpresa.Text) == null)
                 args.IsValid = false;
             else
                 args.IsValid = true;
