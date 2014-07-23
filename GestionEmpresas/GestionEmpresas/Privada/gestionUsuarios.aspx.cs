@@ -15,9 +15,12 @@ namespace GestionEmpresas.Privada
         public static UsuarioData[] usuarios;
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuarios = proxy.getAllUsuarios();
-            this.gvUsuarios.DataSource = usuarios;
-            this.gvUsuarios.DataBind();
+            if(!this.IsPostBack)
+            {
+                usuarios = proxy.getAllUsuarios();
+                this.gvUsuarios.DataSource = usuarios;
+                this.gvUsuarios.DataBind();
+            }
         }
 
         protected void gvUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
@@ -30,7 +33,6 @@ namespace GestionEmpresas.Privada
         {
             UsuarioData user = usuarios[e.RowIndex];
             proxy.deleteUsuario(user.idUsuario);
-            usuarios = proxy.getAllUsuarios();
             Response.Redirect("~/Privada/gestionUsuarios.aspx");
         }
 

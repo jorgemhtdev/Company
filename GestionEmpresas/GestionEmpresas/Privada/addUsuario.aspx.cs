@@ -62,9 +62,6 @@ namespace GestionEmpresas.Privada
                     this.lblError.Visible = true;
                     this.lblError.Text = "El login del usuario ya existe en la base de datos. Intente agregar otro usuario con un login distinto.";
                 }
-                
-
-               
 
                 } // Fin del if (this.IsValid)
             }// Fin del if (this.IsPostBack)
