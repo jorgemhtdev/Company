@@ -22,12 +22,18 @@ namespace GestionEmpresas.Privada
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             // Obtemos el idEmpresa e idContacto que tenemos en la url
-            int cEmp = Convert.ToInt32(Request.QueryString["id"]);
+            int idContacto = Convert.ToInt32(Request.QueryString["id"]);
 
-            if (cEmp != 0)
+            if (idContacto != 0)
             {
-                var objEmpresa = proxy.getEmpresaId(cEmp);
+                var objEmpresa = proxy.getEmpresaId(idContacto);
                 this.labelContacto.Text = objEmpresa.nombreComercial;
+
+                var Contacto = proxy.getContacto(idContacto);
+
+                this.nomb.Text = Contacto.nombre;
+
+                this.nnif.Text = Contacto.nif;
             }
             else
             {
