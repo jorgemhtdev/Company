@@ -17,24 +17,45 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //El label visible a false
+            this.lblError.Visible = false;
+
             ServicioGestionClient proxy = new ServicioGestionClient();
 
-            // Obtemos el idEmpresa e idContacto que tenemos en la url
+            // Obtemos el idEmpresa o el idContacto que nos dan por la url
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
 
-            if (cEmp != 0 && cCon != 0) this.labeldireccion.Text = " - Sin informacion - ";
-
+            // Si recibimos el idEmpresa mostramos el contacto al que le vamos añadir un email
             if (cEmp != 0)
             {
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labeldireccion.Text = objEmpresa.nombreComercial;
             }
-            
+            // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
             if (cCon != 0)
             {
                 var objContacto = proxy.getContacto(cCon);
                 this.labeldireccion.Text = objContacto.nombre;
+            }
+            else
+            {
+                this.labeldireccion.Text = "-Sin informacion de empresa o contacto-";
+                this.lblError.Visible = true;
+                this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                this.btnEnviar.Visible = false;
+
+                this.dom.Visible = false;
+                this.domici.Visible = false;
+                this.pob.Visible = false;
+                this.poblac.Visible = false;
+                this.copo.Visible = false;
+                this.cp.Visible = false;
+                this.pro.Visible = false;
+                this.provin.Visible = false; 
+
+                this.lblError.CssClass = "page-header alert alert-danger";
+                this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
             }
         } // Fin del Page_Load
         
@@ -45,7 +66,7 @@ namespace GestionEmpresas.Privada
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void addDirec(object sender, EventArgs e)
+        protected void adDireccion(object sender, EventArgs e)
         {
             if (this.IsPostBack)
                 {
@@ -58,7 +79,6 @@ namespace GestionEmpresas.Privada
                     // En estas dos variables almacenamos el numero del idempresa o idcontacto y un cero.
                     int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
                     int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
-                    int res = -1; // Inicializamos el resultado a valor -1
 
                     /** Objeto direccion **/
 
@@ -72,39 +92,29 @@ namespace GestionEmpresas.Privada
                     /** Fin objeto direccion **/
 
                     /***************************************************************************************************************************/
-
                     // Si la empresa es distinto a cero, procedemos a guardar los datos a la BD.
                     if (cEmp != 0)
                     {
                         // Obtengo el objeto empresa
                         var objEmpresa = proxy.getEmpresaId(cEmp);
-                        res = proxy.AddDireccion(objetoStreet, objEmpresa, null);
+                        proxy.AddDireccion(objetoStreet, objEmpresa, null);
+                        Response.Redirect("gestionEmpresas.aspx");
                     }
+                    /***************************************************************************************************************************/
 
+                    /***************************************************************************************************************************/
                     //Si el contacto es distinto a cero, procedemos a guardar los datos a la BD.
                     if (cCon != 0)
                     {
-                        // Obtengo el objeto contacto
-                        var objContacto = proxy.getContacto(cCon);
-                        res = proxy.AddDireccion(objetoStreet, null, objContacto);
+                        var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
+                        proxy.AddDireccion(objetoStreet, null, objContacto);
+                        var idEmpresa = objContacto.idEmpresa;
+                        /****************/
+                        Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
                     }
 
                     /***************************************************************************************************************************/
 
-                    // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
-                    if (res != -1)
-                    {
-                        if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
-                        if (cCon != 0) Response.Redirect("gestionContacto.aspx");
-                    }
-                    // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
-                    else
-                    {
-                        //this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                        //this.alert.Visible = true;
-                    }
-
-                    /***************************************************************************************************************************/
                     } // Fin del if (this.IsValid)
                 }// Fin del if (this.IsPostBack)
         }// Fin del addDirec
@@ -116,13 +126,10 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
-
-            if (cEmp <= 0 && cCon <= 0)
-            {
-                Response.Redirect(".aspx", true);
-            }
 
             if (cEmp != 0)
             {
@@ -131,7 +138,15 @@ namespace GestionEmpresas.Privada
 
             if (cCon != 0)
             {
-                Response.Redirect("gestionContacto.aspx", true);
+                /****************/
+                var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
+                var idEmpresa = objContacto.idEmpresa;
+                /****************/
+                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
             }
         }// Fin del protected void Volver
     }
