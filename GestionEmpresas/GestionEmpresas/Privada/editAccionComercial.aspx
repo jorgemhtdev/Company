@@ -22,7 +22,8 @@
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="listaUser" runat="server" CssClass="form-control"></asp:TextBox>
-                                <asp:CustomValidator ControlToValidate="listaUser" ID="CustomValidator2" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator2_ServerValidate"></asp:CustomValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="listaUser" CssClass="glyphicon glyphicon-remove alert-danger" Display="Dynamic" ErrorMessage="Compruebe el nombre de usuario" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ControlToValidate="listaUser" ID="CustomValidator2" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator2_ServerValidate" EnableClientScript="False" SetFocusOnError="True"></asp:CustomValidator>
                             </section>
                         </article>
                         
@@ -35,7 +36,8 @@
                             <section class="col-md-4">
                                 <asp:DropDownList ID="listaAccion" runat="server" CssClass="form-control"></asp:DropDownList>
                             </section>
-                        </article><br /><br /><br /><br />
+                        </article>
+                        <br /><br /><br /><br />
 
                         <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
@@ -44,7 +46,8 @@
                             <section class="col-md-4">
                                 <asp:DropDownList ID="listaEstadoAccion" runat="server" CssClass="form-control"></asp:DropDownList>
                             </section>
-                        </article><br /><br /><br /><br />
+                        </article>
+                        <br /><br /><br /><br />
 
                         <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
@@ -52,7 +55,8 @@
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="listaEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
-                                <asp:CustomValidator ControlToValidate="listaEmpresa" ID="CustomValidator1" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de la empresa" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="listaEmpresa" CssClass="glyphicon glyphicon-remove alert-danger" Display="Dynamic" ErrorMessage="Compruebe el nombre de la empresa" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ControlToValidate="listaEmpresa" ID="CustomValidator1" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de la empresa" OnServerValidate="CustomValidator1_ServerValidate" SetFocusOnError="True"></asp:CustomValidator>
                             </section>
                         </article>
                         
@@ -65,10 +69,10 @@
                             <section class="col-md-4">
                                 <asp:TextBox ID="fch" runat="server" CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                         ErrorMessage="El campo fecha no puede quedarse vacio" ControlToValidate="fch" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
+                                         ErrorMessage="El campo fecha no puede quedarse vacio" ControlToValidate="fch" CssClass="glyphicon glyphicon-asterisk alert-danger" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <!-- La fecha es AÑO MES DIA -->
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                         ErrorMessage="El formato de la fecha es: ' año-mes-dia ' (sin comillas)" ValidationExpression="^\d{2,4}\-\d{1,2}\-\d{1,2}$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="fch"></asp:RegularExpressionValidator>         
+                                         ErrorMessage="El formato de la fecha es: ' año-mes-dia ' (sin comillas)" ValidationExpression="^\d{2,4}\-\d{1,2}\-\d{1,2}$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="fch" Enabled="False" SetFocusOnError="True"></asp:RegularExpressionValidator>         
                             </section>
                         </article>
 

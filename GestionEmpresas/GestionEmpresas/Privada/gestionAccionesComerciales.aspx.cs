@@ -42,7 +42,7 @@ namespace GestionEmpresas.Privada
 
         protected void bAniadirContacto_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Privada/addAccionComercial.aspx");
+            Response.Redirect("addAccionComercial.aspx");
         }
 
         protected void gvAcciones_SelectedIndexChanged(object sender, EventArgs e)

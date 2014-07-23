@@ -124,7 +124,7 @@ namespace GestionEmpresas.Privada
                     
                     //this.fch.Text = AccionComercial.fechaHora.ToString("d");
 
-                    this.fch.Text = AccionComercial.fechaHora.ToString("yyy/MM/dd");
+                    this.fch.Text = AccionComercial.fechaHora.ToString("yyy-MM-dd");
 
                     this.TextAreaComentarios.Value = AccionComercial.comentarios;
                     this.TextAreaDescripcion.Value = AccionComercial.descripcion;
@@ -195,7 +195,7 @@ namespace GestionEmpresas.Privada
             Response.Redirect("gestionAccionesComerciales.aspx", true);
         }// Fin del protected void Volver
 
-        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
         {
             ServicioGestionClient proxy = new ServicioGestionClient();
             if (proxy.GetNombreEmpresa(this.listaEmpresa.Text) == null)
@@ -204,7 +204,7 @@ namespace GestionEmpresas.Privada
                 args.IsValid = true;
         }
 
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
         {
             ServicioGestionClient proxy = new ServicioGestionClient();
             if (proxy.GetNombreUsuario(this.listaUser.Text) == null)
