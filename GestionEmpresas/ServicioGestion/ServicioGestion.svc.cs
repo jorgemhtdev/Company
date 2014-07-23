@@ -45,7 +45,7 @@ namespace ServicioGestion
 
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
-                    if (empData.EmpresaID != 0)
+                    if (empData != null)
                     {
                         var datos = from empresas in db.Empresa
                                     where empresas.idEmpresa == empData.EmpresaID
