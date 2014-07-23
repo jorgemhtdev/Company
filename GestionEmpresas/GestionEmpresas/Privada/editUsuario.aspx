@@ -71,7 +71,7 @@
 
                         <footer class="col-md-12 col-md-offset-1">             
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
-                            <asp:Button ID="editUser" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="btnEditarUser" OnClientClick="return confirm('¿Estas seguro?');" /> 
+                            <asp:Button ID="editUser" runat="server" Text="Editar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="btnEditarUser" OnClientClick="return confirm('¿Deseas guardar los cambios realizados?');" /> 
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
