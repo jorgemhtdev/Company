@@ -103,13 +103,14 @@ namespace GestionEmpresas.Privada
                         {
                             // Obtengo el objeto contacto
                             var objContacto = proxy.getContacto(cCon);
-                            Response.Redirect("gestionContacto.aspx");
+                            
 
                             //Se comprueba el telefono. Que sea único
                             TelefonoData telefono = proxy.GetNumeroTelefono(t.numero);
                             if (telefono == null)
                             {
                                 res = proxy.AddTelefono(t, null, objContacto);
+                                Response.Redirect("gestionContacto.aspx");
                             }
                             else
                             {
