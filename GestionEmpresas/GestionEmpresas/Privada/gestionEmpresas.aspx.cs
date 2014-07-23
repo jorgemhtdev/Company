@@ -12,17 +12,16 @@ namespace GestionEmpresas.Privada
     public partial class gestionEmpresas : System.Web.UI.Page
     {
         public static ServicioGestionClient proxy = new ServicioGestionClient();
-        //public static EmpresaData[] empresas = (EmpresaData[])HttpContext.Current.Session["empresas"];
         public static EmpresaData[] empresas;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.gvEmpresas.Visible = true;
-            this.panel.Visible = false;
-            empresas = (EmpresaData[])Session["empresas"];
-            gvEmpresas.DataSource = empresas;
-            gvEmpresas.DataBind();
             if (!this.IsPostBack)
             {
+                this.gvEmpresas.Visible = false;
+                this.panel.Visible = false;
+                gvEmpresas.DataSource = empresas;
+                gvEmpresas.DataBind();
+
                 SectorData[] sectores = proxy.GetSector();
                 this.txtSector.DataSource = sectores;
                 this.txtSector.DataTextField = "descripcion";
@@ -187,7 +186,6 @@ namespace GestionEmpresas.Privada
             }
             this.gvEmpresas.Visible = true;
             empresas = proxy.filtrosEmpresa(sCif, sSector, sProvincia, sNombre);
-            Session["empresas"] = empresas;
             this.gvEmpresas.DataSource = empresas;
             this.gvEmpresas.DataBind();
         }
