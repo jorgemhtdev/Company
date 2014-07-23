@@ -3228,7 +3228,7 @@ namespace ServicioGestion
                     if (login != null && nombre == null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.login == login
+                                       where usuario.login.Contains(login)
                                        select usuario;
 
                         foreach (Usuario user in consulta)
@@ -3248,7 +3248,7 @@ namespace ServicioGestion
                     if (login != null && nombre != null)
                     {
                         var consulta = from usuario in db.Usuario
-                                       where usuario.nombre.Contains(nombre) && usuario.login == login
+                                       where usuario.nombre.Contains(nombre) && usuario.login.Contains(login)
                                        select usuario;
 
                         foreach (Usuario user in consulta)
