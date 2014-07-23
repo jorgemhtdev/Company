@@ -29,6 +29,8 @@ namespace GestionEmpresas.Privada
 
                     this.sector.DataBind(); // Carga los valores en el DropDownList
 
+                    this.sector.Items.Insert(0, new ListItem("Seleccione...", ""));
+
                 }
                 catch
                 {
