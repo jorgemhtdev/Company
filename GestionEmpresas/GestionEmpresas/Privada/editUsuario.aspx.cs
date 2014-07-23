@@ -31,7 +31,7 @@ namespace GestionEmpresas.Privada
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void editUser(object sender, EventArgs e)
+        protected void btnEditarUser(object sender, EventArgs e)
         {
             if (this.IsPostBack)
             {
