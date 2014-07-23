@@ -124,7 +124,7 @@ namespace GestionEmpresas.Privada
                     
                     //this.fch.Text = AccionComercial.fechaHora.ToString("d");
 
-                    this.fch.Text = AccionComercial.fechaHora.ToString("yyy/MM/dd");
+                    this.fch.Text = AccionComercial.fechaHora.ToString("yyy-MM-dd");
 
                     this.TextAreaComentarios.Value = AccionComercial.comentarios;
                     this.TextAreaDescripcion.Value = AccionComercial.descripcion;
