@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editContacto.aspx.cs" Inherits="GestionEmpresas.Privada.editContacto" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Editar contacto</title>
@@ -14,7 +12,7 @@
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
                     <div class="panel-heading"> 
-                          <h1> Añadir contacto  </h1>
+                          <h1> Editar contacto  </h1>
                           - <asp:Label ID="labelContacto" runat="server" Text=""></asp:Label> - 
                     </div> 
                     <div class="panel-body">
@@ -43,13 +41,13 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                          ErrorMessage="El nif no es valido" ValidationExpression="(\d{8})([-]?)([A-Z]{1})" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="nf"></asp:RegularExpressionValidator>         
                             </section>
-                        </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article><br /><br /><br /><br /><br /><br />
                         <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="Label"></asp:Label>
                         <br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">  
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
-                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addContac" OnClientClick="return confirm('¿Estas seguro?');" /> 
+                            <asp:Button ID="btnEnviar" runat="server" Text="Editar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="btnEditarContacto" OnClientClick="return confirm('¿Deseas guardar los cambios realizados?');" /> 
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
