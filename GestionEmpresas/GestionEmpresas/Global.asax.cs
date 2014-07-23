@@ -22,7 +22,8 @@ namespace GestionEmpresas
         }
         protected void Session_Start(object sender, EventArgs e)
         {
-            EmpresaData[] empresas = (EmpresaData[])HttpContext.Current.Session["empresas"];
+            EmpresaData[] empresas = new EmpresaData[] { };
+            Session.Add("empresa", empresas);
         }
     }
 }
