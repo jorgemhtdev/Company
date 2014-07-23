@@ -16,7 +16,7 @@
                 <div class="panel-heading"> <h1> Editar Usuario </h1></div>
                     <div class="panel-body">
                        <br /><br />
-                       <article class="col-md-12 col-md-offset-2"> 
+                       <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="lg" runat="server">Login</asp:Label>   
                             </section>                       
@@ -25,9 +25,9 @@
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                              ErrorMessage="Debes rellenar el login" ControlToValidate="login" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                             </section>
-                        </article>
+                        </article><br /><br /><br /><br /><br /><br />
 
-                        <article class="col-md-12 col-md-offset-2"> 
+                        <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="nm" runat="server">Nombre</asp:Label>   
                             </section>                       
@@ -36,33 +36,38 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el nombre" ControlToValidate="nombre" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                         ErrorMessage="Solo se admiten letras" ValidationExpression="[A-Za-z ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="nombre"></asp:RegularExpressionValidator>         
+                                         ErrorMessage="Solo se admiten letras" ValidationExpression="[A-Za-z ]*" CssClass=" alert-danger" ControlToValidate="nombre"></asp:RegularExpressionValidator>         
                             </section>
-                        </article>
+                        </article><br /><br /><br /><br /><br /><br />
 
-                        <article class="col-md-12 col-md-offset-2"> 
+                        <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="ps" runat="server">Contraseña</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="pass" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="pass" runat="server" TextMode="password" CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el campo contraseña" ControlToValidate="pass" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
-                            
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                         ErrorMessage="La contraseña debe tener minimo una letra mayuscula, minnuscula y un numero. La longitud debe ser entre 6-20" 
+                                        ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$" CssClass="alert-danger" ControlToValidate="pass"></asp:RegularExpressionValidator> 
                             </section>
                         </article>
-                        <article class="col-md-12 col-md-offset-2"> 
+
+                        <article class="col-md-11 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="pw" runat="server">Repetir contraseña</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="rpass" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="rpass" runat="server" TextMode="password" CssClass="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                          ErrorMessage="Debes rellenar el campo repetir contraseña" ControlToValidate="rpass" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
-                                        <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="pass" ControlToCompare="rpass" ErrorMessage="Las contraseñas no coinciden">  
+                                        <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="pass" ControlToCompare="rpass"  CssClass="glyphicon glyphicon-asterisk alert-danger" ErrorMessage="Las contraseñas no coinciden">  
                                         </asp:CompareValidator> 
                             </section>
-                        </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article> <br /><br /><br /><br /><br /><br /><br />
+                        <asp:Label ID="lblError" runat="server" CssClass="label label-danger " Text="Label"></asp:Label>
+                        <br /><br /><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">             
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False"  />
