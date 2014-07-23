@@ -31,7 +31,7 @@ namespace GestionEmpresas.Privada
 
                 this.labelmail.Text = emailComun.Correo;
 
-                this.mail.Text = emailComun.Correo; 
+                this.mail.Text = emailComun.Correo;
             }
         }
 
@@ -61,7 +61,7 @@ namespace GestionEmpresas.Privada
 
                                 if (email != null)
                                 {
-                                    bool res = proxy.editEmail(id,this.mail.Text);
+                                    bool res = proxy.editEmail(id, this.mail.Text);
 
                                     if (res != false)
                                     {

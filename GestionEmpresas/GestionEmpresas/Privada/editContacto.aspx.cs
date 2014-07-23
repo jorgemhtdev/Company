@@ -17,22 +17,35 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+                        if (!this.IsPostBack)
+            {
             this.lblError.Visible = false;
 
             ServicioGestionClient proxy = new ServicioGestionClient();
 
             // Obtemos el idEmpresa e idContacto que tenemos en la url
-            int cEmp = Convert.ToInt32(Request.QueryString["id"]);
+            int idContacto = Convert.ToInt32(Request.QueryString["id"]);
 
-            if (cEmp != 0)
+            if (idContacto != 0)
             {
-                var objEmpresa = proxy.getEmpresaId(cEmp);
-                this.labelContacto.Text = objEmpresa.nombreComercial;
+                var objContacto = proxy.getContacto(idContacto);
+                var idEmpreaDelContacto = objContacto.idEmpresa;
+
+                var empresaResultado = proxy.getEmpresaId(idEmpreaDelContacto);
+
+                this.labelContacto.Text = empresaResultado.nombreComercial;
+
+                var Contacto = proxy.getContacto(idContacto);
+
+                this.nomb.Text = Contacto.nombre;
+
+                this.nf.Text = Contacto.nif;
             }
             else
             {
                 this.labelContacto.Text = "Sin información";
             }
+                            }
         }// Fin Page_Load
 
         /// <summary>
@@ -40,7 +53,7 @@ namespace GestionEmpresas.Privada
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void addContac(object sender, EventArgs e)
+        protected void btnEditarContacto(object sender, EventArgs e)
         {
             if (this.IsPostBack)
             {
@@ -51,29 +64,34 @@ namespace GestionEmpresas.Privada
 
                     ServicioGestionClient proxy = new ServicioGestionClient();
 
+                    int idContacto = Convert.ToInt32(Request.QueryString["id"]);
+                    var objContacto = proxy.getContacto(idContacto);
+                    var idEmpreaDelContacto = objContacto.idEmpresa;
+
+                    var empresaResultado = proxy.getEmpresaId(idEmpreaDelContacto);
+
                     /** Objeto Contacto **/
 
                     ContactoData objetoContacto = new ContactoData();
 
                     objetoContacto.nombre = this.nomb.Text;
                     objetoContacto.nif = this.nf.Text;
-                    objetoContacto.idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
+                    objetoContacto.idContacto = idContacto;
+                    objetoContacto.idEmpresa = empresaResultado.EmpresaID;
 
                     /** Fin objeto Contacto **/
 
-                    ContactoData contacto = proxy.getContactoNif(objetoContacto.nif);
-                    if (contacto != null)
-                    {
-                        proxy.EditContacto(objetoContacto, Convert.ToInt32(Request.QueryString["id"]));
 
-                        int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-                        Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
-                    }
-                    else
+
+                        proxy.EditContacto(objetoContacto, idContacto);
+
+                        Response.Redirect("gestionContacto.aspx?id=" + empresaResultado.EmpresaID);
+                    
+                    /*else
                     {
                         this.lblError.Visible = true;
                         this.lblError.Text = "No se puede insertar este contacto. El N.I.F. ya existe en la base de datos.";
-                    }
+                    }*/
 
                 } // Fin del if (this.IsValid)
             }// Fin del if (this.IsPostBack)

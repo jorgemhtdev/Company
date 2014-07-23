@@ -83,7 +83,7 @@ namespace GestionEmpresas.Privada
                                 res = proxy.AddTelefono(t, objEmpresa, null);
                                 if (res != 1)
                                 {
-                                    Response.Redirect("gestionEmpresas.aspx");
+                                    Response.Redirect("gestionContacto.aspx?id=" + cEmp);
                                 }
                                 else
                                 {
@@ -103,13 +103,14 @@ namespace GestionEmpresas.Privada
                         {
                             // Obtengo el objeto contacto
                             var objContacto = proxy.getContacto(cCon);
-                            Response.Redirect("gestionContacto.aspx");
+                            var idcontactoEmpresa = proxy.getContacto(objContacto.idContacto);
 
                             //Se comprueba el telefono. Que sea único
                             TelefonoData telefono = proxy.GetNumeroTelefono(t.numero);
                             if (telefono == null)
                             {
                                 res = proxy.AddTelefono(t, null, objContacto);
+                                Response.Redirect("gestionContacto.aspx?id=" + idcontactoEmpresa.idEmpresa);
                             }
                             else
                             {
