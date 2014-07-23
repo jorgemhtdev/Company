@@ -12,18 +12,19 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(Request.QueryString["id"]);
-            ServicioGestionClient proxy = new ServicioGestionClient();
-            
-            var user = proxy.getUsuario(id);
+            if (!this.IsPostBack)
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
 
-            this.login.Text = user.login;
-            this.nombre.Text = user.nombre;
-            this.pass.Text = user.password;
-            this.rpass.Text = user.password;
-            
-            //this.lblError.Visible = false;
+                ServicioGestionClient proxy = new ServicioGestionClient();
 
+                var user = proxy.getUsuario(id);
+
+                this.login.Text = user.login;
+                this.nombre.Text = user.nombre;
+                this.pass.Text = user.password;
+                this.rpass.Text = user.password;
+            }
         }
 
         /// <summary>
@@ -52,22 +53,11 @@ namespace GestionEmpresas.Privada
                     objetoUsuario.password = this.pass.Text;
                     objetoUsuario.idUsuario = Convert.ToInt32(Request.QueryString["id"]);
 
+                    var idUsuario = objetoUsuario.idUsuario = Convert.ToInt32(Request.QueryString["id"]); 
                     /** Fin objeto Usuario **/
 
                     //Se comprueba que el login no este ya en la base de datos.
-                    UsuarioData usuario = proxy.getUsuarioLogin(objetoUsuario.login);
-
-                    //Si no está en la bd, se añade.
-                    if (usuario.idUsuario != 0)
-                    {
-                        proxy.addUsuario(objetoUsuario);
-                        Response.Redirect("gestionUsuarios.aspx");
-                    }/*
-                    else
-                    {
-                        this.lblError.Visible = true;
-                        this.lblError.Text = "El login del usuario ya existe en la base de datos. Intente agregar otro usuario con un login distinto.";
-                    }*/
+                    int usuario = proxy.editUsuario(idUsuario, objetoUsuario);
 
                 } // Fin del if (this.IsValid)
             }// Fin del if (this.IsPostBack)
