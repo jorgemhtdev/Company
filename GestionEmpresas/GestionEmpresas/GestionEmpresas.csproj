@@ -59,6 +59,58 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\select2-3.5.1\select2-bootstrap.css" />
+    <Content Include="Content\select2-3.5.1\select2-spinner.gif" />
+    <Content Include="Content\select2-3.5.1\select2.css" />
+    <Content Include="Content\select2-3.5.1\select2.js" />
+    <Content Include="Content\select2-3.5.1\select2.min.js" />
+    <Content Include="Content\select2-3.5.1\select2.png" />
+    <Content Include="Content\select2-3.5.1\select2x2.png" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ar.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_az.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_bg.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ca.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_cs.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_da.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_de.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_el.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_es.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_et.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_eu.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_fa.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_fi.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_fr.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_gl.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_he.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_hr.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_hu.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_id.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_is.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_it.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ja.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ka.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ko.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_lt.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_lv.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_mk.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ms.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_nl.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_no.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_pl.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_pt-BR.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_pt-PT.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ro.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_rs.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ru.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_sk.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_sv.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_th.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_tr.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_ug-CN.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_uk.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_vi.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_zh-CN.js" />
+    <Content Include="Content\select2-3.5.1\select2_locale_zh-TW.js" />
     <Content Include="images\almerimatik.png" />
     <Content Include="Privada\Default.aspx" />
     <Content Include="Privada\errores\401.aspx" />
@@ -108,6 +160,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Privada\Prueba.Master" />
+    <Content Include="Content\select2-3.5.1\.gitignore" />
+    <Content Include="Content\select2-3.5.1\bower.json" />
+    <Content Include="Content\select2-3.5.1\component.json" />
+    <Content Include="Content\select2-3.5.1\composer.json" />
+    <Content Include="Content\select2-3.5.1\LICENSE" />
+    <Content Include="Content\select2-3.5.1\package.json" />
+    <Content Include="Content\select2-3.5.1\README.md" />
+    <Content Include="Content\select2-3.5.1\release.sh" />
+    <Content Include="Content\select2-3.5.1\select2.jquery.json" />
+    <Content Include="Content\select2-3.5.1\select2_locale_en.js.template" />
     <None Include="Service References\srvGestion\ServicioGestion.wsdl" />
     <None Include="Service References\srvGestion\ServicioGestion.xsd">
       <SubType>Designer</SubType>
@@ -401,7 +463,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Select\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

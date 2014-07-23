@@ -17,7 +17,7 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //El label visible a false
             this.lblError.Visible = false;
 
             ServicioGestionClient proxy = new ServicioGestionClient();
@@ -26,20 +26,28 @@ namespace GestionEmpresas.Privada
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
 
-            if (cEmp != 0 && cCon != 0) this.labelmail.Text = " - Sin informacion - ";
-
             // Si recibimos el idEmpresa mostramos el contacto al que le vamos añadir un email
             if (cEmp != 0)
             {
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labelmail.Text = objEmpresa.nombreComercial;
             }
-
             // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
             if (cCon != 0)
             {
                 var objContacto = proxy.getContacto(cCon);
                 this.labelmail.Text = objContacto.nombre;
+            }
+            else
+            {
+                this.labelmail.Text = "-Sin informacion de empresa o contacto-";
+                this.lblError.Visible = true;
+                this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                this.btnEnviar.Visible = false;
+                this.mail.Visible = false;
+                this.email.Visible = false;
+                this.lblError.CssClass = "page-header alert alert-danger";
+                this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
             }
         }// Fin del Page_Load
 
@@ -104,9 +112,7 @@ namespace GestionEmpresas.Privada
                             {
                                 proxy.addEmail(this.mail.Text, null, objContacto);
                                 /**** Vamos a obtener el id del contacto de la empresa *****/
-                                int idContacto = objContacto.idContacto;
-                                var idcontactoEmpresa = proxy.getContacto(idContacto);
-                                var idEmpresa = idcontactoEmpresa.idEmpresa;
+                                var idEmpresa = objContacto.idEmpresa;
                                 /********/
                                 Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
                             }
@@ -116,6 +122,8 @@ namespace GestionEmpresas.Privada
                                 this.lblError.Text = "No se puede añadir este registro. El email ya existe en la base de datos.";
                             }
                         }
+                        
+                        /***************************************************************************************************************************/
                     }
                     catch (Exception err)
                     {
@@ -147,13 +155,15 @@ namespace GestionEmpresas.Privada
             {
                 /****************/
                 var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
-                //var idEmpresa = objContacto.idEmpresa
-                int idContacto = objContacto.idContacto; // Obtengo el id del contacto
-                var idcontactoEmpresa = proxy.getContacto(idContacto); // Obtengo el id del contacto de la empresa 
-                var idEmpresa = idcontactoEmpresa.idEmpresa; // 
+                var idEmpresa = objContacto.idEmpresa;
                 /****************/
                 Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
             }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
+            }
+
         }// Fin del protected void Volver
     }
 }
