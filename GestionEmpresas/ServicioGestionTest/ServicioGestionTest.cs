@@ -815,7 +815,7 @@ namespace ServicioGestionTestSpace.ServiceReference1
             //Se devuelve un usuario con id que no existe en la base de datos.
             UsuarioData user=proxy.getUsuario(34245);
 
-            Assert.AreEqual(0, user.idUsuario);
+            Assert.AreEqual(null, user);
         }
 
         [TestMethod]
