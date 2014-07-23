@@ -1216,20 +1216,18 @@ namespace ServicioGestion
                                        password = usuario.password
                                    };
 
-                    if (consulta.ToList().Count == 0) return user;
+                    if (consulta.ToList().Count == 0) return null;
                     return consulta.First();
                 }
             }
             catch (SqlException ex)
             {
-                FaultException fault = new FaultException("ERROR SQL: " + ex.Message,
-                                                            new FaultCode("SQL"));
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
                 throw fault;
             }
             catch (Exception ex)
             {
-                FaultException fault = new FaultException("ERROR: " + ex.Message,
-                                                            new FaultCode("GENERAL"));
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
                 throw fault;
             }
         }
