@@ -542,7 +542,7 @@ namespace ServicioGestion
                     //eliminamos los telefonos, emails y direcciones asociados a la empresa
                     foreach (Telefono t in empe.Telefono)
                     {
-                        DeleteTelefono(t.idTelefono);
+                        empe.Telefono.Remove(t);
                     }
                     foreach (Email e in empe.Email)
                     {
@@ -577,10 +577,15 @@ namespace ServicioGestion
                     }
 
                     // eliminamos las acciones comerciales asociadas a la empresa
-                    foreach (AccionComercial ac in empe.AccionComercial)
+                    for (int i = 0; i < empe.AccionComercial.Count;i++)
                     {
-                        deleteAccionComercial(ac.idAccion);
+                        empe.AccionComercial.Remove(empe.AccionComercial.ElementAt(i));
                     }
+                       /* foreach (AccionComercial ac in empe.AccionComercial)
+                        {
+                            //deleteAccionComercial(ac.idAccion);
+                            empe.AccionComercial.Remove(ac);
+                        }*/
 
                     // eliminamos la empresa
                     db.Empresa.Remove(empe);
