@@ -112,7 +112,7 @@ namespace GestionEmpresas.Privada
             ContactoData cont = contactos[gvContactos.SelectedIndex];
             var telefonos = proxy.GetTelefonosContacto(cont.idContacto);
             TelefonoData tel = telefonos[e.NewEditIndex];
-            Response.Redirect("~/Privada/editTelefono.aspx?id=" + tel.idTelefono);
+            Response.Redirect("~/Privada/editTelefono.aspx?id=" + tel.idTelefono + "&Empresa=" + 0 + "&Contacto=" + cont.idContacto);
         }
 
         protected void gvEmails_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -129,7 +129,7 @@ namespace GestionEmpresas.Privada
             ContactoData cont = contactos[gvContactos.SelectedIndex];
             var emails = proxy.getEmailContacto(cont.idContacto);
             EmailData em = emails[e.NewEditIndex];
-            Response.Redirect("~/Privada/editEmail.aspx?id=" + em.EmailID);
+            Response.Redirect("~/Privada/editEmail.aspx?id=" + em.EmailID + "&Empresa=" + 0 + "&Contacto=" + cont.idContacto);
         }
         protected void gvDirecciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -145,7 +145,7 @@ namespace GestionEmpresas.Privada
             ContactoData cont = contactos[gvContactos.SelectedIndex];
             var direcciones = proxy.getDirecionesContacto(cont.idContacto);
             DireccionData dir = direcciones[e.NewEditIndex];
-            Response.Redirect("~/Privada/editDireccion.aspx?id=" + dir.idDireccion);
+            Response.Redirect("~/Privada/editDireccion.aspx?id=" + dir.idDireccion + "&Empresa=" + 0 + "&Contacto=" + cont.idContacto);
         }
 
         protected void bBusqueda_Click(object sender, EventArgs e)
