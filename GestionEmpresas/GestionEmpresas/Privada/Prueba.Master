@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Prueba.master.cs" Inherits="GestionEmpresas.Privada.Prueba" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Gestión Almerimatik</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"> </asp:ContentPlaceHolder>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- *************************************  Cabezera ************************************************* -->
+                <header class="col-md-12">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"> </asp:ContentPlaceHolder>
+                    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                        <img src="almerimatik.png" />
+                        <ul class="nav navbar-nav pull-right">
+                            <li>
+                                <asp:LoginView ID="LoginView1" runat="server">
+                                    <AnonymousTemplate>
+                                        <a href="#"><span class="text-warning">Anónimo</span></a>
+                                    </AnonymousTemplate>
+                                    <LoggedInTemplate>
+                                        <a href="~/Default.aspx" runat="server"><asp:LoginName ID="LoginName1" runat="server" /></a>
+                                    </LoggedInTemplate>
+                                 </asp:LoginView>
+                            </li>
+                            <li> <asp:LoginStatus ID="LoginStatus1" runat="server" /> </li>
+                        </ul>
+                    </nav>
+                </header>
+                <!-- *************************************  fin Cabecera ************************************************* -->
+                <!-- *************************************    Section    ************************************************* -->
+                <section class="col-md-8">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        
+                    </asp:ContentPlaceHolder>
+                </section>
+                <!-- *************************************  Fin Section    ************************************************ -->
+                <!-- *************************************     Aside     ************************************************* -->
+                 <aside class="col-md-4">
+                    <section class="text-center">
+                        <img src="user.jpg" height="150px"; width="160px"; />
+                        <a href="GestionPerfil.aspx" class="list-group-item text-center">
+                            <i class="glyphicon glyphicon-cog"></i><span class="list-group-item-heading"> Consultar mi perfil </span>          
+                         </a>
+                    </section>
+                    <hr />
+                    <section class="list-group">
+                        <div class="list-group-item active">
+                            <h4 class="list-group-item-heading text-center">Busquedas rapidas</h4> 
+                            <div class="input-group col-md-offset-3">
+                              <span class="glyphicon glyphicon-home"></span>
+                              <input id="nombreEmpresa" type="text" class="form-control" placeholder="Nombre de la empresa"/>
+                            </div>  
+
+                            <div class="input-group col-md-offset-3">
+                              <span class="glyphicon glyphicon-expand"></span>
+                              <input id="NombreLogin" type="text" class="form-control" placeholder="Nombre del login"/>
+                            </div>  
+
+                            <div class="input-group col-md-offset-3">
+                              <span class="glyphicon glyphicon-list-alt"></span>
+                              <input id="Provincia" type="text" class="form-control" placeholder="Empresa por Provincia"/>
+                            </div>  
+
+                            <div class="input-group col-md-offset-3">
+                              <span class="glyphicon glyphicon-user"></span>
+                              <input id="comercial" type="text" class="form-control" placeholder="Nombre del comercial"/>
+                            </div>  <br />
+
+                            <div> <button type="button" class="btn btn-danger col-md-offset-10 glyphicon glyphicon-search">  Buscar</button> </div>
+                        </div>
+
+                    </section>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server"></asp:ContentPlaceHolder>
+                </aside>
+                <!-- *************************************     Fin Aside     ************************************************* -->
+                <!-- *************************************       Footer      ************************************************* -->
+                <footer class="col-md-12 alert-warning text-center">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                        © 2009 - 2014 ALMERIMATIK
+                    </asp:ContentPlaceHolder>
+                </footer>
+                <!-- *************************************       Footer      ************************************************* -->
+            </div> <!-- Fin del <div class="row"> -->
+        </div>     <!-- Fin del <div class="container-fluid"> -->
+    </form>
+</body>
+</html>
