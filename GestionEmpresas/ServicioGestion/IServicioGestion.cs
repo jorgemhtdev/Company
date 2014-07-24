@@ -106,7 +106,9 @@ namespace ServicioGestion
         [OperationContract]
         int EditDireccion(DireccionData street);
         [OperationContract]
-        List<DireccionData> GetDireccion();
+        DireccionData GetDireccion(int idDireccion);
+        [OperationContract]
+        List<DireccionData> GetAllDireccion();
 
         /// Fin Direccion
 

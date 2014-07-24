@@ -67,7 +67,6 @@ namespace ServicioGestion
 
                     return indice;
                 }
-
             }
             catch (SqlException ex)
             {
@@ -543,7 +542,7 @@ namespace ServicioGestion
                     //eliminamos los telefonos, emails y direcciones asociados a la empresa
                     foreach (Telefono t in empe.Telefono)
                     {
-                        DeleteTelefono(t.idTelefono);
+                        empe.Telefono.Remove(t);
                     }
                     foreach (Email e in empe.Email)
                     {
@@ -578,10 +577,15 @@ namespace ServicioGestion
                     }
 
                     // eliminamos las acciones comerciales asociadas a la empresa
-                    foreach (AccionComercial ac in empe.AccionComercial)
+                    for (int i = 0; i < empe.AccionComercial.Count;i++)
                     {
-                        deleteAccionComercial(ac.idAccion);
+                        empe.AccionComercial.Remove(empe.AccionComercial.ElementAt(i));
                     }
+                       /* foreach (AccionComercial ac in empe.AccionComercial)
+                        {
+                            //deleteAccionComercial(ac.idAccion);
+                            empe.AccionComercial.Remove(ac);
+                        }*/
 
                     // eliminamos la empresa
                     db.Empresa.Remove(empe);
@@ -906,12 +910,49 @@ namespace ServicioGestion
                 throw fault;
             }
         }// Fin del metodo EditDireccion
+        /// <summary>
+        /// Metodo que me devuelve una direccion a traves de su id direccion
+        /// </summary>
+        /// <returns></returns>
+        public DireccionData GetDireccion(int idDireccion)
+        {
+            DireccionData street = new DireccionData();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from calle in db.Direccion
+                                   where calle.idDireccion == idDireccion
+                                   select new DireccionData()
+                                   {
+                                        idDireccion = calle.idDireccion,
+                                        poblacion = calle.poblacion,
+                                        provincia = calle.provincia,
+                                        codPostal = calle.codPostal,
+                                        domicilio = calle.domicilio
+                                   };
+                    if (consulta.ToList().Count == 0) return null;
+
+                    return consulta.First();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
 
         /// <summary>
         /// Metodo que me devuelve todas las direcciones de la BD
         /// </summary>
         /// <returns></returns>
-        public List<DireccionData> GetDireccion()
+        public List<DireccionData> GetAllDireccion()
         {
             List<DireccionData> lst = new List<DireccionData>();
             try

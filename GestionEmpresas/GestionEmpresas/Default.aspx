@@ -10,7 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+       <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <img src="images/almerimatik.png" />
             <ul class="nav navbar-nav pull-right">
                 <li>

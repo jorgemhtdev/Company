@@ -51,7 +51,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el codigo postal" ControlToValidate="cp" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                         ErrorMessage="Solo se admiten numeros" ValidationExpression="^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="cp"></asp:RegularExpressionValidator>      
+                                         ErrorMessage="Solo se admiten 5 numeros" ValidationExpression="^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="cp"></asp:RegularExpressionValidator>      
                             </section>
                         </article>
 
@@ -66,11 +66,12 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
                                          ErrorMessage="Solo se admite texto" ValidationExpression="[A-Za-z ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="provin"></asp:RegularExpressionValidator>      
                             </section>
-                        </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
+                        </article><br />
+                        <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="label"></asp:Label>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <footer class="col-md-12 col-md-offset-1">
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
-                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addDirec" OnClientClick="return confirm('¿Estas seguro?');" /> 
+                            <asp:Button ID="btnEnviar" runat="server" Text="Añadir" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="adDireccion" OnClientClick="return confirm('¿Estas seguro de guardar estos cambios?');" /> 
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
