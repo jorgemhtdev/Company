@@ -12,10 +12,66 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idDireccion = Convert.ToInt32(Request.QueryString["id"]);
+            //El label visible a false
+            this.lblError.Visible = false;
+
             ServicioGestionClient proxy = new ServicioGestionClient();
 
-            var direccion = proxy.GetDireccion();
+            // Obtemos el idEmpresa o el idContacto que nos dan por la url
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            // Si recibimos el idEmpresa mostramos el contacto al que le vamos añadir un email
+            if (cEmp != 0)
+            {
+                var objEmpresa = proxy.getEmpresaId(cEmp);
+                this.labeldireccion.Text = objEmpresa.nombreComercial;
+
+                int idDireccion = Convert.ToInt32(Request.QueryString["id"]);
+                var direccion = proxy.GetDireccion(idDireccion);
+
+                this.domici.Text = direccion.domicilio;
+                this.poblac.Text = direccion.poblacion;
+                this.cp.Text = direccion.codPostal;
+                this.provin.Text = direccion.provincia;
+            }
+            else
+            {
+                // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
+                if (cCon != 0)
+                {
+                    int idDireccion = Convert.ToInt32(Request.QueryString["id"]);
+
+                    var objContacto = proxy.getContacto(cCon);
+                    this.labeldireccion.Text = objContacto.nombre;
+
+                    var direccion = proxy.GetDireccion(idDireccion);
+
+                    this.domici.Text = direccion.domicilio;
+                    this.poblac.Text = direccion.poblacion;
+                    this.cp.Text = direccion.codPostal;
+                    this.provin.Text = direccion.provincia;
+                }
+                else
+                {
+                    this.labeldireccion.Text = "-Sin informacion de empresa o contacto-";
+                    this.lblError.Visible = true;
+                    this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                    this.btnEnviar.Visible = false;
+
+                    this.dom.Visible = false;
+                    this.domici.Visible = false;
+                    this.pob.Visible = false;
+                    this.poblac.Visible = false;
+                    this.copo.Visible = false;
+                    this.cp.Visible = false;
+                    this.pro.Visible = false;
+                    this.provin.Visible = false;
+
+                    this.lblError.CssClass = "page-header alert alert-danger";
+                    this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
+                }
+            }
         }
 
         protected void editDirec(object sender, EventArgs e)
@@ -83,7 +139,28 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx", true);
-        }
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            if (cEmp != 0)
+            {
+                Response.Redirect("gestionEmpresas.aspx", true);
+            }
+
+            if (cCon != 0)
+            {
+                /****************/
+                var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
+                var idEmpresa = objContacto.idEmpresa;
+                /****************/
+                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
+            }
+        }// Fin del protected void Volver
     }
 }

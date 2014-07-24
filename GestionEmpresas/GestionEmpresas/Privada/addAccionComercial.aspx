@@ -19,7 +19,7 @@
                                 <asp:Label ID="user" runat="server">Usuario</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="listaUser" runat="server" CssClass="form-control" TabIndex="1"></asp:TextBox>
+                                <asp:TextBox ID="listaUser" runat="server" CssClass="form-control text-center" TabIndex="1"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="listaUser" CssClass="glyphicon glyphicon-remove alert-danger" Display="Dynamic" ErrorMessage="Compruebe el nombre de usuario" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                 <asp:CustomValidator ControlToValidate="listaUser" ID="CustomValidator3" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de usuario" OnServerValidate="CustomValidator3_ServerValidate" EnableClientScript="False" SetFocusOnError="True"></asp:CustomValidator>
                             </section>
@@ -56,7 +56,7 @@
                                 <asp:Label ID="emp" runat="server">Empresa</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="listaEmpresa" runat="server" CssClass="form-control" TabIndex="4"></asp:TextBox>
+                                <asp:TextBox ID="listaEmpresa" runat="server" CssClass="form-control text-center" TabIndex="4"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="listaEmpresa" CssClass="glyphicon glyphicon-remove alert-danger" Display="Dynamic" ErrorMessage="Compruebe el nombre de empresa" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                 <asp:CustomValidator ControlToValidate="listaEmpresa" ID="CustomValidator4" runat="server" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Compruebe el nombre de empresa" OnServerValidate="CustomValidator4_ServerValidate" EnableClientScript="False"></asp:CustomValidator>
                             </section>
@@ -69,7 +69,7 @@
                                 <asp:Label ID="fech" runat="server">Fecha</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="fch" runat="server" CssClass="form-control" TabIndex="5"></asp:TextBox>
+                                <asp:TextBox ID="fch" runat="server" CssClass="form-control text-center" TabIndex="5"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="El campo fecha no puede quedarse vacio" ControlToValidate="fch" CssClass="glyphicon glyphicon-asterisk alert-danger" SetFocusOnError="True"></asp:RequiredFieldValidator>
                                     <!-- La fecha es AÑO MES DIA -->
