@@ -1359,6 +1359,7 @@ namespace ServicioGestion
         /// <returns></returns>
         public List<ContactoData> getAllContacto()
         {
+
             List<ContactoData> lst = new List<ContactoData>();
             try
             {
@@ -1372,9 +1373,15 @@ namespace ServicioGestion
                                        nif = contacto.nif,
                                        nombre = contacto.nombre,
                                    };
-                    lst = consulta.ToList();
-
-                    return lst;
+                    if (lst.Count == 0)
+                    {
+                        lst = consulta.ToList();
+                        return lst;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             catch (SqlException ex)
