@@ -1365,15 +1365,17 @@ namespace ServicioGestion
                 using (GestionEmpresasEntities db = new GestionEmpresasEntities())
                 {
                     var consulta = from contacto in db.Contacto
-                                   select new ContactoData()
-                                   {
-                                       idContacto = contacto.idContacto,
-                                       idEmpresa = (int)contacto.idEmpresa,
-                                       nif = contacto.nif,
-                                       nombre = contacto.nombre,
-                                   };
-                    lst = consulta.ToList();
-
+                                   select contacto;
+                    foreach(Contacto c in consulta)
+                    {
+                        lst.Add(new ContactoData()
+                        {
+                            idContacto = c.idContacto,
+                            idEmpresa = (int)c.idEmpresa,
+                            nif = c.nif,
+                            nombre = c.nombre,
+                        });
+                    };
                     return lst;
                 }
             }
