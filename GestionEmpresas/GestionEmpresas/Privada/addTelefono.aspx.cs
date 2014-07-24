@@ -96,7 +96,7 @@ namespace GestionEmpresas.Privada
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                                this.lblError.Text = "No se puede añadir este registro. El teléfono ya existe en la base de datos.";
                             }
                          }// Fin del if
                         /***************************************************************************************************************************/
@@ -123,7 +123,7 @@ namespace GestionEmpresas.Privada
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
+                                this.lblError.Text = "No se puede añadir este registro. El teléfono ya existe en la base de datos.";
                             }
                         }
                         /***************************************************************************************************************************/
