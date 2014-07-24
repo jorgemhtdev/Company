@@ -180,6 +180,13 @@
     <None Include="Service References\srvGestion\ServicioGestion2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\srvLogin\ServicioLogin.wsdl" />
+    <None Include="Service References\srvLogin\ServicioLogin.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\srvLogin\ServicioLogin1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -227,6 +234,13 @@
     <None Include="Service References\srvGestion\configuration91.svcinfo" />
     <None Include="Service References\srvGestion\configuration.svcinfo" />
     <None Include="Service References\srvGestion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\srvLogin\ServicioLogin.disco" />
+    <None Include="Service References\srvLogin\configuration91.svcinfo" />
+    <None Include="Service References\srvLogin\configuration.svcinfo" />
+    <None Include="Service References\srvLogin\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -460,6 +474,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\srvLogin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -470,6 +489,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\srvGestion\" />
+    <WCFMetadataStorage Include="Service References\srvLogin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
