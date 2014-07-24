@@ -24,7 +24,7 @@
                                 <asp:Label ID="nm" runat="server">Nombre</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="nomb" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="nomb" runat="server" CssClass="form-control text-center" ></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                              ErrorMessage="Debes rellenar el nombre del contacto" ControlToValidate="nomb" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="RegularExpression" runat="server"
@@ -37,7 +37,7 @@
                                 <asp:Label ID="nnif" runat="server">NIF</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="nf" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="nf" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el campo NIF" ControlToValidate="nf" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"

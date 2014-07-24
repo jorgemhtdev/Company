@@ -21,7 +21,7 @@
                                 <asp:Label ID="lg" runat="server">Login</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="login" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="login" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                              ErrorMessage="Debes rellenar el login" ControlToValidate="login" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                             </section>
@@ -32,7 +32,7 @@
                                 <asp:Label ID="nm" runat="server">Nombre</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="nombre" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="nombre" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el nombre" ControlToValidate="nombre" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
@@ -45,7 +45,7 @@
                                 <asp:Label ID="ps" runat="server">Contraseña</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="pass" runat="server" TextMode="password" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="pass" runat="server" TextMode="password" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el campo contraseña" ControlToValidate="pass" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
@@ -59,7 +59,7 @@
                                 <asp:Label ID="pw" runat="server">Repetir contraseña</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="rpass" runat="server" TextMode="password" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="rpass" runat="server" TextMode="password" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                          ErrorMessage="Debes rellenar el campo repetir contraseña" ControlToValidate="rpass" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                         <asp:CompareValidator ID="CompareValidator" runat="server" ControlToValidate="pass" ControlToCompare="rpass"  CssClass="glyphicon glyphicon-asterisk alert-danger" ErrorMessage="Las contraseñas no coinciden">  

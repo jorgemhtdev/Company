@@ -121,6 +121,12 @@
   <wsdl:message name="IServicioGestion_GetDireccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDireccionResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllDireccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDireccion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioGestion_GetAllDireccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDireccionResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicioGestion_GetSector_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSector" />
   </wsdl:message>
@@ -461,6 +467,10 @@
     <wsdl:operation name="GetDireccion">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetDireccion" message="tns:IServicioGestion_GetDireccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetDireccionResponse" message="tns:IServicioGestion_GetDireccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDireccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetAllDireccion" message="tns:IServicioGestion_GetAllDireccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioGestion/GetAllDireccionResponse" message="tns:IServicioGestion_GetAllDireccion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSector">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioGestion/GetSector" message="tns:IServicioGestion_GetSector_InputMessage" />
@@ -805,6 +815,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDireccion">
       <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDireccion">
+      <soap:operation soapAction="http://tempuri.org/IServicioGestion/GetAllDireccion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
