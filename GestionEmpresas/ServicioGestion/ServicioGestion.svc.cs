@@ -67,7 +67,6 @@ namespace ServicioGestion
 
                     return indice;
                 }
-
             }
             catch (SqlException ex)
             {
@@ -308,7 +307,7 @@ namespace ServicioGestion
         public int addEmpresa(string cif, string nombreComercial, string razon, string web, int sector)
         {
             int indice = -1;
-            if (cif == "" || nombreComercial == "" || razon == "" || web == "" || sector == -1) return -1;
+            if (cif == "" || nombreComercial == "" || razon == "" || sector == -1) return -1;
             try
             {
                 Empresa emp = new Empresa();

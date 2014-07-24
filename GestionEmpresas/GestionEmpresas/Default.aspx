@@ -6,10 +6,12 @@
 <head runat="server">
     <title>Inicio Sesion</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <img src="images/almerimatik.png" />
             <ul class="nav navbar-nav pull-right">
                 <li>
                     <asp:LoginView ID="LoginView1" runat="server">
@@ -39,7 +41,7 @@
                                 <div class="form-group">
                                     <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">Usuario</asp:Label>
                                     <div class="col-md-10">
-                                        <asp:TextBox CssClass="form-control" ID="UserName" runat="server"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="UserName" runat="server" TabIndex="1"></asp:TextBox>
                                         <asp:RequiredFieldValidator CssClass="text-danger" ID="UserNameRequired" runat="server" ControlToValidate="UserName"
                                              ErrorMessage="El usuario electrónico es obligatorio." ToolTip="El correo electrónico es obligatorio." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                     </div>
@@ -47,20 +49,20 @@
                                 <div class="form-group">
                                     <asp:Label CssClass="col-md-2 control-label" ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
                                         <div class="col-md-10">
-                                            <asp:TextBox CssClass="form-control" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox CssClass="form-control" ID="Password" runat="server" TextMode="Password" TabIndex="2"></asp:TextBox>
                                             <asp:RequiredFieldValidator CssClass="text-danger" ID="PasswordRequired" runat="server" ControlToValidate="Password" 
                                                 ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                          </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <div class="checkbox">
+                                        <div class="checkbox" tabindex="3">
                                           <asp:CheckBox ID="RememberMe" runat="server" /> Recuerdeme                              
                                         </div>
                                     </div>
                                 </div>    
                                 <div class="form-group">
-                                    <asp:Button CssClass="btn btn-primary col-md-offset-5" ID="LoginButton" runat="server" CommandName="Login" Text="Inicio de sesión" ValidationGroup="Login1" />
+                                    <asp:Button CssClass="btn btn-primary col-md-offset-5" ID="LoginButton" runat="server" CommandName="Login" Text="Inicio de sesión" ValidationGroup="Login1" TabIndex="4" />
                                 </div>        
                             </div>
                     </div>
