@@ -32,30 +32,33 @@ namespace GestionEmpresas.Privada
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labeldireccion.Text = objEmpresa.nombreComercial;
             }
-            // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
-            if (cCon != 0)
-            {
-                var objContacto = proxy.getContacto(cCon);
-                this.labeldireccion.Text = objContacto.nombre;
-            }
             else
             {
-                this.labeldireccion.Text = "-Sin informacion de empresa o contacto-";
-                this.lblError.Visible = true;
-                this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
-                this.btnEnviar.Visible = false;
+                // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
+                if (cCon != 0)
+                {
+                    var objContacto = proxy.getContacto(cCon);
+                    this.labeldireccion.Text = objContacto.nombre;
+                }
+                else
+                {
+                    this.labeldireccion.Text = "-Sin informacion de empresa o contacto-";
+                    this.lblError.Visible = true;
+                    this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                    this.btnEnviar.Visible = false;
 
-                this.dom.Visible = false;
-                this.domici.Visible = false;
-                this.pob.Visible = false;
-                this.poblac.Visible = false;
-                this.copo.Visible = false;
-                this.cp.Visible = false;
-                this.pro.Visible = false;
-                this.provin.Visible = false; 
+                    this.dom.Visible = false;
+                    this.domici.Visible = false;
+                    this.pob.Visible = false;
+                    this.poblac.Visible = false;
+                    this.copo.Visible = false;
+                    this.cp.Visible = false;
+                    this.pro.Visible = false;
+                    this.provin.Visible = false;
 
-                this.lblError.CssClass = "page-header alert alert-danger";
-                this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
+                    this.lblError.CssClass = "page-header alert alert-danger";
+                    this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
+                }
             }
         } // Fin del Page_Load
         
