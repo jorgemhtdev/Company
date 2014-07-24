@@ -76,7 +76,7 @@ namespace GestionEmpresas.Privada
         {
             AccionComercialMostrarData accion = acciones[e.RowIndex];
             proxy.deleteAccionComercial(accion.idAccion);
-            Response.Redirect("~/Privada/gestionAccionComercial.aspx");
+            Response.Redirect("~/Privada/gestionAccionesComerciales.aspx");
         }
 
         protected void gvAcciones_RowEditing(object sender, GridViewEditEventArgs e)
