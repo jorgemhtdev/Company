@@ -18,9 +18,12 @@ namespace GestionEmpresas.Privada
         {
             idEmpresa = Convert.ToInt32(HttpContext.Current.Request.QueryString["id"]);
             this.panel.Visible = false;
-            contactos = proxy.GetContactosEmpresa(idEmpresa);
-            this.gvContactos.DataSource = contactos;
-            this.gvContactos.DataBind();
+            if (!this.IsPostBack)
+            {
+                contactos = proxy.GetContactosEmpresa(idEmpresa);
+                this.gvContactos.DataSource = contactos;
+                this.gvContactos.DataBind();
+            }
         }
         protected void gvContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
