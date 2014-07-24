@@ -905,12 +905,49 @@ namespace ServicioGestion
                 throw fault;
             }
         }// Fin del metodo EditDireccion
+        /// <summary>
+        /// Metodo que me devuelve una direccion a traves de su id direccion
+        /// </summary>
+        /// <returns></returns>
+        public DireccionData GetDireccion(int idDireccion)
+        {
+            DireccionData street = new DireccionData();
+            try
+            {
+                using (GestionEmpresasEntities db = new GestionEmpresasEntities())
+                {
+                    var consulta = from calle in db.Direccion
+                                   where calle.idDireccion == idDireccion
+                                   select new DireccionData()
+                                   {
+                                        idDireccion = calle.idDireccion,
+                                        poblacion = calle.poblacion,
+                                        provincia = calle.provincia,
+                                        codPostal = calle.codPostal,
+                                        domicilio = calle.domicilio
+                                   };
+                    if (consulta.ToList().Count == 0) return null;
+
+                    return consulta.First();
+                }
+            }
+            catch (SqlException ex)
+            {
+                FaultException fault = new FaultException("ERROR SQL: " + ex.Message, new FaultCode("SQL"));
+                throw fault;
+            }
+            catch (Exception ex)
+            {
+                FaultException fault = new FaultException("ERROR: " + ex.Message, new FaultCode("GENERAL"));
+                throw fault;
+            }
+        }
 
         /// <summary>
         /// Metodo que me devuelve todas las direcciones de la BD
         /// </summary>
         /// <returns></returns>
-        public List<DireccionData> GetDireccion()
+        public List<DireccionData> GetAllDireccion()
         {
             List<DireccionData> lst = new List<DireccionData>();
             try
