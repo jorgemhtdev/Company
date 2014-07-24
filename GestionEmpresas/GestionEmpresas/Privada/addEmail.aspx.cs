@@ -32,23 +32,28 @@ namespace GestionEmpresas.Privada
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labelmail.Text = objEmpresa.nombreComercial;
             }
-            // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
-            if (cCon != 0)
-            {
-                var objContacto = proxy.getContacto(cCon);
-                this.labelmail.Text = objContacto.nombre;
-            }
             else
             {
-                this.labelmail.Text = "-Sin informacion de empresa o contacto-";
-                this.lblError.Visible = true;
-                this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
-                this.btnEnviar.Visible = false;
-                this.mail.Visible = false;
-                this.email.Visible = false;
-                this.lblError.CssClass = "page-header alert alert-danger";
-                this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
+                // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
+                if (cCon != 0)
+                {
+                    var objContacto = proxy.getContacto(cCon);
+                    this.labelmail.Text = objContacto.nombre;
+                }
+                else
+                {
+                    this.labelmail.Text = "-Sin informacion de empresa o contacto-";
+                    this.lblError.Visible = true;
+                    this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                    this.btnEnviar.Visible = false;
+                    this.mail.Visible = false;
+                    this.email.Visible = false;
+                    this.lblError.CssClass = "page-header alert alert-danger";
+                    this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
+                }
             }
+
+
         }// Fin del Page_Load
 
         /// <summary>
