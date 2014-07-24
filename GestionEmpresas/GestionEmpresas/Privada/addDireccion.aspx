@@ -22,7 +22,7 @@
                                 <asp:Label ID="dom" runat="server">Domicilio</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="domici" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="domici" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidatornombreEmpresa" runat="server"
                                              ErrorMessage="Debes rellenar nombre comercial" ControlToValidate="domici" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="RegularExpressionnombreEmpresa" runat="server"
@@ -34,7 +34,7 @@
                                 <asp:Label ID="pob" runat="server">Población</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="poblac" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="poblac" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el campo de población" ControlToValidate="poblac" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
@@ -47,7 +47,7 @@
                                 <asp:Label ID="copo" runat="server">Codigo postal</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="cp" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="cp" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el codigo postal" ControlToValidate="cp" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
@@ -60,7 +60,7 @@
                                 <asp:Label ID="pro" runat="server" >Provincia</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="provin" runat="server"  CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="provin" runat="server"  CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                          ErrorMessage="Debes rellenar el campo de la provincia" ControlToValidate="provin" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"

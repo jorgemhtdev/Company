@@ -24,7 +24,7 @@
                                 <asp:Label ID="email" runat="server"><h4>Mail</h4></asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="mail" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="mail" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                              ErrorMessage="Debes rellenar el correo electronico" ControlToValidate="mail" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="RegularExpression" runat="server"
