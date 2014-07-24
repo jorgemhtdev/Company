@@ -22,7 +22,7 @@
                            <asp:Label ID="tlf" runat="server">Telefono</asp:Label>   
                         </section>                       
                         <section class="col-md-4">
-                            <asp:TextBox id="telepone" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox id="telepone" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ErrorMessage="Debes rellenar el telefono" ControlToValidate="telepone" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                  <asp:RegularExpressionValidator ID="RegularExpression" runat="server" ErrorMessage="Solo se admiten 9 numeros" ValidationExpression="[0-9]{9}" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="telepone"></asp:RegularExpressionValidator>
                          </section>
