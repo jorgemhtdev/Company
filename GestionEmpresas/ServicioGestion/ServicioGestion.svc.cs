@@ -540,44 +540,73 @@ namespace ServicioGestion
                     Empresa empe = consult.First();
 
                     //eliminamos los telefonos, emails y direcciones asociados a la empresa
-                    foreach (Telefono t in empe.Telefono)
+                    int tamanoTel=empe.Telefono.Count;
+                    for (int i = 0; i <tamanoTel ; i++)
                     {
-                        empe.Telefono.Remove(t);
+                        db.Telefono.Remove((empe.Telefono.First()));
                     }
-                    foreach (Email e in empe.Email)
+                    
+                    int tamanoMail = empe.Email.Count;
+                    for (int i = 0; i < tamanoMail; i++)
                     {
-                        deleteEmail(e.idEmail);
-                    }
-                    foreach (Direccion d in empe.Direccion)
-                    {
-                        DeleteDireccion(d.idDireccion);
+                        db.Email.Remove((empe.Email.First()));
                     }
 
-                    // eliminamos los contactos asociados a la empresa y sus respectivos telefonos, emails y direcciones
-                    foreach (Contacto cont in empe.Contacto)
+                    int tamanoDir = empe.Direccion.Count;
+                    for (int i = 0; i < tamanoDir; i++)
                     {
-                        foreach (Telefono t in cont.Telefono)
-                        {
-                            DeleteTelefono(t.idTelefono);
-                        }
-                        foreach (Email e in cont.Email)
-                        {
-                            deleteEmail(e.idEmail);
-                        }
-                        foreach (Direccion d in cont.Direccion)
-                        {
-                            DeleteDireccion(d.idDireccion);
-                        }
-                        ContactoData c = new ContactoData();
-                        c.idContacto = cont.idContacto;
-                        c.nif = cont.nif;
-                        c.nombre = cont.nombre;
-                        c.idEmpresa = (int)cont.idEmpresa;
-                        DeleteContacto(c, cont.idContacto);
+                        db.Direccion.Remove((empe.Direccion.First()));
                     }
+                    
+                    // eliminamos los contactos asociados a la empresa y sus respectivos telefonos, emails y direcciones
+
+                    int numContacto=empe.Contacto.Count;
+                    for (int i = 0; i < numContacto;i++ )
+                    {
+                        int numConTel=empe.Contacto.ElementAt(i).Telefono.Count;
+                        int numConMail = empe.Contacto.ElementAt(i).Email.Count;
+                        int numConDir = empe.Contacto.ElementAt(i).Direccion.Count;
+
+                        for (int j = 0; j < numConTel; j++)
+                        {
+                            db.Telefono.Remove((empe.Contacto.ElementAt(i).Telefono.First()));
+                        }
+                        for (int k = 0; k < numConMail; k++)
+                        {
+                            db.Email.Remove((empe.Contacto.ElementAt(i).Email.First()));
+                        }
+                        for (int l = 0; l < numConDir; l++)
+                        {
+                            db.Direccion.Remove((empe.Contacto.ElementAt(i).Direccion.First()));
+                        }
+
+                        db.Contacto.Remove(empe.Contacto.First());
+                    }
+
+
+                       /* foreach (Contacto cont in empe.Contacto)
+                        {
+                            int tamanoConTel = cont.Telefono.Count;
+                            int tamanoConMail = cont.Email.Count;
+                            int tamanoConDir = cont.Direccion.Count;
+
+                            for (int i = 0; i < tamanoConTel; i++)
+                            {
+                                db.Telefono.Remove((cont.Telefono.First()));
+                            }
+                            for (int i = 0; i < tamanoConMail; i++)
+                            {
+                                db.Email.Remove((cont.Email.First()));
+                            }
+                            for (int i = 0; i < tamanoConDir; i++)
+                            {
+                                db.Direccion.Remove((cont.Direccion.First()));
+                            }
+
+                        }*/
 
                     // eliminamos las acciones comerciales asociadas a la empresa
-                    for (int i = 0; i < empe.AccionComercial.Count;i++)
+              /*      for (int i = 0; i < empe.AccionComercial.Count;i++)
                     {
                         empe.AccionComercial.Remove(empe.AccionComercial.ElementAt(i));
                     }
