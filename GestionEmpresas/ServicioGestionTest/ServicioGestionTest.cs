@@ -282,33 +282,33 @@ namespace ServicioGestionTestSpace.ServiceReference1
             DireccionData direccion = null;
             EmpresaData empresa = null;
             ContactoData contacto = null;
-            registros = proxy.GetDireccion().Length;
+            registros = proxy.GetAllDireccion().Length;
             Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+            Assert.IsTrue(registros == proxy.GetAllDireccion().Length);
 
             //addDireccion(Direccion, null, null)
             direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
-            registros = proxy.GetDireccion().Length;
+            registros = proxy.GetAllDireccion().Length;
             Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-            Assert.IsTrue(registros == proxy.GetDireccion().Length);
+            Assert.IsTrue(registros == proxy.GetAllDireccion().Length);
 
             //addDireccion(null, empresa, null)
             direccion = null;
             if (listE.Length > 0)
             {
                 empresa = listE[0];
-                registros = proxy.GetDireccion().Length;
+                registros = proxy.GetAllDireccion().Length;
                 Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-                Assert.IsTrue(registros == proxy.GetDireccion().Length);
+                Assert.IsTrue(registros == proxy.GetAllDireccion().Length);
 
                 //addDireccion(Direccion, empresa, null)
                 direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
                 empresa = listE[0];
                 contacto = null;
-                registros = proxy.GetDireccion().Length;
+                registros = proxy.GetAllDireccion().Length;
                 id = proxy.AddDireccion(direccion, empresa, contacto);
                 Assert.AreNotEqual(-1, id);
-                Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+                Assert.IsTrue(registros + 1 == proxy.GetAllDireccion().Length);
                 proxy.DeleteDireccion(id);
             }
 
@@ -318,16 +318,16 @@ namespace ServicioGestionTestSpace.ServiceReference1
             if (listC.Length > 0)
             {
                 contacto = listC[0];
-                registros = proxy.GetDireccion().Length;
+                registros = proxy.GetAllDireccion().Length;
                 Assert.AreEqual(-1, proxy.AddDireccion(direccion, empresa, contacto));
-                Assert.IsTrue(registros == proxy.GetDireccion().Length);
+                Assert.IsTrue(registros == proxy.GetAllDireccion().Length);
 
                 //addDireccion(Direccion, null, contacto)
                 direccion = new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" };
-                registros = proxy.GetDireccion().Length;
+                registros = proxy.GetAllDireccion().Length;
                 id = proxy.AddDireccion(direccion, empresa, contacto);
                 Assert.AreNotEqual(-1, id);
-                Assert.IsTrue(registros + 1 == proxy.GetDireccion().Length);
+                Assert.IsTrue(registros + 1 == proxy.GetAllDireccion().Length);
                 proxy.DeleteDireccion(id);
             }
         }
@@ -758,9 +758,9 @@ namespace ServicioGestionTestSpace.ServiceReference1
         {
 
             int nuevo = proxy.AddDireccion(new DireccionData() { domicilio = "domprueba", poblacion = "pobprueba", codPostal = "cp0", provincia = "provprueba" }, new EmpresaData() { EmpresaID = 2 }, null);
-            int registros = proxy.GetDireccion().Length;
+            int registros = proxy.GetAllDireccion().Length;
             Assert.IsTrue(proxy.DeleteDireccion(nuevo));
-            Assert.IsTrue(registros - 1 == proxy.GetDireccion().Length);
+            Assert.IsTrue(registros - 1 == proxy.GetAllDireccion().Length);
         }
         
         [TestMethod]
@@ -938,9 +938,9 @@ namespace ServicioGestionTestSpace.ServiceReference1
             if (listE.Length > 0)
             {
                 int nuevo = proxy.AddDireccion(t, listE[0], null);
-                int registros = proxy.GetDireccion().Length;
+                int registros = proxy.GetAllDireccion().Length;
                 proxy.DeleteDireccion(nuevo);
-                Assert.IsTrue(proxy.GetDireccion().Length == registros - 1);
+                Assert.IsTrue(proxy.GetAllDireccion().Length == registros - 1);
             }
         }
 /*

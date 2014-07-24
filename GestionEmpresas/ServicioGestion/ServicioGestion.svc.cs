@@ -1372,6 +1372,7 @@ namespace ServicioGestion
                                        nif = contacto.nif,
                                        nombre = contacto.nombre,
                                    };
+                    if (consulta.ToList().Count==0) return null;
                     lst = consulta.ToList();
 
                     return lst;
