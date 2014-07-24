@@ -17,7 +17,7 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-                        if (!this.IsPostBack)
+          if (!this.IsPostBack)
             {
             this.lblError.Visible = false;
 
@@ -104,8 +104,22 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
-            int idEmpresa = Convert.ToInt32(Request.QueryString["id"]);
-            Response.Redirect("gestionContacto.aspx?id=" + idEmpresa, true);
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
+            int idContacto = Convert.ToInt32(Request.QueryString["id"]);
+
+            if (idContacto != 0)
+            {
+                /****************/
+                var objContacto = proxy.getContacto(idContacto); // Obtengo el contacto
+                var idEmpresa = objContacto.idEmpresa;
+                /****************/
+                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
+            }
         }//Volver
     }
 }
