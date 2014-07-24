@@ -88,8 +88,29 @@ namespace GestionEmpresas.Privada
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
-        {  
-            Response.Redirect("Default.aspx", true);
+        {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
+            int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
+            int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
+
+            if (cEmp != 0)
+            {
+                Response.Redirect("gestionEmpresas.aspx", true);
+            }
+
+            if (cCon != 0)
+            {
+                /****************/
+                var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
+                var idEmpresa = objContacto.idEmpresa;
+                /****************/
+                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
+            }
         }// Fin del protected void Volver
     }
 }
