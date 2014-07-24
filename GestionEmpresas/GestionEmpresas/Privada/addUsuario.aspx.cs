@@ -48,7 +48,7 @@ namespace GestionEmpresas.Privada
                 {
                     int res=proxy.addUsuario(objetoUsuario);
 
-                    if (res == -1)
+                    if (res != -1)
                     {
                         Response.Redirect("gestionUsuarios.aspx");
                     }

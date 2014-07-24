@@ -14,8 +14,8 @@
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
                 <div class="panel-heading"> 
-                      <h1> Editar Dirección </h1>
-                    - <asp:Label ID="labelDireccion" runat="server" Text=""></asp:Label> -
+                    <h1> Editar dirección </h1>
+                    - <asp:Label ID="labeldireccion" runat="server" Text=""></asp:Label> -
                 </div>
                     <div class="panel-body">
                        <br /><br />
@@ -71,7 +71,7 @@
                                          ErrorMessage="Solo se admite texto" ValidationExpression="[A-Za-z ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="provin"></asp:RegularExpressionValidator>      
                             </section>
                         </article><br /><br /><br /><br /><br /><br />
-
+                        <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="label"></asp:Label>
                         <footer class="col-md-12 col-md-offset-1">
                            
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
