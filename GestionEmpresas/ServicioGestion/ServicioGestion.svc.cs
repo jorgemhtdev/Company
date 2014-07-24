@@ -1137,10 +1137,6 @@ namespace ServicioGestion
 
                     Usuario u = consulta.First();
 
-                    foreach (AccionComercial ac in u.AccionComercial)
-                    {
-                        db.AccionComercial.Remove(ac);
-                    }
                     db.Usuario.Remove(u);
                     db.SaveChanges();
                     return true;
