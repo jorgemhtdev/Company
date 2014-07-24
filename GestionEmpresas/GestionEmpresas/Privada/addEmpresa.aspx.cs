@@ -93,7 +93,7 @@ namespace GestionEmpresas.Privada
 
             if (cEmp <= 0 && cCon <= 0)
             {
-                Response.Redirect(".aspx", true);
+                Response.Redirect("gestionEmpresas.aspx", true);
             }
 
             if (cEmp != 0)
