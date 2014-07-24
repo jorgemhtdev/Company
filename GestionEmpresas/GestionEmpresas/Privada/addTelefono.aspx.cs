@@ -22,22 +22,32 @@ namespace GestionEmpresas.Privada
 
             ServicioGestionClient proxy = new ServicioGestionClient();
 
-            // Obtemos el idEmpresa e idContacto que tenemos en la url
+            // Obtemos el idEmpresa o el idContacto que nos dan por la url
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
 
-            if (cEmp != 0 && cCon != 0) this.labeltelefono.Text = " - Sin informacion - ";
-
+            // Si recibimos el idEmpresa mostramos el contacto al que le vamos añadir un email
             if (cEmp != 0)
             {
                 var objEmpresa = proxy.getEmpresaId(cEmp);
                 this.labeltelefono.Text = objEmpresa.nombreComercial;
             }
-
+            // Si recibimos el idContacto mostramos el contacto al que le vamos añadir un email
             if (cCon != 0)
             {
                 var objContacto = proxy.getContacto(cCon);
                 this.labeltelefono.Text = objContacto.nombre;
+            }
+            else
+            {
+                this.labeltelefono.Text = "-Sin informacion de empresa o contacto-";
+                this.lblError.Visible = true;
+                this.lblError.Text = "No se ha accedido correctamente a esta pagina web, haz click en volver y acceda correctamente";
+                this.btnEnviar.Visible = false;
+                this.telepone.Visible = false;
+                this.tlf.Visible = false;
+                this.lblError.CssClass = "page-header alert alert-danger";
+                this.btnVolver.CssClass = "btn btn-danger btn-lg col-md-4 col-md-offset-3";
             }
         } // Fin Page_Load
         
@@ -59,82 +69,60 @@ namespace GestionEmpresas.Privada
                     {
                         ServicioGestionClient proxy = new ServicioGestionClient();
 
+                        // Cogemos los id de empresa y contacto.
                         int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
                         int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
-                        int res = -1;
-
-                        /** Objeto Telefono **/
-
-                        TelefonoData t = new TelefonoData() { numero = this.telepone.Text };
-
-                        /** Fin objeto direccion **/
 
                         /***************************************************************************************************************************/
-
-                        if (cEmp != 0)
+                        if (cEmp != 0) // Si el id que nos da de empresa realizamos la siguiente operación.
                         {
-                            // Obtengo el objeto empresa
-                            var objEmpresa = proxy.getEmpresaId(cEmp);
-                            
-                            //Se comprueba el telefono. Que sea único
-                            TelefonoData telefono=proxy.GetNumeroTelefono(t.numero);
-                            if(telefono==null)
+                            var objEmpresa = proxy.getEmpresaId(cEmp); // Obtengo el objeto empresa a partir del ID que nos dan por url
+
+                            // Creamos un objeto telefono, inicializando el telefonoo con lo que me devuelve el metodo. Me puede devolver 2 cosas, o null o el telefonoo.
+                            TelefonoData telefono = proxy.GetNumeroTelefono(this.telepone.Text);
+
+                            if(telefono==null) // Si el telefono que recibo es null, quiere decir que el telefono no existe
                             {
-                                res = proxy.AddTelefono(t, objEmpresa, null);
-                                if (res != 1)
-                                {
-                                    Response.Redirect("gestionContacto.aspx?id=" + cEmp);
-                                }
-                                else
-                                {
-                                    this.lblError.Visible = true;
-                                    this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                                }
+                                TelefonoData tlf = new TelefonoData();
+
+                                tlf.numero = this.telepone.Text;
+
+                                proxy.AddTelefono(tlf, objEmpresa, null);
+                                Response.Redirect("gestionEmpresas.aspx");
                             }
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "No se puede añadir este registro. El número de teléfono ya existe en la base de datos.";
+                                this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
                             }
-                           
-                        }
+                         }// Fin del if
+                        /***************************************************************************************************************************/
 
+                        /***************************************************************************************************************************/
                         if (cCon != 0)
                         {
-                            // Obtengo el objeto contacto
-                            var objContacto = proxy.getContacto(cCon);
-                            var idcontactoEmpresa = proxy.getContacto(objContacto.idContacto);
+                            var objetoContacto = proxy.getContacto(cCon); // Obtengo el objeto empresa a partir del ID que nos dan por url
 
-                            //Se comprueba el telefono. Que sea único
-                            TelefonoData telefono = proxy.GetNumeroTelefono(t.numero);
-                            if (telefono == null)
+                            // Creamos un objeto telefono, inicializando el telefonoo con lo que me devuelve el metodo. Me puede devolver 2 cosas, o null o el telefonoo.
+                            TelefonoData telefono = proxy.GetNumeroTelefono(this.telepone.Text);
+
+                            if (telefono == null) // Si el telefono que recibo es null, quiere decir que el telefono no existe
                             {
-                                res = proxy.AddTelefono(t, null, objContacto);
-                                Response.Redirect("gestionContacto.aspx?id=" + idcontactoEmpresa.idEmpresa);
+                                TelefonoData tlf = new TelefonoData();
+
+                                tlf.numero = this.telepone.Text;
+                                proxy.AddTelefono(tlf, null, objetoContacto);
+                                /**** Vamos a obtener el id del contacto de la empresa *****/
+                                var idEmpresa = objetoContacto.idEmpresa;
+                                /********/
+                                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
                             }
                             else
                             {
                                 this.lblError.Visible = true;
-                                this.lblError.Text = "No se puede añadir este registro. El número de teléfono ya existe en la base de datos.";
+                                this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
                             }
                         }
-
-                        /***************************************************************************************************************************/
-
-                        // Si el resultado que nos devuelve el servicio es != -1 llevamos al usuario a una web ( GestionEmpresa o GestionContacto )
-                     /*   if (res != -1)
-                        {
-                            if (cEmp != 0) Response.Redirect("gestionEmpresas.aspx");
-                            if (cCon != 0) Response.Redirect("gestionContacto.aspx");
-                        }
-                        // Si el resultado que nos devuelve la BD no es valido, mostraremos un error en el formulario
-                        else
-                        {
-                            this.lblError.Visible = true;
-                            this.lblError.Text = "No se guardaron los datos, error de acceso al servicio";
-                            //this.alert.Visible = true;
-                        }*/
-
                         /***************************************************************************************************************************/
                     }
                     catch (Exception err)
@@ -154,24 +142,27 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
             int cEmp = Convert.ToInt32(Request.QueryString["Empresa"]);
             int cCon = Convert.ToInt32(Request.QueryString["Contacto"]);
 
-            this.telepone.Text = "123456789";
-
-            if (cEmp <= 0 && cCon <= 0)
-            {
-                Response.Redirect(".aspx", true);
-            }
-
             if (cEmp != 0)
             {
-                Response.Redirect("gestionContacto.aspx", true);
+                Response.Redirect("gestionEmpresas.aspx", true);
             }
 
             if (cCon != 0)
             {
-                Response.Redirect("gestionContacto.aspx", true);
+                /****************/
+                var objContacto = proxy.getContacto(cCon); // Obtengo el contacto
+                var idEmpresa = objContacto.idEmpresa;
+                /****************/
+                Response.Redirect("gestionContacto.aspx?id=" + idEmpresa);
+            }
+            else
+            {
+                Response.Redirect("Default.aspx?id=");
             }
         }// Fin del protected void Volver
     }

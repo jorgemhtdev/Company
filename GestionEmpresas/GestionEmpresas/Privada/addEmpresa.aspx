@@ -62,20 +62,22 @@
                             </section>
                             <section class="col-md-4">
                                 <asp:TextBox ID="paginaWeb" runat="server"  CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                                         ErrorMessage="Debes rellenar el campo de pagina web" ControlToValidate="paginaWeb" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                                         ErrorMessage="Solo se admite el siguiente formato --> http(s)://laweb.com " ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>      
+                                         ErrorMessage="Solo se admite el siguiente formato --> http(s)://laweb.com " ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>
+                                <br /><br />
                             </section>
                         </article>
-
+                        
                         <article class="col-md-12 col-md-offset-2"> 
                             <section class="col-md-2 col-md-offset-1">
                                 <asp:Label ID="zector" runat="server">Sector</asp:Label>                        
                             </section>
                             <section class="col-md-4">
                                 <asp:DropDownList ID="sector" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="sector" CssClass="glyphicon glyphicon-remove alert-danger" ErrorMessage="Seleccione un sector" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                <br /><br /><br /><br />
                             </section>
+                            
                         </article> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="Label"></asp:Label>
                         <br /><br /><br /><br /><br /><br />

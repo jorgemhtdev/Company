@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <div class="container">
+   <div class="container">
         <h1>Nº Total de:</h1>
         <div class="col-md-2">
             <div class="panel panel-default">
