@@ -43,13 +43,13 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                          ErrorMessage="El nif no es valido" ValidationExpression="(\d{8})([-]?)([A-Z]{1})" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="nf"></asp:RegularExpressionValidator>         
                             </section>
-                        </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article><br /><br /><br /><br />
                         <asp:Label ID="lblError" runat="server" CssClass="label label-danger" Text="Label"></asp:Label>
                         <br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">  
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
-                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addContac" OnClientClick="return confirm('¿Estas seguro?');" /> 
+                            <asp:Button ID="btnEnviar" runat="server" Text="Añadir" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="addContac" OnClientClick="return confirm('¿Estas seguro de guardar estos cambios?');" /> 
                         </footer>
                         <br /><br /><br />
               </div> <!-- panel-heading -->
