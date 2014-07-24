@@ -18,10 +18,10 @@ namespace ServicioGestion.Model
         public string descripcion { get; set; }
         public string comentarios { get; set; }
         public System.DateTime fechaHora { get; set; }
-        public Nullable<int> idUsuario { get; set; }
-        public Nullable<int> idTipoAccion { get; set; }
-        public Nullable<int> idEstadoAccion { get; set; }
-        public Nullable<int> idEmpresa { get; set; }
+        public int idUsuario { get; set; }
+        public int idTipoAccion { get; set; }
+        public int idEstadoAccion { get; set; }
+        public int idEmpresa { get; set; }
     
         public virtual Empresa Empresa { get; set; }
         public virtual EstadoDeAccion EstadoDeAccion { get; set; }
