@@ -22,7 +22,7 @@
                                 <asp:Label ID="nombre" runat="server">Nombre</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="nombreEmpresa" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="nombreEmpresa" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidatornombreEmpresa" runat="server"
                                              ErrorMessage="Debes rellenar nombre comercial" ControlToValidate="nombreEmpresa" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="RegularExpressionnombreEmpresa" runat="server"
@@ -35,7 +35,7 @@
                                 <asp:Label ID="RasonSocial" runat="server">Razon Social</asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="RazonSocial" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="RazonSocial" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el campo razon social" ControlToValidate="RazonSocial" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
@@ -48,7 +48,7 @@
                                 <asp:Label ID="zif" runat="server">CIF</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="CIF" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="CIF" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el campo CIF" ControlToValidate="CIF" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
@@ -61,7 +61,7 @@
                                 <asp:Label ID="url" runat="server" >Pagina web</asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="paginaWeb" runat="server"  CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="paginaWeb" runat="server"  CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
                                          ErrorMessage="Solo se admite el siguiente formato --> http(s)://laweb.com " ValidationExpression="^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="paginaWeb"></asp:RegularExpressionValidator>
                                 <br /><br />

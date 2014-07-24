@@ -12,10 +12,22 @@ namespace GestionEmpresas.Privada
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idDireccion = Convert.ToInt32(Request.QueryString["id"]);
-            ServicioGestionClient proxy = new ServicioGestionClient();
+            if (!IsPostBack)
+            {
 
-            var direccion = proxy.GetDireccion();
+                ServicioGestionClient proxy = new ServicioGestionClient();
+
+                // Obtemos el id del email
+                int idDireccion = Convert.ToInt32(Request.QueryString["id"]);
+                var direccion = proxy.GetDireccion(idDireccion);
+
+                this.labelDireccion.Text = direccion.domicilio;
+
+                this.domici.Text = direccion.domicilio;
+                this.poblac.Text = direccion.poblacion;
+                this.cp.Text = direccion.codPostal; 
+                this.provin.Text = direccion.provincia;
+            }
         }
 
         protected void editDirec(object sender, EventArgs e)
@@ -83,7 +95,16 @@ namespace GestionEmpresas.Privada
         /// <param name="e"></param>
         protected void Volver(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx", true);
+            ServicioGestionClient proxy = new ServicioGestionClient();
+
+            int idDireccion = Convert.ToInt32(Request.QueryString["id"]); // Obtengo el id de direccion
+
+            var obtenerDireccionEmpresa = proxy.GetDireccion(idDireccion); 
+
+            
+            
+
+
         }
     }
 }

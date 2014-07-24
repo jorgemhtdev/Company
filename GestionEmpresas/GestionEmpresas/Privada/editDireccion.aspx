@@ -13,7 +13,10 @@
         <div class="row">
              <br /><br />
             <div class="panel panel-primary text-center col-md-8 col-md-offset-2">
-                <div class="panel-heading"> <h1> Editar dirección <span class="glyphicon glyphicon-pencil"></span></h1></div>
+                <div class="panel-heading"> 
+                      <h1> Editar Dirección </h1>
+                    - <asp:Label ID="labelDireccion" runat="server" Text=""></asp:Label> -
+                </div>
                     <div class="panel-body">
                        <br /><br />
 
@@ -22,7 +25,7 @@
                                 <asp:Label ID="dom" runat="server"><h4>Domicilio</h4></asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                     <asp:TextBox id="domici" runat="server" CssClass="form-control"></asp:TextBox>
+                                     <asp:TextBox id="domici" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidatornombreEmpresa" runat="server"
                                              ErrorMessage="Debes rellenar nombre comercial" ControlToValidate="domici" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                      <asp:RegularExpressionValidator ID="RegularExpressionnombreEmpresa" runat="server"
@@ -35,7 +38,7 @@
                                 <asp:Label ID="pob" runat="server"><h4>Población</h4></asp:Label>   
                             </section>                       
                             <section class="col-md-4">
-                                <asp:TextBox ID="poblac" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="poblac" runat="server" CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                          ErrorMessage="Debes rellenar el campo de población" ControlToValidate="poblac" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
@@ -48,7 +51,7 @@
                                 <asp:Label ID="copo" runat="server"><h4>Codigo postal</h4></asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="cp" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="cp" runat="server" CssClass="form-control  text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                          ErrorMessage="Debes rellenar el codigo postal" ControlToValidate="cp" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
@@ -61,18 +64,18 @@
                                 <asp:Label ID="pro" runat="server" ><h4>Provincia</h4></asp:Label>                        
                             </section>
                             <section class="col-md-4">
-                                <asp:TextBox ID="provin" runat="server"  CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="provin" runat="server"  CssClass="form-control text-center"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                          ErrorMessage="Debes rellenar el campo de la provincia" ControlToValidate="provin" CssClass="glyphicon glyphicon-asterisk alert-danger"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
                                          ErrorMessage="Solo se admite texto" ValidationExpression="[A-Za-z ]*" CssClass="glyphicon glyphicon-remove alert-danger" ControlToValidate="provin"></asp:RegularExpressionValidator>      
                             </section>
-                        </article><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        </article><br /><br /><br /><br /><br /><br />
 
                         <footer class="col-md-12 col-md-offset-1">
                            
                             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-danger col-md-4" OnClick="Volver" CausesValidation="False" />
-                            <asp:Button ID="btnEnviar" runat="server" Text="Guardar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="editDirec" OnClientClick="return confirm('¿Estas seguro?');" /> 
+                            <asp:Button ID="btnEnviar" runat="server" Text="Editar cambios" CssClass="btn btn-success col-md-4 col-md-offset-2" OnClick="editDirec" OnClientClick="return confirm('¿Deseas guardar los cambios realizados?');" /> 
                             
                         </footer>
                         <br /><br /><br />
