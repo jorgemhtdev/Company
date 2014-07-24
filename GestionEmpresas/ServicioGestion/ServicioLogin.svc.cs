@@ -24,8 +24,7 @@ namespace ServicioGestion
                                    where usuario.login == login
                                    select usuario;
                     Usuario usr = consulta.First();
-
-                    resultado = (usr != null) && (usr.password == password);
+                    resultado = (usr != null) && (usr.password == PasswordManager.getMD5(password));
                 }
                 return resultado;
             }
